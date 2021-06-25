@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inventory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Inicio" 
+		Height="522.2"
+		Width="879"
+		ResizeMode="NoResize">
+	<Grid Width="879" Height="506.25">
+		<Button HorizontalAlignment="Left" Margin="758,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
+			S
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="787,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
+			-
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="816,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
+			Lib
+		</Button>
+		<Button x:Name="Btn_OpenSearchProductWindow" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Buscar Productos
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Agregar Productos
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Modificar Productos
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,378,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Prueba de Conexion
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,408,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Tareas
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,436,0,0" VerticalAlignment="Top" Width="126" Height="24">
+			Configuracion
+		</Button>
 
-    </Grid>
+	</Grid>
 </Window>
