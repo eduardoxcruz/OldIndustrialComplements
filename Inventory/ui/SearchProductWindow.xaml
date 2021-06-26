@@ -5,6 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
-        Title="WindowSearchProduct" Height="450" Width="800">
+        Title="SearchProductWindow" 
+		Height="610.5" 
+		Width="1015.5">
 	<Grid />
 </Window>
