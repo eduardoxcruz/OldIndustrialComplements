@@ -23,5 +23,17 @@ namespace Inventory.ui
 			SearchProductWindow searchProductWindow = new SearchProductWindow();
 			searchProductWindow.Show();
 		}
+
+		private void BtnOpenConecctionsWindow_Click(object sender, RoutedEventArgs e)
+		{
+			ConecctionsWindow connectionsWindow = new ConecctionsWindow();
+			connectionsWindow.Show();
+		}
+
+		private void BtnOpenSettingWindow_Click(object sender, RoutedEventArgs e)
+		{
+			SettingWindow settingWindow = new SettingWindow();
+			settingWindow.Show();
+		}
 	}
 }
