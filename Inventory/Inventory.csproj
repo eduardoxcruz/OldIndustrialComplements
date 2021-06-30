@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ui\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="ui\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
