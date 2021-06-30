@@ -26,7 +26,7 @@ namespace Inventory.ui
 
 		private void BtnOpenConecctionsWindow_Click(object sender, RoutedEventArgs e)
 		{
-			ConecctionsWindow connectionsWindow = new ConecctionsWindow();
+			ConnectionsWindow connectionsWindow = new ConnectionsWindow();
 			connectionsWindow.Show();
 		}
 

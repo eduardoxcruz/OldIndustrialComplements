@@ -2,9 +2,9 @@
 
 namespace Inventory.ui
 {
-	public partial class ConecctionsWindow : Window
+	public partial class ConnectionsWindow : Window
 	{
-		public ConecctionsWindow()
+		public ConnectionsWindow()
 		{
 			InitializeComponent();
 		}
