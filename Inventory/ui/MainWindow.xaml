@@ -6,13 +6,11 @@
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
         Title="Inicio" 
-		Height="522.2"
+		Height="506.25"
 		Width="879"
-		ResizeMode="NoResize">
-	<Grid Width="879" Height="506.25">
-		<Button HorizontalAlignment="Left" Margin="758,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
-			S
-		</Button>
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+	<Grid>
 		<Button HorizontalAlignment="Left" Margin="787,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
 			S
 		</Button>
