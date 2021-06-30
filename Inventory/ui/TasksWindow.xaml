@@ -6,7 +6,53 @@
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
         Title="Tareas" 
-		Height="269.25" 
-		Width="427.5">
-	<Grid />
+		Height="285" 
+		Width="427.5"
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+	<Grid>
+		<Button HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Height="24" Width="24">
+			Recargar
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Ejecutar
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Cancelar
+		</Button>
+		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="324,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Height="11" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="ID"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9" TextAlignment="Left"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
+		<ComboBox HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+		<TextBox HorizontalAlignment="Left" Margin="110,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+		<TextBlock HorizontalAlignment="Left" Margin="341,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="20.25" FontSize="9" TextAlignment="Center"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9"><Run Language="es-es" Text="Fecha y hora"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="123,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Empleado"/>
+		<TextBlock HorizontalAlignment="Left" Margin="123,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center"/>
+		<TextBlock HorizontalAlignment="Left" Margin="236,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Precio de compra"/>
+		<TextBlock HorizontalAlignment="Left" Margin="236,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center"/>
+		<TextBlock HorizontalAlignment="Left" Margin="349,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9" TextAlignment="Center" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="338,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Cantidad actual"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="12" FontSize="9" Text="Tipo"/>
+		<TextBlock HorizontalAlignment="Left" Margin="95,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Cantidad"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="265,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Provedor"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="180,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Precio"/></TextBlock>
+		<ComboBox HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18"/>
+		<TextBox HorizontalAlignment="Left" Margin="95,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
+		<TextBox HorizontalAlignment="Left" Margin="180,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
+		<ComboBox HorizontalAlignment="Left" Margin="265,130,0,0" VerticalAlignment="Top" Width="150" Height="18"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="12" FontSize="9"><Run Language="es-es" Text="Descripcion Completa"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="22.5" FontSize="9" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="9" Width="198" Height="12"><Run Language="es-es" Text="Contenedor"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="213,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Ubicacion"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="290,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="331,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="E"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="372,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="18" FontSize="9" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="213,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="290,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="331,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
+		<TextBlock HorizontalAlignment="Left" Margin="372,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
+	</Grid>
 </Window>
