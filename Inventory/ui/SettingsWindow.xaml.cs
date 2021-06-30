@@ -2,9 +2,9 @@
 
 namespace Inventory.ui
 { 
-	public partial class SettingWindow : Window
+	public partial class SettingsWindow : Window
 	{
-		public SettingWindow()
+		public SettingsWindow()
 		{
 			InitializeComponent();
 		}

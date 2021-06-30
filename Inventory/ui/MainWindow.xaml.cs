@@ -32,8 +32,8 @@ namespace Inventory.ui
 
 		private void BtnOpenSettingWindow_Click(object sender, RoutedEventArgs e)
 		{
-			SettingWindow settingWindow = new SettingWindow();
-			settingWindow.Show();
+			SettingsWindow settingsWindow = new SettingsWindow();
+			settingsWindow.Show();
 		}
 	}
 }
