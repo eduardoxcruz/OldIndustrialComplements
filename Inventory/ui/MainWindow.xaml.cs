@@ -11,5 +11,17 @@ namespace Inventory.ui
         {
             InitializeComponent();
         }
-    }
+
+		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
+		{
+			TasksWindow tasksWindow = new TasksWindow();
+			tasksWindow.Show();
+		}
+
+		private void BtnOpenSearchProductWindow_Click(object sender, RoutedEventArgs e)
+		{
+			SearchProductWindow searchProductWindow = new SearchProductWindow();
+			searchProductWindow.Show();
+		}
+	}
 }
