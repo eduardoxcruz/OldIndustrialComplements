@@ -2,9 +2,9 @@
 
 namespace Inventory.ui
 {
-	public partial class WindowSearchProduct : Window
+	public partial class SearchProductWindow : Window
 	{
-		public WindowSearchProduct()
+		public SearchProductWindow()
 		{
 			InitializeComponent();
 		}
