@@ -47,5 +47,11 @@ namespace Inventory.ui
 			DetailsWindow detailsWindow = new DetailsWindow();
 			detailsWindow.Show();
 		}
+
+		private void BtnOpenRequestsWindow_Click(object sender, RoutedEventArgs e)
+		{
+			RequestsWindow requestsWindow = new RequestsWindow();
+			requestsWindow.Show();
+		}
 	}
 }
