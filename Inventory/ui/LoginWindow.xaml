@@ -5,6 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
-    <Grid />
+        Title="Inicio de sesión" 
+		Height="155.25" 
+		Width="225.75"
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+	<Grid>
+		<TextBlock HorizontalAlignment="Left" Margin="9,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Login"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9"><Run Language="es-es" Text="Nombre de Usuario"/></TextBlock>
+		<TextBox TextWrapping="Wrap" Width="194" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" FontSize="9"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9"><Run Language="es-es" Text="Contraseña"/></TextBlock>
+		<TextBox TextWrapping="Wrap" Width="194" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,82,0,0" FontSize="9"/>
+		<Button HorizontalAlignment="Left" Margin="14,111,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Conectar
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="87,111,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Cancel
+		</Button>
+	</Grid>
 </Window>
