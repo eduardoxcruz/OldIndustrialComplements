@@ -35,5 +35,11 @@ namespace Inventory.ui
 			SettingsWindow settingsWindow = new SettingsWindow();
 			settingsWindow.Show();
 		}
+
+		private void BtnOpenLoginWindow_Click(object sender, RoutedEventArgs e)
+		{
+			LoginWindow loginWindow = new LoginWindow();
+			loginWindow.Show();
+		}
 	}
 }
