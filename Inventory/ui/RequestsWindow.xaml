@@ -5,6 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
-        Title="RequestsWindow" Height="450" Width="800">
-    <Grid />
+        Title="Buscar" 
+		Height="528" 
+		Width="1015.5"
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+    <Grid>
+		<Grid>
+			<TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Buscar Producto"/></TextBlock>
+			<TextBlock HorizontalAlignment="Left" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Busqueda Rapida"/></TextBlock>
+			<TextBox HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="990" Height="18" FontSize="9"/>
+			<Button HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+				Drop
+			</Button>
+			<TextBlock HorizontalAlignment="Left" Margin="10,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="15.75" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+			<TextBlock HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="360" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+			<Button HorizontalAlignment="Left" Margin="10,478,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+				Salir
+			</Button>
+		</Grid>
+	</Grid>
 </Window>
