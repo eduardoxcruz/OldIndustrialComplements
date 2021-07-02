@@ -5,8 +5,83 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
-        Title="SearchProductWindow" 
+        Title="Buscar" 
 		Height="610.5" 
-		Width="1015.5">
-	<Grid />
+		Width="1015.5"
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Buscar Producto"/></TextBlock>
+        <Button HorizontalAlignment="Left" Margin="123,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Guardar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="152,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            -
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Excel
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            +
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="239,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Herramienta
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="268,4,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Carrito
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="845,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Codigo Debug"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="904,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Busqueda Rapida"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="990" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="934,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Recuento:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="00.00"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Busqueda Avanzada"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="ID"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="111,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Estado"/></TextBlock>
+        <ComboBox Margin="111,92,808,485" Width="96" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="212,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Matricula"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="212,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Descripción"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="313,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="564,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Tecnologia de Montaje"/></TextBlock>
+        <ComboBox Margin="564,92,356,485" Width="96" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="665,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Encapsulado"/></TextBlock>
+        <ComboBox Margin="665,92,254,485" Width="96" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="766,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Contenedor"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="766,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="18" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="897,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Ubicación"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+        <Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Buscar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Agregar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Exportar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Modificar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Limpiar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Solicitar
+        </Button>
+        <CheckBox Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
+        <Button HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Todo
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Nada
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="15.75" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.7" Height="360.9" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+        <Button HorizontalAlignment="Left" Margin="10,571,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Salir
+        </Button>
+    </Grid>
 </Window>
