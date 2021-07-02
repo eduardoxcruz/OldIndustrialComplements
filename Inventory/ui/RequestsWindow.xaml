@@ -11,18 +11,26 @@
 		ResizeMode="NoResize"
 		SizeToContent="WidthAndHeight">
     <Grid>
-		<Grid>
-			<TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Buscar Producto"/></TextBlock>
-			<TextBlock HorizontalAlignment="Left" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Busqueda Rapida"/></TextBlock>
-			<TextBox HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="990" Height="18" FontSize="9"/>
-			<Button HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-				Drop
-			</Button>
-			<TextBlock HorizontalAlignment="Left" Margin="10,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="15.75" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
-			<TextBlock HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="360" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
-			<Button HorizontalAlignment="Left" Margin="10,478,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-				Salir
-			</Button>
-		</Grid>
-	</Grid>
+        <Grid>
+            <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Buscar Producto"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Busqueda Rapida"/></TextBlock>
+            <TextBox HorizontalAlignment="Left" Margin="10,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="990" Height="18" FontSize="9"/>
+            <TextBlock HorizontalAlignment="Left" Margin="934,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Recuento:"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="976,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="00.00"/></TextBlock>
+            <Button HorizontalAlignment="Left" Margin="947,5,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+                Buscar
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="976,5,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+                Actualizar
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+                Drop
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="15.75" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75" Height="360" TextAlignment="Left" FontSize="9"><Run Language="es-es"/></TextBlock>
+            <Button HorizontalAlignment="Left" Margin="10,484,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+                Salir
+            </Button>
+        </Grid>
+    </Grid>
 </Window>
