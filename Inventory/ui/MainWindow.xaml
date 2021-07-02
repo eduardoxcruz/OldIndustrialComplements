@@ -23,7 +23,7 @@
         <Button x:Name="BtnOpenSearchProductWindow" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenSearchProductWindow_Click">
             Buscar Productos
         </Button>
-        <Button HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="126" Height="24">
+        <Button x:Name="BtnOpenAddProductWindow" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenAddProductWindow_Click">
             Agregar Productos
         </Button>
         <Button x:Name="BtnOpenModifyWindow" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenModifyWindow_Click">

@@ -59,5 +59,11 @@ namespace Inventory.ui
 			ModifyWindow modifyWindow = new ModifyWindow();
 			modifyWindow.Show();
 		}
+
+		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
+		{
+			AddProductWindow addProductWindow = new AddProductWindow();
+			addProductWindow.Show();
+		}
 	}
 }
