@@ -5,6 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inventory.ui"
         mc:Ignorable="d"
-        Title="ModifyWindow" Height="450" Width="800">
-    <Grid />
+        Title="Modificar" 
+		Height="570" 
+		Width="694.5"
+		ResizeMode="NoResize"
+		SizeToContent="WidthAndHeight">
+	<Grid>
+		<TextBlock HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Modificar Producto"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="153,1,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
+		<ComboBox Margin="153,13,446,523" Width="96" Height="18"/>
+		<TextBox HorizontalAlignment="Left" Margin="254,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+		<Button HorizontalAlignment="Left" Margin="355,13,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Actualizar
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="594,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+			Excel
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="623,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+			+
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="652,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+			Buscar
+		</Button>
+		<GroupBox Header="Datos del producto" Margin="0,31,0,320" Width="672" Height="198">
+			<Grid>
+				<TextBlock HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="ID"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="95,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Estado*"/></TextBlock>
+				<ComboBox Margin="95,15,485,142" Width="80" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="180,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Matricula*"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="180,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="335,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Tec. Montaje*"/></TextBlock>
+				<ComboBox Margin="335,15,175,142" Width="150" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="490,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Encapsulado o tipo de Conexión*"/></TextBlock>
+				<ComboBox Margin="490,15,20,142" Width="150" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Descripción Corta*"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" Height="22.5" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Categoría"/></TextBlock>
+				<ComboBox Margin="10,90,2,60" Width="648" Height="25.5"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Descripción Completa"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" Height="36" FontSize="9"/>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Header="Existencias" Margin="5,234,347,226">
+			<Grid>
+				<CheckBox Content="Producto usa Inventario" Margin="10,10,80,43"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Existencia"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="87,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Mínimo"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="87,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="164,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Máximo"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="164,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<Button HorizontalAlignment="Left" Margin="302,46,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+					Agregar
+				</Button>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Header="Ubicación" Margin="353,234,10,226">
+			<Grid>
+				<TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Contenedor"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Ubicación"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="87,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="    S"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="87,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="128,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="    E"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="128,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="172,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="    R"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="169,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9"/>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Header="Detalle de Precios" Margin="5,328,197,58">
+			<Grid Height="149">
+				<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Precio Compra"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Unidad*"/></TextBlock>
+				<ComboBox Margin="87,22,322,109" Width="72" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="164,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Tipo de Producto"/></TextBlock>
+				<ComboBox Margin="164,22,167,109" Width="150" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="328,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Fabricante"/></TextBlock>
+				<ComboBox Margin="328,22,3,109" Width="150" Height="18"/>
+				<TextBlock HorizontalAlignment="Left" Margin="328,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="No. Parte del Fabricante"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="328,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Ajuste de Ganancia"/></TextBlock>
+				<RadioButton Content="Automatica" Margin="6,62,384,68" Height="19.5" FontSize="11"/>
+				<RadioButton Content="Entrada Manual" Margin="90,62,282,69" FontSize="11"/>
+				<TextBlock HorizontalAlignment="Left" Margin="9,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="%Ganancia"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="123,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Precio de Venta"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="123,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="242,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Utilidad"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="242,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="10,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="%Descuento"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="123,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Precio Descuento"/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="123,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+				<TextBlock HorizontalAlignment="Left" Margin="242,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Utilidad con Desc."/></TextBlock>
+				<TextBox HorizontalAlignment="Left" Margin="242,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
+			</Grid>
+		</GroupBox>
+		<TextBlock HorizontalAlignment="Left" Margin="10,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="672" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Memo"/></TextBlock>
+		<TextBox HorizontalAlignment="Left" Margin="10,508,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="672" Height="18" FontSize="9"/>
+		<Button HorizontalAlignment="Left" Margin="10,528,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+			Guardar
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="79,528,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+			Salir
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="622,528,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+			Cargar
+		</Button>
+		<Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58"/>
+	</Grid>
 </Window>
