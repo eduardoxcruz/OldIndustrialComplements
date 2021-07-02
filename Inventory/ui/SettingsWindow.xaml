@@ -10,51 +10,50 @@
 		Width="712.5"
 		ResizeMode="NoResize"
 		SizeToContent="WidthAndHeight">
-	<Grid>
-		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Configuración"/></TextBlock>
-		<TextBlock HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" Height="12" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="Estado:"/></TextBlock>
+    <Grid>
+		<TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Configuración"/></TextBlock>
 		<Button HorizontalAlignment="Left" Margin="551,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" RenderTransformOrigin="0.458,0.543">
-			Guardar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
-			Minimizar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="628,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
-			Excel
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
-			Configuración
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="563,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-			Guardar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="642,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-			Cancelar
-		</Button>
-		<TabControl Margin="0,45,0,33">
-			<TabItem Header="Usuarios">
-				<Grid Background="#FFE5E5E5"/>
-			</TabItem>
-			<TabItem Header="Red">
-				<Grid Background="#FFE5E5E5">
-					<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="12" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="Dirección IP del servidor SQL"/></TextBlock>
-					<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,27,306,174"/>
-				</Grid>
-			</TabItem>
-			<TabItem Header="Sistema">
-				<Grid Background="#FFE5E5E5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="60*"/>
-						<ColumnDefinition Width="647*"/>
-					</Grid.ColumnDefinitions>
-					<TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Dirección del sistema"/></TextBlock>
-					<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,20,0,0" Grid.ColumnSpan="2"/>
-					<TextBlock HorizontalAlignment="Left" Margin="8,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Usuario del sistema"/></TextBlock>
-					<TextBlock HorizontalAlignment="Left" Margin="12,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
-					<TextBlock HorizontalAlignment="Left" Margin="12,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Año"/></TextBlock>
-					<TextBlock HorizontalAlignment="Left" Margin="12,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
-				</Grid>
-			</TabItem>
-		</TabControl>
-	</Grid>
+            Guardar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Minimizar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="628,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Excel
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+            Configuración
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="563,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Guardar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="642,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Cancelar
+        </Button>
+        <TabControl Margin="0,45,0,33">
+            <TabItem Header="Usuarios">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Red">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="12" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="Dirección IP del servidor SQL"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,27,306,174"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sistema">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="647*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Dirección del sistema"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,20,0,0" Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="8,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Usuario del sistema"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="12,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="12,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Año"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="12,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
