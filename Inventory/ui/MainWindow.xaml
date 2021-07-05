@@ -45,10 +45,8 @@
         <Button x:Name="BtnOpenDetailsWindow" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenDetailsWindow_Click">
             Details
         </Button>
-        <Button x:Name="BtnOpenRequestsWindow" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenRequestsWindow_Click">
-            Requests
-        </Button>
-        <TextBlock x:Name="TxtBlockCompilationVersion" HorizontalAlignment="Left" Margin="739,478,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Version:"/></TextBlock>
-
-    </Grid>
+		<Button x:Name="BtnOpenRequestsWindow" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenRequestsWindow_Click">
+			Requests
+		</Button>
+	</Grid>
 </Window>
