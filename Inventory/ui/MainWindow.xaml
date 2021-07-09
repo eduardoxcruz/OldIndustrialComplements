@@ -45,9 +45,8 @@
         <Button x:Name="BtnOpenDetailsWindow" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenDetailsWindow_Click">
             Details
         </Button>
-        <Button x:Name="BtnOpenRequestsWindow" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenRequestsWindow_Click">
-            Requests
-        </Button>
-
-    </Grid>
+		<Button x:Name="BtnOpenRequestsWindow" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenRequestsWindow_Click">
+			Requests
+		</Button>
+	</Grid>
 </Window>
