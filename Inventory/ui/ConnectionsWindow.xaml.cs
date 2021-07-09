@@ -1,6 +1,6 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Windows;
+using Inventory.database;
 
 namespace Inventory.ui
 {
@@ -13,11 +13,10 @@ namespace Inventory.ui
 
 		private void BtnTestConnection_OnClick(object sender, RoutedEventArgs routedEventArgs)
 		{
-			string connectionString = "Server=192.168.0.254,1433;Database=Pruebas;Integrated Security=False;User Id=eduardo;Password=Cruz0320;MultipleActiveResultSets=True";
-			SqlConnection sqlDatabaseConnection = new SqlConnection(connectionString);
+			SqlDatabase sqlDatabase = new SqlDatabase();
 			try
 			{
-				sqlDatabaseConnection.Open();
+				sqlDatabase.StartSqlClient();
 				TxtBlockConnectionResult.Text = "Conectado";
 			}
 			catch (SqlException exception)
