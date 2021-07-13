@@ -12,14 +12,15 @@
 		SizeToContent="WidthAndHeight">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Nuevo Producto"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="138,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
-        <ComboBox Margin="138,12,460,524" Width="96" Height="18" IsEnabled="False"/>
-        <TextBox HorizontalAlignment="Left" Margin="239,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" IsEnabled="False"/>
-        <Button HorizontalAlignment="Left" Margin="340,12,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" IsEnabled="False">
+        <TextBlock HorizontalAlignment="Left" Margin="195,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
+        <ComboBox Margin="195,14,404,522" Width="96" Height="18" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Codigo ID"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" IsEnabled="False"/>
+        <Button HorizontalAlignment="Left" Margin="479,2,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9" IsEnabled="False">
             Actualizar
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="407,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Codigo Debug"/></TextBlock>
-        <TextBox x:Name="TxtBoxCodigoDebug" HorizontalAlignment="Left" Margin="467,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="20.25" FontSize="9" Foreground="Red" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Codigo Debug"/></TextBlock>
+        <TextBox x:Name="TxtBoxCodigoDebug" HorizontalAlignment="Left" Margin="397,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="20.25" FontSize="9" Foreground="Red" IsEnabled="False"/>
         <Button HorizontalAlignment="Left" Margin="573,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" IsEnabled="False">
             Actualizar Visor
         </Button>
