@@ -12,7 +12,7 @@ namespace Inventory.database
 		const string Password = "Cruz0320";
 		const string MultipleActiveResultSets = "True";
 
-		public const string databaseConnectionString = "Server=" + serverIp + "," + serverPort + ";Database=" + databaseName + ";Integrated Security=" + integratedSecurity + ";User Id=" + userId + ";Password=" + password + ";MultipleActiveResultSets=" + multipleActiveResultSets;
+		public const string databaseConnectionString = "Server=" + ServerIp + "," + ServerPort + ";Database=" + DatabaseName + ";Integrated Security=" + IntegratedSecurity + ";User Id=" + UserId + ";Password=" + Password + ";MultipleActiveResultSets=" + MultipleActiveResultSets;
 		public SqlConnection StartSqlClient()
 		{
 			SqlConnection sqlDatabaseConnection = new SqlConnection(databaseConnectionString);
