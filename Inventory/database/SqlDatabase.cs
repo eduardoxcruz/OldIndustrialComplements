@@ -4,19 +4,20 @@ namespace Inventory.database
 {
 	public class SqlDatabase
 	{
-		static string serverIp = "192.168.0.254";
-		static string serverPort = "1433";
-		static string databaseName = "Pruebas";
-		static string integratedSecurity = "False";
-		static string userId = "eduardo";
-		static string password = "Cruz0320";
-		static string multipleActiveResultSets = "True";
+		const string serverIp = "192.168.0.254";
+		const string serverPort = "1433";
+		const string databaseName = "Pruebas";
+		const string integratedSecurity = "False";
+		const string userId = "eduardo";
+		const string password = "Cruz0320";
+		const string multipleActiveResultSets = "True";
 
-		static string databaseConnectionString = "Server=" + serverIp + "," + serverPort + ";Database=" + databaseName + ";Integrated Security=" + integratedSecurity + ";User Id=" + userId + ";Password=" + password + ";MultipleActiveResultSets=" + multipleActiveResultSets;
-		public void StartSqlClient()
+		public const string databaseConnectionString = "Server=" + serverIp + "," + serverPort + ";Database=" + databaseName + ";Integrated Security=" + integratedSecurity + ";User Id=" + userId + ";Password=" + password + ";MultipleActiveResultSets=" + multipleActiveResultSets;
+		public SqlConnection StartSqlClient()
 		{
 			SqlConnection sqlDatabaseConnection = new SqlConnection(databaseConnectionString);
-			sqlDatabaseConnection.Open();
+			//sqlDatabaseConnection.Open();
+			return sqlDatabaseConnection;
 		}
 	}
 }	
