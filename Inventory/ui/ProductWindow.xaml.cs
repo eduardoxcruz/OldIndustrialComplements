@@ -31,6 +31,24 @@ namespace Inventory.ui
 		public ProductWindow(int task)
 		{
 			InitializeComponent();
+			Task = task;
+			AutoAssignTextToTxtBlockProductTask();
+		}
+
+		private void AutoAssignTextToTxtBlockProductTask()
+		{
+			switch (Task)
+			{
+				case (int)ProductWindowTasks.Modify:
+					TxtBlockProductTask.Text = "Modificar Producto";
+					return;
+				case (int)ProductWindowTasks.AddNewProduct:
+					TxtBlockProductTask.Text = "Nuevo Producto";
+					return;
+				default:
+					TxtBlockProductTask.Text = "Detalles del Producto";
+					break;
+			}
 		}
 	}
 }
