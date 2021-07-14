@@ -16,7 +16,7 @@ namespace Inventory.database
 		public SqlConnection StartSqlClient()
 		{
 			SqlConnection sqlDatabaseConnection = new SqlConnection(databaseConnectionString);
-			sqlDatabaseConnection.Open();
+			//sqlDatabaseConnection.Open();
 			return sqlDatabaseConnection;
 		}
 	}
