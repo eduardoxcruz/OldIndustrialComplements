@@ -2,15 +2,15 @@
 
 namespace Inventory.ui
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
 		{
@@ -44,8 +44,10 @@ namespace Inventory.ui
 
 		private void BtnOpenDetailsWindow_Click(object sender, RoutedEventArgs e)
 		{
-			DetailsWindow detailsWindow = new DetailsWindow();
-			detailsWindow.Show();
+			//DetailsWindow detailsWindow = new DetailsWindow();
+			//detailsWindow.Show();
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails);
+			productWindow.Show();
 		}
 
 		private void BtnOpenRequestsWindow_Click(object sender, RoutedEventArgs e)
@@ -56,14 +58,18 @@ namespace Inventory.ui
 
 		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
 		{
-			ModifyWindow modifyWindow = new ModifyWindow();
-			modifyWindow.Show();
+			//ModifyWindow modifyWindow = new ModifyWindow();
+			//modifyWindow.Show();
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.Modify);
+			productWindow.Show();
 		}
 
 		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
 		{
-			AddProductWindow addProductWindow = new AddProductWindow();
-			addProductWindow.Show();
+			//AddProductWindow addProductWindow = new AddProductWindow();
+			//addProductWindow.Show();
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.AddNewProduct);
+			productWindow.Show();
 		}
 	}
 }
