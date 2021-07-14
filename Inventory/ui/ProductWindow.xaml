@@ -12,17 +12,17 @@
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Nuevo Producto"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="195,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
-        <ComboBox Margin="195,14,404,522" Width="96" Height="18" IsEnabled="False"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Codigo ID"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" IsEnabled="False"/>
-        <Button HorizontalAlignment="Left" Margin="479,2,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9" IsEnabled="False">
+        <TextBlock x:Name="TxtBlockProductTask" HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="195,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" TextAlignment="Left" FontSize="9" ><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
+        <ComboBox Margin="195,14,404,522" Width="96" Height="18" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12" TextAlignment="Left" FontSize="9" ><Run Language="es-es" Text="Codigo ID"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" />
+        <Button HorizontalAlignment="Left" Margin="479,2,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9" >
             Actualizar
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="12" TextAlignment="Left" FontSize="9" IsEnabled="False"><Run Language="es-es" Text="Codigo Debug"/></TextBlock>
-        <TextBox x:Name="TxtBoxCodigoDebug" HorizontalAlignment="Left" Margin="397,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="20.25" FontSize="9" Foreground="Red" IsEnabled="False"/>
-        <Button HorizontalAlignment="Left" Margin="573,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" IsEnabled="False">
+        <TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="12" TextAlignment="Left" FontSize="9" ><Run Language="es-es" Text="Codigo Debug"/></TextBlock>
+        <TextBox x:Name="TxtBoxCodigoDebug" HorizontalAlignment="Left" Margin="397,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="20.25" FontSize="9" Foreground="Red" />
+        <Button HorizontalAlignment="Left" Margin="573,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" >
             Actualizar Visor
         </Button>
         <Button HorizontalAlignment="Left" Margin="544,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
@@ -34,7 +34,7 @@
         <Button HorizontalAlignment="Left" Margin="631,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
             Buscar
         </Button>
-        <Button HorizontalAlignment="Left" Margin="660,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" IsEnabled="False">
+        <Button HorizontalAlignment="Left" Margin="660,2,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" >
             Herramienta
         </Button>
         <GroupBox Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198">
@@ -58,7 +58,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Existencias" Margin="5,228,348,232">
+        <GroupBox  Header="Existencias" Margin="5,228,348,232">
             <Grid>
                 <CheckBox Content="Producto usa Inventario" Margin="10,10,80,43"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Existencia"/></TextBlock>
@@ -67,13 +67,13 @@
                 <TextBox HorizontalAlignment="Left" Margin="87,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
                 <TextBlock HorizontalAlignment="Left" Margin="164,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Máximo"/></TextBlock>
                 <TextBox HorizontalAlignment="Left" Margin="164,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
-                <Button HorizontalAlignment="Left" Margin="302,46,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" IsEnabled="False">
+                <Button HorizontalAlignment="Left" Margin="302,46,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" >
                     Agregar
                 </Button>
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Ubicación" Margin="353,228,10,232">
+        <GroupBox  Header="Ubicación" Margin="353,228,10,232">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Contenedor"/></TextBlock>
                 <TextBox HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="18" FontSize="9"/>
@@ -88,7 +88,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Detalle de Precios" Margin="5,328,197,58">
+        <GroupBox  Header="Detalle de Precios" Margin="5,328,197,58">
             <Grid Height="149">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" TextAlignment="Left" FontSize="9"><Run Language="es-es" Text="Precio Compra"/></TextBlock>
                 <TextBox HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9"/>
@@ -129,7 +129,7 @@
             Cargar
         </Button>
         <Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58">
-            <Button HorizontalAlignment="Left" Margin="132,9,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" IsEnabled="False">
+            <Button HorizontalAlignment="Left" Margin="132,9,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" >
                 Foto
             </Button>
         </Border>
