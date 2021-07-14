@@ -9,7 +9,8 @@
 		Height="337.5" 
 		Width="712.5"
 		ResizeMode="NoResize"
-		SizeToContent="WidthAndHeight">
+		SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
     <Grid>
 		<TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Configuración"/></TextBlock>
 		<Button HorizontalAlignment="Left" Margin="551,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" RenderTransformOrigin="0.458,0.543">
