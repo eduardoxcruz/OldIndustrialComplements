@@ -9,7 +9,8 @@
 		Height="285" 
 		Width="427.5"
 		ResizeMode="NoResize"
-		SizeToContent="WidthAndHeight">
+		SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Button HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Height="24" Width="24">
 			Recargar
