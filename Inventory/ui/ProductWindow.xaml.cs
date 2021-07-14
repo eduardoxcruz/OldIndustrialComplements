@@ -14,6 +14,13 @@ using System.Windows.Shapes;
 
 namespace Inventory.ui
 {
+	public enum ProductWindowTasks : int
+	{
+		ShowDetails = 0,
+		Modify = 1,
+		AddNewProduct = 2
+	}
+
 	public partial class ProductWindow : Window
 	{
 		public ProductWindow()
