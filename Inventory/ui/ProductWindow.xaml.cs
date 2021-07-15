@@ -13,22 +13,8 @@ namespace Inventory.ui
 
 	public partial class ProductWindow : Window
 	{
-		private int _task = 0;
-
-		private int Task
-		{
-			get
-			{
-				return _task;
-			}
-			set
-			{
-				if (value < 3)
-				{
-					_task = value;
-				}
-			}
-		}
+		private int _productId = 1;
+		private int _task;
 
 		public ProductWindow(int task)
 		{
