@@ -4,7 +4,7 @@ using Inventory.database;
 
 namespace Inventory.ui
 {
-	public enum ProductWindowTasks : int
+	public enum ProductWindowTasks
 	{
 		ShowDetails = 0,
 		Modify = 1,
@@ -21,6 +21,41 @@ namespace Inventory.ui
 			InitializeComponent();
 			Task = task;
 			AutoAssignTextToTxtBlockProductTask();
+		}
+
+		public ProductWindow(int task, int productId)
+		{
+			InitializeComponent();
+			Task = task;
+			ProductId = productId;
+			AutoAssignTextToTxtBlockProductTask();
+		}
+
+		private int Task
+		{
+			get => _task;
+			set
+			{
+				if (value < 3)
+				{
+					_task = value;
+				}
+			}
+		}
+
+		private int ProductId
+		{
+			get => _productId;
+			set
+			{
+				if (value < 1)
+				{
+					_productId = 1;
+					return;
+				}
+
+				_productId = value;
+			}
 		}
 
 		private void AutoAssignTextToTxtBlockProductTask()
@@ -41,16 +76,16 @@ namespace Inventory.ui
 
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			string query = "SELECT * FROM dbo.productos2 WHERE id=@id";
-			SqlConnection conexion = new SqlDatabase().StartSqlClient();
-			SqlCommand comando = new SqlCommand(query, conexion);
+			var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			var conexion = new SqlDatabase().StartSqlClient();
+			var comando = new SqlCommand(query, conexion);
 			comando.Parameters.AddWithValue("@id", TxtBoxId.Text);
 			conexion.Open();
-			SqlDataReader registro = comando.ExecuteReader();
+			var registro = comando.ExecuteReader();
 			if (registro.Read())
 			{
-				string habilitarInventario = registro["inventario"].ToString();
-				string habilitarAjusteManual = registro["ajuste_manual"].ToString();
+				var habilitarInventario = registro["inventario"].ToString();
+				var habilitarAjusteManual = registro["ajuste_manual"].ToString();
 				ComboBoxEstado.Items.Add(registro["estado"].ToString());
 				TxtBoxMatricula.Text = registro["matricula"].ToString();
 				ComboBoxTecMontaje.Items.Add(registro["tecmon"].ToString());
