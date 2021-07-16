@@ -74,7 +74,7 @@ namespace Inventory.ui
 			}
 		}
 
-		private void DisableGroupBoxes()
+		private void DisableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = false;
 			GrpBoxLocation.IsEnabled = false;
