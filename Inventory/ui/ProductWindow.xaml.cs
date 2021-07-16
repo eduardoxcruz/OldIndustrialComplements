@@ -74,6 +74,14 @@ namespace Inventory.ui
 			}
 		}
 
+		private void DisableGroupBoxes()
+		{
+			GrpBoxInventory.IsEnabled = false;
+			GrpBoxLocation.IsEnabled = false;
+			GrpBoxPriceDetails.IsEnabled = false;
+			GrpBoxProductDetails.IsEnabled = false;
+		}
+
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
