@@ -48,7 +48,7 @@
 			Buscar
 		</Button>
 
-		<GroupBox Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198" IsEnabled="False">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="47*" />
@@ -105,7 +105,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Header="Existencias" Margin="5,228,348,232" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxInventory" Header="Inventario" Margin="5,228,348,232" IsEnabled="False">
 			<Grid>
 				<CheckBox x:Name="ChkBoxTheProductUsesInventory" Content="Producto usa Inventario" Margin="10,10,80,43" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
@@ -134,7 +134,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Header="Ubicación" Margin="353,228,10,232" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxLocation" Header="Ubicación" Margin="353,228,10,232" IsEnabled="False">
 			<Grid>
 				<TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
@@ -174,7 +174,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Header="Detalle de Precios" Margin="5,328,197,58" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxPriceDetails" Header="Detalle de Precios" Margin="5,328,197,58" IsEnabled="False">
 			<Grid Height="149">
 				<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
