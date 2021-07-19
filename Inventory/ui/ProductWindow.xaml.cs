@@ -60,18 +60,24 @@ namespace Inventory.ui
 
 		private void ConfigureControlsForTask()
 		{
-			switch (Task)
+			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
 			{
-				case (int)ProductWindowTasks.Modify:
-					TxtBlockProductTask.Text = "Modificar Producto";
-					return;
-				case (int)ProductWindowTasks.AddNewProduct:
-					TxtBlockProductTask.Text = "Nuevo Producto";
-					return;
-				default:
-					TxtBlockProductTask.Text = "Detalles del Producto";
-					break;
+				EnableAllGroupBoxes();
+				TxtBlockProductTask.Text = "Nuevo Producto";
+				BtnAddModifyAndSave.Content = "Agregar";
+				return;
 			}
+			if (CurrentTask == (int)ProductWindowTasks.Modify)
+			{
+				EnableAllGroupBoxes();
+				TxtBlockProductTask.Text = "Modificar Producto";
+				BtnAddModifyAndSave.Content = "Guardar";
+				return;
+			}
+			
+			DisableAllGroupBoxes();
+			TxtBlockProductTask.Text = "Detalles del Producto";
+			BtnAddModifyAndSave.Content = "Modificar";
 		}
 		private void DisableAllGroupBoxes()
 		{
