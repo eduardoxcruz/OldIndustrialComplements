@@ -213,5 +213,23 @@ namespace Inventory.ui
 			TxtBoxMinProductStock.IsEnabled = false;
 			TxtBoxMaxProductStock.IsEnabled = false;
 		}
+
+		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (CurrentTask == (int)ProductWindowTasks.Modify)
+			{
+				CurrentTask = (int)ProductWindowTasks.ShowDetails;
+			}
+			else if (CurrentTask == (int)ProductWindowTasks.ShowDetails)
+			{
+				CurrentTask = (int)ProductWindowTasks.Modify;
+			}
+			else if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
+			{
+				CurrentTask = (int)ProductWindowTasks.ShowDetails;
+			}
+			
+			ConfigureControlsForTask();
+		}
 	}
 }
