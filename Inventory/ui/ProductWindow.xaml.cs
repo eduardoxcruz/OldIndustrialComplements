@@ -14,31 +14,31 @@ namespace Inventory.ui
 	public partial class ProductWindow : Window
 	{
 		private int _productId = 1;
-		private int _task;
+		private int _currentTask;
 
 		public ProductWindow(int task)
 		{
 			InitializeComponent();
-			Task = task;
-			AutoAssignTextToTxtBlockProductTask();
+			CurrentTask = task;
+			ConfigureControlsForTask();
 		}
 
 		public ProductWindow(int task, int productId)
 		{
 			InitializeComponent();
-			Task = task;
+			CurrentTask = task;
 			ProductId = productId;
-			AutoAssignTextToTxtBlockProductTask();
+			ConfigureControlsForTask();
 		}
 
-		private int Task
+		private int CurrentTask
 		{
-			get => _task;
+			get => _currentTask;
 			set
 			{
 				if (value < 3)
 				{
-					_task = value;
+					_currentTask = value;
 				}
 			}
 		}
@@ -73,7 +73,6 @@ namespace Inventory.ui
 					break;
 			}
 		}
-
 		private void DisableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = false;
