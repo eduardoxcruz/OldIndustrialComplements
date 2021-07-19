@@ -58,7 +58,7 @@ namespace Inventory.ui
 			}
 		}
 
-		private void AutoAssignTextToTxtBlockProductTask()
+		private void ConfigureControlsForTask()
 		{
 			switch (Task)
 			{
