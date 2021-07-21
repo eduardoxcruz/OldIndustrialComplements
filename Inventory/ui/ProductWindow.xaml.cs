@@ -146,22 +146,6 @@ namespace Inventory.ui
 				CmbBoxEncapsulationType.Items.Add(registro["encapsulado"].ToString());
 				TxtBoxShortDescription.Text = registro["descripcion"].ToString();
 				CmbBoxCategories.Items.Add(registro["categoria"].ToString());
-
-				if (habilitarInventario.Equals("True"))
-				{
-					ChkBoxTheProductUsesInventory.IsChecked = true;
-					TxtBoxCurrentProductStock.IsEnabled = true;
-					TxtBoxMinProductStock.IsEnabled = true;
-					TxtBoxMaxProductStock.IsEnabled = true;
-				}
-				else
-				{
-					ChkBoxTheProductUsesInventory.IsChecked = false;
-					TxtBoxCurrentProductStock.IsEnabled = false;
-					TxtBoxMinProductStock.IsEnabled = false;
-					TxtBoxMaxProductStock.IsEnabled = false;
-				}
-
 				TxtBoxCurrentProductStock.Text = registro["existencia"].ToString();
 				TxtBoxMinProductStock.Text = registro["minimo"].ToString();
 				TxtBoxMaxProductStock.Text = registro["maximo"].ToString();
@@ -175,6 +159,14 @@ namespace Inventory.ui
 				CmbBoxManufacturer.Items.Add(registro["proveedor"].ToString());
 				TxtBoxManufacturerPartNumber.Text = registro["parte"].ToString();
 				CmbBoxProductType.Items.Add(registro["tipo"].ToString());
+				TxtBoxPercentageOfProfit.Text = registro["ganancia"].ToString();
+				TxtBoxDiscountRate.Text = registro["descuento"].ToString();
+				TxtBoxSalePrice.Text = registro["preciovent"].ToString();
+				TxtBoxPriceWithDiscount.Text = registro["preciodesc"].ToString();
+				TxtBoxUtility.Text = registro["utilidad"].ToString();
+				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
+				TxtBoxFullDescription.Text = registro["descfull"].ToString();
+				TxtBoxMemo.Text = registro["memo"].ToString();
 
 				switch (habilitarAjusteManual)
 				{
@@ -199,16 +191,7 @@ namespace Inventory.ui
 						TxtBoxProfitWithDiscount.IsEnabled = false;
 						break;
 				}
-
-				TxtBoxPercentageOfProfit.Text = registro["ganancia"].ToString();
-				TxtBoxDiscountRate.Text = registro["descuento"].ToString();
-				TxtBoxSalePrice.Text = registro["preciovent"].ToString();
-				TxtBoxPriceWithDiscount.Text = registro["preciodesc"].ToString();
-				TxtBoxUtility.Text = registro["utilidad"].ToString();
-				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
-				TxtBoxFullDescription.Text = registro["descfull"].ToString();
-				TxtBoxMemo.Text = registro["memo"].ToString();
-			}*/
+			}
 		}
 		private void RadioButtonAutomatica_Checked(object sender, RoutedEventArgs e)
 		{
