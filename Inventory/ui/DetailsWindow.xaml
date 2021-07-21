@@ -23,7 +23,7 @@
         <Button HorizontalAlignment="Left" Margin="602,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
             +
         </Button>
-        <Button x:Name="BtnSearch" HorizontalAlignment="Left" Margin="631,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" Click="BtnSearch_Click">
+        <Button x:Name="BtnSearch" HorizontalAlignment="Left" Margin="631,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
             Buscar
         </Button>
         <Button HorizontalAlignment="Left" Margin="660,1,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
