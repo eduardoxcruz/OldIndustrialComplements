@@ -10,8 +10,8 @@
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <TextBlock x:Name="TxtBlockProductTask" HorizontalAlignment="Left" Margin="18,5,0,0" TextWrapping="Wrap"
+	<Grid>
+		<TextBlock x:Name="TxtBlockProductTask" HorizontalAlignment="Left" Margin="18,5,0,0" TextWrapping="Wrap"
 		           VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left">
 			<Run Language="es-es" />
 		</TextBlock>
