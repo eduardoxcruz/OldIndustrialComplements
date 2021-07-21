@@ -1,8 +1,9 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 
 namespace Inventory.database
 {
-	public class SqlDatabase
+	public class SqlDatabase : IDisposable
 	{
 		private const string ServerIp = "192.168.0.254";
 		private const string ServerPort = "1433";
@@ -13,7 +14,6 @@ namespace Inventory.database
 		private const string MultipleActiveResultSets = "True";
 		private string _databaseConnectionString;
 		private SqlConnection _databaseConnection;
-
 		public SqlDatabase()
 		{
 			DatabaseConnectionString = "Server=" + ServerIp + "," + ServerPort + 
@@ -53,6 +53,10 @@ namespace Inventory.database
 			{
 				_databaseConnection = value;
 			}
+		}
+		public void Dispose()
+		{
+			DatabaseConnection.Close();
 		}
 	}
 }	
