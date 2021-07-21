@@ -39,7 +39,7 @@
 		         TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="72" Height="18" FontSize="9" Foreground="Red" TextAlignment="Center" />
 		<Button x:Name="BtnSearchProduct" HorizontalAlignment="Left" Margin="474,14,0,0"
-		        VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Content="Buscar" />
+		        VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Content="Buscar" Click="BtnSearch_Click" />
 		<Button x:Name="BtnAddProduct" HorizontalAlignment="Left" Margin="631,2,0,0"
 		        VerticalAlignment="Top" Width="24"
 		        Height="24" FontSize="9">
