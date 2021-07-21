@@ -168,28 +168,25 @@ namespace Inventory.ui
 				TxtBoxFullDescription.Text = registro["descfull"].ToString();
 				TxtBoxMemo.Text = registro["memo"].ToString();
 
-				switch (habilitarAjusteManual)
+				if (habilitarInventario.Equals("True"))
 				{
-					case "True":
-						RadioBntAutomaticProfit.IsChecked = false;
-						RadioBtnManualProfit.IsChecked = true;
-						TxtBoxPercentageOfProfit.IsEnabled = true;
-						TxtBoxSalePrice.IsEnabled = true;
-						TxtBoxUtility.IsEnabled = true;
-						TxtBoxDiscountRate.IsEnabled = true;
-						TxtBoxPriceWithDiscount.IsEnabled = true;
-						TxtBoxProfitWithDiscount.IsEnabled = true;
-						break;
-					case "False":
-						RadioBntAutomaticProfit.IsChecked = true;
-						RadioBtnManualProfit.IsChecked = false;
-						TxtBoxPercentageOfProfit.IsEnabled = false;
-						TxtBoxSalePrice.IsEnabled = false;
-						TxtBoxUtility.IsEnabled = false;
-						TxtBoxDiscountRate.IsEnabled = false;
-						TxtBoxPriceWithDiscount.IsEnabled = false;
-						TxtBoxProfitWithDiscount.IsEnabled = false;
-						break;
+					ChkBoxTheProductUsesInventory.IsChecked = true;
+					EnableControlsForInventory();
+				}
+				if(habilitarInventario.Equals("False"))
+				{
+					ChkBoxTheProductUsesInventory.IsChecked = false;
+					DisableControlsForInventory();
+				}
+				if (habilitarAjusteManual.Equals("True"))
+				{
+					RadioBntAutomaticProfit.IsChecked = false;
+					EnableControlsForManualProfit();
+				}
+				if (habilitarAjusteManual.Equals("False"))
+				{
+					RadioBntAutomaticProfit.IsChecked = true;
+					DisableControlsForAutomaticProfit();
 				}
 			}
 		}
