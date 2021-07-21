@@ -214,7 +214,8 @@ namespace Inventory.ui
 		}
 		private void RadioBntAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			RadioBtnManualProfit.IsChecked = true;
+			EnableControlsForManualProfit();
 		}
 		private void ChkBoxTheProductUsesInventory_OnChecked(object sender, RoutedEventArgs e)
 		{
