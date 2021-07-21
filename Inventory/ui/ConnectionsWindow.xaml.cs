@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Windows;
 using Inventory.database;
 
@@ -13,10 +14,10 @@ namespace Inventory.ui
 
 		private void BtnTestConnection_OnClick(object sender, RoutedEventArgs routedEventArgs)
 		{
-			SqlDatabase sqlDatabase = new SqlDatabase();
 			try
 			{
-				
+				using SqlDatabase sqlDatabase = new SqlDatabase();
+				sqlDatabase.DatabaseConnection.Open();
 				TxtBlockConnectionResult.Text = "Conectado";
 			}
 			catch (SqlException exception)
