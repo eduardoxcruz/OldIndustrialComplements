@@ -54,12 +54,5 @@ namespace Inventory.database
 				_sqlDatabaseConnection = value;
 			}
 		}
-
-		public SqlConnection StartSqlClient()
-		{
-			SqlConnection sqlDatabaseConnection = new SqlConnection(DatabaseConnectionString);
-			//sqlDatabaseConnection.Open();
-			return sqlDatabaseConnection;
-		}
 	}
 }	
