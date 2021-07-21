@@ -212,5 +212,10 @@ namespace Inventory.ui
 		{
 			throw new NotImplementedException();
 		}
+
+		private void RadioBntAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
