@@ -68,8 +68,8 @@
 				<TextBlock HorizontalAlignment="Left" Margin="190,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Matricula*" />
-                </TextBlock>
-                <TextBox x:Name="TxtBoxEnrollment" HorizontalAlignment="Left" Margin="133,15,0,0" TextWrapping="Wrap"
+				</TextBlock>
+				<TextBox x:Name="TxtBoxEnrollment" HorizontalAlignment="Left" Margin="190,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="150"
 				         Height="18" FontSize="9" Grid.Column="1" />
                 <TextBlock HorizontalAlignment="Left" Margin="288,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
