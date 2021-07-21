@@ -97,7 +97,7 @@ namespace Inventory.ui
 
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			/*var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
 			var conexion = new SqlDatabase().StartSqlClient();
 			var comando = new SqlCommand(query, conexion);
 			comando.Parameters.AddWithValue("@id", TxtBoxId.Text);
@@ -175,7 +175,7 @@ namespace Inventory.ui
 				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
 				TxtBoxFullDescription.Text = registro["descfull"].ToString();
 				TxtBoxMemo.Text = registro["memo"].ToString();
-			}
+			}*/
 		}
 
 		private void RadioButtonAutomatica_Checked(object sender, RoutedEventArgs e)
