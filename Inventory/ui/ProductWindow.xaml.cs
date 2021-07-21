@@ -90,7 +90,16 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = true;
 			GrpBoxProductDetails.IsEnabled = true;
 		}
-
+		private void EnableControlsForManualProfit()
+		{
+			RadioBtnManualProfit.IsChecked = true;
+			TxtBoxPercentageOfProfit.IsEnabled = true;
+			TxtBoxSalePrice.IsEnabled = true;
+			TxtBoxUtility.IsEnabled = true;
+			TxtBoxDiscountRate.IsEnabled = true;
+			TxtBoxPriceWithDiscount.IsEnabled = true;
+			TxtBoxProfitWithDiscount.IsEnabled = true;
+		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			/*var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
