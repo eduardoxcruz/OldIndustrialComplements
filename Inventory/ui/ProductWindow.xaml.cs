@@ -124,12 +124,18 @@ namespace Inventory.ui
 		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			/*var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
-			var conexion = new SqlDatabase().StartSqlClient();
-			var comando = new SqlCommand(query, conexion);
-			comando.Parameters.AddWithValue("@id", TxtBoxId.Text);
-			conexion.Open();
-			var registro = comando.ExecuteReader();
+			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
+			{
+				return;
+			}
+			
+			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			
+			using SqlDatabase sqlDatabase = new SqlDatabase();
+			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
+			sqlCommand.Parameters.AddWithValue("@id", TxtBoxIdCode.Text);
+			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
+
 			if (registro.Read())
 			{
 				var habilitarInventario = registro["inventario"].ToString();
