@@ -13,7 +13,19 @@ namespace Inventory.database
 		private const string MultipleActiveResultSets = "True";
 		private string _databaseConnectionString;
 
-		
+		public SqlDatabase()
+		{
+			DatabaseConnectionString = "Server=" + ServerIp + "," + ServerPort + 
+			                           ";Database=" + DatabaseName + 
+			                           ";Integrated Security=" + IntegratedSecurity + 
+			                           ";User Id=" + UserId + 
+			                           ";Password=" + Password + 
+			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets;
+		}
+		public SqlDatabase(string databaseConnectionString)
+		{
+			DatabaseConnectionString = databaseConnectionString;
+		}
 		public string DatabaseConnectionString
 		{
 			get
