@@ -16,7 +16,7 @@ namespace Inventory.ui
 			SqlDatabase sqlDatabase = new SqlDatabase();
 			try
 			{
-				sqlDatabase.StartSqlClient();
+				
 				TxtBlockConnectionResult.Text = "Conectado";
 			}
 			catch (SqlException exception)
