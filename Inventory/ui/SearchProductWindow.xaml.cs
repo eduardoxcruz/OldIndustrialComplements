@@ -13,7 +13,7 @@ namespace Inventory.ui
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		/*private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			var query = "SELECT * FROM dbo.productos2";
 			var conexion = new SqlDatabase().StartSqlClient();
@@ -25,7 +25,7 @@ namespace Inventory.ui
 			dataAdapter.Fill(dataTable);
 			DataGridProductos.ItemsSource = dataTable.DefaultView;
 			dataAdapter.Update(dataTable);
-		}
+		}*/
 
 
 		private void DataGridProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)

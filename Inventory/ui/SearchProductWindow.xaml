@@ -102,8 +102,7 @@
 		</TextBlock>
 		<TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" />
-		<Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9"
-		        Click="Button_Click">
+		<Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
 			Buscar
 		</Button>
 		<Button HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
