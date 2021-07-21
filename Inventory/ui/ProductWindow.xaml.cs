@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Windows;
 using Inventory.database;
 
@@ -22,7 +23,6 @@ namespace Inventory.ui
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
-
 		public ProductWindow(int task, int productId)
 		{
 			InitializeComponent();
@@ -30,7 +30,6 @@ namespace Inventory.ui
 			ProductId = productId;
 			ConfigureControlsForTask();
 		}
-
 		private int CurrentTask
 		{
 			get => _currentTask;
@@ -42,7 +41,6 @@ namespace Inventory.ui
 				}
 			}
 		}
-
 		private int ProductId
 		{
 			get => _productId;
@@ -57,7 +55,6 @@ namespace Inventory.ui
 				_productId = value;
 			}
 		}
-
 		private void ConfigureControlsForTask()
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
@@ -86,7 +83,6 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = false;
 			GrpBoxProductDetails.IsEnabled = false;
 		}
-
 		private void EnableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = true;
@@ -177,7 +173,6 @@ namespace Inventory.ui
 				TxtBoxMemo.Text = registro["memo"].ToString();
 			}*/
 		}
-
 		private void RadioButtonAutomatica_Checked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = false;
@@ -188,7 +183,6 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = false;
 			TxtBoxProfitWithDiscount.IsEnabled = false;
 		}
-
 		private void RadioButtonAutomatica_Unchecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = true;
@@ -199,21 +193,18 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = true;
 			TxtBoxProfitWithDiscount.IsEnabled = true;
 		}
-
 		private void CheckBoxProductoUsaInventario_Checked(object sender, RoutedEventArgs e)
 		{
 			TxtBoxCurrentProductStock.IsEnabled = true;
 			TxtBoxMinProductStock.IsEnabled = true;
 			TxtBoxMaxProductStock.IsEnabled = true;
 		}
-
 		private void CheckBoxProductoUsaInventario_Unchecked(object sender, RoutedEventArgs e)
 		{
 			TxtBoxCurrentProductStock.IsEnabled = false;
 			TxtBoxMinProductStock.IsEnabled = false;
 			TxtBoxMaxProductStock.IsEnabled = false;
 		}
-
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
