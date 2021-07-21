@@ -48,13 +48,9 @@
 			Buscar
 		</Button>
 
-        <GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198" IsEnabled="False">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="47*" />
-                    <ColumnDefinition Width="613*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
+		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198" IsEnabled="False">
+			<Grid>
+				<TextBlock HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="ID" />
 				</TextBlock>
