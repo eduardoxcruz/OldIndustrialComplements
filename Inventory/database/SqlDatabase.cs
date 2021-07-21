@@ -12,7 +12,7 @@ namespace Inventory.database
 		private const string Password = "Cruz0320";
 		private const string MultipleActiveResultSets = "True";
 		private string _databaseConnectionString;
-		private SqlConnection _sqlDatabaseConnection;
+		private SqlConnection _databaseConnection;
 
 		public SqlDatabase()
 		{
@@ -22,12 +22,12 @@ namespace Inventory.database
 			                           ";User Id=" + UserId + 
 			                           ";Password=" + Password + 
 			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets;
-			SqlDatabaseConnection = new SqlConnection(DatabaseConnectionString);
+			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDatabase(string databaseConnectionString)
 		{
 			DatabaseConnectionString = databaseConnectionString;
-			SqlDatabaseConnection = new SqlConnection(DatabaseConnectionString);
+			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public string DatabaseConnectionString
 		{
@@ -43,15 +43,15 @@ namespace Inventory.database
 				}
 			}
 		}
-		private SqlConnection SqlDatabaseConnection
+		public SqlConnection DatabaseConnection
 		{
 			get
 			{
-				return _sqlDatabaseConnection;
+				return _databaseConnection;
 			}
 			set
 			{
-				_sqlDatabaseConnection = value;
+				_databaseConnection = value;
 			}
 		}
 	}
