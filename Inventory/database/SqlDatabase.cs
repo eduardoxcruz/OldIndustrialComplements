@@ -58,8 +58,7 @@ namespace Inventory.database
 		}
 		public SqlDataReader Read(string query)
 		{
-			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
-			DatabaseConnection.Open();
+			SqlCommand sqlCommand = GetSqlCommandWithQuery(query);
 			SqlDataReader dataReader = sqlCommand.ExecuteReader();
 			return dataReader;
 		}
@@ -68,6 +67,12 @@ namespace Inventory.database
 			DatabaseConnection.Open();
 			SqlDataReader dataReader = sqlCommand.ExecuteReader();
 			return dataReader;
+		}
+		public SqlCommand GetSqlCommandWithQuery(string query)
+		{
+			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
+			DatabaseConnection.Open();
+			return sqlCommand;
 		}
 		public void Dispose()
 		{
