@@ -75,10 +75,10 @@
 				<TextBlock HorizontalAlignment="Left" Margin="345,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Tec. Montaje*" />
-                </TextBlock>
-                <ComboBox x:Name="CmbBoxMountingTechnology" Margin="288,15,175,142" Width="150" Height="18" Grid.Column="1" />
-                <TextBlock HorizontalAlignment="Left" Margin="443,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
-				           Height="12" TextAlignment="Left" FontSize="9" Grid.Column="1">
+				</TextBlock>
+				<ComboBox x:Name="CmbBoxMountingTechnology" Margin="345,15,165,142" Width="150" Height="18" />
+				<TextBlock HorizontalAlignment="Left" Margin="500,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
+				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Encapsulado o tipo de Conexión*" />
 				</TextBlock>
 				<ComboBox x:Name="CmbBoxEncapsulationType" Margin="500,15,10,142" Width="150" Height="18" />
