@@ -223,7 +223,7 @@ namespace Inventory.ui
 		}
 		private void ChkBoxTheProductUsesInventory_OnUnchecked(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			DisableControlsForInventory();
 		}
 	}
 }
