@@ -100,6 +100,16 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = true;
 			TxtBoxProfitWithDiscount.IsEnabled = true;
 		}
+		private void DisableControlsForAutomaticProfit()
+		{
+			RadioBtnManualProfit.IsChecked = false;
+			TxtBoxPercentageOfProfit.IsEnabled = false;
+			TxtBoxSalePrice.IsEnabled = false;
+			TxtBoxUtility.IsEnabled = false;
+			TxtBoxDiscountRate.IsEnabled = false;
+			TxtBoxPriceWithDiscount.IsEnabled = false;
+			TxtBoxProfitWithDiscount.IsEnabled = false;
+		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			/*var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
