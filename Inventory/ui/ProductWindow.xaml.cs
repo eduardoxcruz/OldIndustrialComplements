@@ -217,5 +217,10 @@ namespace Inventory.ui
 		{
 			throw new NotImplementedException();
 		}
+
+		private void ChkBoxTheProductUsesInventory_OnChecked(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
