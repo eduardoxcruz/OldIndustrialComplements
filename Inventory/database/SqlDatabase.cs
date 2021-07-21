@@ -56,6 +56,13 @@ namespace Inventory.database
 				_databaseConnection = value;
 			}
 		}
+		public SqlDataReader Read(string query)
+		{
+			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
+			DatabaseConnection.Open();
+			SqlDataReader dataReader = sqlCommand.ExecuteReader();
+			return dataReader;
+		}
 		public void Dispose()
 		{
 			DatabaseConnection.Close();
