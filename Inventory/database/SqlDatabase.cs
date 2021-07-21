@@ -22,10 +22,12 @@ namespace Inventory.database
 			                           ";User Id=" + UserId + 
 			                           ";Password=" + Password + 
 			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets;
+			SqlDatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDatabase(string databaseConnectionString)
 		{
 			DatabaseConnectionString = databaseConnectionString;
+			SqlDatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public string DatabaseConnectionString
 		{
