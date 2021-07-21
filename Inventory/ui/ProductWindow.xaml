@@ -18,9 +18,12 @@
 		<TextBlock HorizontalAlignment="Left" Margin="195,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Buscar por ID o Codigo" />
-        </TextBlock>
-        <ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" />
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12"
+		</TextBlock>
+		<ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" FontWeight="Normal" FontStyle="Normal" FontSize="9" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" >
+			<ComboBoxItem Content="ID" IsSelected="True"/>
+			<ComboBoxItem Content="Debug"/>
+		</ComboBox>
+		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12"
 		           TextAlignment="Left" FontSize="9" Margin="324,0,0,0">
 			<Run Language="es-es" Text="Codigo ID" />
         </TextBlock>
