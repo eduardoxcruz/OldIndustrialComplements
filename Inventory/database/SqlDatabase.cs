@@ -12,6 +12,7 @@ namespace Inventory.database
 		private const string UserId = "eduardo";
 		private const string Password = "Cruz0320";
 		private const string MultipleActiveResultSets = "True";
+		private const string ConnectionTimeoutInSeconds = "10";
 		private string _databaseConnectionString;
 		private SqlConnection _databaseConnection;
 		public SqlDatabase()
@@ -21,8 +22,9 @@ namespace Inventory.database
 			                           ";Integrated Security=" + IntegratedSecurity + 
 			                           ";User Id=" + UserId + 
 			                           ";Password=" + Password + 
-			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets;
-			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
+			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets + 
+			                           ";Connection Timeout=" + ConnectionTimeoutInSeconds;
+				DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDatabase(string databaseConnectionString)
 		{
