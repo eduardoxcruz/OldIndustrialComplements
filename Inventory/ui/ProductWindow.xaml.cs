@@ -207,5 +207,10 @@ namespace Inventory.ui
 			
 			ConfigureControlsForTask();
 		}
+
+		private void RadioBntAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
