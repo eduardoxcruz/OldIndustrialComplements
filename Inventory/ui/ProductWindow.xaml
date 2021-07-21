@@ -30,8 +30,8 @@
 		<TextBox x:Name="TxtBoxIdCode" HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="96"
-		         Height="18" FontSize="9" />
-        <TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"
+		         Height="18" FontSize="9" TextAlignment="Center" />
+		<TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Codigo Debug" />
         </TextBlock>
