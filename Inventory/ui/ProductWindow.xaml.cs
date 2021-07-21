@@ -190,38 +190,6 @@ namespace Inventory.ui
 				}
 			}
 		}
-		private void RadioButtonAutomatica_Checked(object sender, RoutedEventArgs e)
-		{
-			RadioBtnManualProfit.IsChecked = false;
-			TxtBoxPercentageOfProfit.IsEnabled = false;
-			TxtBoxSalePrice.IsEnabled = false;
-			TxtBoxUtility.IsEnabled = false;
-			TxtBoxDiscountRate.IsEnabled = false;
-			TxtBoxPriceWithDiscount.IsEnabled = false;
-			TxtBoxProfitWithDiscount.IsEnabled = false;
-		}
-		private void RadioButtonAutomatica_Unchecked(object sender, RoutedEventArgs e)
-		{
-			RadioBtnManualProfit.IsChecked = true;
-			TxtBoxPercentageOfProfit.IsEnabled = true;
-			TxtBoxSalePrice.IsEnabled = true;
-			TxtBoxUtility.IsEnabled = true;
-			TxtBoxDiscountRate.IsEnabled = true;
-			TxtBoxPriceWithDiscount.IsEnabled = true;
-			TxtBoxProfitWithDiscount.IsEnabled = true;
-		}
-		private void CheckBoxProductoUsaInventario_Checked(object sender, RoutedEventArgs e)
-		{
-			TxtBoxCurrentProductStock.IsEnabled = true;
-			TxtBoxMinProductStock.IsEnabled = true;
-			TxtBoxMaxProductStock.IsEnabled = true;
-		}
-		private void CheckBoxProductoUsaInventario_Unchecked(object sender, RoutedEventArgs e)
-		{
-			TxtBoxCurrentProductStock.IsEnabled = false;
-			TxtBoxMinProductStock.IsEnabled = false;
-			TxtBoxMaxProductStock.IsEnabled = false;
-		}
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
