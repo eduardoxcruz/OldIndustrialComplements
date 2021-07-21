@@ -116,6 +116,12 @@ namespace Inventory.ui
 			TxtBoxMinProductStock.IsEnabled = true;
 			TxtBoxMaxProductStock.IsEnabled = true;
 		}
+		private void DisableControlsForInventory()
+		{
+			TxtBoxCurrentProductStock.IsEnabled = false;
+			TxtBoxMinProductStock.IsEnabled = false;
+			TxtBoxMaxProductStock.IsEnabled = false;
+		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			/*var query = "SELECT * FROM dbo.productos2 WHERE id=@id";
