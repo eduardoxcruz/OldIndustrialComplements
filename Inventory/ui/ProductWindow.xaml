@@ -26,8 +26,8 @@
 		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12"
 		           TextAlignment="Left" FontSize="9" Margin="324,0,0,0">
 			<Run Language="es-es" Text="Codigo ID" />
-        </TextBlock>
-        <TextBox x:Name="TxtBoxIdCode" IsEnabled="False" HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap"
+		</TextBlock>
+		<TextBox x:Name="TxtBoxIdCode" HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="96"
 		         Height="18" FontSize="9" />
