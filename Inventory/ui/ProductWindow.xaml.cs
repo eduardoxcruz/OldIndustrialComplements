@@ -55,6 +55,74 @@ namespace Inventory.ui
 				_productId = value;
 			}
 		}
+		private void AssignProductDataToControls()
+		{
+			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
+			{
+				return;
+			}
+			
+			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			
+			using SqlDatabase sqlDatabase = new SqlDatabase();
+			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
+			sqlCommand.Parameters.AddWithValue("@id", TxtBoxIdCode.Text);
+			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
+
+			if (registro.Read())
+			{
+				var habilitarInventario = registro["inventario"].ToString();
+				var habilitarAjusteManual = registro["ajuste_manual"].ToString();
+				CmbBoxStatus.Items.Add(registro["estado"].ToString());
+				TxtBoxEnrollment.Text = registro["matricula"].ToString();
+				CmbBoxMountingTechnology.Items.Add(registro["tecmon"].ToString());
+				CmbBoxEncapsulationType.Items.Add(registro["encapsulado"].ToString());
+				TxtBoxShortDescription.Text = registro["descripcion"].ToString();
+				CmbBoxCategories.Items.Add(registro["categoria"].ToString());
+				TxtBoxCurrentProductStock.Text = registro["existencia"].ToString();
+				TxtBoxMinProductStock.Text = registro["minimo"].ToString();
+				TxtBoxMaxProductStock.Text = registro["maximo"].ToString();
+				TxtBoxContainer.Text = registro["contenedor"].ToString();
+				TxtBoxLocation.Text = registro["ubicacion"].ToString();
+				TxtBoxBranchOffice.Text = registro["s"].ToString();
+				TxtBoxShelf.Text = registro["e"].ToString();
+				TxtBoxLedge.Text = registro["r"].ToString();
+				TxtBoxPurchasePrice.Text = registro["preciocomp"].ToString();
+				CmbBoxUnit.Items.Add(registro["unidad"].ToString());
+				CmbBoxManufacturer.Items.Add(registro["proveedor"].ToString());
+				TxtBoxManufacturerPartNumber.Text = registro["parte"].ToString();
+				CmbBoxProductType.Items.Add(registro["tipo"].ToString());
+				TxtBoxPercentageOfProfit.Text = registro["ganancia"].ToString();
+				TxtBoxDiscountRate.Text = registro["descuento"].ToString();
+				TxtBoxSalePrice.Text = registro["preciovent"].ToString();
+				TxtBoxPriceWithDiscount.Text = registro["preciodesc"].ToString();
+				TxtBoxUtility.Text = registro["utilidad"].ToString();
+				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
+				TxtBoxFullDescription.Text = registro["descfull"].ToString();
+				TxtBoxMemo.Text = registro["memo"].ToString();
+
+				if (habilitarInventario.Equals("True"))
+				{
+					ChkBoxTheProductUsesInventory.IsChecked = true;
+					EnableControlsForInventory();
+				}
+				if(habilitarInventario.Equals("False"))
+				{
+					ChkBoxTheProductUsesInventory.IsChecked = false;
+					DisableControlsForInventory();
+				}
+				if (habilitarAjusteManual.Equals("True"))
+				{
+					RadioBntAutomaticProfit.IsChecked = false;
+					EnableControlsForManualProfit();
+				}
+				if (habilitarAjusteManual.Equals("False"))
+				{
+					RadioBntAutomaticProfit.IsChecked = true;
+					DisableControlsForAutomaticProfit();
+				}
+			}
+		}
 		private void ConfigureControlsForTask()
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
@@ -124,71 +192,7 @@ namespace Inventory.ui
 		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
-			{
-				return;
-			}
-			
-			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
-			
-			using SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
-			sqlCommand.Parameters.AddWithValue("@id", TxtBoxIdCode.Text);
-			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
-
-			if (registro.Read())
-			{
-				var habilitarInventario = registro["inventario"].ToString();
-				var habilitarAjusteManual = registro["ajuste_manual"].ToString();
-				CmbBoxStatus.Items.Add(registro["estado"].ToString());
-				TxtBoxEnrollment.Text = registro["matricula"].ToString();
-				CmbBoxMountingTechnology.Items.Add(registro["tecmon"].ToString());
-				CmbBoxEncapsulationType.Items.Add(registro["encapsulado"].ToString());
-				TxtBoxShortDescription.Text = registro["descripcion"].ToString();
-				CmbBoxCategories.Items.Add(registro["categoria"].ToString());
-				TxtBoxCurrentProductStock.Text = registro["existencia"].ToString();
-				TxtBoxMinProductStock.Text = registro["minimo"].ToString();
-				TxtBoxMaxProductStock.Text = registro["maximo"].ToString();
-				TxtBoxContainer.Text = registro["contenedor"].ToString();
-				TxtBoxLocation.Text = registro["ubicacion"].ToString();
-				TxtBoxBranchOffice.Text = registro["s"].ToString();
-				TxtBoxShelf.Text = registro["e"].ToString();
-				TxtBoxLedge.Text = registro["r"].ToString();
-				TxtBoxPurchasePrice.Text = registro["preciocomp"].ToString();
-				CmbBoxUnit.Items.Add(registro["unidad"].ToString());
-				CmbBoxManufacturer.Items.Add(registro["proveedor"].ToString());
-				TxtBoxManufacturerPartNumber.Text = registro["parte"].ToString();
-				CmbBoxProductType.Items.Add(registro["tipo"].ToString());
-				TxtBoxPercentageOfProfit.Text = registro["ganancia"].ToString();
-				TxtBoxDiscountRate.Text = registro["descuento"].ToString();
-				TxtBoxSalePrice.Text = registro["preciovent"].ToString();
-				TxtBoxPriceWithDiscount.Text = registro["preciodesc"].ToString();
-				TxtBoxUtility.Text = registro["utilidad"].ToString();
-				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
-				TxtBoxFullDescription.Text = registro["descfull"].ToString();
-				TxtBoxMemo.Text = registro["memo"].ToString();
-
-				if (habilitarInventario.Equals("True"))
-				{
-					ChkBoxTheProductUsesInventory.IsChecked = true;
-					EnableControlsForInventory();
-				}
-				if(habilitarInventario.Equals("False"))
-				{
-					ChkBoxTheProductUsesInventory.IsChecked = false;
-					DisableControlsForInventory();
-				}
-				if (habilitarAjusteManual.Equals("True"))
-				{
-					RadioBntAutomaticProfit.IsChecked = false;
-					EnableControlsForManualProfit();
-				}
-				if (habilitarAjusteManual.Equals("False"))
-				{
-					RadioBntAutomaticProfit.IsChecked = true;
-					DisableControlsForAutomaticProfit();
-				}
-			}
+			AssignProductDataToControls();
 		}
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
