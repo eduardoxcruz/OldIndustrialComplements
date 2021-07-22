@@ -1,6 +1,6 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Input;
 using Inventory.database;
 
 namespace Inventory.ui
@@ -22,6 +22,7 @@ namespace Inventory.ui
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
+
 		public ProductWindow(int task, string productId)
 		{
 			InitializeComponent();
@@ -29,6 +30,7 @@ namespace Inventory.ui
 			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
+
 		private int CurrentTask
 		{
 			get => _currentTask;
@@ -40,19 +42,20 @@ namespace Inventory.ui
 				}
 			}
 		}
+
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
 			{
 				return;
 			}
-			
-			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
-			
-			using SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
+
+			var queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+
+			using var sqlDatabase = new SqlDatabase();
+			using var sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
 			sqlCommand.Parameters.AddWithValue("@id", id);
-			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
+			using var registro = sqlDatabase.Read(sqlCommand);
 
 			if (registro.Read())
 			{
@@ -91,16 +94,19 @@ namespace Inventory.ui
 					ChkBoxTheProductUsesInventory.IsChecked = true;
 					EnableControlsForInventory();
 				}
-				if(habilitarInventario.Equals("False"))
+
+				if (habilitarInventario.Equals("False"))
 				{
 					ChkBoxTheProductUsesInventory.IsChecked = false;
 					DisableControlsForInventory();
 				}
+
 				if (habilitarAjusteManual.Equals("True"))
 				{
 					RadioBntAutomaticProfit.IsChecked = false;
 					EnableControlsForManualProfit();
 				}
+
 				if (habilitarAjusteManual.Equals("False"))
 				{
 					RadioBntAutomaticProfit.IsChecked = true;
@@ -108,6 +114,7 @@ namespace Inventory.ui
 				}
 			}
 		}
+
 		private void ConfigureControlsForTask()
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
@@ -117,6 +124,7 @@ namespace Inventory.ui
 				BtnAddModifyAndSave.Content = "Agregar";
 				return;
 			}
+
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
 			{
 				EnableAllGroupBoxes();
@@ -124,11 +132,12 @@ namespace Inventory.ui
 				BtnAddModifyAndSave.Content = "Guardar";
 				return;
 			}
-			
+
 			DisableAllGroupBoxes();
 			TxtBlockProductTask.Text = "Detalles del Producto";
 			BtnAddModifyAndSave.Content = "Modificar";
 		}
+
 		private void DisableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = false;
@@ -136,6 +145,7 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = false;
 			GrpBoxProductDetails.IsEnabled = false;
 		}
+
 		private void EnableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = true;
@@ -143,6 +153,7 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = true;
 			GrpBoxProductDetails.IsEnabled = true;
 		}
+
 		private void EnableControlsForManualProfit()
 		{
 			RadioBtnManualProfit.IsChecked = true;
@@ -153,6 +164,7 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = true;
 			TxtBoxProfitWithDiscount.IsEnabled = true;
 		}
+
 		private void DisableControlsForAutomaticProfit()
 		{
 			RadioBtnManualProfit.IsChecked = false;
@@ -163,22 +175,26 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = false;
 			TxtBoxProfitWithDiscount.IsEnabled = false;
 		}
+
 		private void EnableControlsForInventory()
 		{
 			TxtBoxCurrentProductStock.IsEnabled = true;
 			TxtBoxMinProductStock.IsEnabled = true;
 			TxtBoxMaxProductStock.IsEnabled = true;
 		}
+
 		private void DisableControlsForInventory()
 		{
 			TxtBoxCurrentProductStock.IsEnabled = false;
 			TxtBoxMinProductStock.IsEnabled = false;
 			TxtBoxMaxProductStock.IsEnabled = false;
 		}
+
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			AssignProductDataToControls(TxtBoxIdCode.Text);
 		}
+
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
@@ -193,26 +209,38 @@ namespace Inventory.ui
 			{
 				CurrentTask = (int)ProductWindowTasks.ShowDetails;
 			}
-			
+
 			ConfigureControlsForTask();
 		}
+
 		private void RadioBntAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = false;
 			DisableControlsForAutomaticProfit();
 		}
+
 		private void RadioBntAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = true;
 			EnableControlsForManualProfit();
 		}
+
 		private void ChkBoxTheProductUsesInventory_OnChecked(object sender, RoutedEventArgs e)
 		{
 			EnableControlsForInventory();
 		}
+
 		private void ChkBoxTheProductUsesInventory_OnUnchecked(object sender, RoutedEventArgs e)
 		{
 			DisableControlsForInventory();
+		}
+
+		private void TxtBoxIdCode_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				AssignProductDataToControls(TxtBoxIdCode.Text);
+			}
 		}
 	}
 }
