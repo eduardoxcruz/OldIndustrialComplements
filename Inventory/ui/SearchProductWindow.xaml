@@ -141,24 +141,6 @@
 		           Height="15.75" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" />
 		</TextBlock>
-		<DataGrid x:Name="DataGridProductos" AutoGenerateColumns="False" Margin="10,205,10,29" IsReadOnly="True"
-		          MouseDoubleClick="DataGridProductos_MouseDoubleClick">
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="ID" Binding="{Binding id}" />
-				<DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
-				<DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
-				<DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}" />
-				<DataGridTextColumn Header="Tec. de Montaje" Binding="{Binding tecmon}" />
-				<DataGridTextColumn Header="Encapsulado" Binding="{Binding encapsulado}" />
-				<DataGridTextColumn Header="Precio" Binding="{Binding preciovent}" />
-				<DataGridTextColumn Header="Existencia" Binding="{Binding existencia}" />
-				<DataGridTextColumn Header="Contenedor" Binding="{Binding contenedor}" />
-				<DataGridTextColumn Header="Ubicacion" Binding="{Binding ubicacion}" />
-				<DataGridTextColumn Header="Sucursal" Binding="{Binding s}" />
-				<DataGridTextColumn Header="Estante" Binding="{Binding e}" />
-				<DataGridTextColumn Header="Repisa" Binding="{Binding r}" />
-			</DataGrid.Columns>
-		</DataGrid>
 		<TextBox x:Name="TxtBoxLocation" HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" KeyDown="TxtBoxLocation_KeyDown" />
@@ -195,8 +177,24 @@
 		        Height="18" FontSize="9">
 			Nada
 		</Button>
-		<DataGrid x:Name="DataGridProducts" AutoGenerateColumns="True" Margin="10,184,10,29" IsReadOnly="True"
-		          MouseDoubleClick="DataGridProductos_MouseDoubleClick" Height="380" Width="990" />
+		<DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,184,10,29" IsReadOnly="True"
+		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Height="380" Width="990" >
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding id}" />
+				<DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
+				<DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
+				<DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}" />
+				<DataGridTextColumn Header="Tec. de Montaje" Binding="{Binding tecmon}" />
+				<DataGridTextColumn Header="Encapsulado" Binding="{Binding encapsulado}" />
+				<DataGridTextColumn Header="Precio" Binding="{Binding preciovent}" />
+				<DataGridTextColumn Header="Existencia" Binding="{Binding existencia}" />
+				<DataGridTextColumn Header="Contenedor" Binding="{Binding contenedor}" />
+				<DataGridTextColumn Header="Ubicacion" Binding="{Binding ubicacion}" />
+				<DataGridTextColumn Header="Sucursal" Binding="{Binding s}" />
+				<DataGridTextColumn Header="Estante" Binding="{Binding e}" />
+				<DataGridTextColumn Header="Repisa" Binding="{Binding r}" />
+			</DataGrid.Columns>
+		</DataGrid>
 
 		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="10,571,0,0" VerticalAlignment="Top" Width="60"
 		        Height="18" FontSize="9">
