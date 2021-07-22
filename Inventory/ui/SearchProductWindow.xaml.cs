@@ -26,7 +26,7 @@ namespace Inventory.ui
 			dataAdapter.Update(dataTable);
 		}
 
-		private void DataGridProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			var productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails);
 			productWindow.Show();
@@ -40,7 +40,7 @@ namespace Inventory.ui
 
 		private void TxtBoxQuickSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			var numeroDeCaracteres = TxtBoxQuickSearch.Text;
+			string numeroDeCaracteres = TxtBoxQuickSearch.Text;
 			if (numeroDeCaracteres.Length > 3)
 			{
 				MessageBox.Show("Nueva busqueda en base de datos #");
