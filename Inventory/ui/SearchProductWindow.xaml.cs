@@ -105,5 +105,12 @@ namespace Inventory.ui
 			{
 			}
 		}
+
+		private void TxtBoxDebugCode_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+			}
+		}
 	}
 }
