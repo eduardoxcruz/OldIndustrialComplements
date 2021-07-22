@@ -49,13 +49,13 @@ namespace Inventory.ui
 			{
 				return;
 			}
-
-			var queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
-
-			using var sqlDatabase = new SqlDatabase();
-			using var sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
+			
+			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			
+			using SqlDatabase sqlDatabase = new SqlDatabase();
+			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
 			sqlCommand.Parameters.AddWithValue("@id", id);
-			using var registro = sqlDatabase.Read(sqlCommand);
+			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
 
 			if (registro.Read())
 			{
