@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.database;
 
@@ -20,7 +22,7 @@ namespace Inventory.ui
 			SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlDatabase.GetSqlCommandWithQuery(query));
 			DataTable dataTable = new DataTable("dbo.productos2");
 			dataAdapter.Fill(dataTable);
-			DataGridProductos.ItemsSource = dataTable.DefaultView;
+			DataGridProducts.ItemsSource = dataTable.DefaultView;
 			dataAdapter.Update(dataTable);
 		}
 		private void DataGridProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
