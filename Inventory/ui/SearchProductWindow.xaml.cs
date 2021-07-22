@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.database;
 
@@ -35,6 +36,15 @@ namespace Inventory.ui
 		{
 			var regex = new Regex("[^0-9]+");
 			e.Handled = regex.IsMatch(e.Text);
+		}
+
+		private void TxtBoxQuickSearch_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			var numeroDeCaracteres = TxtBoxQuickSearch.Text;
+			if (numeroDeCaracteres.Length > 3)
+			{
+				MessageBox.Show("Nueva busqueda en base de datos #");
+			}
 		}
 	}
 }
