@@ -19,9 +19,10 @@
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Buscar por ID o Codigo" />
 		</TextBlock>
-		<ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" FontWeight="Normal" FontStyle="Normal" FontSize="9" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" >
-			<ComboBoxItem Content="ID" IsSelected="True"/>
-			<ComboBoxItem Content="Debug"/>
+		<ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" FontWeight="Normal"
+		          FontStyle="Normal" FontSize="9" VerticalContentAlignment="Top" HorizontalContentAlignment="Center">
+			<ComboBoxItem Content="ID" IsSelected="True" />
+			<ComboBoxItem Content="Debug" />
 		</ComboBox>
 		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Height="12"
 		           TextAlignment="Left" FontSize="9" Margin="324,0,0,0">
@@ -30,7 +31,7 @@
 		<TextBox x:Name="TxtBoxIdCode" HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="96"
-		         Height="18" FontSize="9" TextAlignment="Center" />
+		         Height="18" FontSize="9" TextAlignment="Center" KeyDown="TxtBoxIdCode_KeyDown" />
 		<TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Codigo Debug" />
@@ -51,7 +52,8 @@
 			Buscar
 		</Button>
 
-		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198"
+		          IsEnabled="False">
 			<Grid>
 				<TextBlock HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
@@ -59,7 +61,7 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="80"
-				         Height="18" FontSize="9" Grid.ColumnSpan="2" IsEnabled="False"/>
+				         Height="18" FontSize="9" Grid.ColumnSpan="2" IsEnabled="False" />
 				<TextBlock HorizontalAlignment="Left" Margin="105,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Estado*" />
@@ -106,7 +108,8 @@
 
 		<GroupBox x:Name="GrpBoxInventory" Header="Inventario" Margin="5,228,348,232" IsEnabled="False">
 			<Grid>
-				<CheckBox x:Name="ChkBoxTheProductUsesInventory" Content="Producto usa Inventario" Margin="10,10,80,43" Checked="ChkBoxTheProductUsesInventory_OnChecked" Unchecked="ChkBoxTheProductUsesInventory_OnUnchecked"/>
+				<CheckBox x:Name="ChkBoxTheProductUsesInventory" Content="Producto usa Inventario" Margin="10,10,80,43"
+				          Checked="ChkBoxTheProductUsesInventory_OnChecked" Unchecked="ChkBoxTheProductUsesInventory_OnUnchecked" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Existencia" />
@@ -208,7 +211,8 @@
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Ajuste de Ganancia" />
 				</TextBlock>
-				<RadioButton x:Name="RadioBntAutomaticProfit" Content="Automatica" Margin="6,62,384,68" Height="19.5" FontSize="11" Checked="RadioBntAutomaticProfit_OnChecked" Unchecked="RadioBntAutomaticProfit_OnUnchecked"/>
+				<RadioButton x:Name="RadioBntAutomaticProfit" Content="Automatica" Margin="6,62,384,68" Height="19.5" FontSize="11"
+				             Checked="RadioBntAutomaticProfit_OnChecked" Unchecked="RadioBntAutomaticProfit_OnUnchecked" />
 				<RadioButton x:Name="RadioBtnManualProfit" Content="Entrada Manual" Margin="90,62,282,69" FontSize="11" />
 				<TextBlock HorizontalAlignment="Left" Margin="9,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
@@ -264,7 +268,7 @@
 		         Height="18" FontSize="9" />
 		<Button x:Name="BtnAddModifyAndSave" HorizontalAlignment="Left" Margin="10,528,0,0"
 		        VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9" Click="BtnAddModifyAndSave_OnClick"/>
+		        Height="24" FontSize="9" Click="BtnAddModifyAndSave_OnClick" />
 		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="79,528,0,0" VerticalAlignment="Top"
 		        Width="60"
 		        Height="24" FontSize="9">
@@ -272,7 +276,7 @@
 		</Button>
 		<Button x:Name="BtnQuickLoad" HorizontalAlignment="Left" Margin="622,528,0,0"
 		        VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9" Content="Cargar Primer"/>
+		        Height="24" FontSize="9" Content="Cargar Primer" />
 		<Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58" IsEnabled="False">
 			<Button HorizontalAlignment="Left" Margin="132,9,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
 				Foto
