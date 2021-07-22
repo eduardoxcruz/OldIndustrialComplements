@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using Inventory.database;
@@ -145,7 +146,6 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = false;
 			GrpBoxProductDetails.IsEnabled = false;
 		}
-
 		private void EnableAllGroupBoxes()
 		{
 			GrpBoxInventory.IsEnabled = true;
@@ -153,7 +153,6 @@ namespace Inventory.ui
 			GrpBoxPriceDetails.IsEnabled = true;
 			GrpBoxProductDetails.IsEnabled = true;
 		}
-
 		private void EnableControlsForManualProfit()
 		{
 			RadioBtnManualProfit.IsChecked = true;
@@ -164,7 +163,6 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = true;
 			TxtBoxProfitWithDiscount.IsEnabled = true;
 		}
-
 		private void DisableControlsForAutomaticProfit()
 		{
 			RadioBtnManualProfit.IsChecked = false;
@@ -175,26 +173,22 @@ namespace Inventory.ui
 			TxtBoxPriceWithDiscount.IsEnabled = false;
 			TxtBoxProfitWithDiscount.IsEnabled = false;
 		}
-
 		private void EnableControlsForInventory()
 		{
 			TxtBoxCurrentProductStock.IsEnabled = true;
 			TxtBoxMinProductStock.IsEnabled = true;
 			TxtBoxMaxProductStock.IsEnabled = true;
 		}
-
 		private void DisableControlsForInventory()
 		{
 			TxtBoxCurrentProductStock.IsEnabled = false;
 			TxtBoxMinProductStock.IsEnabled = false;
 			TxtBoxMaxProductStock.IsEnabled = false;
 		}
-
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
 			AssignProductDataToControls(TxtBoxIdCode.Text);
 		}
-
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
@@ -209,35 +203,30 @@ namespace Inventory.ui
 			{
 				CurrentTask = (int)ProductWindowTasks.ShowDetails;
 			}
-
+			
 			ConfigureControlsForTask();
 		}
-
 		private void RadioBntAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = false;
 			DisableControlsForAutomaticProfit();
 		}
-
 		private void RadioBntAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = true;
 			EnableControlsForManualProfit();
 		}
-
 		private void ChkBoxTheProductUsesInventory_OnChecked(object sender, RoutedEventArgs e)
 		{
 			EnableControlsForInventory();
 		}
-
 		private void ChkBoxTheProductUsesInventory_OnUnchecked(object sender, RoutedEventArgs e)
 		{
 			DisableControlsForInventory();
 		}
-
 		private void TxtBoxIdCode_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Enter)
+			if (e.Key==Key.Enter)
 			{
 				AssignProductDataToControls(TxtBoxIdCode.Text);
 			}
