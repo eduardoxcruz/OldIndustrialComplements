@@ -14,7 +14,6 @@ namespace Inventory.ui
 
 	public partial class ProductWindow : Window
 	{
-		private int _productId = 1;
 		private int _currentTask;
 
 		public ProductWindow(int task)
@@ -23,11 +22,11 @@ namespace Inventory.ui
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
-		public ProductWindow(int task, int productId)
+		public ProductWindow(int task, string productId)
 		{
 			InitializeComponent();
 			CurrentTask = task;
-			ProductId = productId;
+			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
 		private int CurrentTask
@@ -41,23 +40,9 @@ namespace Inventory.ui
 				}
 			}
 		}
-		private int ProductId
+		private void AssignProductDataToControls(string id)
 		{
-			get => _productId;
-			set
-			{
-				if (value < 1)
-				{
-					_productId = 1;
-					return;
-				}
-
-				_productId = value;
-			}
-		}
-		private void AssignProductDataToControls()
-		{
-			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
+			if (string.IsNullOrEmpty(id))
 			{
 				return;
 			}
@@ -66,7 +51,7 @@ namespace Inventory.ui
 			
 			using SqlDatabase sqlDatabase = new SqlDatabase();
 			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
-			sqlCommand.Parameters.AddWithValue("@id", TxtBoxIdCode.Text);
+			sqlCommand.Parameters.AddWithValue("@id", id);
 			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
 
 			if (registro.Read())
@@ -192,7 +177,7 @@ namespace Inventory.ui
 		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			AssignProductDataToControls();
+			AssignProductDataToControls(TxtBoxIdCode.Text);
 		}
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
