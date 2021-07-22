@@ -82,5 +82,13 @@ namespace Inventory.ui
 			{
 			}
 		}
+
+		private void CmbBoxMountingTechnology_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				//Busqueda
+			}
+		}
 	}
 }
