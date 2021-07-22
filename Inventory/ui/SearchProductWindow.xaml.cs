@@ -46,5 +46,12 @@ namespace Inventory.ui
 				MessageBox.Show("Nueva busqueda en base de datos #");
 			}
 		}
+
+		private void TxtBoxId_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+			}
+		}
 	}
 }
