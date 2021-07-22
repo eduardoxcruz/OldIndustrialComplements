@@ -17,10 +17,10 @@ namespace Inventory.ui
 
 		private void LoadDataFromDatabaseToDataTable()
 		{
-			var query = "SELECT * FROM dbo.productos2";
-			var sqlDatabase = new SqlDatabase();
-			var dataAdapter = new SqlDataAdapter(sqlDatabase.GetSqlCommandWithQuery(query));
-			var dataTable = new DataTable("dbo.productos2");
+			string query = "SELECT * FROM dbo.productos2";
+			SqlDatabase sqlDatabase = new SqlDatabase();
+			SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlDatabase.GetSqlCommandWithQuery(query));
+			DataTable dataTable = new DataTable("dbo.productos2");
 			dataAdapter.Fill(dataTable);
 			DataGridProducts.ItemsSource = dataTable.DefaultView;
 			dataAdapter.Update(dataTable);
