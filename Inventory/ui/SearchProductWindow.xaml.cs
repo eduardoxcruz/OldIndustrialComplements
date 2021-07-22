@@ -90,5 +90,13 @@ namespace Inventory.ui
 				//Busqueda
 			}
 		}
+
+		private void CmbBoxEncapsulation_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				//Busqueda
+			}
+		}
 	}
 }
