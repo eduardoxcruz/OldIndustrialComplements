@@ -68,5 +68,12 @@ namespace Inventory.ui
 				//Busqueda
 			}
 		}
+
+		private void TxtBoxDescription_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+			}
+		}
 	}
 }
