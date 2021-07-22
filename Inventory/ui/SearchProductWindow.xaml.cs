@@ -53,5 +53,12 @@ namespace Inventory.ui
 			{
 			}
 		}
+
+		private void TxtBoxEnrollment_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+			}
+		}
 	}
 }
