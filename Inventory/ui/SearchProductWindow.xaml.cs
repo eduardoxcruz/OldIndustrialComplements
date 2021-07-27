@@ -65,7 +65,7 @@ namespace Inventory.ui
 			}
 		}
 
-		private void CmbBoxStatus_KeyDown(object sender, KeyEventArgs e)
+		private void TxtBoxStatus_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
 			{
