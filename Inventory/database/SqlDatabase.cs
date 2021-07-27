@@ -83,6 +83,7 @@ namespace Inventory.database
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, DatabaseConnection);
 			sqlDataAdapter.Fill(dataTable);
 			dataGrid.ItemsSource = dataTable.DefaultView;
+			DatabaseConnection.Close();
 		}
 
 		public void Dispose()
