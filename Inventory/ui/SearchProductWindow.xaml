@@ -178,7 +178,7 @@
 			Nada
 		</Button>
 		<DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,184,10,29" IsReadOnly="True"
-		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Height="380" Width="990" >
+		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Height="380" Width="990" ColumnWidth="SizeToHeader" MinColumnWidth="30">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="ID" Binding="{Binding id}" />
 				<DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
