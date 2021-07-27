@@ -10,195 +10,199 @@
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-	<Grid>
-		<TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"
 		           Height="18" TextAlignment="Left">
 			<Run Language="es-es" Text="Buscar Producto" />
-		</TextBlock>
-		<Button x:Name="BtnSave" HorizontalAlignment="Left" Margin="123,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+        </TextBlock>
+        <Button x:Name="BtnSave" HorizontalAlignment="Left" Margin="123,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
-			Guardar
-		</Button>
-		<Button x:Name="BtnMinus" HorizontalAlignment="Left" Margin="152,4,0,0" VerticalAlignment="Top" Width="24"
+            Guardar
+        </Button>
+        <Button x:Name="BtnMinus" HorizontalAlignment="Left" Margin="152,4,0,0" VerticalAlignment="Top" Width="24"
 		        Height="24" FontSize="9">
-			-
-		</Button>
-		<Button x:Name="BtnPlus" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+            -
+        </Button>
+        <Button x:Name="BtnPlus" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
-			+
-		</Button>
-		<Button x:Name="BtnTool" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+            +
+        </Button>
+        <Button x:Name="BtnTool" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
-			Herramienta
-		</Button>
-		<Button x:Name="BtnBuy" HorizontalAlignment="Left" Margin="239,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+            Herramienta
+        </Button>
+        <Button x:Name="BtnBuy" HorizontalAlignment="Left" Margin="239,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
-			Carrito
-		</Button>
-		<TextBlock HorizontalAlignment="Left" Margin="845,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"
+            Carrito
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="845,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Codigo Debug" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxDebugCode" HorizontalAlignment="Left" Margin="904,5,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxDebugCode" HorizontalAlignment="Left" Margin="904,5,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" KeyDown="TxtBoxDebugCode_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69"
+        <TextBlock HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Busqueda Rapida" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxQuickSearch" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxQuickSearch" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="990"
 		         Height="18" FontSize="9" TextChanged="TxtBoxQuickSearch_TextChanged" />
-		<TextBlock HorizontalAlignment="Left" Margin="934,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"
+        <TextBlock HorizontalAlignment="Left" Margin="934,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Recuento:" />
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="00.00" />
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Busqueda Avanzada" />
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="ID" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
 		         Width="96"
 		         Height="18" FontSize="9" PreviewTextInput="TxtBoxId_PreviewTextInput" KeyDown="TxtBoxId_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="111,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        <TextBlock HorizontalAlignment="Left" Margin="111,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Estado" />
-		</TextBlock>
-		<ComboBox x:Name="CmbBoxStatus" Margin="111,92,808,485" Width="96" Height="18" KeyDown="CmbBoxStatus_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="212,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxStatus" HorizontalAlignment="Left" Margin="111,92,0,0" TextWrapping="Wrap"
+		         VerticalAlignment="Top" Width="96"
+		         Height="18" FontSize="9" KeyDown="TxtBoxStatus_KeyDown" />
+        <TextBlock HorizontalAlignment="Left" Margin="212,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Matricula" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxEnrollment" HorizontalAlignment="Left" Margin="212,92,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxEnrollment" HorizontalAlignment="Left" Margin="212,92,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" KeyDown="TxtBoxEnrollment_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="313,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        <TextBlock HorizontalAlignment="Left" Margin="313,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Descripción" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxDescription" HorizontalAlignment="Left" Margin="313,92,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxDescription" HorizontalAlignment="Left" Margin="313,92,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="246"
 		         Height="18" FontSize="9" KeyDown="TxtBoxDescription_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="564,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        <TextBlock HorizontalAlignment="Left" Margin="564,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Tecnologia de Montaje" />
-		</TextBlock>
-		<ComboBox x:Name="CmbBoxMountingTechnology" Margin="564,92,356,485" Width="96" Height="18"
-		          KeyDown="CmbBoxMountingTechnology_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="665,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxMountingTechnology" HorizontalAlignment="Left" Margin="564,92,0,0" TextWrapping="Wrap"
+		         VerticalAlignment="Top" Width="96"
+		         Height="18" FontSize="9" KeyDown="TxtBoxMountingTechnology_KeyDown" />
+        <TextBlock HorizontalAlignment="Left" Margin="665,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Encapsulado" />
-		</TextBlock>
-		<ComboBox x:Name="CmbBoxEncapsulation" Margin="665,92,254,485" Width="96" Height="18"
-		          KeyDown="CmbBoxEncapsulation_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="766,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxEncapsulation" HorizontalAlignment="Left" Margin="665,92,0,0" TextWrapping="Wrap"
+		         VerticalAlignment="Top" Width="96"
+		         Height="18" FontSize="9" KeyDown="TxtBoxEncapsulation_KeyDown" />
+        <TextBlock HorizontalAlignment="Left" Margin="766,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Contenedor" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxContainer" HorizontalAlignment="Left" Margin="766,92,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxContainer" HorizontalAlignment="Left" Margin="766,92,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="126"
 		         Height="18" FontSize="9" KeyDown="TxtBoxContainer_KeyDown" />
-		<TextBlock HorizontalAlignment="Left" Margin="897,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        <TextBlock HorizontalAlignment="Left" Margin="897,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Ubicación" />
-		</TextBlock>
-		<TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        </TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" />
-		<Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Buscar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Agregar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Exportar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Modificar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Limpiar
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-			Solicitar
-		</Button>
-		<CheckBox Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
-		<Button HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-			Todo
-		</Button>
-		<Button HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-			Nada
-		</Button>
-		<TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
+        <Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Buscar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Agregar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Exportar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Modificar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Limpiar
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
+            Solicitar
+        </Button>
+        <CheckBox Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
+        <Button HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Todo
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+            Nada
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
 		           Height="15.75" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" />
-		</TextBlock>
-		<TextBox x:Name="TxtBoxLocation" HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap"
+        </TextBlock>
+        <TextBox x:Name="TxtBoxLocation" HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" KeyDown="TxtBoxLocation_KeyDown" />
-		<Button x:Name="BtnSearch" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60"
+        <Button x:Name="BtnSearch" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9" Click="BtnSearch_Click">
-			Buscar
-		</Button>
-		<Button x:Name="BtnAdd" HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24"
+            Buscar
+        </Button>
+        <Button x:Name="BtnAdd" HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24"
 		        FontSize="9">
-			Agregar
-		</Button>
-		<Button x:Name="BtnExport" HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60"
+            Agregar
+        </Button>
+        <Button x:Name="BtnExport" HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
-			Exportar
-		</Button>
-		<Button x:Name="BtnModify" HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60"
+            Exportar
+        </Button>
+        <Button x:Name="BtnModify" HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
-			Modificar
-		</Button>
-		<Button x:Name="BtnClean" HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60"
+            Modificar
+        </Button>
+        <Button x:Name="BtnClean" HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
-			Limpiar
-		</Button>
-		<Button x:Name="BtnRequest" HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60"
+            Limpiar
+        </Button>
+        <Button x:Name="BtnRequest" HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
-			Solicitar
-		</Button>
-		<CheckBox x:Name="ChkBoxMultiSelection" Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
-		<Button x:Name="BtnAll" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18"
+            Solicitar
+        </Button>
+        <CheckBox x:Name="ChkBoxMultiSelection" Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
+        <Button x:Name="BtnAll" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18"
 		        FontSize="9">
-			Todo
-		</Button>
-		<Button x:Name="BtnNothing" HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60"
+            Todo
+        </Button>
+        <Button x:Name="BtnNothing" HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60"
 		        Height="18" FontSize="9">
-			Nada
-		</Button>
-		<DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,184,10,29" IsReadOnly="True"
+            Nada
+        </Button>
+        <DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,184,10,29" IsReadOnly="True"
 		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Height="380" Width="990" ColumnWidth="SizeToHeader" MinColumnWidth="30">
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="ID" Binding="{Binding id}" />
-				<DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
-				<DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
-				<DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}" />
-				<DataGridTextColumn Header="Tec. de Montaje" Binding="{Binding tecmon}" />
-				<DataGridTextColumn Header="Encapsulado" Binding="{Binding encapsulado}" />
-				<DataGridTextColumn Header="Precio" Binding="{Binding preciovent}" />
-				<DataGridTextColumn Header="Existencia" Binding="{Binding existencia}" />
-				<DataGridTextColumn Header="Contenedor" Binding="{Binding contenedor}" />
-				<DataGridTextColumn Header="Ubicacion" Binding="{Binding ubicacion}" />
-				<DataGridTextColumn Header="Sucursal" Binding="{Binding s}" />
-				<DataGridTextColumn Header="Estante" Binding="{Binding e}" />
-				<DataGridTextColumn Header="Repisa" Binding="{Binding r}" />
-			</DataGrid.Columns>
-		</DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
+                <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
+                <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}" />
+                <DataGridTextColumn Header="Tec. de Montaje" Binding="{Binding tecmon}" />
+                <DataGridTextColumn Header="Encapsulado" Binding="{Binding encapsulado}" />
+                <DataGridTextColumn Header="Precio" Binding="{Binding preciovent}" />
+                <DataGridTextColumn Header="Existencia" Binding="{Binding existencia}" />
+                <DataGridTextColumn Header="Contenedor" Binding="{Binding contenedor}" />
+                <DataGridTextColumn Header="Ubicacion" Binding="{Binding ubicacion}" />
+                <DataGridTextColumn Header="Sucursal" Binding="{Binding s}" />
+                <DataGridTextColumn Header="Estante" Binding="{Binding e}" />
+                <DataGridTextColumn Header="Repisa" Binding="{Binding r}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
-		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="10,571,0,0" VerticalAlignment="Top" Width="60"
+        <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="10,571,0,0" VerticalAlignment="Top" Width="60"
 		        Height="18" FontSize="9">
-			Salir
-		</Button>
-	</Grid>
+            Salir
+        </Button>
+    </Grid>
 </Window>
