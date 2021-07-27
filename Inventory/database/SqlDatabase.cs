@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Controls;
 
 namespace Inventory.database
 {
@@ -74,6 +76,15 @@ namespace Inventory.database
 			DatabaseConnection.Open();
 			return sqlCommand;
 		}
+		public void FillDataGridWithQuery(string query, DataGrid dataGrid)
+		{
+			DatabaseConnection.Open();
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, DatabaseConnection);
+			sqlDataAdapter.Fill(dataTable);
+			dataGrid.ItemsSource = dataTable.DefaultView;
+		}
+
 		public void Dispose()
 		{
 			DatabaseConnection.Close();
