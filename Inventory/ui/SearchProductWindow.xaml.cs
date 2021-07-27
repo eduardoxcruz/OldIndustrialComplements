@@ -10,10 +10,26 @@ namespace Inventory.ui
 {
 	public partial class SearchProductWindow : Window
 	{
+		private SqlDatabase _sqlDatabase;
+		
 		public SearchProductWindow()
 		{
 			InitializeComponent();
+			sqlDatabase = new SqlDatabase();
 		}
+
+		private SqlDatabase sqlDatabase
+		{
+			get
+			{
+				return _sqlDatabase;
+			}
+			set
+			{
+				_sqlDatabase = value;
+			}
+		}
+
 		private void SearchProductWithQuickSearch(string text)
 		{
 			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + text + "%') OR matricula like ('%" + text + "%') OR descripcion like ('%" + text + "%') OR contenedor like ('%" + text + "%') OR ubicacion like ('%" + text + "%') OR estado like ('%"+ text + "%') OR tecmon like ('%" + text + "%') OR encapsulado like ('%" + text + "%')";
