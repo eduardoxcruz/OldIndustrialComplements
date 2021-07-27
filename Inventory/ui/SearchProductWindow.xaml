@@ -114,34 +114,9 @@
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Ubicación" />
         </TextBlock>
-        <TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+		<TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" />
-        <Button HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Buscar
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Agregar
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Exportar
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Modificar
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Limpiar
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60" Height="24" FontSize="9">
-            Solicitar
-        </Button>
-        <CheckBox Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
-        <Button HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-            Todo
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-            Nada
-        </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
+		<TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
 		           Height="15.75" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" />
         </TextBlock>
@@ -152,23 +127,11 @@
 		        Height="24" FontSize="9" Click="BtnSearch_Click">
             Buscar
         </Button>
-        <Button x:Name="BtnAdd" HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60" Height="24"
-		        FontSize="9">
-            Agregar
-        </Button>
-        <Button x:Name="BtnExport" HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9">
-            Exportar
-        </Button>
-        <Button x:Name="BtnModify" HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9">
-            Modificar
-        </Button>
-        <Button x:Name="BtnClean" HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="60"
+        <Button x:Name="BtnClean" HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
             Limpiar
         </Button>
-        <Button x:Name="BtnRequest" HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="60"
+        <Button x:Name="BtnRequest" HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9">
             Solicitar
         </Button>
