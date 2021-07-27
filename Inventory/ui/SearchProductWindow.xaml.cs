@@ -21,15 +21,11 @@ namespace Inventory.ui
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 		}
 
-		private void LoadDataFromDatabaseToDataTable()
+		private void SearchProductWithFilters()
 		{
-			string query = "SELECT * FROM dbo.productos2";
-			SqlDatabase sqlDatabase = new SqlDatabase();
-			SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlDatabase.GetSqlCommandWithQuery(query));
-			DataTable dataTable = new DataTable("dbo.productos2");
-			dataAdapter.Fill(dataTable);
-			DataGridProducts.ItemsSource = dataTable.DefaultView;
-			dataAdapter.Update(dataTable);
+			string query = "SELECT * FROM dbo.productos2 WHERE id like('" + TxtBoxId.Text + "%') AND matricula like ('" + TxtBoxEnrollment.Text + "%') AND descripcion like ('" + TxtBoxDescription.Text + "%') AND contenedor like ('" + TxtBoxContainer.Text + "%') AND ubicacion like ('" + TxtBoxLocation.Text + "%') AND estado like ('" + CmbBoxStatus.Text + "%')";
+			using SqlDatabase sqlDatabase = new SqlDatabase();
+			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 		}
 
 		private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
