@@ -117,6 +117,7 @@ namespace Inventory.ui
 		{
 			if (e.Key == Key.Enter)
 			{
+				SearchProductWithFilters();
 			}
 		}
 	}
