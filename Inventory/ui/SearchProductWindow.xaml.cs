@@ -120,5 +120,10 @@ namespace Inventory.ui
 				SearchProductWithFilters();
 			}
 		}
+
+		private void BtnSearch_Click(object sender, RoutedEventArgs e)
+		{
+			SearchProductWithFilters();
+		}
 	}
 }
