@@ -93,7 +93,7 @@ namespace Inventory.ui
 		{
 			if (e.Key == Key.Enter)
 			{
-				//Busqueda
+				SearchProductWithFilters();
 			}
 		}
 
