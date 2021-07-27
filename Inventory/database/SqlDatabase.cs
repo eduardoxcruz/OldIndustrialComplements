@@ -11,8 +11,8 @@ namespace Inventory.database
 		private const string ServerPort = "1433";
 		private const string DatabaseName = "pruebas";
 		private const string IntegratedSecurity = "False";
-		private const string UserId = "eduardo";
-		private const string Password = "Cruz0320";
+		private const string UserId = "sa";
+		private const string Password = "Tlacua015";
 		private const string MultipleActiveResultSets = "True";
 		private const string ConnectionTimeoutInSeconds = "10";
 		private string _databaseConnectionString;
