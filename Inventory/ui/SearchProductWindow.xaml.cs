@@ -43,9 +43,9 @@ namespace Inventory.ui
 		private void TxtBoxQuickSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			string numeroDeCaracteres = TxtBoxQuickSearch.Text;
-			if (numeroDeCaracteres.Length > 3)
+			if (numeroDeCaracteres.Length > 2)
 			{
-				MessageBox.Show("Nueva busqueda en base de datos #");
+				SearchProductWithQuickSearch(TxtBoxQuickSearch.Text);
 			}
 		}
 
