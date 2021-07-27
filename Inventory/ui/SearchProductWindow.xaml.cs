@@ -97,7 +97,7 @@ namespace Inventory.ui
 			}
 		}
 
-		private void CmbBoxEncapsulation_KeyDown(object sender, KeyEventArgs e)
+		private void TxtBoxEncapsulation_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
 			{
