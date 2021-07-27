@@ -16,14 +16,14 @@ namespace Inventory.ui
 		}
 		private void SearchProductWithQuickSearch(string text)
 		{
-			string query = "SELECT * FROM dbo.productos2 WHERE id like('" + text + "%') OR matricula like ('" + text + "%') OR descripcion like ('" + text + "%') OR contenedor like ('" + text + "%') OR ubicacion like ('" + text + "%') OR estado like ('"+ text + "%') OR tecmon like ('" + text + "%') OR encapsulado like ('" + text + "%')";
+			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + text + "%') OR matricula like ('%" + text + "%') OR descripcion like ('%" + text + "%') OR contenedor like ('%" + text + "%') OR ubicacion like ('%" + text + "%') OR estado like ('%"+ text + "%') OR tecmon like ('%" + text + "%') OR encapsulado like ('%" + text + "%')";
 			using SqlDatabase sqlDatabase = new SqlDatabase();
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 		}
 
 		private void SearchProductWithFilters()
 		{
-			string query = "SELECT * FROM dbo.productos2 WHERE id like('" + TxtBoxId.Text + "%') AND matricula like ('" + TxtBoxEnrollment.Text + "%') AND descripcion like ('" + TxtBoxDescription.Text + "%') AND contenedor like ('" + TxtBoxContainer.Text + "%') AND ubicacion like ('" + TxtBoxLocation.Text + "%') AND estado like ('" + TxtBoxStatus.Text + "%') AND tecmon like ('" + TxtBoxMountingTechnology.Text + "%')AND encapsulado like ('" + TxtBoxEncapsulation.Text + "%')";
+			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + TxtBoxId.Text + "%') AND matricula like ('%" + TxtBoxEnrollment.Text + "%') AND descripcion like ('%" + TxtBoxDescription.Text + "%') AND contenedor like ('%" + TxtBoxContainer.Text + "%') AND ubicacion like ('%" + TxtBoxLocation.Text + "%') AND estado like ('%" + TxtBoxStatus.Text + "%') AND tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')";
 			using SqlDatabase sqlDatabase = new SqlDatabase();
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 		}
