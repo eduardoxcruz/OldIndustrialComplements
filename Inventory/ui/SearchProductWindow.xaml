@@ -24,7 +24,7 @@
             Herramienta
         </Button>
         <Button x:Name="BtnBuy" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
-		        FontSize="9">
+		        FontSize="9" Click="BtnBuy_Click">
             Carrito
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="845,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"

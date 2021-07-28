@@ -151,5 +151,11 @@ namespace Inventory.ui
 			SettingsWindow settingsWindow = new SettingsWindow();
 			settingsWindow.Show();
 		}
+
+		private void BtnBuy_Click(object sender, RoutedEventArgs e)
+		{
+			RequestsWindow requestsWindow = new RequestsWindow();
+			requestsWindow.Show();
+		}
 	}
 }
