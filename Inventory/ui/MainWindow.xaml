@@ -12,9 +12,6 @@
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button HorizontalAlignment="Left" Margin="787,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
-            S
-        </Button>
         <Button HorizontalAlignment="Left" Margin="816,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
             -
         </Button>
