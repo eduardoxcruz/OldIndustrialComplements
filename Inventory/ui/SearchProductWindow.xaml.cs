@@ -162,5 +162,11 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
+
+		private void BtnPlus_Click(object sender, RoutedEventArgs e)
+		{
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.AddNewProduct);
+			productWindow.Show();
+		}
 	}
 }
