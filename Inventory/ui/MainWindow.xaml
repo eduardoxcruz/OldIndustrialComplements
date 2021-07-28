@@ -39,8 +39,5 @@
         <Button x:Name="BtnOpenSettingWindow" HorizontalAlignment="Left" Margin="10,456,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenSettingWindow_Click">
             Configuracion
         </Button>
-        <Button x:Name="BtnOpenDetailsWindow" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenDetailsWindow_Click">
-            Details
-        </Button>
     </Grid>
 </Window>
