@@ -15,10 +15,6 @@
 		           Height="18" TextAlignment="Left">
 			<Run Language="es-es" Text="Buscar Producto" />
         </TextBlock>
-        <Button x:Name="BtnSave" HorizontalAlignment="Left" Margin="123,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
-		        FontSize="9">
-            Guardar
-        </Button>
         <Button x:Name="BtnMinus" HorizontalAlignment="Left" Margin="152,4,0,0" VerticalAlignment="Top" Width="24"
 		        Height="24" FontSize="9">
             -
