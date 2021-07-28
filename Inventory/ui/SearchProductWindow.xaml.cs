@@ -38,6 +38,12 @@ namespace Inventory.ui
 
 		private void SearchProductWithFilters()
 		{
+			if (string.IsNullOrEmpty(TxtBoxId.Text) & string.IsNullOrEmpty(TxtBoxStatus.Text) & string.IsNullOrEmpty(TxtBoxEnrollment.Text) & string.IsNullOrEmpty(TxtBoxDescription.Text) & string.IsNullOrEmpty(TxtBoxMountingTechnology.Text) & string.IsNullOrEmpty(TxtBoxEncapsulation.Text) & string.IsNullOrEmpty(TxtBoxContainer.Text) & string.IsNullOrEmpty(TxtBoxLocation.Text))
+			{
+				MessageBox.Show("Llene al menos un campo para buscar.");
+				return;
+			}
+
 			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + TxtBoxId.Text + "%') AND matricula like ('%" + TxtBoxEnrollment.Text + "%') AND descripcion like ('%" + TxtBoxDescription.Text + "%') AND contenedor like ('%" + TxtBoxContainer.Text + "%') AND ubicacion like ('%" + TxtBoxLocation.Text + "%') AND estado like ('%" + TxtBoxStatus.Text + "%') AND tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')";
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 		}
