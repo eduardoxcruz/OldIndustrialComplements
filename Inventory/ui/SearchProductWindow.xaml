@@ -136,10 +136,6 @@
             Solicitar
         </Button>
         <CheckBox x:Name="ChkBoxMultiSelection" Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
-        <Button x:Name="BtnAll" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="60" Height="18"
-		        FontSize="9">
-            Todo
-        </Button>
         <Button x:Name="BtnNothing" HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" Width="60"
 		        Height="18" FontSize="9">
             Nada
