@@ -157,5 +157,10 @@ namespace Inventory.ui
 			RequestsWindow requestsWindow = new RequestsWindow();
 			requestsWindow.Show();
 		}
+
+		private void BtnExit_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
 	}
 }
