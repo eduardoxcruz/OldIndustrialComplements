@@ -135,7 +135,6 @@
 		        Height="24" FontSize="9">
             Solicitar
         </Button>
-        <CheckBox x:Name="ChkBoxMultiSelection" Content="Multiselección" Margin="10,144,898,434" Height="16.5" />
         <DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,184,10,29" IsReadOnly="True"
 		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Height="380" Width="990" ColumnWidth="SizeToHeader" MinColumnWidth="30">
             <DataGrid.Columns>
