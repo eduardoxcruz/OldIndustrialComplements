@@ -50,6 +50,10 @@ namespace Inventory.ui
 
 		private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
+			if (DataGridProducts.ItemsSource == null)
+			{
+				return;
+			}
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
 			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, selectedRow["id"].ToString());
 			productWindow.Show();
