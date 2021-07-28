@@ -139,5 +139,10 @@ namespace Inventory.ui
 		{
 			SearchProductWithFilters();
 		}
+
+		private void BtnClean_Click(object sender, RoutedEventArgs e)
+		{
+			DataGridProducts.ItemsSource = null;
+		}
 	}
 }
