@@ -12,9 +12,6 @@
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button HorizontalAlignment="Left" Margin="845,10,0,0" VerticalAlignment="Top" Width="24" Height="24">
-            Lib
-        </Button>
         <Button x:Name="BtnOpenSearchProductWindow" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenSearchProductWindow_Click">
             Buscar Productos
         </Button>
