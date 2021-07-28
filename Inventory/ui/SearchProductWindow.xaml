@@ -120,7 +120,7 @@
             Buscar
         </Button>
         <Button x:Name="BtnClean" HorizontalAlignment="Left" Margin="70,115,0,0" VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9">
+		        Height="24" FontSize="9" Click="BtnClean_Click">
             Limpiar
         </Button>
         <Button x:Name="BtnRequest" HorizontalAlignment="Left" Margin="130,115,0,0" VerticalAlignment="Top" Width="60"
