@@ -145,5 +145,11 @@ namespace Inventory.ui
 		{
 			DataGridProducts.ItemsSource = null;
 		}
+
+		private void BtnTool_Click(object sender, RoutedEventArgs e)
+		{
+			SettingsWindow settingsWindow = new SettingsWindow();
+			settingsWindow.Show();
+		}
 	}
 }
