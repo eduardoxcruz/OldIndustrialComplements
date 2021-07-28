@@ -15,15 +15,15 @@
 		           Height="18" TextAlignment="Left">
 			<Run Language="es-es" Text="Buscar Producto" />
         </TextBlock>
-        <Button x:Name="BtnPlus" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+        <Button x:Name="BtnPlus" HorizontalAlignment="Left" Margin="123,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
             +
         </Button>
-        <Button x:Name="BtnTool" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+        <Button x:Name="BtnTool" HorizontalAlignment="Left" Margin="152,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
             Herramienta
         </Button>
-        <Button x:Name="BtnBuy" HorizontalAlignment="Left" Margin="239,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
+        <Button x:Name="BtnBuy" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="24" Height="24"
 		        FontSize="9">
             Carrito
         </Button>
@@ -106,9 +106,9 @@
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Ubicación" />
         </TextBlock>
-		<TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+        <TextBox HorizontalAlignment="Left" Margin="897,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
 		         Height="18" FontSize="9" />
-		<TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
+        <TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="989.75"
 		           Height="15.75" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" />
         </TextBlock>
