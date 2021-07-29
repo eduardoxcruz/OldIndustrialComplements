@@ -9,7 +9,7 @@
 		Height="506.25"
 		Width="879"
 		ResizeMode="NoResize"
-		SizeToContent="WidthAndHeight"
+		SizeToContent="Height"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="BtnOpenSearchProductWindow" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="126" Height="24" Click="BtnOpenSearchProductWindow_Click">
