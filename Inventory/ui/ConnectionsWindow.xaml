@@ -8,7 +8,7 @@
         Title="Conexiónes Locales" 
 		Height="90" 
 		Width="149.25"
-		ResizeMode="NoResize"
+		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
