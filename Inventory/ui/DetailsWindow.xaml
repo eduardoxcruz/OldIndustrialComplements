@@ -8,7 +8,7 @@
         Title="Detalles del producto" 
 		Height="557.25" 
 		Width="700"
-		ResizeMode="NoResize"
+		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Detalles del Producto"/></TextBlock>
