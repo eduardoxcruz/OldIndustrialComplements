@@ -45,7 +45,7 @@
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Recuento:" />
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"
+        <TextBlock x:Name="TxtBoxCount" HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="00.00" />
         </TextBlock>
