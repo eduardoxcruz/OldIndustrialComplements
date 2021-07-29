@@ -7,7 +7,7 @@
         Title="Buscar"
         Height="610.5"
         Width="1015.5"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
