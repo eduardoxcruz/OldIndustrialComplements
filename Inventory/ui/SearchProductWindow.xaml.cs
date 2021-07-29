@@ -154,6 +154,16 @@ namespace Inventory.ui
 		private void BtnClean_Click(object sender, RoutedEventArgs e)
 		{
 			DataGridProducts.ItemsSource = null;
+			TxtBoxId.Text = null;
+			TxtBoxStatus.Text = null;
+			TxtBoxEnrollment.Text = null;
+			TxtBoxDescription.Text = null;
+			TxtBoxMountingTechnology.Text = null;
+			TxtBoxEncapsulation.Text = null;
+			TxtBoxContainer.Text = null;
+			TxtBoxLocation.Text = null;
+			TxtBoxQuickSearch.Text = null;
+			TxtBoxDebugCode.Text = null;
 		}
 
 		private void BtnTool_Click(object sender, RoutedEventArgs e)
