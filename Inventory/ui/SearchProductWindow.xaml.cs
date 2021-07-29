@@ -166,6 +166,7 @@ namespace Inventory.ui
 			TxtBoxLocation.Text = null;
 			TxtBoxQuickSearch.Text = null;
 			TxtBoxDebugCode.Text = null;
+			TxtBoxCount.Text = "00";
 		}
 
 		private void BtnTool_Click(object sender, RoutedEventArgs e)
