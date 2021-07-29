@@ -8,7 +8,7 @@
         Title="Modificar" 
 		Height="570" 
 		Width="694.5"
-		ResizeMode="NoResize"
+		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight">
 	<Grid>
 		<TextBlock HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Modificar Producto"/></TextBlock>
