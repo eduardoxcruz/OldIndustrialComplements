@@ -8,7 +8,7 @@
         Title="Inicio" 
 		Height="506.25"
 		Width="879"
-		ResizeMode="NoResize"
+		ResizeMode="CanMinimize"
 		SizeToContent="Height"
         WindowStartupLocation="CenterScreen">
     <Grid>
