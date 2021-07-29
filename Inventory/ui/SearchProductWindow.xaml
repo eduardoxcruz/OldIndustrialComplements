@@ -10,6 +10,14 @@
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+		<Style TargetType="DataGridCell">
+			<Setter Property="TextBlock.TextAlignment" Value="Center" />
+		</Style>
+	</Window.Resources>
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"
 		           Height="18" TextAlignment="Left">
@@ -47,7 +55,7 @@
         </TextBlock>
         <TextBlock x:Name="TxtBoxCount" HorizontalAlignment="Left" Margin="976,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"
 		           Height="12" TextAlignment="Left" FontSize="9">
-			<Run Language="es-es" Text="00.00" />
+			<Run Language="es-es" Text="00" />
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"
 		           Height="12" TextAlignment="Left" FontSize="9">
@@ -127,10 +135,10 @@
 		        Height="24" FontSize="9">
             Solicitar
         </Button>
-        <DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,144,16,31" IsReadOnly="True"
-		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Width="990" Height="420" ColumnWidth="SizeToHeader" MinColumnWidth="30">
+		<DataGrid x:Name="DataGridProducts" AutoGenerateColumns="False" Margin="10,144,16,31" IsReadOnly="True"
+		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" Width="990" Height="420" ColumnWidth="*">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+				<DataGridTextColumn Header="ID" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Estado" Binding="{Binding estado}" />
                 <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
                 <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}" />
