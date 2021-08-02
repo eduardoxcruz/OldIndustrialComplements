@@ -138,7 +138,7 @@ namespace Inventory.ui
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
 			{
-				EnableAllGroupBoxes();
+				EnableEditableControls();
 				TxtBlockProductTask.Text = "Nuevo Producto";
 				BtnAddModifyAndSave.Content = "Agregar";
 				return;
@@ -146,30 +146,24 @@ namespace Inventory.ui
 
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
 			{
-				EnableAllGroupBoxes();
+				EnableEditableControls();
 				TxtBlockProductTask.Text = "Modificar Producto";
 				BtnAddModifyAndSave.Content = "Guardar";
 				return;
 			}
 
-			DisableAllGroupBoxes();
+			DisableEditableControls();
 			TxtBlockProductTask.Text = "Detalles del Producto";
 			BtnAddModifyAndSave.Content = "Modificar";
 		}
 
-		private void DisableAllGroupBoxes()
+		private void DisableEditableControls()
 		{
-			GrpBoxInventory.IsEnabled = false;
-			GrpBoxLocation.IsEnabled = false;
-			GrpBoxPriceDetails.IsEnabled = false;
-			GrpBoxProductDetails.IsEnabled = false;
+			
 		}
-		private void EnableAllGroupBoxes()
+		private void EnableEditableControls()
 		{
-			GrpBoxInventory.IsEnabled = true;
-			GrpBoxLocation.IsEnabled = true;
-			GrpBoxPriceDetails.IsEnabled = true;
-			GrpBoxProductDetails.IsEnabled = true;
+			
 		}
 		private void EnableControlsForManualProfit()
 		{
