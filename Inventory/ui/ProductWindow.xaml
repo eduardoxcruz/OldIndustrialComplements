@@ -66,7 +66,7 @@
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Estado*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxStatus" Margin="105,15,475,142" Width="80" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxStatus" Margin="105,15,475,142" Width="80" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="190,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Matricula*" />
@@ -78,12 +78,12 @@
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Tec. Montaje*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxMountingTechnology" Margin="345,15,165,142" Width="150" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxMountingTechnology" Margin="345,15,165,142" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="500,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Encapsulado o tipo de Conexión*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxEncapsulationType" Margin="500,15,10,142" Width="150" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxEncapsulationType" Margin="500,15,10,142" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Descripción Corta*" />
@@ -95,7 +95,7 @@
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Categoría" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxCategories" Margin="10,90,2,60" Width="648" Height="25.5" Grid.ColumnSpan="2" />
+				<ComboBox x:Name="CmbBoxCategories" Margin="10,90,2,60" Width="648" Height="25.5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Descripción Completa" />
@@ -189,17 +189,17 @@
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Unidad*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxUnit" Margin="87,22,322,109" Width="72" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxUnit" Margin="87,22,322,109" Width="72" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="164,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Tipo de Producto" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxProductType" Margin="164,22,167,109" Width="150" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxProductType" Margin="164,22,167,109" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="328,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Fabricante" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxManufacturer" Margin="328,22,3,109" Width="150" Height="18" FontSize="9" />
+				<ComboBox x:Name="CmbBoxManufacturer" Margin="328,22,3,109" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="328,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="No. Parte del Fabricante" />
