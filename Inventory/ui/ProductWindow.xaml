@@ -20,7 +20,7 @@
 			<Run Language="es-es" Text="Buscar por ID o Codigo" />
 		</TextBlock>
 		<ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" FontWeight="Normal"
-		          FontStyle="Normal" FontSize="9" VerticalContentAlignment="Top" HorizontalContentAlignment="Center">
+		          FontStyle="Normal" FontSize="9" HorizontalContentAlignment="Center">
 			<ComboBoxItem Content="ID" IsSelected="True" />
 			<ComboBoxItem Content="Debug" />
 		</ComboBox>
