@@ -15,7 +15,7 @@ namespace Inventory
 				: Current.Windows.OfType<T>().Any(w => w.GetType().Name.Equals(windowName));
 		}
 
-		public static bool IsWindowOpen(string windowName = "")
+		private static bool IsWindowOpen(string windowName = "")
 		{
 			return string.IsNullOrEmpty(windowName)
 				? Current.Windows.OfType<Window>().Any()
