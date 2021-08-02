@@ -52,8 +52,7 @@
 			Buscar
 		</Button>
 
-		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198"
-		          IsEnabled="False">
+		<GroupBox x:Name="GrpBoxProductDetails" Header="Datos del producto" Margin="10,25,13,331" Width="672" Height="198">
 			<Grid>
 				<TextBlock HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
@@ -61,7 +60,7 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="80"
-				         Height="18" FontSize="11" Grid.ColumnSpan="2" IsEnabled="False" TextAlignment="Center" />
+				         Height="18" FontSize="11" Grid.ColumnSpan="2"  TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="105,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Estado*" />
@@ -106,7 +105,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox x:Name="GrpBoxInventory" Header="Inventario" Margin="5,228,348,232" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxInventory" Header="Inventario" Margin="5,228,348,232" >
 			<Grid>
 				<CheckBox x:Name="ChkBoxTheProductUsesInventory" Content="Producto usa Inventario" Margin="10,10,80,43"
 				          Checked="ChkBoxTheProductUsesInventory_OnChecked" Unchecked="ChkBoxTheProductUsesInventory_OnUnchecked" />
@@ -136,7 +135,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox x:Name="GrpBoxLocation" Header="Ubicación" Margin="353,228,10,232" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxLocation" Header="Ubicación" Margin="353,228,10,232" >
 			<Grid>
 				<TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
@@ -176,7 +175,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox x:Name="GrpBoxPriceDetails" Header="Detalle de Precios" Margin="5,328,197,58" IsEnabled="False">
+		<GroupBox x:Name="GrpBoxPriceDetails" Header="Detalle de Precios" Margin="5,328,197,58" >
 			<Grid Height="149">
 				<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
@@ -262,7 +261,7 @@
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Memo" />
 		</TextBlock>
-		<TextBox x:Name="TxtBoxMemo" IsEnabled="False" HorizontalAlignment="Left" Margin="10,508,0,0" TextWrapping="Wrap"
+		<TextBox x:Name="TxtBoxMemo" HorizontalAlignment="Left" Margin="10,508,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="672"
 		         Height="18" FontSize="9" />
@@ -277,7 +276,7 @@
 		<Button x:Name="BtnQuickLoad" HorizontalAlignment="Left" Margin="622,528,0,0"
 		        VerticalAlignment="Top" Width="60"
 		        Height="24" FontSize="9" Content="Cargar Primer" />
-		<Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58" IsEnabled="False">
+		<Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58" >
 			<Button HorizontalAlignment="Left" Margin="132,9,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
 				Foto
 			</Button>
