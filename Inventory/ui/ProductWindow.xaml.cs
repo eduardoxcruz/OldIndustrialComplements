@@ -60,6 +60,9 @@ namespace Inventory.ui
 			{
 				var habilitarInventario = registro["inventario"].ToString();
 				var habilitarAjusteManual = registro["ajuste_manual"].ToString();
+				
+				TxtBoxId.Text = registro["id"].ToString();
+				TxtBoxIdCode.Text = registro["id"].ToString();
 				TxtBoxEnrollment.Text = registro["matricula"].ToString();
 				TxtBoxShortDescription.Text = registro["descripcion"].ToString();
 				TxtBoxCurrentProductStock.Text = registro["existencia"].ToString();
