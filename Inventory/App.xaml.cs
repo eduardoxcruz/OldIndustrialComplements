@@ -8,7 +8,7 @@ namespace Inventory
 	/// </summary>
 	public partial class App : Application
 	{
-		public static bool IsWindowOpen<T>(string windowName = "") where T : Window
+		private static bool IsWindowOpen<T>(string windowName = "") where T : Window
 		{
 			return string.IsNullOrEmpty(windowName)
 				? Current.Windows.OfType<T>().Any()
