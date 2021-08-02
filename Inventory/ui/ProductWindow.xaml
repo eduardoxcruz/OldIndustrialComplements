@@ -20,7 +20,7 @@
 			<Run Language="es-es" Text="Buscar por ID o Codigo" />
 		</TextBlock>
 		<ComboBox x:Name="CmbBoxIdOrDebugCode" Margin="195,14,404,522" Width="96" Height="18" FontWeight="Normal"
-		          FontStyle="Normal" FontSize="9" HorizontalContentAlignment="Center">
+		          FontStyle="Normal" FontSize="11" HorizontalContentAlignment="Center">
 			<ComboBoxItem Content="ID" IsSelected="True" />
 			<ComboBoxItem Content="Debug" />
 		</ComboBox>
@@ -31,14 +31,14 @@
 		<TextBox x:Name="TxtBoxIdCode" HorizontalAlignment="Left" Margin="296,14,0,0" TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="96"
-		         Height="18" FontSize="9" TextAlignment="Center" KeyDown="TxtBoxIdCode_KeyDown" />
+		         Height="18" FontSize="11" TextAlignment="Center" KeyDown="TxtBoxIdCode_KeyDown" />
 		<TextBlock HorizontalAlignment="Left" Margin="403,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"
 		           Height="12" TextAlignment="Left" FontSize="9">
 			<Run Language="es-es" Text="Codigo Debug" />
 		</TextBlock>
 		<TextBox x:Name="TxtBoxDebugCode" HorizontalAlignment="Left" Margin="397,14,0,0"
 		         TextWrapping="Wrap"
-		         VerticalAlignment="Top" Width="72" Height="18" FontSize="9" Foreground="Red" TextAlignment="Center" />
+		         VerticalAlignment="Top" Width="72" Height="18" FontSize="11" Foreground="Red" TextAlignment="Center" />
 		<Button x:Name="BtnSearchProduct" HorizontalAlignment="Left" Margin="474,14,0,0"
 		        VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Content="Buscar" Click="BtnSearch_Click" />
 		<Button x:Name="BtnAddProduct" HorizontalAlignment="Left" Margin="631,2,0,0"
@@ -61,48 +61,48 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="80"
-				         Height="18" FontSize="9" Grid.ColumnSpan="2" IsEnabled="False" TextAlignment="Center" />
+				         Height="18" FontSize="11" Grid.ColumnSpan="2" IsEnabled="False" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="105,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Estado*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxStatus" Margin="105,15,475,142" Width="80" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxStatus" Margin="105,15,475,142" Width="80" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="190,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Matricula*" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxEnrollment" HorizontalAlignment="Left" Margin="190,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="150"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="345,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Tec. Montaje*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxMountingTechnology" Margin="345,15,165,142" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxMountingTechnology" Margin="345,15,165,142" Width="150" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="500,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Encapsulado o tipo de Conexión*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxEncapsulationType" Margin="500,15,10,142" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxEncapsulationType" Margin="500,15,10,142" Width="150" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Descripción Corta*" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxShortDescription" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="648"
-				         Height="22.5" FontSize="9" Grid.ColumnSpan="2" TextAlignment="Center" />
+				         Height="22.5" FontSize="11" Grid.ColumnSpan="2" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Categoría" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxCategories" Margin="10,90,2,60" Width="648" Height="25.5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxCategories" Margin="10,90,2,60" Width="648" Height="25.5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" FontSize="11"/>
 				<TextBlock HorizontalAlignment="Left" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648"
 				           Height="12" TextAlignment="Left" FontSize="9" Grid.ColumnSpan="2">
 					<Run Language="es-es" Text="Descripción Completa" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxFullDescription" HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="648"
-				         Height="36" FontSize="9" Grid.ColumnSpan="2" TextAlignment="Center" />
+				         Height="36" FontSize="11" Grid.ColumnSpan="2" TextAlignment="Center" />
 			</Grid>
 		</GroupBox>
 
@@ -116,21 +116,21 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxCurrentProductStock" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="87,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Mínimo" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxMinProductStock" HorizontalAlignment="Left" Margin="87,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="164,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Máximo" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxMaxProductStock" HorizontalAlignment="Left" Margin="164,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<Button HorizontalAlignment="Left" Margin="297,52,0,0" VerticalAlignment="Top" Width="29" Height="18" FontSize="9"
 				        Content="Tareas" />
 			</Grid>
@@ -144,35 +144,35 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxContainer" HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="198"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Ubicación" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxLocation" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="87,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="    S" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxBranchOffice" HorizontalAlignment="Left" Margin="87,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="36"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="128,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="    E" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxShelf" HorizontalAlignment="Left" Margin="128,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="36"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="172,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="    R" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxLedge" HorizontalAlignment="Left" Margin="169,52,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="36"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 			</Grid>
 		</GroupBox>
 
@@ -184,29 +184,29 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxPurchasePrice" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Unidad*" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxUnit" Margin="87,22,322,109" Width="72" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxUnit" Margin="87,22,322,109" Width="72" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="164,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Tipo de Producto" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxProductType" Margin="164,22,167,109" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxProductType" Margin="164,22,167,109" Width="150" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="328,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Fabricante" />
 				</TextBlock>
-				<ComboBox x:Name="CmbBoxManufacturer" Margin="328,22,3,109" Width="150" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+				<ComboBox x:Name="CmbBoxManufacturer" Margin="328,22,3,109" Width="150" Height="18" FontSize="11" HorizontalContentAlignment="Center"/>
 				<TextBlock HorizontalAlignment="Left" Margin="328,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="No. Parte del Fabricante" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxManufacturerPartNumber" HorizontalAlignment="Left" Margin="328,51,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="150"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Ajuste de Ganancia" />
@@ -220,42 +220,42 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxPercentageOfProfit" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="123,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Precio de Venta" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxSalePrice" HorizontalAlignment="Left" Margin="123,92,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="242,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Utilidad" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxUtility" HorizontalAlignment="Left" Margin="242,92,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="10,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="%Descuento" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxDiscountRate" HorizontalAlignment="Left" Margin="10,127,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="123,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Precio Descuento" />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxPriceWithDiscount" HorizontalAlignment="Left" Margin="123,127,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 				<TextBlock HorizontalAlignment="Left" Margin="242,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Utilidad con Desc." />
 				</TextBlock>
 				<TextBox x:Name="TxtBoxProfitWithDiscount" HorizontalAlignment="Left" Margin="242,127,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="72"
-				         Height="18" FontSize="9" TextAlignment="Center" />
+				         Height="18" FontSize="11" TextAlignment="Center" />
 			</Grid>
 		</GroupBox>
 		<TextBlock HorizontalAlignment="Left" Margin="10,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="672"
