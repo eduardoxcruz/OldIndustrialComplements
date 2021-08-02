@@ -60,12 +60,8 @@ namespace Inventory.ui
 			{
 				var habilitarInventario = registro["inventario"].ToString();
 				var habilitarAjusteManual = registro["ajuste_manual"].ToString();
-				CmbBoxStatus.Items.Add(registro["estado"].ToString());
 				TxtBoxEnrollment.Text = registro["matricula"].ToString();
-				CmbBoxMountingTechnology.Items.Add(registro["tecmon"].ToString());
-				CmbBoxEncapsulationType.Items.Add(registro["encapsulado"].ToString());
 				TxtBoxShortDescription.Text = registro["descripcion"].ToString();
-				CmbBoxCategories.Items.Add(registro["categoria"].ToString());
 				TxtBoxCurrentProductStock.Text = registro["existencia"].ToString();
 				TxtBoxMinProductStock.Text = registro["minimo"].ToString();
 				TxtBoxMaxProductStock.Text = registro["maximo"].ToString();
@@ -75,10 +71,7 @@ namespace Inventory.ui
 				TxtBoxShelf.Text = registro["e"].ToString();
 				TxtBoxLedge.Text = registro["r"].ToString();
 				TxtBoxPurchasePrice.Text = registro["preciocomp"].ToString();
-				CmbBoxUnit.Items.Add(registro["unidad"].ToString());
-				CmbBoxManufacturer.Items.Add(registro["proveedor"].ToString());
 				TxtBoxManufacturerPartNumber.Text = registro["parte"].ToString();
-				CmbBoxProductType.Items.Add(registro["tipo"].ToString());
 				TxtBoxPercentageOfProfit.Text = registro["ganancia"].ToString();
 				TxtBoxDiscountRate.Text = registro["descuento"].ToString();
 				TxtBoxSalePrice.Text = registro["preciovent"].ToString();
@@ -87,7 +80,31 @@ namespace Inventory.ui
 				TxtBoxProfitWithDiscount.Text = registro["utilidaddesc"].ToString();
 				TxtBoxFullDescription.Text = registro["descfull"].ToString();
 				TxtBoxMemo.Text = registro["memo"].ToString();
-
+				
+				CmbBoxStatus.Items.Clear();
+				CmbBoxProductType.Items.Clear();
+				CmbBoxCategories.Items.Clear();
+				CmbBoxManufacturer.Items.Clear();
+				CmbBoxUnit.Items.Clear();
+				CmbBoxEncapsulationType.Items.Clear();
+				CmbBoxMountingTechnology.Items.Clear();
+				
+				CmbBoxStatus.Items.Add(registro["estado"].ToString());
+				CmbBoxProductType.Items.Add(registro["tipo"].ToString());
+				CmbBoxUnit.Items.Add(registro["unidad"].ToString());
+				CmbBoxManufacturer.Items.Add(registro["proveedor"].ToString());
+				CmbBoxCategories.Items.Add(registro["categoria"].ToString());
+				CmbBoxMountingTechnology.Items.Add(registro["tecmon"].ToString());
+				CmbBoxEncapsulationType.Items.Add(registro["encapsulado"].ToString());
+				
+				CmbBoxStatus.SelectedIndex = 0;
+				CmbBoxProductType.SelectedIndex = 0;
+				CmbBoxUnit.SelectedIndex = 0;
+				CmbBoxManufacturer.SelectedIndex = 0;
+				CmbBoxCategories.SelectedIndex = 0;
+				CmbBoxMountingTechnology.SelectedIndex = 0;
+				CmbBoxEncapsulationType.SelectedIndex = 0;
+				
 				if (habilitarInventario.Equals("True"))
 				{
 					ChkBoxTheProductUsesInventory.IsChecked = true;
