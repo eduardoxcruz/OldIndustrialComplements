@@ -51,12 +51,10 @@ namespace Inventory.ui
 				return;
 			}
 			
-			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id LIKE ('" + id + "')";
 			
 			using SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlCommand sqlCommand = new SqlCommand(queryDataFromProductId, sqlDatabase.DatabaseConnection);
-			sqlCommand.Parameters.AddWithValue("@id", id);
-			using SqlDataReader registro = sqlDatabase.Read(sqlCommand);
+			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId);
 
 			if (registro.Read())
 			{
