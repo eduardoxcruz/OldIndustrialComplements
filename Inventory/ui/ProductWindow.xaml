@@ -210,8 +210,8 @@
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Ajuste de Ganancia" />
 				</TextBlock>
-				<RadioButton x:Name="RadioBntAutomaticProfit" Content="Automatica" Margin="6,62,384,68" Height="19.5" FontSize="11"
-				             Checked="RadioBntAutomaticProfit_OnChecked" Unchecked="RadioBntAutomaticProfit_OnUnchecked" />
+				<RadioButton x:Name="RadioBtnAutomaticProfit" Content="Automatica" Margin="6,62,384,68" Height="19.5" FontSize="11"
+				             Checked="RadioBtnAutomaticProfit_OnChecked" Unchecked="RadioBtnAutomaticProfit_OnUnchecked" />
 				<RadioButton x:Name="RadioBtnManualProfit" Content="Entrada Manual" Margin="90,62,282,69" FontSize="11" />
 				<TextBlock HorizontalAlignment="Left" Margin="9,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"
 				           Height="12" TextAlignment="Left" FontSize="9">

@@ -122,13 +122,13 @@ namespace Inventory.ui
 
 				if (habilitarAjusteManual.Equals("True"))
 				{
-					RadioBntAutomaticProfit.IsChecked = false;
+					RadioBtnAutomaticProfit.IsChecked = false;
 					EnableControlsForManualProfit();
 				}
 
 				if (habilitarAjusteManual.Equals("False"))
 				{
-					RadioBntAutomaticProfit.IsChecked = true;
+					RadioBtnAutomaticProfit.IsChecked = true;
 					DisableControlsForAutomaticProfit();
 				}
 			}
@@ -218,12 +218,12 @@ namespace Inventory.ui
 			
 			ConfigureControlsForTask();
 		}
-		private void RadioBntAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
+		private void RadioBtnAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = false;
 			DisableControlsForAutomaticProfit();
 		}
-		private void RadioBntAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
+		private void RadioBtnAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
 		{
 			RadioBtnManualProfit.IsChecked = true;
 			EnableControlsForManualProfit();
