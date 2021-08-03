@@ -159,7 +159,41 @@ namespace Inventory.ui
 
 		private void DisableEditableControls()
 		{
+			CmbBoxStatus.IsReadOnly = true;
+			TxtBoxEnrollment.IsReadOnly = true;
+			CmbBoxMountingTechnology.IsReadOnly = true;
+			CmbBoxEncapsulationType.IsReadOnly = true;
+			TxtBoxShortDescription.IsReadOnly = true;
+			CmbBoxCategories.IsReadOnly = true;
+			TxtBoxFullDescription.IsReadOnly = true;
+
+			ChkBoxTheProductUsesInventory.IsEnabled = false;
+			TxtBoxCurrentProductStock.IsReadOnly = true;
+			TxtBoxMinProductStock.IsReadOnly = true;
+			TxtBoxMaxProductStock.IsReadOnly = true;
+
+			TxtBoxContainer.IsReadOnly = true;
+			TxtBoxLocation.IsReadOnly = true;
+			TxtBoxBranchOffice.IsReadOnly = true;
+			TxtBoxShelf.IsReadOnly = true;
+			TxtBoxLedge.IsReadOnly = true;
+
+			TxtBoxPurchasePrice.IsReadOnly = true;
+			CmbBoxUnit.IsReadOnly = true;
+			CmbBoxProductType.IsReadOnly = true;
+			CmbBoxManufacturer.IsReadOnly = true;
+			TxtBoxManufacturerPartNumber.IsReadOnly = true;
 			
+			RadioBtnAutomaticProfit.IsEnabled = false;
+			RadioBtnManualProfit.IsEnabled = false;
+			TxtBoxPercentageOfProfit.IsReadOnly = true;
+			TxtBoxSalePrice.IsReadOnly = true;
+			TxtBoxUtility.IsReadOnly = true;
+			TxtBoxDiscountRate.IsReadOnly = true;
+			TxtBoxPriceWithDiscount.IsReadOnly = true;
+			TxtBoxProfitWithDiscount.IsReadOnly = true;
+
+			TxtBoxMemo.IsReadOnly = true;
 		}
 		private void EnableEditableControls()
 		{
