@@ -38,7 +38,7 @@
             <TabItem Header="Red">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="12" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="Dirección IP del servidor SQL"/></TextBlock>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,27,306,174"/>
+                    <TextBox x:Name="TxtBoxIpAdress" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,27,306,174"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Sistema">
@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="647*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Dirección del sistema"/></TextBlock>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,20,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="TxtxBoxSystemAdress" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,20,0,0" Grid.ColumnSpan="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="8,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Usuario del sistema"/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" Margin="12,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" Margin="12,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Año"/></TextBlock>
