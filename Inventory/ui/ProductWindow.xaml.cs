@@ -362,5 +362,10 @@ namespace Inventory.ui
 				AssignProductDataToControls(TxtBoxIdCode.Text);
 			}
 		}
+
+		private void BtnQuickLoad_OnClick(object sender, RoutedEventArgs e)
+		{
+			
+		}
 	}
 }

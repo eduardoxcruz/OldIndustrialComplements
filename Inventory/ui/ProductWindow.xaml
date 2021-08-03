@@ -275,7 +275,7 @@
 		</Button>
 		<Button x:Name="BtnQuickLoad" HorizontalAlignment="Left" Margin="622,528,0,0"
 		        VerticalAlignment="Top" Width="60"
-		        Height="24" FontSize="9" Content="Cargar Primer" />
+		        Height="24" FontSize="9" Content="Cargar Primer" Click="BtnQuickLoad_OnClick"/>
 		<Border BorderThickness="1" BorderBrush="Gray" Margin="508,338,19,58" >
 			<Button HorizontalAlignment="Left" Margin="132,9,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
 				Foto
