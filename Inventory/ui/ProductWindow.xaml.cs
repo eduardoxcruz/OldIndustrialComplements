@@ -163,7 +163,41 @@ namespace Inventory.ui
 		}
 		private void EnableEditableControls()
 		{
+			CmbBoxStatus.IsReadOnly = false;
+			TxtBoxEnrollment.IsReadOnly = false;
+			CmbBoxMountingTechnology.IsReadOnly = false;
+			CmbBoxEncapsulationType.IsReadOnly = false;
+			TxtBoxShortDescription.IsReadOnly = false;
+			CmbBoxCategories.IsReadOnly = false;
+			TxtBoxFullDescription.IsReadOnly = false;
+
+			ChkBoxTheProductUsesInventory.IsEnabled = true;
+			TxtBoxCurrentProductStock.IsReadOnly = false;
+			TxtBoxMinProductStock.IsReadOnly = false;
+			TxtBoxMaxProductStock.IsReadOnly = false;
+
+			TxtBoxContainer.IsReadOnly = false;
+			TxtBoxLocation.IsReadOnly = false;
+			TxtBoxBranchOffice.IsReadOnly = false;
+			TxtBoxShelf.IsReadOnly = false;
+			TxtBoxLedge.IsReadOnly = false;
+
+			TxtBoxPurchasePrice.IsReadOnly = false;
+			CmbBoxUnit.IsReadOnly = false;
+			CmbBoxProductType.IsReadOnly = false;
+			CmbBoxManufacturer.IsReadOnly = false;
+			TxtBoxManufacturerPartNumber.IsReadOnly = false;
 			
+			RadioBtnAutomaticProfit.IsEnabled = true;
+			RadioBtnManualProfit.IsEnabled = true;
+			TxtBoxPercentageOfProfit.IsReadOnly = false;
+			TxtBoxSalePrice.IsReadOnly = false;
+			TxtBoxUtility.IsReadOnly = false;
+			TxtBoxDiscountRate.IsReadOnly = false;
+			TxtBoxPriceWithDiscount.IsReadOnly = false;
+			TxtBoxProfitWithDiscount.IsReadOnly = false;
+
+			TxtBoxMemo.IsReadOnly = false;
 		}
 		private void EnableControlsForManualProfit()
 		{
