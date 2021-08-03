@@ -168,9 +168,7 @@ namespace Inventory.ui
 			TxtBoxFullDescription.IsReadOnly = true;
 
 			ChkBoxTheProductUsesInventory.IsEnabled = false;
-			TxtBoxCurrentProductStock.IsReadOnly = true;
-			TxtBoxMinProductStock.IsReadOnly = true;
-			TxtBoxMaxProductStock.IsReadOnly = true;
+			DisableControlsForInventory();
 
 			TxtBoxContainer.IsReadOnly = true;
 			TxtBoxLocation.IsReadOnly = true;
@@ -206,9 +204,7 @@ namespace Inventory.ui
 			TxtBoxFullDescription.IsReadOnly = false;
 
 			ChkBoxTheProductUsesInventory.IsEnabled = true;
-			TxtBoxCurrentProductStock.IsReadOnly = false;
-			TxtBoxMinProductStock.IsReadOnly = false;
-			TxtBoxMaxProductStock.IsReadOnly = false;
+			EnableControlsForInventory();
 
 			TxtBoxContainer.IsReadOnly = false;
 			TxtBoxLocation.IsReadOnly = false;
@@ -255,15 +251,15 @@ namespace Inventory.ui
 		}
 		private void EnableControlsForInventory()
 		{
-			TxtBoxCurrentProductStock.IsEnabled = true;
-			TxtBoxMinProductStock.IsEnabled = true;
-			TxtBoxMaxProductStock.IsEnabled = true;
+			TxtBoxCurrentProductStock.IsReadOnly = false;
+			TxtBoxMinProductStock.IsReadOnly = false;
+			TxtBoxMaxProductStock.IsReadOnly = false;
 		}
 		private void DisableControlsForInventory()
 		{
-			TxtBoxCurrentProductStock.IsEnabled = false;
-			TxtBoxMinProductStock.IsEnabled = false;
-			TxtBoxMaxProductStock.IsEnabled = false;
+			TxtBoxCurrentProductStock.IsReadOnly = true;
+			TxtBoxMinProductStock.IsReadOnly = true;
+			TxtBoxMaxProductStock.IsReadOnly = true;
 		}
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
