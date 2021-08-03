@@ -220,24 +220,23 @@ namespace Inventory.ui
 			
 			RadioBtnAutomaticProfit.IsEnabled = true;
 			RadioBtnManualProfit.IsEnabled = true;
+			UnlockControlsForManualProfit();
+
+			TxtBoxMemo.IsReadOnly = false;
+		}
+		private void UnlockControlsForManualProfit()
+		{
 			TxtBoxPercentageOfProfit.IsReadOnly = false;
 			TxtBoxSalePrice.IsReadOnly = false;
 			TxtBoxUtility.IsReadOnly = false;
 			TxtBoxDiscountRate.IsReadOnly = false;
 			TxtBoxPriceWithDiscount.IsReadOnly = false;
 			TxtBoxProfitWithDiscount.IsReadOnly = false;
-
-			TxtBoxMemo.IsReadOnly = false;
 		}
 		private void EnableControlsForManualProfit()
 		{
 			RadioBtnManualProfit.IsChecked = true;
-			TxtBoxPercentageOfProfit.IsEnabled = true;
-			TxtBoxSalePrice.IsEnabled = true;
-			TxtBoxUtility.IsEnabled = true;
-			TxtBoxDiscountRate.IsEnabled = true;
-			TxtBoxPriceWithDiscount.IsEnabled = true;
-			TxtBoxProfitWithDiscount.IsEnabled = true;
+			UnlockControlsForManualProfit();
 		}
 		private void DisableControlsForAutomaticProfit()
 		{
