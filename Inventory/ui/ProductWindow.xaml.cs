@@ -184,12 +184,7 @@ namespace Inventory.ui
 			
 			RadioBtnAutomaticProfit.IsEnabled = false;
 			RadioBtnManualProfit.IsEnabled = false;
-			TxtBoxPercentageOfProfit.IsReadOnly = true;
-			TxtBoxSalePrice.IsReadOnly = true;
-			TxtBoxUtility.IsReadOnly = true;
-			TxtBoxDiscountRate.IsReadOnly = true;
-			TxtBoxPriceWithDiscount.IsReadOnly = true;
-			TxtBoxProfitWithDiscount.IsReadOnly = true;
+			LockControlsForAutomaticProfit();
 
 			TxtBoxMemo.IsReadOnly = true;
 		}
@@ -238,15 +233,19 @@ namespace Inventory.ui
 			RadioBtnManualProfit.IsChecked = true;
 			UnlockControlsForManualProfit();
 		}
+		private void LockControlsForAutomaticProfit()
+		{
+			TxtBoxPercentageOfProfit.IsReadOnly = true;
+			TxtBoxSalePrice.IsReadOnly = true;
+			TxtBoxUtility.IsReadOnly = true;
+			TxtBoxDiscountRate.IsReadOnly = true;
+			TxtBoxPriceWithDiscount.IsReadOnly = true;
+			TxtBoxProfitWithDiscount.IsReadOnly = true;
+		}
 		private void DisableControlsForAutomaticProfit()
 		{
 			RadioBtnManualProfit.IsChecked = false;
-			TxtBoxPercentageOfProfit.IsEnabled = false;
-			TxtBoxSalePrice.IsEnabled = false;
-			TxtBoxUtility.IsEnabled = false;
-			TxtBoxDiscountRate.IsEnabled = false;
-			TxtBoxPriceWithDiscount.IsEnabled = false;
-			TxtBoxProfitWithDiscount.IsEnabled = false;
+			LockControlsForAutomaticProfit();
 		}
 		private void EnableControlsForInventory()
 		{
