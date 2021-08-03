@@ -365,7 +365,7 @@ namespace Inventory.ui
 
 		private void BtnQuickLoad_OnClick(object sender, RoutedEventArgs e)
 		{
-			
+			AssignProductDataToControls("1");
 		}
 	}
 }
