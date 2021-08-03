@@ -138,7 +138,7 @@ namespace Inventory.ui
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
 			{
-				EnableEditableControls();
+				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Nuevo Producto";
 				BtnAddModifyAndSave.Content = "Agregar";
 				return;
@@ -146,18 +146,18 @@ namespace Inventory.ui
 
 			if (CurrentTask == (int)ProductWindowTasks.Modify)
 			{
-				EnableEditableControls();
+				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Modificar Producto";
 				BtnAddModifyAndSave.Content = "Guardar";
 				return;
 			}
 
-			DisableEditableControls();
+			LockEditableControls();
 			TxtBlockProductTask.Text = "Detalles del Producto";
 			BtnAddModifyAndSave.Content = "Modificar";
 		}
 
-		private void DisableEditableControls()
+		private void LockEditableControls()
 		{
 			CmbBoxStatus.IsReadOnly = true;
 			TxtBoxEnrollment.IsReadOnly = true;
@@ -195,7 +195,7 @@ namespace Inventory.ui
 
 			TxtBoxMemo.IsReadOnly = true;
 		}
-		private void EnableEditableControls()
+		private void UnlockEditableControls()
 		{
 			CmbBoxStatus.IsReadOnly = false;
 			TxtBoxEnrollment.IsReadOnly = false;
