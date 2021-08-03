@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using Inventory.database;
 
 namespace Inventory.ui
@@ -159,34 +160,63 @@ namespace Inventory.ui
 
 		private void LockEditableControls()
 		{
+			TxtBlockProductTask.Foreground = new SolidColorBrush(Colors.Crimson);
+			
 			CmbBoxStatus.IsReadOnly = true;
+			CmbBoxStatus.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxEnrollment.IsReadOnly = true;
+			TxtBoxEnrollment.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxMountingTechnology.IsReadOnly = true;
+			CmbBoxMountingTechnology.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxEncapsulationType.IsReadOnly = true;
+			CmbBoxEncapsulationType.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxShortDescription.IsReadOnly = true;
+			TxtBoxShortDescription.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxCategories.IsReadOnly = true;
+			CmbBoxCategories.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxFullDescription.IsReadOnly = true;
+			TxtBoxFullDescription.Foreground = new SolidColorBrush(Colors.Crimson);
 
 			ChkBoxTheProductUsesInventory.IsEnabled = false;
+			TxtBoxCurrentProductStock.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxMinProductStock.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxMaxProductStock.Foreground = new SolidColorBrush(Colors.Crimson);
 			DisableControlsForInventory();
 
 			TxtBoxContainer.IsReadOnly = true;
+			TxtBoxContainer.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxLocation.IsReadOnly = true;
+			TxtBoxLocation.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxBranchOffice.IsReadOnly = true;
+			TxtBoxBranchOffice.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxShelf.IsReadOnly = true;
+			TxtBoxShelf.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxLedge.IsReadOnly = true;
+			TxtBoxLedge.Foreground = new SolidColorBrush(Colors.Crimson);
 
 			TxtBoxPurchasePrice.IsReadOnly = true;
+			TxtBoxPurchasePrice.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxUnit.IsReadOnly = true;
+			CmbBoxUnit.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxProductType.IsReadOnly = true;
+			CmbBoxProductType.Foreground = new SolidColorBrush(Colors.Crimson);
 			CmbBoxManufacturer.IsReadOnly = true;
+			CmbBoxManufacturer.Foreground = new SolidColorBrush(Colors.Crimson);
 			TxtBoxManufacturerPartNumber.IsReadOnly = true;
+			TxtBoxManufacturerPartNumber.Foreground = new SolidColorBrush(Colors.Crimson);
 			
 			RadioBtnAutomaticProfit.IsEnabled = false;
 			RadioBtnManualProfit.IsEnabled = false;
+			TxtBoxPercentageOfProfit.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxSalePrice.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxUtility.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxDiscountRate.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxPriceWithDiscount.Foreground = new SolidColorBrush(Colors.Crimson);
+			TxtBoxProfitWithDiscount.Foreground = new SolidColorBrush(Colors.Crimson);
 			LockControlsForAutomaticProfit();
 
 			TxtBoxMemo.IsReadOnly = true;
+			TxtBoxMemo.Foreground = new SolidColorBrush(Colors.Crimson);
 		}
 		private void UnlockEditableControls()
 		{
