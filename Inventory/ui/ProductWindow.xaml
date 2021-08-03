@@ -60,7 +60,7 @@
 				</TextBlock>
 				<TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap"
 				         VerticalAlignment="Top" Width="80"
-				         Height="18" FontSize="11" Grid.ColumnSpan="2"  TextAlignment="Center" IsReadOnly="True"/>
+				         Height="18" FontSize="11" Grid.ColumnSpan="2"  TextAlignment="Center" IsReadOnly="True" Foreground="Crimson"/>
 				<TextBlock HorizontalAlignment="Left" Margin="105,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"
 				           Height="12" TextAlignment="Left" FontSize="9">
 					<Run Language="es-es" Text="Estado*" />
