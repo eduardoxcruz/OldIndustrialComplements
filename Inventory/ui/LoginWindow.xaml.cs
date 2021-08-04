@@ -25,7 +25,7 @@ namespace Inventory.ui
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void BtnConnect_Click(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(TxtxBoxUser.Text))
 			{
