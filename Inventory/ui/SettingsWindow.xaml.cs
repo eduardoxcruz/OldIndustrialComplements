@@ -9,7 +9,7 @@ namespace Inventory.ui
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void BtnSave_Click(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIpAdress.Text) || string.IsNullOrEmpty(TxtxBoxSystemAdress.Text))
 			{
@@ -20,6 +20,7 @@ namespace Inventory.ui
 			Properties.Settings.Default.DatabaseIp = TxtBoxIpAdress.Text;
 			Properties.Settings.Default.PhotosPath = TxtxBoxSystemAdress.Text;
 			Properties.Settings.Default.Save();
+			MessageBox.Show("Campos guardados exitosamente");
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
