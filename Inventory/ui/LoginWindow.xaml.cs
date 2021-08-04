@@ -53,5 +53,17 @@ namespace Inventory.ui
 				}
 			}
 		}
+
+		private void AssignUsersData()
+		{
+			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
+			using SqlDatabase sqlDatabase = new SqlDatabase();
+			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId);
+			if (registro.Read())
+			{
+				CmbBoxUsers.Items.Add(registro["nombre"].ToString());
+				CmbBoxUsers.SelectedIndex = 0;
+			}
+		}
 	}
 }
