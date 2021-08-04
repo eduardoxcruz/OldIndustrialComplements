@@ -32,7 +32,7 @@ namespace Inventory.ui
 
 		private void SearchProductWithQuickSearch(string text)
 		{
-			string query = "SELECT TOP 25 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR matricula like ('%" + text + "%') OR descripcion like ('%" + text + "%') OR contenedor like ('%" + text + "%') OR ubicacion like ('%" + text + "%') OR estado like ('%"+ text + "%') OR tecmon like ('%" + text + "%') OR encapsulado like ('%" + text + "%')";
+			string query = "SELECT TOP 30 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR matricula like ('%" + text + "%') OR descripcion like ('%" + text + "%') OR contenedor like ('%" + text + "%') OR ubicacion like ('%" + text + "%') OR estado like ('%"+ text + "%') OR tecmon like ('%" + text + "%') OR encapsulado like ('%" + text + "%')";
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
