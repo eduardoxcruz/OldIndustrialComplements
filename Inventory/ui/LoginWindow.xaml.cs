@@ -11,6 +11,9 @@ namespace Inventory.ui
 		public LoginWindow()
 		{
 			InitializeComponent();
+			MainWindow mainWindow = new MainWindow();
+			mainWindow.Show();
+			AssignUsersData();
 		}
 
 		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
