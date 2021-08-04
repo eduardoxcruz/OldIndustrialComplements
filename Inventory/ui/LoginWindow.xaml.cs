@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows;
+using System.Windows.Controls;
+using Inventory.database;
 
 namespace Inventory.ui
 {
@@ -11,7 +15,7 @@ namespace Inventory.ui
 
 		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(TxtxBoxUser.Text))
+			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(CmbBoxUsers.Text))
 			{
 				ChkBoxRememberData.IsChecked = false;
 				MessageBox.Show("Introduce datos para guardar la información");
@@ -20,23 +24,22 @@ namespace Inventory.ui
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			TxtxBoxUser.Text = Properties.Settings.Default.User;
 			TxtBoxPassword.Password = Properties.Settings.Default.Pass;
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
 		}
 
 		private void BtnConnect_Click(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(TxtxBoxUser.Text))
+			if (string.IsNullOrEmpty(TxtBoxPassword.Password) || string.IsNullOrEmpty(CmbBoxUsers.Text))
 			{
 				ChkBoxRememberData.IsChecked = false;
-				MessageBox.Show("Introduce datos para guardar la información");
+				MessageBox.Show("El campo de contraseña esta vacío");
 			}
 			else
 			{
 				if (ChkBoxRememberData.IsChecked == true)
 				{
-					Properties.Settings.Default.User = TxtxBoxUser.Text;
+					Properties.Settings.Default.User = CmbBoxUsers.Text;
 					Properties.Settings.Default.Pass = TxtBoxPassword.Password;
 					Properties.Settings.Default.SaveSession = true;
 					Properties.Settings.Default.Save();
