@@ -10,8 +10,6 @@ namespace Inventory.ui
 		public MainWindow()
 		{
 			InitializeComponent();
-			LoginWindow loginWindow = new LoginWindow();
-			loginWindow.Show();
 		}
 
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
