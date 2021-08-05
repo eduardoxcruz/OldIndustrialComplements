@@ -6,6 +6,14 @@ namespace Inventory.ui
 {
 	public partial class LoginWindow : Window
 	{
+
+		private SqlDataReader _dataReader;
+		private SqlDataReader DataReader
+		{
+			get => _dataReader;
+			set => _dataReader = value;
+		}
+
 		public LoginWindow()
 		{
 			InitializeComponent();
