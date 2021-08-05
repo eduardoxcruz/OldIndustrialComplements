@@ -74,5 +74,12 @@ namespace Inventory.ui
 				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers,Properties.Settings.Default.User);
 			}
 		}
+
+		private void GetUsersData()
+		{
+			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
+			SqlDatabase sqlDatabase = new SqlDatabase();
+			DataReader = sqlDatabase.Read(queryDataFromProductId);
+		}
 	}
 }
