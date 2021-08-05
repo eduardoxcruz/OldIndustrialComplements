@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Windows;
-using System.Windows.Controls;
 using Inventory.database;
 
 namespace Inventory.ui
@@ -62,10 +60,10 @@ namespace Inventory.ui
 			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
 			using SqlDatabase sqlDatabase = new SqlDatabase();
 			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId);
-			if (registro.Read())
+			while (registro.Read())
 			{
 				CmbBoxUsers.Items.Add(registro["nombre"].ToString());
-				CmbBoxUsers.SelectedIndex = 0;
+				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers,Properties.Settings.Default.User);
 			}
 		}
 	}
