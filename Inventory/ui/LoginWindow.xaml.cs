@@ -65,13 +65,10 @@ namespace Inventory.ui
 
 		private void AssignUsersData()
 		{
-			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
-			using SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId);
-			while (registro.Read())
+			while (DataReader.Read())
 			{
-				CmbBoxUsers.Items.Add(registro["nombre"].ToString());
-				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers,Properties.Settings.Default.User);
+				CmbBoxUsers.Items.Add(DataReader["nombre"].ToString());
+				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 			}
 		}
 
