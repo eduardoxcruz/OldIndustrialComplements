@@ -17,8 +17,7 @@ namespace Inventory.ui
 		public LoginWindow()
 		{
 			InitializeComponent();
-			MainWindow mainWindow = new MainWindow();
-			mainWindow.Show();
+			GetUsersData();
 			AssignUsersData();
 		}
 
