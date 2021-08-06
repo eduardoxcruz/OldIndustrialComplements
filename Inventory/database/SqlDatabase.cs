@@ -7,7 +7,7 @@ namespace Inventory.database
 {
 	public class SqlDatabase : IDisposable
 	{
-		private string ServerIp = Properties.Settings.Default.DatabaseIp;
+		private string ServerIp = string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp) ? "192.168.0.254" : Properties.Settings.Default.DatabaseIp;
 		private const string ServerPort = "1433";
 		private const string DatabaseName = "pruebas";
 		private const string IntegratedSecurity = "False";
