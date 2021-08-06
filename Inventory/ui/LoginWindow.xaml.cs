@@ -17,8 +17,7 @@ namespace Inventory.ui
 		public LoginWindow()
 		{
 			InitializeComponent();
-			MainWindow mainWindow = new MainWindow();
-			mainWindow.Show();
+			GetUsersData();
 			AssignUsersData();
 		}
 
@@ -35,6 +34,20 @@ namespace Inventory.ui
 		{
 			TxtBoxPassword.Password = Properties.Settings.Default.Pass;
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
+		}
+
+		private SqlDatabase _sqlDatabase;
+
+		private SqlDatabase sqlDatabase
+		{
+			get
+			{
+				return _sqlDatabase;
+			}
+			set
+			{
+				_sqlDatabase = value;
+			}
 		}
 
 		private void BtnConnect_Click(object sender, RoutedEventArgs e)
@@ -61,6 +74,8 @@ namespace Inventory.ui
 					Properties.Settings.Default.Save();
 				}
 			}
+			sqlDatabase = new SqlDatabase();
+			sqlDatabase.Login(CmbBoxUsers.Text,TxtBoxPassword.Password);
 		}
 
 		private void AssignUsersData()
