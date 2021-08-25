@@ -6,14 +6,6 @@ namespace Inventory.ui
 {
 	public partial class LoginWindow : Window
 	{
-
-		private SqlDataReader _dataReader;
-		private SqlDataReader DataReader
-		{
-			get => _dataReader;
-			set => _dataReader = value;
-		}
-
 		public LoginWindow()
 		{
 			InitializeComponent();
@@ -64,9 +56,13 @@ namespace Inventory.ui
 
 		private void AssignUsersData()
 		{
-			while (DataReader.Read())
+			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
+			SqlDatabase sqlDatabase = new SqlDatabase();
+			using SqlDataReader dataReader = sqlDatabase.Read(queryDataFromProductId);
+
+			while (dataReader.Read())
 			{
-				CmbBoxUsers.Items.Add(DataReader["nombre"].ToString());
+				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
 				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 			}
 		}
