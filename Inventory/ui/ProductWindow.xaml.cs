@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -51,10 +52,12 @@ namespace Inventory.ui
 				return;
 			}
 			
-			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id LIKE ('" + id + "')";
-			
+			string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+			Dictionary<string, string> sqlCommandParams = new Dictionary<string, string>();
+			sqlCommandParams.Add("@id", id);
+
 			using SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId);
+			using SqlDataReader registro = sqlDatabase.Read(queryDataFromProductId, sqlCommandParams);
 
 			if (registro.Read())
 			{
