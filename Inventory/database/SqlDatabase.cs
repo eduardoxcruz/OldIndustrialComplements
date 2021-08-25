@@ -65,9 +65,9 @@ namespace Inventory.database
 			SqlDataReader dataReader = sqlCommand.ExecuteReader();
 			return dataReader;
 		}
-		public SqlDataReader Read(SqlCommand sqlCommand)
+		public SqlDataReader Read(string query, Dictionary<string,string> sqlCommandParams)
 		{
-			DatabaseConnection.Open();
+			SqlCommand sqlCommand = GetSqlCommandWithQuery(query, sqlCommandParams);
 			SqlDataReader dataReader = sqlCommand.ExecuteReader();
 			return dataReader;
 		}
