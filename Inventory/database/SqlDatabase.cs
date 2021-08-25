@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Controls;
@@ -74,6 +75,16 @@ namespace Inventory.database
 		{
 			DatabaseConnection.Open();
 			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
+			return sqlCommand;
+		}
+		public SqlCommand GetSqlCommandWithQuery(string query, Dictionary<string,string> sqlCommandParams)
+		{
+			DatabaseConnection.Open();
+			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
+			foreach (KeyValuePair<string, string> parameter in sqlCommandParams)
+			{
+				sqlCommand.Parameters.AddWithValue(parameter.Key, parameter.Value);
+			}
 			return sqlCommand;
 		}
 		public void FillDataGridWithQuery(string query, DataGrid dataGrid)
