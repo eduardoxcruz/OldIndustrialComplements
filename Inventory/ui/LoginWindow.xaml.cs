@@ -104,5 +104,9 @@ namespace Inventory.ui
 
 			return false;
 		}
+		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
 	}
 }

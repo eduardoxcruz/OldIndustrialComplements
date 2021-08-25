@@ -21,7 +21,7 @@
         <Button x:Name="BtnConnect" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnConnect_Click">
             Conectar
         </Button>
-        <Button x:Name="BtnExit" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+        <Button x:Name="BtnExit" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnExit_OnClick">
             Salir
         </Button>
         <CheckBox x:Name="ChkBoxRememberData" Margin="9,92,111,28" Checked="ChkBoxRememberData_Checked" Content="Guardar Datos"/>
