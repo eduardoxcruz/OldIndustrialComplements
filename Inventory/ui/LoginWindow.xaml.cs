@@ -9,8 +9,7 @@ namespace Inventory.ui
 		public LoginWindow()
 		{
 			InitializeComponent();
-			GetUsersData();
-			AssignUsersData();
+			LoadUsersFromDatabaseToComboBox();
 		}
 
 		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
@@ -54,7 +53,7 @@ namespace Inventory.ui
 			}
 		}
 
-		private void AssignUsersData()
+		private void LoadUsersFromDatabaseToComboBox()
 		{
 			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
 			SqlDatabase sqlDatabase = new SqlDatabase();
@@ -65,13 +64,6 @@ namespace Inventory.ui
 				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
 				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 			}
-		}
-
-		private void GetUsersData()
-		{
-			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
-			SqlDatabase sqlDatabase = new SqlDatabase();
-			DataReader = sqlDatabase.Read(queryDataFromProductId);
 		}
 	}
 }
