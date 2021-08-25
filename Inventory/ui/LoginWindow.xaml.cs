@@ -33,23 +33,21 @@ namespace Inventory.ui
 			{
 				ChkBoxRememberData.IsChecked = false;
 				MessageBox.Show("El campo de contraseña esta vacío");
+				return;
 			}
-			else
+			if (ChkBoxRememberData.IsChecked == true)
 			{
-				if (ChkBoxRememberData.IsChecked == true)
-				{
-					Properties.Settings.Default.User = CmbBoxUsers.Text;
-					Properties.Settings.Default.Pass = TxtBoxPassword.Password;
-					Properties.Settings.Default.SaveSession = true;
-					Properties.Settings.Default.Save();
-				}
-				else if (ChkBoxRememberData.IsChecked == false)
-				{
-					Properties.Settings.Default.User = "";
-					Properties.Settings.Default.Pass = "";
-					Properties.Settings.Default.SaveSession = false;
-					Properties.Settings.Default.Save();
-				}
+				Properties.Settings.Default.User = CmbBoxUsers.Text;
+				Properties.Settings.Default.Pass = TxtBoxPassword.Password;
+				Properties.Settings.Default.SaveSession = true;
+				Properties.Settings.Default.Save();
+			}
+			if (ChkBoxRememberData.IsChecked == false)
+			{
+				Properties.Settings.Default.User = "";
+				Properties.Settings.Default.Pass = "";
+				Properties.Settings.Default.SaveSession = false;
+				Properties.Settings.Default.Save();
 			}
 		}
 
