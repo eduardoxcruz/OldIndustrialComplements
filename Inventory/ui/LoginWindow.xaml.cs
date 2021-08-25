@@ -59,13 +59,20 @@ namespace Inventory.ui
 				Properties.Settings.Default.SaveSession = true;
 				Properties.Settings.Default.Save();
 			}
-			if (ChkBoxRememberData.IsChecked == false)
+
+			if (CredentialsAreCorrect())
 			{
-				Properties.Settings.Default.User = "";
-				Properties.Settings.Default.Pass = "";
-				Properties.Settings.Default.SaveSession = false;
-				Properties.Settings.Default.Save();
+				MainWindow mainWindow = new MainWindow();
+				mainWindow.Show();
+				this.Hide();
+				return;
 			}
+
+			MessageBox.Show("Usuario o contraseña incorrectos.");
+			Properties.Settings.Default.User = "";
+			Properties.Settings.Default.Pass = "";
+			Properties.Settings.Default.SaveSession = false;
+			Properties.Settings.Default.Save();
 		}
 
 		private void LoadUsersFromDatabaseToComboBox()
