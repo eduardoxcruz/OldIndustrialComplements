@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using Inventory.database;
 
@@ -76,6 +78,24 @@ namespace Inventory.ui
 				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
 				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 			}
+		}
+
+		private bool CredentialsAreCorrect()
+		{
+			string queryCredentials = "SELECT * FROM dbo.usuarios WHERE nombre = @nombre AND contraseña = @pass";
+			Dictionary<string, string> sqlCommandParams = new Dictionary<string, string>();
+			sqlCommandParams.Add("@nombre", CmbBoxUsers.Text);
+			sqlCommandParams.Add("@pass", TxtBoxPassword.Password);
+
+			SqlDatabase sqlDatabase = new SqlDatabase();
+			DataTable dataTable = sqlDatabase.GetFilledDataTableWithSqlDataAdapter(queryCredentials, sqlCommandParams);
+
+			if (dataTable.Rows.Count == 1)
+			{
+				return true;
+			}
+
+			return false;
 		}
 	}
 }
