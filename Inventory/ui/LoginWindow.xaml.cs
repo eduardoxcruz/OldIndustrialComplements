@@ -6,9 +6,24 @@ namespace Inventory.ui
 {
 	public partial class LoginWindow : Window
 	{
+		private SqlDatabase _sqlDatabase;
+
+		private SqlDatabase SqlDatabase
+		{
+			get
+			{
+				return _sqlDatabase;
+			}
+			set
+			{
+				_sqlDatabase = value;
+			}
+		}
+
 		public LoginWindow()
 		{
 			InitializeComponent();
+			SqlDatabase = new SqlDatabase();
 			LoadUsersFromDatabaseToComboBox();
 		}
 
