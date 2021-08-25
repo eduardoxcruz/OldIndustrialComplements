@@ -26,5 +26,10 @@ namespace Inventory.ui
 				throw;
 			}
 		}
+
+		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
 	}
 }
