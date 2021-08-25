@@ -110,7 +110,6 @@ namespace Inventory.database
 			return dataTable;
 		}
 		
-
 		public void Dispose()
 		{
 			DatabaseConnection.Close();
