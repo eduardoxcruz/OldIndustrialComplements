@@ -26,10 +26,5 @@ namespace Inventory.ui
 				throw;
 			}
 		}
-
-		private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
-		{
-			this.Close();
-		}
 	}
 }
