@@ -69,8 +69,7 @@ namespace Inventory.ui
 		private void LoadUsersFromDatabaseToComboBox()
 		{
 			string queryDataFromProductId = "SELECT * FROM dbo.usuarios";
-			SqlDatabase sqlDatabase = new SqlDatabase();
-			using SqlDataReader dataReader = sqlDatabase.Read(queryDataFromProductId);
+			using SqlDataReader dataReader = SqlDatabase.Read(queryDataFromProductId);
 
 			while (dataReader.Read())
 			{
