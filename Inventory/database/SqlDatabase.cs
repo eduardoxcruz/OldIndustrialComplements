@@ -102,6 +102,15 @@ namespace Inventory.database
 			return dataTable;
 		}
 
+		public DataTable GetFilledDataTableWithSqlDataAdapter(string query, Dictionary<string, string> sqlCommandParams)
+		{
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(GetSqlCommandWithQuery(query, sqlCommandParams));
+			sqlDataAdapter.Fill(dataTable);
+			return dataTable;
+		}
+		
+
 		public void Dispose()
 		{
 			DatabaseConnection.Close();
