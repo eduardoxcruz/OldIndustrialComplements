@@ -8,6 +8,10 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 		}
+		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
 	}
 }
 
