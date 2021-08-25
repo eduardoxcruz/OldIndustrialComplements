@@ -18,8 +18,8 @@
 		<Button HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
 			Ejecutar
 		</Button>
-		<Button HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-			Cancelar
+		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Salir
 		</Button>
 		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="324,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Height="11" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="ID"/></TextBlock>
