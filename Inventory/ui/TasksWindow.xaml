@@ -18,7 +18,7 @@
 		<Button HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
 			Ejecutar
 		</Button>
-		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnExit_OnClick">
 			Salir
 		</Button>
 		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
