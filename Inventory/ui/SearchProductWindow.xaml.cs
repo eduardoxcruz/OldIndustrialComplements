@@ -32,7 +32,14 @@ namespace Inventory.ui
 
 		private void SearchProductWithQuickSearch(string text)
 		{
-			string query = "SELECT TOP 30 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR matricula like ('%" + text + "%') OR descripcion like ('%" + text + "%') OR contenedor like ('%" + text + "%') OR ubicacion like ('%" + text + "%') OR estado like ('%"+ text + "%') OR tecmon like ('%" + text + "%') OR encapsulado like ('%" + text + "%')";
+			string query = "SELECT TOP 30 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR " +
+			               "matricula like ('%" + text + "%') OR " +
+			               "descripcion like ('%" + text + "%') OR " +
+			               "contenedor like ('%" + text + "%') OR " +
+			               "ubicacion like ('%" + text + "%') OR " +
+			               "estado like ('%"+ text + "%') OR " +
+			               "tecmon like ('%" + text + "%') OR " +
+			               "encapsulado like ('%" + text + "%')";
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
@@ -45,7 +52,15 @@ namespace Inventory.ui
 				return;
 			}
 
-			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + TxtBoxId.Text + "%') AND matricula like ('%" + TxtBoxEnrollment.Text + "%') AND descripcion like ('%" + TxtBoxDescription.Text + "%') AND contenedor like ('%" + TxtBoxContainer.Text + "%') AND ubicacion like ('%" + TxtBoxLocation.Text + "%') AND estado like ('%" + TxtBoxStatus.Text + "%') AND tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')AND codigo like ('%" + TxtBoxDebugCode.Text + "%')";
+			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + TxtBoxId.Text + "%') AND " +
+			               "matricula like ('%" + TxtBoxEnrollment.Text + "%') AND " +
+			               "descripcion like ('%" + TxtBoxDescription.Text + "%') AND " +
+			               "contenedor like ('%" + TxtBoxContainer.Text + "%') AND " +
+			               "ubicacion like ('%" + TxtBoxLocation.Text + "%') AND " +
+			               "estado like ('%" + TxtBoxStatus.Text + "%') AND " +
+			               "tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND " +
+			               "encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')AND " +
+			               "codigo like ('%" + TxtBoxDebugCode.Text + "%')";
 			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
