@@ -72,8 +72,8 @@ namespace Inventory.database
 		}
 		public SqlCommand GetSqlCommandWithQuery(string query)
 		{
-			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
 			DatabaseConnection.Open();
+			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
 			return sqlCommand;
 		}
 		public void FillDataGridWithQuery(string query, DataGrid dataGrid)
