@@ -28,7 +28,7 @@
         <Button x:Name="BtnSave" HorizontalAlignment="Left" Margin="563,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnSave_Click">
             Guardar
         </Button>
-        <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="642,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+        <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="642,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnExit_Click">
             Salir
         </Button>
         <TabControl Margin="0,45,0,33">
