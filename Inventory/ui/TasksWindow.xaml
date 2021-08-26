@@ -44,7 +44,16 @@
 		<TextBlock HorizontalAlignment="Left" Margin="95,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Cantidad"/></TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="265,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Provedor"/></TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="180,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Precio"/></TextBlock>
-		<ComboBox x:Name="CmbBoxTask" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18" HorizontalContentAlignment="Center" FontSize="9"/>
+		<ComboBox x:Name="CmbBoxTask" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18" HorizontalContentAlignment="Center" FontSize="9">
+			<ComboBox.Items>
+				<ComboBoxItem Content="ENTRADA"/>
+				<ComboBoxItem Content="SALIDA"/>
+				<ComboBoxItem Content="AJUSTE"/>
+				<ComboBoxItem Content="SOLICITAR"/>
+				<ComboBoxItem Content="PRECIO"/>
+				<ComboBoxItem Content="COMPRAR"/>
+			</ComboBox.Items>
+		</ComboBox>
 		<TextBox HorizontalAlignment="Left" Margin="95,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
 		<TextBox HorizontalAlignment="Left" Margin="180,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
 		<ComboBox HorizontalAlignment="Left" Margin="265,130,0,0" VerticalAlignment="Top" Width="150" Height="18"/>
