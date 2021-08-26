@@ -206,5 +206,21 @@ namespace Inventory.ui
 			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.AddNewProduct);
 			productWindow.Show();
 		}
+
+		private void AddProductToDataGrid_Click(object sender, RoutedEventArgs e)
+		{
+			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
+			DataGridAddedProducts.Items.Add(selectedRow);
+		}
+
+		private void RequestProduct_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show("Click Derecho Solicitar");
+		}
+
+		private void BtnCleanDataGridAddedProducts_Click(object sender, RoutedEventArgs e)
+		{
+			DataGridAddedProducts.Items.Clear();
+		}
 	}
 }
