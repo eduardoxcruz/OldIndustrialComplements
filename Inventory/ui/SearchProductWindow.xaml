@@ -10,14 +10,14 @@
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-	<Window.Resources>
-		<Style TargetType="DataGridColumnHeader">
-			<Setter Property="HorizontalContentAlignment" Value="Center"/>
-		</Style>
-		<Style TargetType="DataGridCell">
-			<Setter Property="TextBlock.TextAlignment" Value="Center" />
-		</Style>
-	</Window.Resources>
+    <Window.Resources>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"
 		           Height="18" TextAlignment="Left">
@@ -152,6 +152,12 @@
                 <DataGridTextColumn Header="Estante" Binding="{Binding e}" />
                 <DataGridTextColumn Header="Repisa" Binding="{Binding r}" />
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="AddProductToDataGrid" Header="Agregar" Click="AddProductToDataGrid_Click"/>
+                    <MenuItem x:Name="RequestProduct" Header="Solicitar" Click="RequestProduct_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
         <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="10,644,0,0" VerticalAlignment="Top" Width="60"
