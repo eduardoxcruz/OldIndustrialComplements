@@ -64,7 +64,7 @@ namespace Inventory.ui
 			{
 				MainWindow mainWindow = new MainWindow();
 				mainWindow.Show();
-				this.Hide();
+				this.Close();
 				return;
 			}
 
