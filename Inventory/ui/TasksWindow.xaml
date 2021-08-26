@@ -24,7 +24,12 @@
 		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="324,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Height="11" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="ID"/></TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9" TextAlignment="Left"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
-		<ComboBox x:Name="CmbBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" HorizontalContentAlignment="Center"/>
+		<ComboBox x:Name="CmbBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" HorizontalContentAlignment="Center">
+			<ComboBox.Items>
+				<ComboBoxItem Content="ID"/>
+				<ComboBoxItem Content="DEBUG"/>
+			</ComboBox.Items>
+		</ComboBox>
 		<TextBox HorizontalAlignment="Left" Margin="110,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
 		<TextBlock HorizontalAlignment="Left" Margin="341,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="20.25" FontSize="9" TextAlignment="Center"/>
 		<TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9"><Run Language="es-es" Text="Fecha y hora"/></TextBlock>
