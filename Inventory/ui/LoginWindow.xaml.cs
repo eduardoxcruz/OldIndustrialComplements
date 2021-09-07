@@ -83,8 +83,9 @@ namespace Inventory.ui
 			while (dataReader.Read())
 			{
 				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
-				CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 			}
+			
+			CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 		}
 
 		private bool CredentialsAreCorrect()
