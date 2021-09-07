@@ -100,7 +100,6 @@ namespace Inventory.database
 			sqlDataAdapter.Fill(dataTable);
 			return dataTable;
 		}
-
 		public DataTable GetFilledDataTableWithSqlDataAdapter(string query, Dictionary<string, string> sqlCommandParams)
 		{
 			DataTable dataTable = new DataTable();
