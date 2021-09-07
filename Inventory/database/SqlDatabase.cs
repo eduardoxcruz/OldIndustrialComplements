@@ -95,9 +95,8 @@ namespace Inventory.database
 		}
 		public DataTable GetFilledDataTableWithSqlDataAdapter(string query)
 		{
-			DatabaseConnection.Open();
 			DataTable dataTable = new DataTable();
-			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, DatabaseConnection);
+			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(GetSqlCommandWithQuery(query));
 			sqlDataAdapter.Fill(dataTable);
 			return dataTable;
 		}
