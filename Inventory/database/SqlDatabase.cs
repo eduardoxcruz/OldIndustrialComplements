@@ -107,7 +107,6 @@ namespace Inventory.database
 			sqlDataAdapter.Fill(dataTable);
 			return dataTable;
 		}
-		
 		public void Dispose()
 		{
 			DatabaseConnection.Close();
