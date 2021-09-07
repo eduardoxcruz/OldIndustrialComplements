@@ -52,6 +52,7 @@ namespace Inventory.ui
 				MessageBox.Show("El campo de contraseña esta vacío");
 				return;
 			}
+
 			if (ChkBoxRememberData.IsChecked == true)
 			{
 				Properties.Settings.Default.User = CmbBoxUsers.Text;
