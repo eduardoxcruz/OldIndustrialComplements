@@ -27,7 +27,7 @@ namespace Inventory.database
 			                           ";Password=" + Password + 
 			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets + 
 			                           ";Connection Timeout=" + ConnectionTimeoutInSeconds;
-				DatabaseConnection = new SqlConnection(DatabaseConnectionString);
+			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDatabase(string databaseConnectionString)
 		{
