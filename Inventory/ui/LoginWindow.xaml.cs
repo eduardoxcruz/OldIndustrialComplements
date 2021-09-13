@@ -9,7 +9,13 @@ namespace Inventory.ui
 	public partial class LoginWindow : Window
 	{
 		private SqlDatabase _sqlDatabase;
+		private SqlDataTable _sqlDataTable;
 
+		private SqlDataTable SqlDataTable
+		{
+			get => _sqlDataTable;
+			init => _sqlDataTable = value;
+		}
 		private SqlDatabase SqlDatabase
 		{
 			get
@@ -26,6 +32,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			SqlDatabase = new SqlDatabase();
+			SqlDataTable = new SqlDataTable();
 			LoadUsersFromDatabaseToComboBox();
 		}
 
