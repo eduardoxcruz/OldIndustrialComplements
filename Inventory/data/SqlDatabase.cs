@@ -67,9 +67,7 @@ namespace Inventory.database
 		}
 		public SqlDataReader Read(string query, Dictionary<string,string> sqlCommandParams)
 		{
-			SqlCommand sqlCommand = GetSqlCommandWithQuery(query, sqlCommandParams);
-			SqlDataReader dataReader = sqlCommand.ExecuteReader();
-			return dataReader;
+			return GetSqlCommandWithQuery(query, sqlCommandParams).ExecuteReader();
 		}
 		public SqlCommand GetSqlCommandWithQuery(string query)
 		{
