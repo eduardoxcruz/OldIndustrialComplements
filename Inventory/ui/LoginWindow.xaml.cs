@@ -86,6 +86,7 @@ namespace Inventory.ui
 				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
 			}
 			
+			SqlDatabase.Dispose();
 			CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 		}
 
