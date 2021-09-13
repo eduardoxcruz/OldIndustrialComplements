@@ -17,14 +17,6 @@ namespace Inventory.ui
 			get => _sqlDataGrid;
 			init => _sqlDataGrid = value;
 		}
-
-		public SearchProductWindow()
-		{
-			InitializeComponent();
-			sqlDatabase = new SqlDatabase();
-			SqlDataGrid = new SqlDataGrid();
-		}
-
 		private SqlDatabase sqlDatabase
 		{
 			get
@@ -37,6 +29,12 @@ namespace Inventory.ui
 			}
 		}
 
+		public SearchProductWindow()
+		{
+			InitializeComponent();
+			sqlDatabase = new SqlDatabase();
+			SqlDataGrid = new SqlDataGrid();
+		}
 		private void SearchProductWithQuickSearch(string text)
 		{
 			string query = "SELECT TOP 30 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR " +
