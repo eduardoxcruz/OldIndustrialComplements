@@ -32,7 +32,7 @@ namespace Inventory.ui
 			               "estado like ('%"+ text + "%') OR " +
 			               "tecmon like ('%" + text + "%') OR " +
 			               "encapsulado like ('%" + text + "%')";
-			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
+			SqlDataGrid.FillDataGridWithQuery(query, DataGridProducts);
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
@@ -53,7 +53,7 @@ namespace Inventory.ui
 			               "tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND " +
 			               "encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')AND " +
 			               "codigo like ('%" + TxtBoxDebugCode.Text + "%')";
-			sqlDatabase.FillDataGridWithQuery(query, DataGridProducts);
+			SqlDataGrid.FillDataGridWithQuery(query, DataGridProducts);
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
