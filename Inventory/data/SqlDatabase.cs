@@ -16,24 +16,9 @@ namespace Inventory.database
 		private const string Password = "Tlacua015";
 		private const string MultipleActiveResultSets = "True";
 		private const string ConnectionTimeoutInSeconds = "10";
+		
 		private string _databaseConnectionString;
 		private SqlConnection _databaseConnection;
-		public SqlDatabase()
-		{
-			DatabaseConnectionString = "Server=" + ServerIp + "," + ServerPort + 
-			                           ";Database=" + DatabaseName + 
-			                           ";Integrated Security=" + IntegratedSecurity + 
-			                           ";User Id=" + UserId + 
-			                           ";Password=" + Password + 
-			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets + 
-			                           ";Connection Timeout=" + ConnectionTimeoutInSeconds;
-			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
-		}
-		public SqlDatabase(string databaseConnectionString)
-		{
-			DatabaseConnectionString = databaseConnectionString;
-			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
-		}
 		public string DatabaseConnectionString
 		{
 			get
@@ -58,6 +43,23 @@ namespace Inventory.database
 			{
 				_databaseConnection = value;
 			}
+		}
+		
+		public SqlDatabase()
+		{
+			DatabaseConnectionString = "Server=" + ServerIp + "," + ServerPort + 
+			                           ";Database=" + DatabaseName + 
+			                           ";Integrated Security=" + IntegratedSecurity + 
+			                           ";User Id=" + UserId + 
+			                           ";Password=" + Password + 
+			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets + 
+			                           ";Connection Timeout=" + ConnectionTimeoutInSeconds;
+			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
+		}
+		public SqlDatabase(string databaseConnectionString)
+		{
+			DatabaseConnectionString = databaseConnectionString;
+			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDataReader Read(string query)
 		{
