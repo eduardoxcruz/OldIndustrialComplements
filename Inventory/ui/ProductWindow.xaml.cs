@@ -4,16 +4,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Inventory.data;
+using Inventory.enums;
 
 namespace Inventory.ui
 {
-	public enum ProductWindowTasks
-	{
-		ShowDetails = 0,
-		Modify = 1,
-		AddNewProduct = 2
-	}
-
 	public partial class ProductWindow : Window
 	{
 		private int _currentTask;
