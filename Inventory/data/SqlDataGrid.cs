@@ -25,9 +25,8 @@ namespace Inventory.data
 		}
 		public void FillDataGridWithQuery(string query, DataGrid dataGrid)
 		{
-			DataTable dataTable = SqlDatabase.GetFilledDataTableWithSqlDataAdapter(query);
+			DataTable dataTable = SqlDataTable.GetFilledDataTableWithSqlDataAdapter(query);
 			dataGrid.ItemsSource = dataTable.DefaultView;
-			SqlDatabase.Dispose();
 		}
 	}
 }
