@@ -8,5 +8,10 @@
 			get => _sqlDatabase;
 			init => _sqlDatabase = value;
 		}
+
+		public SqlDataGrid()
+		{
+			SqlDatabase = new SqlDatabase();
+		}
 	}
 }
