@@ -16,9 +16,10 @@ namespace Inventory.ui
 			}
 	}
 		
-		public TasksWindow()
+		public TasksWindow(int task)
 		{
 			InitializeComponent();
+			CurrentTask = task;
 		}
 		public TasksWindow(int task, string productId)
 		{
