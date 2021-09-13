@@ -10,29 +10,16 @@ namespace Inventory.ui
 {
 	public partial class SearchProductWindow : Window
 	{
-		private SqlDatabase _sqlDatabase;
 		private SqlDataGrid _sqlDataGrid;
 		private SqlDataGrid SqlDataGrid
 		{
 			get => _sqlDataGrid;
 			init => _sqlDataGrid = value;
 		}
-		private SqlDatabase sqlDatabase
-		{
-			get
-			{
-				return _sqlDatabase;
-			}
-			set
-			{
-				_sqlDatabase = value;
-			}
-		}
 
 		public SearchProductWindow()
 		{
 			InitializeComponent();
-			sqlDatabase = new SqlDatabase();
 			SqlDataGrid = new SqlDataGrid();
 		}
 		private void SearchProductWithQuickSearch(string text)
