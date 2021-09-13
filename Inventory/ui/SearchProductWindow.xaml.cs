@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.data;
+using Inventory.enums;
 
 namespace Inventory.ui
 {
