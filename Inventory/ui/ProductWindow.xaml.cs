@@ -11,6 +11,17 @@ namespace Inventory.ui
 	public partial class ProductWindow : Window
 	{
 		private int _currentTask;
+		private int CurrentTask
+		{
+			get => _currentTask;
+			set
+			{
+				if (value < 3)
+				{
+					_currentTask = value;
+				}
+			}
+		}
 
 		public ProductWindow(int task)
 		{
@@ -26,7 +37,6 @@ namespace Inventory.ui
 			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
-		
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
