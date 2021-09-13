@@ -24,6 +24,13 @@ namespace Inventory.data
 			SqlDatabase.Dispose();
 			return dataTable;
 		}
-		
+		public DataTable GetFilledDataTableWithSqlDataAdapter(string query, Dictionary<string, string> sqlCommandParams)
+		{
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(SqlDatabase.GetSqlCommandWithQuery(query, sqlCommandParams));
+			sqlDataAdapter.Fill(dataTable);
+			SqlDatabase.Dispose();
+			return dataTable;
+		}
 	}
 }
