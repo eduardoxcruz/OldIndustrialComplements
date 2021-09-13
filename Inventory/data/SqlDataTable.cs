@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Windows.Controls;
-
-namespace Inventory.data
+﻿namespace Inventory.data
 {
 	public class SqlDataTable
 	{
@@ -14,12 +11,6 @@ namespace Inventory.data
 		public SqlDataTable()
 		{
 			SqlDatabase = new SqlDatabase();
-		}
-		public void FillDataGridWithQuery(string query, DataGrid dataGrid)
-		{
-			DataTable dataTable = SqlDatabase.GetFilledDataTableWithSqlDataAdapter(query);
-			dataGrid.ItemsSource = dataTable.DefaultView;
-			SqlDatabase.Dispose();
 		}
 	}
 }
