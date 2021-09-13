@@ -49,6 +49,7 @@
 				<ComboBoxItem Content="ENTRADA"/>
 				<ComboBoxItem Content="SALIDA"/>
 				<ComboBoxItem Content="AJUSTE"/>
+				<ComboBoxItem Content="DEVOLUCION"/>
 				<ComboBoxItem Content="SOLICITAR"/>
 				<ComboBoxItem Content="PRECIO"/>
 				<ComboBoxItem Content="COMPRAR"/>
