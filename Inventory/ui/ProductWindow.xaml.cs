@@ -29,7 +29,6 @@ namespace Inventory.ui
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
-
 		public ProductWindow(int task, string productId)
 		{
 			InitializeComponent();
