@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Inventory.enums;
 
 namespace Inventory.ui
 {
