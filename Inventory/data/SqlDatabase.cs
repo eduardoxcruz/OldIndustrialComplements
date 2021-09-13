@@ -19,7 +19,7 @@ namespace Inventory.database
 		
 		private string _databaseConnectionString;
 		private SqlConnection _databaseConnection;
-		public string DatabaseConnectionString
+		private string DatabaseConnectionString
 		{
 			get
 			{
