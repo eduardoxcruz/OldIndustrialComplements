@@ -72,8 +72,7 @@ namespace Inventory.database
 		public SqlCommand GetSqlCommandWithQuery(string query)
 		{
 			DatabaseConnection.Open();
-			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
-			return sqlCommand;
+			return new SqlCommand(query, DatabaseConnection);
 		}
 		public SqlCommand GetSqlCommandWithQuery(string query, Dictionary<string,string> sqlCommandParams)
 		{
