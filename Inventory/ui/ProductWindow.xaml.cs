@@ -26,19 +26,7 @@ namespace Inventory.ui
 			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
-
-		private int CurrentTask
-		{
-			get => _currentTask;
-			set
-			{
-				if (value < 3)
-				{
-					_currentTask = value;
-				}
-			}
-		}
-
+		
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
