@@ -130,7 +130,6 @@ namespace Inventory.ui
 				}
 			}
 		}
-
 		private void ConfigureControlsForTask()
 		{
 			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
@@ -153,7 +152,6 @@ namespace Inventory.ui
 			TxtBlockProductTask.Text = "Detalles del Producto";
 			BtnAddModifyAndSave.Content = "Modificar";
 		}
-
 		private void LockEditableControls()
 		{
 			TxtBlockProductTask.Foreground = new SolidColorBrush(Colors.Crimson);
@@ -359,7 +357,6 @@ namespace Inventory.ui
 				AssignProductDataToControls(TxtBoxIdCode.Text);
 			}
 		}
-
 		private void BtnQuickLoad_OnClick(object sender, RoutedEventArgs e)
 		{
 			AssignProductDataToControls("1");
