@@ -20,6 +20,11 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 		}
+		public TasksWindow(int task, string productId)
+		{
+			InitializeComponent();
+			CurrentTask = task;
+		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
 			this.Close();
