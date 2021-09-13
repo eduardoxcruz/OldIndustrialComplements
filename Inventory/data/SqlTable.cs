@@ -9,7 +9,7 @@ namespace Inventory.data
 		private SqlDatabase SqlDatabase
 		{
 			get => _sqlDatabase;
-			set => _sqlDatabase = value;
+			init => _sqlDatabase = value;
 		}
 		public SqlTable()
 		{
