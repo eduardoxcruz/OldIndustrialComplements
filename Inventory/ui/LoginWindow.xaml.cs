@@ -104,8 +104,7 @@ namespace Inventory.ui
 			sqlCommandParams.Add("@nombre", CmbBoxUsers.Text);
 			sqlCommandParams.Add("@pass", TxtBoxPassword.Password);
 
-			DataTable dataTable = SqlDatabase.GetFilledDataTableWithSqlDataAdapter(queryCredentials, sqlCommandParams);
-			SqlDatabase.Dispose();
+			DataTable dataTable = SqlDataTable.GetFilledDataTableWithSqlDataAdapter(queryCredentials, sqlCommandParams);
 
 			if (dataTable.Rows.Count == 1)
 			{
