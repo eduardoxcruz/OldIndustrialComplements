@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Controls;
 
-namespace Inventory.database
+namespace Inventory.data
 {
 	public class SqlDatabase : IDisposable
 	{

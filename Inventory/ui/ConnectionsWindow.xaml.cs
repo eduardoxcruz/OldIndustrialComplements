@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows;
-using Inventory.database;
+using Inventory.data;
 
 namespace Inventory.ui
 {
