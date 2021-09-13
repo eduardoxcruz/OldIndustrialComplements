@@ -1,4 +1,8 @@
-﻿namespace Inventory.data
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Inventory.data
 {
 	public class SqlDataTable
 	{
@@ -12,5 +16,14 @@
 		{
 			SqlDatabase = new SqlDatabase();
 		}
+		public DataTable GetFilledDataTableWithSqlDataAdapter(string query)
+		{
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(SqlDatabase.GetSqlCommandWithQuery(query));
+			sqlDataAdapter.Fill(dataTable);
+			SqlDatabase.Dispose();
+			return dataTable;
+		}
+		
 	}
 }
