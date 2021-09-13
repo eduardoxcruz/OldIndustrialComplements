@@ -88,7 +88,7 @@ namespace Inventory.database
 		{
 			DataTable dataTable = GetFilledDataTableWithSqlDataAdapter(query);
 			dataGrid.ItemsSource = dataTable.DefaultView;
-			DatabaseConnection.Close();
+			this.Dispose();
 		}
 		public DataTable GetFilledDataTableWithSqlDataAdapter(string query)
 		{
