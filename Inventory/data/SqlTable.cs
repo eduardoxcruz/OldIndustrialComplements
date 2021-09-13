@@ -5,7 +5,7 @@ namespace Inventory.data
 {
 	public class SqlTable
 	{
-		private SqlDatabase _sqlDatabase;
+		private readonly SqlDatabase _sqlDatabase;
 		private SqlDatabase SqlDatabase
 		{
 			get => _sqlDatabase;
