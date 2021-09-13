@@ -8,5 +8,9 @@
 			get => _sqlDatabase;
 			set => _sqlDatabase = value;
 		}
+		public Table()
+		{
+			SqlDatabase = new SqlDatabase();
+		}
 	}
 }
