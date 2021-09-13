@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace Inventory.data
 {
-	public class SqlTable
+	public class SqlDataTable
 	{
 		private readonly SqlDatabase _sqlDatabase;
 		private SqlDatabase SqlDatabase
@@ -11,7 +11,7 @@ namespace Inventory.data
 			get => _sqlDatabase;
 			init => _sqlDatabase = value;
 		}
-		public SqlTable()
+		public SqlDataTable()
 		{
 			SqlDatabase = new SqlDatabase();
 		}
