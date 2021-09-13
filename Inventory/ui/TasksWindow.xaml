@@ -51,7 +51,7 @@
 				<ComboBoxItem Content="AJUSTE"/>
 				<ComboBoxItem Content="DEVOLUCION"/>
 				<ComboBoxItem Content="SOLICITAR"/>
-				<ComboBoxItem Content="PRECIO"/>
+				<ComboBoxItem Content="AJUSTAR PRECIO COMPRA"/>
 				<ComboBoxItem Content="COMPRAR"/>
 			</ComboBox.Items>
 		</ComboBox>
