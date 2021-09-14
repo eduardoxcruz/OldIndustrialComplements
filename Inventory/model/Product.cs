@@ -34,6 +34,14 @@
 		public string Memo { get; set; }
 		public Product()
 		{
+			AssignDefaultData();
+		}
+		public Product(string id)
+		{
+			GetDataFromSqlDatabase(id);
+		}
+		private void AssignDefaultData()
+		{
 			this.ProductId = 0;
 			this.DebugCode = "";
 			this.State = "";
@@ -64,10 +72,6 @@
 			this.PriceWithDiscount = "";
 			this.ProfitWithDiscount = "";
 			this.Memo = "";
-		}
-		public Product(string id)
-		{
-			GetDataFromSqlDatabase(id);
 		}
 		public void GetDataFromSqlDatabase(string id)
 		{
