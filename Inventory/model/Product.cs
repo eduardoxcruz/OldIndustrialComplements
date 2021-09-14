@@ -1,4 +1,10 @@
-﻿namespace Inventory.model
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows;
+using Inventory.data;
+
+namespace Inventory.model
 {
 	public class Product
 	{
@@ -79,6 +85,53 @@
 		}
 		public void GetDataFromSqlDatabase(string id)
 		{
+			try
+			{
+				string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+
+				using SqlDatabase sqlDatabase = new SqlDatabase();
+				using SqlDataReader sqlDataReader = sqlDatabase.Read(queryDataFromProductId, new Dictionary<string, string> {{"@id", id}});
+				
+				if (sqlDataReader.Read())
+				{
+					this.ProductId = int.Parse(sqlDataReader["id"].ToString());
+					this.DebugCode = sqlDataReader["codigo"].ToString();
+					this.State = sqlDataReader["estado"].ToString();
+					this.Enrollment = sqlDataReader["matricula"].ToString();
+					this.MountingTechnology = sqlDataReader["tecmon"].ToString();
+					this.EncapsulationType = sqlDataReader["encapsulado"].ToString();
+					this.ShortDescription = sqlDataReader["descripcion"].ToString();
+					this.Category = sqlDataReader["categoria"].ToString();
+					this.TheProductUsesInventory = bool.Parse(sqlDataReader["inventario"].ToString());
+					this.CurrentProductStock = sqlDataReader["existencia"].ToString();
+					this.MinProductStock = sqlDataReader["minimo"].ToString();
+					this.MaxProductStock = sqlDataReader["maximo"].ToString();
+					this.Container = sqlDataReader["contenedor"].ToString();
+					this.Location = sqlDataReader["ubicacion"].ToString();
+					this.BranchOffice = sqlDataReader["s"].ToString();
+					this.Rack = sqlDataReader["e"].ToString();
+					this.Shelf = sqlDataReader["r"].ToString();
+					this.PurchasePrice = sqlDataReader["preciocomp"].ToString();
+					this.Unit = sqlDataReader["unidad"].ToString();
+					this.Manufacturer = sqlDataReader["proveedor"].ToString();
+					this.ManufacturerPartNumber = sqlDataReader["parte"].ToString();
+					this.ProductType = sqlDataReader["tipo"].ToString();
+					this.ManualProfit = bool.Parse(sqlDataReader["ajuste_manual"].ToString());
+					this.PercentageOfProfit = sqlDataReader["ganancia"].ToString();
+					this.DiscountRate = sqlDataReader["descuento"].ToString();
+					this.SalePrice = sqlDataReader["preciovent"].ToString();
+					this.PriceWithDiscount = sqlDataReader["preciodesc"].ToString();
+					this.Utility = sqlDataReader["utilidad"].ToString();
+					this.PriceWithDiscount = sqlDataReader["utilidaddesc"].ToString();
+					this.FullDescription = sqlDataReader["descfull"].ToString();
+					this.Memo = sqlDataReader["memo"].ToString();
+				}
+			}
+			catch(Exception exception)
+			{
+				MessageBox.Show("Error al obtener el producto de la base de datos.\n\nDetalles:\n" + exception , "Error");
+				AssignDefaultData();
+			}
 		}
 	}
 }
