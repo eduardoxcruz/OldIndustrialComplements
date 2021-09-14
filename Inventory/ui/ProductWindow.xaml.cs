@@ -3,14 +3,15 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Inventory.data;
 using Inventory.enums;
+using Inventory.model;
 
 namespace Inventory.ui
 {
 	public partial class ProductWindow : Window
 	{
 		private int _currentTask;
+		private Product _product;
 		private int CurrentTask
 		{
 			get => _currentTask;
@@ -22,17 +23,24 @@ namespace Inventory.ui
 				}
 			}
 		}
+		private Product Product
+		{
+			get => _product;
+			set => _product = value;
+		}
 
 		public ProductWindow(int task)
 		{
 			InitializeComponent();
 			CurrentTask = task;
+			Product = new Product();
 			ConfigureControlsForTask();
 		}
 		public ProductWindow(int task, string productId)
 		{
 			InitializeComponent();
 			CurrentTask = task;
+			Product = new Product();
 			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
