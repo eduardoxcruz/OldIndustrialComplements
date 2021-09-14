@@ -9,7 +9,7 @@ namespace Inventory.ui
 		{
 			get => _currentTask;
 			set {
-				if (value is >= 0 or <= 6)
+				if (value is >= 0 and <= 6)
 				{
 					_currentTask = value;
 				}
