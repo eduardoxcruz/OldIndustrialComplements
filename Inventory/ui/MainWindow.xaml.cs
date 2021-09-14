@@ -37,26 +37,6 @@ namespace Inventory.ui
 			settingsWindow.Show();
 		}
 
-		private void BtnOpenLoginWindow_Click(object sender, RoutedEventArgs e)
-		{
-			LoginWindow loginWindow = new LoginWindow();
-			loginWindow.Show();
-		}
-
-		private void BtnOpenDetailsWindow_Click(object sender, RoutedEventArgs e)
-		{
-			//DetailsWindow detailsWindow = new DetailsWindow();
-			//detailsWindow.Show();
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails);
-			productWindow.Show();
-		}
-
-		private void BtnOpenRequestsWindow_Click(object sender, RoutedEventArgs e)
-		{
-			RequestsWindow requestsWindow = new RequestsWindow();
-			requestsWindow.Show();
-		}
-
 		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
 		{
 			//ModifyWindow modifyWindow = new ModifyWindow();
