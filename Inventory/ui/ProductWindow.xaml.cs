@@ -54,6 +54,7 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(id))
 			{
+				MessageBox.Show("El campo ID no puede estar vacio", "Error");
 				return;
 			}
 
