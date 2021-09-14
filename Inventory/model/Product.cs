@@ -32,6 +32,39 @@
         public string PriceWithDiscount { get; set; }
         public string ProfitWithDiscount { get; set; }
         public string Memo { get; set; }
+        public Product()
+        {
+	        this.ProductId = 0;
+	        this.DebugCode = "";
+	        this.State = "";
+		    this.Enrollment = "";
+	        this.MountingTechnology = "";
+		    this.EncapsulationType = "";
+	        this.Category = "";
+		    this.ShortDescription = "";
+	        this.FullDescription = "";
+		    this.TheProductUsesInventory = false;
+	        this.CurrentProductStock = "";
+		    this.MinProductStock = "";
+	        this.MaxProductStock = "";
+		    this.Container = "";
+	        this.Location = "";
+		    this.BranchOffice = "";
+	        this.Shelf = "";
+		    this.PurchasePrice = "";
+	        this.Unit = "";
+		    this.ProductType = "";
+	        this.Manufacturer = "";
+		    this.ManufacturerPartNumber = "";
+	        this.ManualProfit = false;
+		    this.PercentageOfProfit = "";
+	        this.SalePrice = "";
+		    this.Utility = "";
+	        this.DiscountRate = "";
+		    this.PriceWithDiscount = "";
+	        this.ProfitWithDiscount = "";
+		    this.Memo = "";
+        }
         public void GetDataFromSqlDatabase(string id)
         {
 	        
