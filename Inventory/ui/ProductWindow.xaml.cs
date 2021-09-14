@@ -42,6 +42,14 @@ namespace Inventory.ui
 			AssignProductDataToControls(productId);
 			ConfigureControlsForTask();
 		}
+		public ProductWindow(int task, Product product)
+		{
+			InitializeComponent();
+			CurrentTask = task;
+			Product = product;
+			AssignProductDataToControls("");
+			ConfigureControlsForTask();
+		}
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
