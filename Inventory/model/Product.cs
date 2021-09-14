@@ -65,6 +65,10 @@
 			this.ProfitWithDiscount = "";
 			this.Memo = "";
 		}
+		public Product(string id)
+		{
+			GetDataFromSqlDatabase(id);
+		}
 		public void GetDataFromSqlDatabase(string id)
 		{
 		}
