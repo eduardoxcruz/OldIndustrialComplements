@@ -6,6 +6,7 @@ namespace Inventory.ui
 	public partial class TasksWindow : Window
 	{
 		private int _currentTask;
+		private Product _product;
 		private int CurrentTask
 		{
 			get => _currentTask;
@@ -16,6 +17,11 @@ namespace Inventory.ui
 				}
 			}
 	}
+		private Product Product
+		{
+			get => _product;
+			set => _product = value;
+		}
 		
 		public TasksWindow(int task)
 		{
@@ -26,6 +32,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			CurrentTask = task;
+			Product = product;
 		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
