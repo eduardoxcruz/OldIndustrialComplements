@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Controls;
 
 namespace Inventory.data
 {
@@ -56,11 +54,6 @@ namespace Inventory.data
 			                           ";Password=" + Password + 
 			                           ";MultipleActiveResultSets=" + MultipleActiveResultSets + 
 			                           ";Connection Timeout=" + ConnectionTimeoutInSeconds;
-			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
-		}
-		public SqlDatabase(string databaseConnectionString)
-		{
-			DatabaseConnectionString = databaseConnectionString;
 			DatabaseConnection = new SqlConnection(DatabaseConnectionString);
 		}
 		public SqlDataReader Read(string query)
