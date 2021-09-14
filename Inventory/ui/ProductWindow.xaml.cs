@@ -57,7 +57,10 @@ namespace Inventory.ui
 				return;
 			}
 
-			Product.GetDataFromSqlDatabase(id);
+			if (Product.ProductId == 0)
+			{
+				Product.GetDataFromSqlDatabase(id);
+			}
 
 			TxtBoxId.Text = Product.ProductId.ToString();
 			TxtBoxIdCode.Text = Product.ProductId.ToString();
