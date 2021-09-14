@@ -32,5 +32,9 @@
         public string PriceWithDiscount { get; set; }
         public string ProfitWithDiscount { get; set; }
         public string Memo { get; set; }
+        public void GetDataFromSqlDatabase(string id)
+        {
+	        
+        }
 	}
 }
