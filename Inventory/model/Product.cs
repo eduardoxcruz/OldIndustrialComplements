@@ -32,6 +32,7 @@
 		public string DiscountRate { get; set; }
 		public string PriceWithDiscount { get; set; }
 		public string ProfitWithDiscount { get; set; }
+		public string Provider { get; set; }
 		public string Memo { get; set; }
 		public Product()
 		{
@@ -73,6 +74,7 @@
 			this.DiscountRate = "";
 			this.PriceWithDiscount = "";
 			this.ProfitWithDiscount = "";
+			this.Provider = "";
 			this.Memo = "";
 		}
 		public void GetDataFromSqlDatabase(string id)
