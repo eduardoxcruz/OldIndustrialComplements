@@ -34,14 +34,6 @@ namespace Inventory.ui
 			Product = new Product();
 			ConfigureControlsForTask();
 		}
-		public ProductWindow(int task, string productId)
-		{
-			InitializeComponent();
-			CurrentTask = task;
-			Product = new Product();
-			AssignProductDataToControls(productId);
-			ConfigureControlsForTask();
-		}
 		public ProductWindow(int task, Product product)
 		{
 			InitializeComponent();
