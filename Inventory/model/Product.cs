@@ -18,6 +18,7 @@
 		public string Container { get; set; }
 		public string Location { get; set; }
 		public string BranchOffice { get; set; }
+		public string Rack { get; set; }
 		public string Shelf { get; set; }
 		public string PurchasePrice { get; set; }
 		public string Unit { get; set; }
@@ -58,6 +59,7 @@
 			this.Container = "";
 			this.Location = "";
 			this.BranchOffice = "";
+			this.Rack = "";
 			this.Shelf = "";
 			this.PurchasePrice = "";
 			this.Unit = "";
