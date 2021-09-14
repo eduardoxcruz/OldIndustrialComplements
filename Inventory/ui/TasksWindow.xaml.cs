@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Inventory.model;
 
 namespace Inventory.ui
 {
@@ -21,7 +22,7 @@ namespace Inventory.ui
 			InitializeComponent();
 			CurrentTask = task;
 		}
-		public TasksWindow(int task, string productId)
+		public TasksWindow(int task, Product product)
 		{
 			InitializeComponent();
 			CurrentTask = task;
