@@ -1,11 +1,11 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.data;
 using Inventory.enums;
+using Inventory.model;
 
 namespace Inventory.ui
 {
@@ -65,7 +65,7 @@ namespace Inventory.ui
 				return;
 			}
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, selectedRow["id"].ToString());
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow["id"].ToString()));
 			productWindow.Show();
 		}
 
