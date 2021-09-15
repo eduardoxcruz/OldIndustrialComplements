@@ -50,7 +50,7 @@ namespace Inventory.ui
 				return;
 			}
 
-			if (Product.ProductId == 0)
+			if (Product.ProductId == 0 || !id.Equals(Product.ProductId.ToString()))
 			{
 				Product.GetDataFromSqlDatabase(id);
 			}
