@@ -30,6 +30,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			CurrentTask = task;
+			Product = new Product();
 		}
 		public TasksWindow(int task, Product product)
 		{
