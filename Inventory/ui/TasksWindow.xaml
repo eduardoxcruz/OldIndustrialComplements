@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Inventory.ui"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
         Title="Tareas" 
 		Height="285" 
@@ -46,13 +47,13 @@
         <TextBlock HorizontalAlignment="Left" Margin="180,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Precio"/></TextBlock>
         <ComboBox x:Name="CmbBoxTask" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18" HorizontalContentAlignment="Center" FontSize="9">
             <ComboBox.Items>
-                <ComboBoxItem Content="ENTRADA"/>
-                <ComboBoxItem Content="SALIDA"/>
-                <ComboBoxItem Content="AJUSTE"/>
-                <ComboBoxItem Content="DEVOLUCION"/>
-                <ComboBoxItem Content="SOLICITAR"/>
-                <ComboBoxItem Content="AJUSTAR PRECIO COMPRA"/>
-                <ComboBoxItem Content="COMPRAR"/>
+                <system:String>ENTRADA</system:String>
+	            <system:String>SALIDA</system:String>
+	            <system:String>AJUSTE</system:String>
+	            <system:String>DEVOLUCION</system:String>
+	            <system:String>SOLICITAR</system:String>
+	            <system:String>AJUSTAR PRECIO COMPRA</system:String>
+	            <system:String>COMPRAR</system:String>
             </ComboBox.Items>
         </ComboBox>
         <TextBox x:Name="TxtBoxInputQuantity" HorizontalAlignment="Left" Margin="95,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
