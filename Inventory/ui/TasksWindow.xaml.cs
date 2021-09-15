@@ -11,10 +11,13 @@ namespace Inventory.ui
 		{
 			get => _currentTask;
 			set {
-				if (value is >= 0 and <= 6)
+				if (value is < 0 or > 6)
 				{
-					_currentTask = value;
+					_currentTask = 0;
+					return;
 				}
+
+				_currentTask = value;
 			}
 	}
 		private Product Product
