@@ -65,7 +65,7 @@ namespace Inventory.ui
 				return;
 			}
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow["id"].ToString()));
+			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow.Row[0].ToString()));//selectedRow["id"].ToString()));
 			productWindow.Show();
 		}
 
