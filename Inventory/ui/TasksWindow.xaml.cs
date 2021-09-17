@@ -72,6 +72,11 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
+
+		private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
+		{
+			
+		}
 	}
 }
 
