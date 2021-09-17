@@ -75,7 +75,12 @@ namespace Inventory.ui
 
 		private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
 		{
+			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
+			{
+				return;
+			}
 			
+			AssignProductDataToControls(TxtBoxIdOrDebugCode.Text);
 		}
 	}
 }
