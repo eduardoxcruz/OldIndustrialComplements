@@ -12,64 +12,62 @@
 		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button x:Name="BtnReload" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Height="24" Width="24">
-            Recargar
-        </Button>
-        <Button x:Name="BtnExecuteTask" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
-            Ejecutar
-        </Button>
-        <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnExit_OnClick">
-            Salir
-        </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="324,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Height="11" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="ID"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9" TextAlignment="Left"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
-        <ComboBox x:Name="CmbBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" HorizontalContentAlignment="Center">
-            <ComboBox.Items>
-                <ComboBoxItem Content="ID"/>
-                <ComboBoxItem Content="DEBUG"/>
-            </ComboBox.Items>
-        </ComboBox>
-        <TextBox x:Name="TxtBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="110,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
-        <TextBlock x:Name="TxtBlckID" HorizontalAlignment="Left" Margin="342,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="20.25" FontSize="9" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9"><Run Language="es-es" Text="Fecha y hora"/></TextBlock>
-        <TextBlock x:Name="TxtBlckDateTime" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center" Text=""/>
-        <TextBlock HorizontalAlignment="Left" Margin="123,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Empleado"/>
-        <TextBlock x:Name="TxtBlckEmployee" HorizontalAlignment="Left" Margin="123,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="236,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Precio de compra"/>
-        <TextBlock x:Name="TxtBlckPurchasePrice" HorizontalAlignment="Left" Margin="236,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Center"/>
-        <TextBlock x:Name="TxtBlckCurrentQuantityInStock" HorizontalAlignment="Left" Margin="349,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9" TextAlignment="Center" Text=""/>
-        <TextBlock HorizontalAlignment="Left" Margin="338,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Cantidad actual"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="12" FontSize="9" Text="Tipo"/>
-        <TextBlock HorizontalAlignment="Left" Margin="95,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Cantidad"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="265,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Provedor"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="180,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Precio"/></TextBlock>
-        <ComboBox x:Name="CmbBoxTask" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18" HorizontalContentAlignment="Center" FontSize="9">
-            <ComboBox.Items>
-                <system:String>ENTRADA</system:String>
-	            <system:String>SALIDA</system:String>
-	            <system:String>AJUSTE</system:String>
-	            <system:String>DEVOLUCION</system:String>
-	            <system:String>SOLICITAR</system:String>
-	            <system:String>AJUSTAR PRECIO COMPRA</system:String>
-	            <system:String>COMPRAR</system:String>
-            </ComboBox.Items>
-        </ComboBox>
-        <TextBox x:Name="TxtBoxInputQuantity" HorizontalAlignment="Left" Margin="95,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
-        <TextBox x:Name="TxtBoxInputPrice" HorizontalAlignment="Left" Margin="180,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18"/>
-        <ComboBox x:Name="CmbBoxProvider" HorizontalAlignment="Left" Margin="265,130,0,0" VerticalAlignment="Top" Width="150" Height="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="12" FontSize="9"><Run Language="es-es" Text="Descripcion Completa"/></TextBlock>
-        <TextBlock x:Name="TxtBlckFullDescription" HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="22.5" FontSize="9" Text=""/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="9" Width="198" Height="12"><Run Language="es-es" Text="Contenedor"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="213,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Ubicacion"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="290,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="331,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="E"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="372,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
-        <TextBlock x:Name="TxtBlckContainer" HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="18" FontSize="9" Text=""/>
-        <TextBlock x:Name="TxtBlckLocation" HorizontalAlignment="Left" Margin="213,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9" Text=""/>
-        <TextBlock x:Name="TxtBlckBranchOffice" HorizontalAlignment="Left" Margin="290,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
-        <TextBlock x:Name="TxtBlckRack" HorizontalAlignment="Left" Margin="331,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
-        <TextBlock x:Name="TxtBlckShelf" HorizontalAlignment="Left" Margin="372,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text=""/>
-    </Grid>
+	<Grid>
+		<Button x:Name="BtnSearch" HorizontalAlignment="Left" Margin="211,50,0,0" VerticalAlignment="Top" Height="18" Width="58" FontSize="9" Content="Buscar"/>
+		<Button x:Name="BtnExecuteTask" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9">
+			Ejecutar
+		</Button>
+		<Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="75,241,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnExit_OnClick">
+			Salir
+		</Button>
+		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Tareas"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="325,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="19" Height="18" TextAlignment="Center"><Run Language="es-es" Text="ID"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="12" FontSize="9" TextAlignment="Left"><Run Language="es-es" Text="Buscar por ID o Codigo"/></TextBlock>
+		<ComboBox x:Name="CmbBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" HorizontalContentAlignment="Center">
+			<ComboBox.Items>
+				<ComboBoxItem Content="ID"/>
+				<ComboBoxItem Content="DEBUG"/>
+			</ComboBox.Items>
+		</ComboBox>
+		<TextBox x:Name="TxtBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="110,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9"/>
+		<TextBlock x:Name="TxtBlckID" HorizontalAlignment="Left" Margin="349,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="18" TextAlignment="Center" Text="0" Foreground="#FFF10C0C"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9"><Run Language="es-es" Text="Fecha y hora"/></TextBlock>
+		<TextBlock x:Name="TxtBlckDateTime" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Left" Text="" Foreground="#FFF10C0C"/>
+		<TextBlock HorizontalAlignment="Left" Margin="123,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Empleado"/>
+		<TextBlock x:Name="TxtBlckEmployee" HorizontalAlignment="Left" Margin="123,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock HorizontalAlignment="Left" Margin="236,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Precio de compra"/>
+		<TextBlock x:Name="TxtBlckPurchasePrice" HorizontalAlignment="Left" Margin="236,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock x:Name="TxtBlckCurrentQuantityInStock" HorizontalAlignment="Left" Margin="349,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9" TextAlignment="Left" Text="" Foreground="#FFF10C0C"/>
+		<TextBlock HorizontalAlignment="Left" Margin="338,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Cantidad actual"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="12" FontSize="9" Text="Tipo"/>
+		<TextBlock HorizontalAlignment="Left" Margin="95,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Cantidad"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="265,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Provedor"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="180,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Precio"/></TextBlock>
+		<ComboBox x:Name="CmbBoxTask" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="80" Height="18" HorizontalContentAlignment="Center" FontSize="9">
+			<ComboBox.Items>
+				<system:String>ENTRADA</system:String>
+				<system:String>SALIDA</system:String>
+				<system:String>AJUSTE</system:String>
+				<system:String>DEVOLUCION</system:String>
+				<system:String>SOLICITAR</system:String>
+				<system:String>AJUSTAR PRECIO COMPRA</system:String>
+				<system:String>COMPRAR</system:String>
+			</ComboBox.Items>
+		</ComboBox>
+		<TextBox x:Name="TxtBoxInputQuantity" HorizontalAlignment="Left" Margin="95,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9"/>
+		<TextBox x:Name="TxtBoxInputPrice" HorizontalAlignment="Left" Margin="180,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" FontSize="9"/>
+		<ComboBox x:Name="CmbBoxProvider" HorizontalAlignment="Left" Margin="265,130,0,0" VerticalAlignment="Top" Width="150" Height="18" FontSize="9"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="12" FontSize="9"><Run Language="es-es" Text="Descripcion Completa"/></TextBlock>
+		<TextBlock x:Name="TxtBlckFullDescription" HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="22.5" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="9" Width="198" Height="12"><Run Language="es-es" Text="Contenedor"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="213,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="12" FontSize="9"><Run Language="es-es" Text="Ubicacion"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="290,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="331,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="E"/></TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="372,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="12" FontSize="9"><Run Language="es-es" Text="S"/></TextBlock>
+		<TextBlock x:Name="TxtBlckContainer" HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="18" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock x:Name="TxtBlckLocation" HorizontalAlignment="Left" Margin="213,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="18" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock x:Name="TxtBlckBranchOffice" HorizontalAlignment="Left" Margin="290,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock x:Name="TxtBlckRack" HorizontalAlignment="Left" Margin="331,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+		<TextBlock x:Name="TxtBlckShelf" HorizontalAlignment="Left" Margin="372,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="18" FontSize="9" Text="" TextAlignment="Left" Foreground="#FFF10C0C"/>
+	</Grid>
 </Window>
