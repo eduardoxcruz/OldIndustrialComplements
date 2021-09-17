@@ -40,6 +40,7 @@ namespace Inventory.ui
 			CurrentTask = task;
 			Product = product;
 			CmbBoxTask.SelectedIndex = CurrentTask;
+			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
