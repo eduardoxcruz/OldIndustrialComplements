@@ -70,8 +70,7 @@ namespace Inventory.ui
 
 			if (CredentialsAreCorrect())
 			{
-				MainWindow mainWindow = new MainWindow();
-				mainWindow.Show();
+				new MainWindow().Show();
 				this.Close();
 				return;
 			}
