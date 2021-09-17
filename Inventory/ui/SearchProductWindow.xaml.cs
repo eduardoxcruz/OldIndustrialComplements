@@ -65,8 +65,7 @@ namespace Inventory.ui
 				return;
 			}
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow.Row[0].ToString()));//selectedRow["id"].ToString()));
-			productWindow.Show();
+			new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow.Row[0].ToString())).Show();
 		}
 
 		private void TxtBoxId_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -179,14 +178,12 @@ namespace Inventory.ui
 
 		private void BtnTool_Click(object sender, RoutedEventArgs e)
 		{
-			SettingsWindow settingsWindow = new SettingsWindow();
-			settingsWindow.Show();
+			new SettingsWindow().Show();
 		}
 
 		private void BtnBuy_Click(object sender, RoutedEventArgs e)
 		{
-			RequestsWindow requestsWindow = new RequestsWindow();
-			requestsWindow.Show();
+			new RequestsWindow().Show();
 		}
 
 		private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -196,8 +193,7 @@ namespace Inventory.ui
 
 		private void BtnPlus_Click(object sender, RoutedEventArgs e)
 		{
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.AddNewProduct);
-			productWindow.Show();
+			new ProductWindow((int)ProductWindowTasks.AddNewProduct).Show();
 		}
 
 		private void AddProductToDataGrid_Click(object sender, RoutedEventArgs e)
