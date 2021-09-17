@@ -15,42 +15,32 @@ namespace Inventory.ui
 
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
 		{
-			TasksWindow tasksWindow = new TasksWindow((int) TasksWindowTasks.Entrance);
-			tasksWindow.Show();
+			new TasksWindow((int) TasksWindowTasks.Entrance).Show();
 		}
 
 		private void BtnOpenSearchProductWindow_Click(object sender, RoutedEventArgs e)
 		{
-			SearchProductWindow searchProductWindow = new SearchProductWindow();
-			searchProductWindow.Show();
+			new SearchProductWindow().Show();
 		}
 
 		private void BtnOpenConecctionsWindow_Click(object sender, RoutedEventArgs e)
 		{
-			ConnectionsWindow connectionsWindow = new ConnectionsWindow();
-			connectionsWindow.Show();
+			new ConnectionsWindow().Show();
 		}
 
 		private void BtnOpenSettingWindow_Click(object sender, RoutedEventArgs e)
 		{
-			SettingsWindow settingsWindow = new SettingsWindow();
-			settingsWindow.Show();
+			new SettingsWindow().Show();
 		}
 
 		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
 		{
-			//ModifyWindow modifyWindow = new ModifyWindow();
-			//modifyWindow.Show();
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.Modify);
-			productWindow.Show();
+			new ProductWindow((int)ProductWindowTasks.Modify).Show();
 		}
 
 		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
 		{
-			//AddProductWindow addProductWindow = new AddProductWindow();
-			//addProductWindow.Show();
-			ProductWindow productWindow = new ProductWindow((int)ProductWindowTasks.AddNewProduct);
-			productWindow.Show();
+			new ProductWindow((int)ProductWindowTasks.AddNewProduct).Show();
 		}
 	}
 }
