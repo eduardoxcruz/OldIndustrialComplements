@@ -15,7 +15,7 @@ namespace Inventory.ui
 
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
 		{
-			TasksWindow tasksWindow = new TasksWindow();
+			TasksWindow tasksWindow = new TasksWindow((int) TasksWindowTasks.Entrance);
 			tasksWindow.Show();
 		}
 
