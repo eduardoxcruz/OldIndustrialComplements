@@ -39,6 +39,7 @@ namespace Inventory.ui
 			InitializeComponent();
 			CurrentTask = task;
 			Product = product;
+			CmbBoxTask.SelectedIndex = CurrentTask;
 		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
