@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using Inventory.model;
+using Inventory.Properties;
+using static System.DateTime;
 
 namespace Inventory.ui
 {
@@ -33,6 +36,7 @@ namespace Inventory.ui
 			Product = new Product();
 			CmbBoxTask.SelectedIndex = CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
+			AssignProductDataToControls(Product.ProductId.ToString());
 		}
 		public TasksWindow(int task, Product product)
 		{
@@ -41,6 +45,28 @@ namespace Inventory.ui
 			Product = product;
 			CmbBoxTask.SelectedIndex = CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
+			AssignProductDataToControls(Product.ProductId.ToString());
+		}
+		private void AssignProductDataToControls(string id)
+		{
+			if (!id.Equals(Product.ProductId.ToString()))
+			{
+				Product.GetDataFromSqlDatabase(id);
+			}
+
+			TxtBlckID.Text = Product.ProductId.ToString();
+			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
+			TxtBlckCurrentQuantityInStock.Text = Product.CurrentProductStock;
+			TxtBlckContainer.Text = Product.Container;
+			TxtBlckLocation.Text = Product.Location;
+			TxtBlckBranchOffice.Text = Product.BranchOffice;
+			TxtBlckShelf.Text = Product.Shelf;
+			TxtBlckRack.Text = Product.Rack;
+			TxtBlckPurchasePrice.Text = Product.PurchasePrice;
+			TxtBlckFullDescription.Text = Product.FullDescription;
+			TxtBlckEmployee.Text = Settings.Default.User;
+			
+			CmbBoxProvider.Items.Clear();
 		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
