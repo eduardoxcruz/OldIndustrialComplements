@@ -19,7 +19,10 @@ namespace Inventory.ui
 				if (value < 3)
 				{
 					_currentTask = value;
+					return;
 				}
+
+				_currentTask = 0;
 			}
 		}
 		private Product Product
