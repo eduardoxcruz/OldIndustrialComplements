@@ -12,10 +12,16 @@ namespace Inventory.ui
 	public partial class SearchProductWindow : Window
 	{
 		private SqlDataGrid _sqlDataGrid;
+		private ProductWindow _productWindowInstance;
 		private SqlDataGrid SqlDataGrid
 		{
 			get => _sqlDataGrid;
 			init => _sqlDataGrid = value;
+		}
+		private ProductWindow ProductWindowInstance
+		{
+			get => _productWindowInstance;
+			set => _productWindowInstance = value;
 		}
 
 		public SearchProductWindow()
