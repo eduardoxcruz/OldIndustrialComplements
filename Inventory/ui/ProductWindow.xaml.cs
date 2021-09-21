@@ -42,7 +42,7 @@ namespace Inventory.ui
 			AssignProductDataToControls(Product.ProductId.ToString());
 			ConfigureControlsForTask();
 		}
-		private void AssignProductDataToControls(string id)
+		public void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
 			{
