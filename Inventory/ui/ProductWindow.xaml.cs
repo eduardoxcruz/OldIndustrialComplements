@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Inventory.enums;
@@ -369,6 +370,30 @@ namespace Inventory.ui
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
 			this.Close();
+		}
+		public void BringWindowToFront(int task, string productId = "")
+		{
+			Instance = Application.Current.Windows.OfType<ProductWindow>().SingleOrDefault();
+
+			if (Instance == null)
+			{
+				return;
+			}
+
+			CurrentTask = task;
+			ConfigureControlsForTask();
+
+			if (!string.IsNullOrEmpty(productId))
+			{
+				AssignProductDataToControls(productId);
+			}
+			
+			if (Instance.WindowState == WindowState.Minimized)
+			{
+				Instance.WindowState = WindowState.Normal;
+			}
+
+			Instance.Activate();
 		}
 	}
 }
