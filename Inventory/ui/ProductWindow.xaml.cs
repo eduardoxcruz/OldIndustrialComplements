@@ -10,6 +10,7 @@ namespace Inventory.ui
 	{
 		private int _currentTask;
 		private Product _product;
+		private ProductWindow _instance;
 		private int CurrentTask
 		{
 			get => _currentTask;
@@ -25,6 +26,11 @@ namespace Inventory.ui
 		{
 			get => _product;
 			set => _product = value;
+		}
+		private ProductWindow Instance
+		{
+			get => _instance;
+			set => _instance = value;
 		}
 
 		public ProductWindow(int task)
