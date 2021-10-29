@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,8 +71,17 @@ namespace Inventory.ui
 			{
 				return;
 			}
+			
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-			new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow.Row[0].ToString())).Show();
+			ProductWindowInstance = Application.Current.Windows.OfType<ProductWindow>().SingleOrDefault();
+			
+			if (ProductWindowInstance == null)
+			{
+				ProductWindowInstance = new ProductWindow((int)ProductWindowTasks.ShowDetails, new Product(selectedRow.Row[0].ToString()));
+				ProductWindowInstance.Show();
+			}
+
+			ProductWindowInstance.BringWindowToFront(ProductWindowInstance, (int)ProductWindowTasks.ShowDetails, selectedRow.Row[0].ToString());
 		}
 
 		private void TxtBoxId_PreviewTextInput(object sender, TextCompositionEventArgs e)
