@@ -10,12 +10,17 @@ namespace Inventory.ui
 	public partial class ProductWindow : Window
 	{
 		private readonly SolidColorBrush _blackColorBrush;
+		private readonly SolidColorBrush _crimsonColorBrush;
 		private int _currentTask;
 		private Product _product;
 		private ProductWindow _instance;
 		private SolidColorBrush BlackColorBrush
 		{
 			get => _blackColorBrush;
+		}
+		private SolidColorBrush CrimsonColorBrush
+		{
+			get => _crimsonColorBrush;
 		}
 		private int CurrentTask
 		{
@@ -49,6 +54,7 @@ namespace Inventory.ui
 			Product = new Product();
 			ConfigureControlsForTask();
 			_blackColorBrush = new SolidColorBrush(Colors.Black);
+			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		}
 		public ProductWindow(int task, Product product)
 		{
@@ -58,6 +64,7 @@ namespace Inventory.ui
 			AssignProductDataToControls(Product.ProductId.ToString());
 			ConfigureControlsForTask();
 			_blackColorBrush = new SolidColorBrush(Colors.Black);
+			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		}
 		public void AssignProductDataToControls(string id)
 		{
