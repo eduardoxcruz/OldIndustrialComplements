@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using Inventory.enums;
 
 namespace Inventory.ui
@@ -42,7 +43,15 @@ namespace Inventory.ui
 
 		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
 		{
-			new ProductWindow((int)ProductWindowTasks.Modify).Show();
+			ProductWindowInstance = Application.Current.Windows.OfType<ProductWindow>().SingleOrDefault();
+			
+			if (ProductWindowInstance == null)
+			{
+				ProductWindowInstance = new ProductWindow((int)ProductWindowTasks.Modify);
+				ProductWindowInstance.Show();
+			}
+			
+			ProductWindowInstance.BringWindowToFront(ProductWindowInstance, (int)ProductWindowTasks.Modify);
 		}
 
 		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
