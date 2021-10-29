@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Inventory.enums;
@@ -13,7 +12,6 @@ namespace Inventory.ui
 		private readonly SolidColorBrush _crimsonColorBrush;
 		private int _currentTask;
 		private Product _product;
-		private ProductWindow _instance;
 		private SolidColorBrush BlackColorBrush
 		{
 			get => _blackColorBrush;
@@ -40,11 +38,6 @@ namespace Inventory.ui
 		{
 			get => _product;
 			set => _product = value;
-		}
-		private ProductWindow Instance
-		{
-			get => _instance;
-			set => _instance = value;
 		}
 
 		public ProductWindow(int task)
