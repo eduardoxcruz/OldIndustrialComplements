@@ -378,11 +378,9 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
-		public void BringWindowToFront(int task, string productId = "")
+		public void BringWindowToFront(ProductWindow instance, int task, string productId = "")
 		{
-			Instance = Application.Current.Windows.OfType<ProductWindow>().SingleOrDefault();
-
-			if (Instance == null)
+			if (instance == null)
 			{
 				return;
 			}
@@ -395,12 +393,9 @@ namespace Inventory.ui
 				AssignProductDataToControls(productId);
 			}
 			
-			if (Instance.WindowState == WindowState.Minimized)
-			{
-				Instance.WindowState = WindowState.Normal;
-			}
+			if (instance.WindowState == WindowState.Minimized) instance.WindowState = WindowState.Normal;
 
-			Instance.Activate();
+			instance.Activate();
 		}
 	}
 }
