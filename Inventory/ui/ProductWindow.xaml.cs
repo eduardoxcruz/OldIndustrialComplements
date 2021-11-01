@@ -37,7 +37,8 @@ namespace Inventory.ui
 			set => _product = value;
 		}
 
-		public ProductWindow(ProductWindowTasks task)
+		private ProductWindow(){}
+		private ProductWindow(ProductWindowTasks task)
 		{
 			InitializeComponent();
 			CurrentTask = task;
