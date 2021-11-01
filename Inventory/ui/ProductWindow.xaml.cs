@@ -9,14 +9,24 @@ namespace Inventory.ui
 {
 	public partial class ProductWindow : Window
 	{
-		private static readonly ProductWindow _instance = new ProductWindow(ProductWindowTasks.ShowDetails);
+		private static readonly ProductWindow _showProductDetailsInstance = new ProductWindow(ProductWindowTasks.ShowDetails);
+		private static readonly ProductWindow _modifyProductInstance = new ProductWindow(ProductWindowTasks.Modify);
+		private static readonly ProductWindow _addNewProductInstance = new ProductWindow(ProductWindowTasks.AddNewProduct);
 		private readonly SolidColorBrush _blackColorBrush;
 		private readonly SolidColorBrush _crimsonColorBrush;
 		private ProductWindowTasks _currentTask;
 		private Product _product;
-		public static ProductWindow Instance
+		public static ProductWindow ShowProductDetailsInstance
 		{
-			get => _instance;
+			get => _showProductDetailsInstance;
+		}
+		public static ProductWindow ModifyProductInstance
+		{
+			get => _modifyProductInstance;
+		}
+		public static ProductWindow AddNewProductInstance
+		{
+			get => _addNewProductInstance;
 		}
 		private SolidColorBrush BlackColorBrush
 		{
