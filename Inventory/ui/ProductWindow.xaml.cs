@@ -10,7 +10,7 @@ namespace Inventory.ui
 	{
 		private readonly SolidColorBrush _blackColorBrush;
 		private readonly SolidColorBrush _crimsonColorBrush;
-		private int _currentTask;
+		private ProductWindowTasks _currentTask;
 		private Product _product;
 		private SolidColorBrush BlackColorBrush
 		{
@@ -20,19 +20,10 @@ namespace Inventory.ui
 		{
 			get => _crimsonColorBrush;
 		}
-		private int CurrentTask
+		private ProductWindowTasks CurrentTask
 		{
 			get => _currentTask;
-			set
-			{
-				if (value < 3)
-				{
-					_currentTask = value;
-					return;
-				}
-
-				_currentTask = 0;
-			}
+			set => _currentTask = value;
 		}
 		private Product Product
 		{
@@ -40,7 +31,7 @@ namespace Inventory.ui
 			set => _product = value;
 		}
 
-		public ProductWindow(int task)
+		public ProductWindow(ProductWindowTasks task)
 		{
 			InitializeComponent();
 			CurrentTask = task;
@@ -49,7 +40,7 @@ namespace Inventory.ui
 			_blackColorBrush = new SolidColorBrush(Colors.Black);
 			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		}
-		public ProductWindow(int task, Product product)
+		public ProductWindow(ProductWindowTasks task, Product product)
 		{
 			InitializeComponent();
 			CurrentTask = task;
@@ -145,7 +136,7 @@ namespace Inventory.ui
 		}
 		private void ConfigureControlsForTask()
 		{
-			if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
+			if (CurrentTask == ProductWindowTasks.AddNewProduct)
 			{
 				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Nuevo Producto";
@@ -153,7 +144,7 @@ namespace Inventory.ui
 				return;
 			}
 
-			if (CurrentTask == (int)ProductWindowTasks.Modify)
+			if (CurrentTask == ProductWindowTasks.Modify)
 			{
 				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Modificar Producto";
@@ -330,17 +321,17 @@ namespace Inventory.ui
 		}
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
-			if (CurrentTask == (int)ProductWindowTasks.Modify)
+			if (CurrentTask == ProductWindowTasks.Modify)
 			{
-				CurrentTask = (int)ProductWindowTasks.ShowDetails;
+				CurrentTask = ProductWindowTasks.ShowDetails;
 			}
-			else if (CurrentTask == (int)ProductWindowTasks.ShowDetails)
+			else if (CurrentTask == ProductWindowTasks.ShowDetails)
 			{
-				CurrentTask = (int)ProductWindowTasks.Modify;
+				CurrentTask = ProductWindowTasks.Modify;
 			}
-			else if (CurrentTask == (int)ProductWindowTasks.AddNewProduct)
+			else if (CurrentTask == ProductWindowTasks.AddNewProduct)
 			{
-				CurrentTask = (int)ProductWindowTasks.ShowDetails;
+				CurrentTask = ProductWindowTasks.ShowDetails;
 			}
 			
 			ConfigureControlsForTask();
@@ -378,7 +369,7 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
-		public void BringWindowToFront(ProductWindow instance, int task, string productId = "")
+		public void BringWindowToFront(ProductWindowTasks task, string productId = "")
 		{
 			if (instance == null)
 			{
