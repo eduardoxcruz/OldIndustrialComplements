@@ -46,16 +46,6 @@ namespace Inventory.ui
 			_blackColorBrush = new SolidColorBrush(Colors.Black);
 			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		}
-		public ProductWindow(ProductWindowTasks task, Product product)
-		{
-			InitializeComponent();
-			CurrentTask = task;
-			Product = product;
-			AssignProductDataToControls(Product.ProductId.ToString());
-			ConfigureControlsForTask();
-			_blackColorBrush = new SolidColorBrush(Colors.Black);
-			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
-		}
 		public void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
