@@ -14,15 +14,14 @@ namespace Inventory.ui
 		public static readonly ProductWindow AddNewProductInstance = new ProductWindow(ProductWindowTasks.AddNewProduct);
 		private static readonly SolidColorBrush BlackColorBrush = new SolidColorBrush(Colors.Black);
 		private static readonly SolidColorBrush CrimsonColorBrush = new SolidColorBrush(Colors.Crimson);
+		private Product Product { get; } = new Product();
 		private ProductWindowTasks CurrentTask { get; set; }
-		private Product Product { get; set; }
-		
+
 		private ProductWindow(){}
 		private ProductWindow(ProductWindowTasks task)
 		{
 			InitializeComponent();
 			CurrentTask = task;
-			Product = new Product();
 			ConfigureControlsForTask();
 		}
 		public void AssignProductDataToControls(string id)
