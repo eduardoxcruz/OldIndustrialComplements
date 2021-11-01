@@ -366,28 +366,27 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
-		public void BringWindowToFront(ProductWindowTasks task, string productId = "")
+		public void BringWindowToFront(string productId = "")
 		{
-			CurrentTask = task;
 			ConfigureControlsForTask();
 
 			if (!string.IsNullOrEmpty(productId))
 			{
 				AssignProductDataToControls(productId);
 			}
-			
-			if (Instance.Visibility == Visibility.Collapsed)
+
+			if (this.Visibility == Visibility.Collapsed)
 			{
-				Instance.Show();
+				this.Show();
 			}
 
-			if (Instance.WindowState == WindowState.Minimized || Instance.Visibility == Visibility.Hidden)
+			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
 			{
-				Instance.Visibility = Visibility.Visible;
-				Instance.WindowState = WindowState.Normal;
+				this.Visibility = Visibility.Visible;
+				this.WindowState = WindowState.Normal;
 			}
 
-			Instance.Activate();
+			this.Activate();
 		}
 		protected override void OnClosing(CancelEventArgs cancelEventArgs)
 		{
