@@ -12,8 +12,8 @@ namespace Inventory.ui
 		private static readonly ProductWindow _showProductDetailsInstance = new ProductWindow(ProductWindowTasks.ShowDetails);
 		private static readonly ProductWindow _modifyProductInstance = new ProductWindow(ProductWindowTasks.Modify);
 		private static readonly ProductWindow _addNewProductInstance = new ProductWindow(ProductWindowTasks.AddNewProduct);
-		private readonly SolidColorBrush _blackColorBrush;
-		private readonly SolidColorBrush _crimsonColorBrush;
+		private static readonly SolidColorBrush BlackColorBrush = new SolidColorBrush(Colors.Black);
+		private static readonly SolidColorBrush CrimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		private ProductWindowTasks _currentTask;
 		private Product _product;
 		public static ProductWindow ShowProductDetailsInstance
@@ -27,14 +27,6 @@ namespace Inventory.ui
 		public static ProductWindow AddNewProductInstance
 		{
 			get => _addNewProductInstance;
-		}
-		private SolidColorBrush BlackColorBrush
-		{
-			get => _blackColorBrush;
-		}
-		private SolidColorBrush CrimsonColorBrush
-		{
-			get => _crimsonColorBrush;
 		}
 		private ProductWindowTasks CurrentTask
 		{
@@ -54,8 +46,6 @@ namespace Inventory.ui
 			CurrentTask = task;
 			Product = new Product();
 			ConfigureControlsForTask();
-			_blackColorBrush = new SolidColorBrush(Colors.Black);
-			_crimsonColorBrush = new SolidColorBrush(Colors.Crimson);
 		}
 		public void AssignProductDataToControls(string id)
 		{
