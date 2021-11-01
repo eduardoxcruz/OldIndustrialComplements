@@ -1,28 +1,19 @@
 ﻿using System.Data;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.data;
-using Inventory.enums;
-using Inventory.model;
 
 namespace Inventory.ui
 {
 	public partial class SearchProductWindow : Window
 	{
 		private SqlDataGrid _sqlDataGrid;
-		private ProductWindow _productWindowInstance;
 		private SqlDataGrid SqlDataGrid
 		{
 			get => _sqlDataGrid;
 			init => _sqlDataGrid = value;
-		}
-		private ProductWindow ProductWindowInstance
-		{
-			get => _productWindowInstance;
-			set => _productWindowInstance = value;
 		}
 
 		public SearchProductWindow()
