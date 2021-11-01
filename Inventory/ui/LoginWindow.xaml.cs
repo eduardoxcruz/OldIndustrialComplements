@@ -9,13 +9,9 @@ namespace Inventory.ui
 	public partial class LoginWindow : Window
 	{
 		private SqlDatabase _sqlDatabase;
-		private SqlDataTable _sqlDataTable;
 
-		private SqlDataTable SqlDataTable
-		{
-			get => _sqlDataTable;
-			init => _sqlDataTable = value;
-		}
+		private SqlDataTable SqlDataTable { get; }
+
 		private SqlDatabase SqlDatabase
 		{
 			get
