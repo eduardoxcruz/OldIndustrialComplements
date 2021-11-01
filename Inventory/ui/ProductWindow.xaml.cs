@@ -397,5 +397,10 @@ namespace Inventory.ui
 
 			instance.Activate();
 		}
+		protected override void OnClosing(CancelEventArgs cancelEventArgs)
+		{
+			cancelEventArgs.Cancel = true;
+			this.Hide();
+		}
 	}
 }
