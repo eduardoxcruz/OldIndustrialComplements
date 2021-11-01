@@ -8,21 +8,8 @@ namespace Inventory.ui
 {
 	public partial class LoginWindow : Window
 	{
-		private SqlDatabase _sqlDatabase;
-
 		private SqlDataTable SqlDataTable { get; }
-
-		private SqlDatabase SqlDatabase
-		{
-			get
-			{
-				return _sqlDatabase;
-			}
-			set
-			{
-				_sqlDatabase = value;
-			}
-		}
+		private SqlDatabase SqlDatabase { get; }
 
 		public LoginWindow()
 		{
@@ -31,7 +18,6 @@ namespace Inventory.ui
 			SqlDataTable = new SqlDataTable();
 			LoadUsersFromDatabaseToComboBox();
 		}
-
 		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(CmbBoxUsers.Text))
@@ -40,13 +26,11 @@ namespace Inventory.ui
 				MessageBox.Show("Introduce datos para guardar la información");
 			}
 		}
-
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			TxtBoxPassword.Password = Properties.Settings.Default.Pass;
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
 		}
-
 		private void BtnConnect_Click(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password) || string.IsNullOrEmpty(CmbBoxUsers.Text))
@@ -77,7 +61,6 @@ namespace Inventory.ui
 			Properties.Settings.Default.SaveSession = false;
 			Properties.Settings.Default.Save();
 		}
-
 		private void LoadUsersFromDatabaseToComboBox()
 		{
 			string queryUserNamesFromUsersTable = "SELECT nombre FROM dbo.usuarios";
@@ -91,7 +74,6 @@ namespace Inventory.ui
 			SqlDatabase.Dispose();
 			CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
 		}
-
 		private bool CredentialsAreCorrect()
 		{
 			string queryCredentials = "SELECT * FROM dbo.usuarios WHERE nombre = @nombre AND contraseña = @pass";
