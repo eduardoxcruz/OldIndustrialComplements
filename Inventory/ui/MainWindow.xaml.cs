@@ -8,13 +8,6 @@ namespace Inventory.ui
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private ProductWindow _productWindowInstance;
-		private ProductWindow ProductWindowInstance
-		{
-			get => _productWindowInstance;
-			set => _productWindowInstance = value;
-		}
-		
 		public MainWindow()
 		{
 			InitializeComponent();
