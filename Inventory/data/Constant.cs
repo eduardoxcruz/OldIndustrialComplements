@@ -1,6 +1,6 @@
 ﻿namespace Inventory.data
 {
-	public class Sql
+	public static class Sql
 	{
 		private readonly string _serverIp = string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp) ? 
 			"192.168.0.254" : 
