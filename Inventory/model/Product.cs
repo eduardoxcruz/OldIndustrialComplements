@@ -85,7 +85,7 @@ namespace Inventory.model
 		{
 			try
 			{
-				string queryDataFromProductId = "SELECT * FROM dbo.productos2 WHERE id=@id";
+				string queryDataFromProductId = "SELECT * FROM " + Sql.ProductsTableName + " WHERE id=@id";
 
 				using SqlDatabase sqlDatabase = new SqlDatabase();
 				using SqlDataReader sqlDataReader = sqlDatabase.Read(queryDataFromProductId, new Dictionary<string, string> {{"@id", id}});
