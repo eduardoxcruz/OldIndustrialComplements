@@ -23,7 +23,7 @@ namespace Inventory.ui
 		}
 		private void SearchProductWithQuickSearch(string text)
 		{
-			string query = "SELECT TOP 30 * FROM dbo.productos2 WHERE id like('%" + text + "%') OR " +
+			string query = "SELECT TOP 30 * FROM " + Sql.ProductsTableName + " WHERE id like('%" + text + "%') OR " +
 			               "matricula like ('%" + text + "%') OR " +
 			               "descripcion like ('%" + text + "%') OR " +
 			               "contenedor like ('%" + text + "%') OR " +
@@ -43,7 +43,7 @@ namespace Inventory.ui
 				return;
 			}
 
-			string query = "SELECT * FROM dbo.productos2 WHERE id like('%" + TxtBoxId.Text + "%') AND " +
+			string query = "SELECT * FROM " + Sql.ProductsTableName + " WHERE id like('%" + TxtBoxId.Text + "%') AND " +
 			               "matricula like ('%" + TxtBoxEnrollment.Text + "%') AND " +
 			               "descripcion like ('%" + TxtBoxDescription.Text + "%') AND " +
 			               "contenedor like ('%" + TxtBoxContainer.Text + "%') AND " +
