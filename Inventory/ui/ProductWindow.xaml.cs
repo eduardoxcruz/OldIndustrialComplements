@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Inventory.enums;
@@ -9,13 +8,13 @@ namespace Inventory.ui
 {
 	public partial class ProductWindow
 	{
-		public static readonly ProductWindow ShowProductDetailsInstance = new ProductWindow(ProductWindowTasks.ShowDetails);
-		public static readonly ProductWindow ModifyProductInstance = new ProductWindow(ProductWindowTasks.Modify);
-		public static readonly ProductWindow AddNewProductInstance = new ProductWindow(ProductWindowTasks.AddNewProduct);
-		private static readonly SolidColorBrush BlackColorBrush = new SolidColorBrush(Colors.Black);
-		private static readonly SolidColorBrush CrimsonColorBrush = new SolidColorBrush(Colors.Crimson);
-		private Product Product { get; } = new Product();
-		private ProductWindowTasks CurrentTask { get; set; }
+		public static readonly ProductWindow ShowProductDetailsInstance = new(ProductWindowTasks.ShowDetails);
+		public static readonly ProductWindow ModifyProductInstance = new(ProductWindowTasks.Modify);
+		public static readonly ProductWindow AddNewProductInstance = new(ProductWindowTasks.AddNewProduct);
+		private static readonly SolidColorBrush BlackColorBrush = new(Colors.Black);
+		private static readonly SolidColorBrush CrimsonColorBrush = new(Colors.Crimson);
+		private Product Product { get; } = new();
+		private ProductWindowTasks CurrentTask { get; }
 
 		private ProductWindow(){}
 		private ProductWindow(ProductWindowTasks task)
