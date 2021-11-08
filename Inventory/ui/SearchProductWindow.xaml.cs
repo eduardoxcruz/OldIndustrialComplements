@@ -68,7 +68,7 @@ namespace Inventory.ui
 
 		private void TxtBoxId_PreviewTextInput(object sender, TextCompositionEventArgs e)
 		{
-			var regex = new Regex("[^0-9]+");
+			Regex regex = new Regex("[^0-9]+");
 			e.Handled = regex.IsMatch(e.Text);
 		}
 
