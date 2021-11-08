@@ -5,7 +5,7 @@ namespace Inventory.data
 {
 	public class SqlDataGrid
 	{
-		private SqlDataTable SqlDataTable { get; init; }
+		private SqlDataTable SqlDataTable { get; }
 
 		public SqlDataGrid()
 		{
