@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Inventory.enums;
 
 namespace Inventory.ui
 {
@@ -15,22 +14,22 @@ namespace Inventory.ui
 
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
 		{
-			new TasksWindow((int) TasksWindowTasks.Entrance).Show();
+			TasksWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnOpenSearchProductWindow_Click(object sender, RoutedEventArgs e)
 		{
-			new SearchProductWindow().Show();
+			SearchProductWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnOpenConecctionsWindow_Click(object sender, RoutedEventArgs e)
 		{
-			new ConnectionsWindow().Show();
+			ConnectionsWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnOpenSettingWindow_Click(object sender, RoutedEventArgs e)
 		{
-			new SettingsWindow().Show();
+			SettingsWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
