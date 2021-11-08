@@ -2,7 +2,7 @@
 
 namespace Inventory.ui
 { 
-	public partial class SettingsWindow : Window
+	public partial class SettingsWindow
 	{
 		public static readonly SettingsWindow Instance = new();
 		private SettingsWindow()
