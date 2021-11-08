@@ -7,7 +7,7 @@ using Inventory.data;
 
 namespace Inventory.ui
 {
-	public partial class SearchProductWindow : Window
+	public partial class SearchProductWindow
 	{
 		public static readonly SearchProductWindow Instance = new();
 		private SqlDataGrid SqlDataGrid { get; }
