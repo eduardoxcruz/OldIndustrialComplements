@@ -38,7 +38,7 @@ namespace Inventory.ui
 				Product.GetDataFromSqlDatabase(id);
 			}
 
-			TxtBlckID.Text = Product.ProductId.ToString();
+			TxtBlckId.Text = Product.ProductId.ToString();
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
 			TxtBlckCurrentQuantityInStock.Text = Product.CurrentProductStock;
 			TxtBlckContainer.Text = Product.Container;
