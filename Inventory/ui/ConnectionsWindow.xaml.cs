@@ -4,7 +4,7 @@ using Inventory.data;
 
 namespace Inventory.ui
 {
-	public partial class ConnectionsWindow : Window
+	public partial class ConnectionsWindow
 	{
 		public static readonly ConnectionsWindow Instance = new();
 		private ConnectionsWindow()
