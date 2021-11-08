@@ -6,7 +6,7 @@ using Inventory.data;
 
 namespace Inventory.ui
 {
-	public partial class LoginWindow : Window
+	public partial class LoginWindow
 	{
 		private SqlDataTable SqlDataTable { get; }
 		private SqlDatabase SqlDatabase { get; }
