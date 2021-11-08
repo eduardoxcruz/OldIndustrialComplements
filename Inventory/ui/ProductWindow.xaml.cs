@@ -339,10 +339,6 @@ namespace Inventory.ui
 		{
 			AssignProductDataToControls("1");
 		}
-		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
-		{
-			this.Close();
-		}
 		public void BringWindowToFront(string productId = "")
 		{
 			ConfigureControlsForTask();
