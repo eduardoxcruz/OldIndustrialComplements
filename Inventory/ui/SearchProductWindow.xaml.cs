@@ -111,17 +111,12 @@ namespace Inventory.ui
 
 		private void BtnTool_Click(object sender, RoutedEventArgs e)
 		{
-			new SettingsWindow().Show();
+			SettingsWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnBuy_Click(object sender, RoutedEventArgs e)
 		{
-			new RequestsWindow().Show();
-		}
-
-		private void BtnExit_Click(object sender, RoutedEventArgs e)
-		{
-			this.Close();
+			RequestsWindow.Instance.BringWindowToFront();
 		}
 
 		private void BtnPlus_Click(object sender, RoutedEventArgs e)
