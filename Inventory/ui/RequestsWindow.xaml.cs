@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Inventory.ui
+﻿namespace Inventory.ui
 {
-	public partial class RequestsWindow : Window
+	public partial class RequestsWindow
 	{
 		public static readonly RequestsWindow Instance = new();
 		private RequestsWindow()
