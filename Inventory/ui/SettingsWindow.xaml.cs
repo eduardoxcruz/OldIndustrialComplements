@@ -27,10 +27,5 @@ namespace Inventory.ui
 			TxtBoxIpAdress.Text = Properties.Settings.Default.DatabaseIp;
 			TxtxBoxSystemAdress.Text = Properties.Settings.Default.PhotosPath;
 		}
-		
-		private void BtnExit_Click(object sender, RoutedEventArgs e)
-		{
-			this.Close();
-		}
 	}
 }
