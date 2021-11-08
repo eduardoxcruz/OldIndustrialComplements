@@ -62,9 +62,9 @@ namespace Inventory.data
 		{
 			DatabaseConnection.Open();
 			SqlCommand sqlCommand = new SqlCommand(query, DatabaseConnection);
-			foreach (KeyValuePair<string, string> parameter in sqlCommandParams)
+			foreach (var (key, value) in sqlCommandParams)
 			{
-				sqlCommand.Parameters.AddWithValue(parameter.Key, parameter.Value);
+				sqlCommand.Parameters.AddWithValue(key, value);
 			}
 			return sqlCommand;
 		}
