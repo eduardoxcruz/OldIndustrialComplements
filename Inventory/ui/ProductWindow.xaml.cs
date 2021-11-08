@@ -7,7 +7,7 @@ using Inventory.model;
 
 namespace Inventory.ui
 {
-	public partial class ProductWindow : Window
+	public partial class ProductWindow
 	{
 		public static readonly ProductWindow ShowProductDetailsInstance = new ProductWindow(ProductWindowTasks.ShowDetails);
 		public static readonly ProductWindow ModifyProductInstance = new ProductWindow(ProductWindowTasks.Modify);
