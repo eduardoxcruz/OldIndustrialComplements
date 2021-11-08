@@ -6,7 +6,8 @@ namespace Inventory.ui
 {
 	public partial class ConnectionsWindow : Window
 	{
-		public ConnectionsWindow()
+		public static readonly ConnectionsWindow Instance = new();
+		private ConnectionsWindow()
 		{
 			InitializeComponent();
 		}
