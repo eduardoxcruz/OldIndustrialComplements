@@ -30,7 +30,7 @@
             </ComboBox.Items>
         </ComboBox>
         <TextBox x:Name="TxtBoxIdOrDebugCode" HorizontalAlignment="Left" Margin="110,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="18" FontSize="9" TextAlignment="Center"/>
-        <TextBlock x:Name="TxtBlckID" HorizontalAlignment="Left" Margin="349,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="18" TextAlignment="Center" Text="0" Foreground="#FFF10C0C"/>
+        <TextBlock x:Name="TxtBlckId" HorizontalAlignment="Left" Margin="349,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="18" TextAlignment="Center" Text="0" Foreground="#FFF10C0C"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9"><Run Language="es-es" Text="Fecha y hora"/></TextBlock>
         <TextBlock x:Name="TxtBlckDateTime" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" FontSize="9" TextAlignment="Left" Text="" Foreground="#FFF10C0C"/>
         <TextBlock HorizontalAlignment="Left" Margin="123,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="12" FontSize="9" Text="Empleado"/>
