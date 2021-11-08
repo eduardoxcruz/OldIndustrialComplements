@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
+using Inventory.enums;
 using Inventory.model;
 using Inventory.Properties;
 using static System.DateTime;
@@ -17,7 +18,7 @@ namespace Inventory.ui
 			InitializeComponent();
 			CurrentTask = task;
 			Product = new Product();
-			CmbBoxTask.SelectedIndex = CurrentTask;
+			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 			AssignProductDataToControls(Product.ProductId.ToString());
 		}
@@ -26,7 +27,7 @@ namespace Inventory.ui
 			InitializeComponent();
 			CurrentTask = task;
 			Product = product;
-			CmbBoxTask.SelectedIndex = CurrentTask;
+			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 			AssignProductDataToControls(Product.ProductId.ToString());
 		}
