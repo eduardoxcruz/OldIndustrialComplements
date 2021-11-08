@@ -7,7 +7,7 @@ namespace Inventory
 	/// <summary>
 	///     Interaction logic for App.xaml
 	/// </summary>
-	public partial class App : Application
+	public partial class App
 	{
 		private static bool IsWindowOpen<T>(string windowName = "") where T : Window
 		{
