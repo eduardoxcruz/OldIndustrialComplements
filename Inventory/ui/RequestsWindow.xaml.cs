@@ -4,7 +4,8 @@ namespace Inventory.ui
 {
 	public partial class RequestsWindow : Window
 	{
-		public RequestsWindow()
+		public static readonly RequestsWindow Instance = new();
+		private RequestsWindow()
 		{
 			InitializeComponent();
 		}
