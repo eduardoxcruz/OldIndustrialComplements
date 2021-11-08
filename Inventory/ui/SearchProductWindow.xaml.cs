@@ -80,72 +80,7 @@ namespace Inventory.ui
 				SearchProductWithQuickSearch(TxtBoxQuickSearch.Text);
 			}
 		}
-
-		private void TxtBoxId_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxEnrollment_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxStatus_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxDescription_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxContainer_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxMountingTechnology_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxEncapsulation_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxLocation_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchProductWithFilters();
-			}
-		}
-
-		private void TxtBoxDebugCode_KeyDown(object sender, KeyEventArgs e)
+		private void EnterPressed(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
 			{
