@@ -74,8 +74,7 @@ namespace Inventory.ui
 
 		private void TxtBoxQuickSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			string numeroDeCaracteres = TxtBoxQuickSearch.Text;
-			if (numeroDeCaracteres.Length > 2)
+			if (TxtBoxQuickSearch.Text.Length > 2)
 			{
 				SearchProductWithQuickSearch(TxtBoxQuickSearch.Text);
 			}
