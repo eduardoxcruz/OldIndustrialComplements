@@ -51,11 +51,6 @@ namespace Inventory.ui
 			
 			CmbBoxProvider.Items.Clear();
 		}
-		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
-		{
-			this.Close();
-		}
-
 		private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
