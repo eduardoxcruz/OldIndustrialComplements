@@ -360,10 +360,5 @@ namespace Inventory.ui
 
 			this.Activate();
 		}
-		protected override void OnClosing(CancelEventArgs cancelEventArgs)
-		{
-			cancelEventArgs.Cancel = true;
-			this.Hide();
-		}
 	}
 }
