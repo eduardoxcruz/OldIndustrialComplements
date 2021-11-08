@@ -6,30 +6,13 @@ using static System.DateTime;
 
 namespace Inventory.ui
 {
-	public partial class TasksWindow : Window
+	public partial class TasksWindow
 	{
-		private int _currentTask;
-		private Product _product;
-		private int CurrentTask
-		{
-			get => _currentTask;
-			set {
-				if (value is < 0 or > 6)
-				{
-					_currentTask = 0;
-					return;
-				}
+		public static readonly TasksWindow Instance = new(TasksWindowTasks.Entrance);
+		private TasksWindowTasks CurrentTask { get; set; }
+		private Product Product { get; set; }
 
-				_currentTask = value;
-			}
-	}
-		private Product Product
-		{
-			get => _product;
-			set => _product = value;
-		}
-		
-		public TasksWindow(int task)
+		private TasksWindow(TasksWindowTasks task)
 		{
 			InitializeComponent();
 			CurrentTask = task;
@@ -38,7 +21,7 @@ namespace Inventory.ui
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 			AssignProductDataToControls(Product.ProductId.ToString());
 		}
-		public TasksWindow(int task, Product product)
+		private TasksWindow(TasksWindowTasks task, Product product)
 		{
 			InitializeComponent();
 			CurrentTask = task;
