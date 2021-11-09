@@ -28,10 +28,8 @@
                    VerticalAlignment="Top" 
                    Width="108"
 		           Height="18" 
-                   TextAlignment="Left">
-			<Run Language="es-es" 
-			     Text="Buscar Producto" />
-        </TextBlock>
+                   TextAlignment="Left"
+                   Text="Buscar Producto" />
         <Button x:Name="BtnPlus" 
                 HorizontalAlignment="Left"
                 Margin="123,4,0,0" 
@@ -39,9 +37,8 @@
                 Width="24" 
                 Height="24"
 		        FontSize="9"
-                Click="BtnPlus_Click">
-            +
-        </Button>
+                Content="+"
+                Click="BtnPlus_Click" />
         <Button x:Name="BtnTool" 
                 HorizontalAlignment="Left" 
                 Margin="152,4,0,0"
@@ -49,9 +46,8 @@
                 Width="24" 
                 Height="24"
 		        FontSize="9"
-                Click="BtnTool_Click">
-            Herramienta
-        </Button>
+                Content="Herramienta"
+                Click="BtnTool_Click" />
         <Button x:Name="BtnBuy" 
                 HorizontalAlignment="Left"
                 Margin="181,4,0,0"
@@ -59,9 +55,8 @@
                 Width="24"
                 Height="24"
 		        FontSize="9"
-                Click="BtnBuy_Click">
-            Carrito
-        </Button>
+                Content="Carrito"
+                Click="BtnBuy_Click" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="845,8,0,0" 
                    TextWrapping="Wrap" 
@@ -69,10 +64,8 @@
                    Width="59"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Codigo Debug" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Codigo Debug" />
         <TextBox x:Name="TxtBoxDebugCode" 
                  HorizontalAlignment="Left" 
                  Margin="904,5,0,0" 
@@ -89,10 +82,8 @@
                    Width="69"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es"
-			     Text="Busqueda Rapida" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Busqueda Rapida" />
         <TextBox x:Name="TxtBoxQuickSearch" 
                  HorizontalAlignment="Left" 
                  Margin="10,40,0,0" 
@@ -109,10 +100,8 @@
                    Width="42"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Recuento:" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Recuento:" />
         <TextBlock x:Name="TxtBoxCount" 
                    HorizontalAlignment="Left" 
                    Margin="976,28,0,0" 
@@ -121,10 +110,8 @@
                    Width="24"
 		           Height="12"
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="00" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="00" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="10,63,0,0" 
                    TextWrapping="Wrap" 
@@ -132,10 +119,8 @@
                    Width="90"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Busqueda Avanzada" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Busqueda Avanzada" />
         <TextBlock HorizontalAlignment="Left"
                    Margin="10,80,0,0"
                    TextWrapping="Wrap" 
@@ -143,10 +128,8 @@
                    Width="96"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="ID" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="ID" />
         <TextBox x:Name="TxtBoxId" 
                  HorizontalAlignment="Left" 
                  Margin="10,92,0,0" 
@@ -164,10 +147,8 @@
                    Width="96"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Estado" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Estado" />
         <TextBox x:Name="TxtBoxStatus"
                  HorizontalAlignment="Left"
                  Margin="111,92,0,0" 
@@ -184,10 +165,8 @@
                    Width="96"
 		           Height="12" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Matricula" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Matricula" />
         <TextBox x:Name="TxtBoxEnrollment"
                  HorizontalAlignment="Left"
                  Margin="212,92,0,0" 
@@ -204,10 +183,8 @@
                    Width="96"
 		           Height="12"
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Descripción" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Descripción" />
         <TextBox x:Name="TxtBoxDescription" 
                  HorizontalAlignment="Left" 
                  Margin="313,92,0,0" 
@@ -224,10 +201,8 @@
                    Width="96"
 		           Height="12"
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Tecnologia de Montaje" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Tecnologia de Montaje" />
         <TextBox x:Name="TxtBoxMountingTechnology" 
                  HorizontalAlignment="Left" 
                  Margin="564,92,0,0" 
@@ -244,10 +219,8 @@
                    Width="96"
 		           Height="12" 
                    TextAlignment="Left"
-                   FontSize="9">
-			<Run Language="es-es"
-			     Text="Encapsulado" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Encapsulado" />
         <TextBox x:Name="TxtBoxEncapsulation"
                  HorizontalAlignment="Left" 
                  Margin="665,92,0,0"
@@ -264,10 +237,8 @@
                    Width="126"
 		           Height="12"
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" 
-			     Text="Contenedor" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Contenedor" />
         <TextBox x:Name="TxtBoxContainer" 
                  HorizontalAlignment="Left" 
                  Margin="766,92,0,0" 
@@ -284,10 +255,8 @@
                    Width="96"
 		           Height="12"
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es"
-			     Text="Ubicación" />
-        </TextBlock>
+                   FontSize="9"
+                   Text="Ubicación" />
         <TextBox HorizontalAlignment="Left"
                  Margin="897,92,0,0" 
                  TextWrapping="Wrap"
@@ -302,9 +271,7 @@
                    Width="989.75"
 		           Height="15.75" 
                    TextAlignment="Left" 
-                   FontSize="9">
-			<Run Language="es-es" />
-        </TextBlock>
+                   FontSize="9" />
         <TextBox x:Name="TxtBoxLocation" 
                  HorizontalAlignment="Left" 
                  Margin="897,92,0,0" 
@@ -320,10 +287,9 @@
                 VerticalAlignment="Top" 
                 Width="60"
 		        Height="24" 
-                FontSize="9" 
-                Click="BtnSearch_Click">
-            Buscar
-        </Button>
+                FontSize="9"
+                Content="Buscar"
+                Click="BtnSearch_Click" />
         <Button x:Name="BtnClean" 
                 HorizontalAlignment="Left"
                 Margin="70,115,0,0"
@@ -331,18 +297,16 @@
                 Width="60"
 		        Height="24"
                 FontSize="9"
-                Click="BtnClean_Click">
-            Limpiar
-        </Button>
+                Content="Limpiar"
+                Click="BtnClean_Click" />
         <Button x:Name="BtnRequest" 
                 HorizontalAlignment="Left" 
                 Margin="130,115,0,0" 
                 VerticalAlignment="Top" 
                 Width="60"
 		        Height="24"
-                FontSize="9">
-            Solicitar
-        </Button>
+                FontSize="9"
+                Content="Solicitar" />
         <DataGrid x:Name="DataGridProducts" 
                   AutoGenerateColumns="False" 
                   Margin="10,144,16,220" 
@@ -397,9 +361,8 @@
                 Width="60"
                 Height="18" 
                 FontSize="9" 
-                Click="CloseWindow">
-            Salir
-        </Button>
+                Content="Salir"
+                Click="CloseWindow" />
         <DataGrid x:Name="DataGridAddedProducts" 
                   AutoGenerateColumns="False" 
                   Margin="10,449,16,25" 
