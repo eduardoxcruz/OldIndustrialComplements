@@ -18,9 +18,8 @@
                    VerticalAlignment="Top" 
                    Width="108" 
                    Height="18" 
-                   TextAlignment="Left">
-	        <Run Language="es-es" Text="Conexiónes Locales"/>
-        </TextBlock>
+                   TextAlignment="Left"
+                   Text="Conexiónes Locales" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="10,28,0,0" 
                    TextWrapping="Wrap" 
@@ -28,9 +27,8 @@
                    Width="30" 
                    Height="12" 
                    FontSize="9" 
-                   TextAlignment="Center">
-	        <Run Language="es-es" Text="Estado:"/>
-        </TextBlock>
+                   TextAlignment="Center"
+                   Text="Estado:" />
         <TextBlock x:Name="TxtBlockConnectionResult" 
                    HorizontalAlignment="Left" 
                    Margin="40,28,0,0" 
@@ -39,9 +37,7 @@
                    Width="84" 
                    Height="12" 
                    FontSize="9" 
-                   TextAlignment="Center">
-	        <Run Language="es-es"/>
-        </TextBlock>
+                   TextAlignment="Center" />
         <Button x:Name="BtnTestConnection" 
                 HorizontalAlignment="Left" 
                 Margin="10,46,0,0" 
@@ -49,18 +45,16 @@
                 Width="60" 
                 Height="18" 
                 FontSize="9" 
-                Click="BtnTestConnection_OnClick">
-            Conectar
-        </Button>
+                Content="Conectar"
+                Click="BtnTestConnection_OnClick" />
         <Button x:Name="BtnExit" 
                 HorizontalAlignment="Left" 
                 Margin="80,46,0,0" 
                 VerticalAlignment="Top" 
                 Width="60" 
                 Height="18" 
-                FontSize="9" 
-                Click="CloseWindow">
-            Salir
-        </Button>
+                FontSize="9"
+                Content="Salir"
+                Click="CloseWindow"/>
     </Grid>
 </model:MyWindow>
