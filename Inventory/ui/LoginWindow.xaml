@@ -17,43 +17,37 @@
                    VerticalAlignment="Top" 
                    Width="108" 
                    Height="18" 
-                   TextAlignment="Left">
-	        <Run Language="es-es" 
-	             Text="Login"/>
-        </TextBlock>
+                   TextAlignment="Left"
+                   Text="Login" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="9,27,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top" 
                    Width="96" 
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="Nombre de Usuario"/>
-        </TextBlock>
-		<ComboBox x:Name="CmbBoxUsers" 
-		          Margin="10,39,16,82" 
-		          Width="200" 
-		          Height="18" 
-		          FontSize="10" 
-		          HorizontalContentAlignment="Center"/>
+                   FontSize="9"
+                   Text="Nombre de Usuario" />
+        <ComboBox x:Name="CmbBoxUsers" 
+                  Margin="10,39,16,82" 
+                  Width="200" 
+                  Height="18" 
+                  FontSize="10" 
+                  HorizontalContentAlignment="Center" />
 		<TextBlock HorizontalAlignment="Left" 
 		           Margin="9,57,0,0" 
 		           TextWrapping="Wrap" 
 		           VerticalAlignment="Top" 
 		           Width="96" 
 		           Height="12" 
-		           FontSize="9">
-			<Run Language="es-es" 
-			     Text="Contraseña"/>
-		</TextBlock>
+		           FontSize="9"
+		           Text="Contraseña" />
         <PasswordBox x:Name="TxtBoxPassword" 
                      Width="200" 
                      Height="18" 
                      FontSize="9" 
                      HorizontalAlignment="Left" 
                      VerticalAlignment="Top" 
-                     Margin="9,69,0,0"/>
+                     Margin="9,69,0,0" />
         <Button x:Name="BtnConnect" 
                 HorizontalAlignment="Left" 
                 Margin="10,116,0,0" 
@@ -61,9 +55,8 @@
                 Width="60" 
                 Height="18" 
                 FontSize="9" 
-                Click="BtnConnect_Click">
-            Conectar
-        </Button>
+                Content="Conectar"
+                Click="BtnConnect_Click"/>
         <Button x:Name="BtnExit" 
                 HorizontalAlignment="Center" 
                 Margin="0,116,0,0" 
@@ -71,9 +64,8 @@
                 Width="60" 
                 Height="18" 
                 FontSize="9" 
-                Click="BtnExit_OnClick">
-            Salir
-        </Button>
+                Content="Salir"
+                Click="BtnExit_OnClick"/>
         <CheckBox x:Name="ChkBoxRememberData" 
                   Margin="9,92,111,28" 
                   Checked="ChkBoxRememberData_Checked" 
