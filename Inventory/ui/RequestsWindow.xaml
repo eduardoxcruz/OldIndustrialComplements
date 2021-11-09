@@ -19,10 +19,8 @@
                        VerticalAlignment="Top" 
                        Width="108" 
                        Height="18" 
-                       TextAlignment="Left">
-	            <Run Language="es-es" 
-	                 Text="Buscar Producto"/>
-            </TextBlock>
+                       TextAlignment="Left"
+                       Text="Buscar Producto" />
             <TextBlock HorizontalAlignment="Left" 
                        Margin="10,34,0,0" 
                        TextWrapping="Wrap"
@@ -30,10 +28,8 @@
                        Width="70"
                        Height="12" 
                        TextAlignment="Left" 
-                       FontSize="9">
-	            <Run Language="es-es" 
-	                 Text="Busqueda Rapida"/>
-            </TextBlock>
+                       FontSize="9"
+                       Text="Busqueda Rapida" />
             <TextBox HorizontalAlignment="Left" 
                      Margin="10,46,0,0" 
                      TextWrapping="Wrap" 
@@ -48,10 +44,8 @@
                        Width="42" 
                        Height="12" 
                        TextAlignment="Left"
-                       FontSize="9">
-	            <Run Language="es-es" 
-	                 Text="Recuento:"/>
-            </TextBlock>
+                       FontSize="9"
+                       Text="Recuento:" />
             <TextBlock HorizontalAlignment="Left" 
                        Margin="976,34,0,0" 
                        TextWrapping="Wrap" 
@@ -59,34 +53,29 @@
                        Width="24" 
                        Height="12" 
                        TextAlignment="Left" 
-                       FontSize="9">
-	            <Run Language="es-es" 
-	                 Text="00.00"/>
-            </TextBlock>
+                       FontSize="9"
+                       Text="00.00" />
             <Button HorizontalAlignment="Left" 
                     Margin="947,5,0,0" 
                     VerticalAlignment="Top" 
                     Width="24"
                     Height="24" 
-                    FontSize="9">
-                Buscar
-            </Button>
+                    FontSize="9"
+                    Content="Buscar" />
             <Button HorizontalAlignment="Left" 
                     Margin="976,5,0,0" 
                     VerticalAlignment="Top" 
                     Width="24" 
                     Height="24" 
-                    FontSize="9">
-                Actualizar
-            </Button>
+                    FontSize="9"
+                    Content="Actualizar" />
             <Button HorizontalAlignment="Left" 
                     Margin="10,69,0,0" 
                     VerticalAlignment="Top" 
                     Width="60" 
                     Height="24" 
-                    FontSize="9">
-                Drop
-            </Button>
+                    FontSize="9"
+                    Content="Drop" />
             <TextBlock HorizontalAlignment="Left" 
                        Margin="10,98,0,0" 
                        TextWrapping="Wrap" 
@@ -94,9 +83,7 @@
                        Width="989.75" 
                        Height="15.75" 
                        TextAlignment="Left"
-                       FontSize="9">
-	            <Run Language="es-es"/>
-            </TextBlock>
+                       FontSize="9" />
             <TextBlock HorizontalAlignment="Left" 
                        Margin="10,119,0,0" 
                        TextWrapping="Wrap" 
@@ -104,19 +91,16 @@
                        Width="989.75" 
                        Height="360"
                        TextAlignment="Left" 
-                       FontSize="9">
-	            <Run Language="es-es"/>
-            </TextBlock>
+                       FontSize="9" />
             <Button x:Name="BtnExit" 
                     HorizontalAlignment="Left" 
                     Margin="10,484,0,0" 
                     VerticalAlignment="Top"
                     Width="60"
                     Height="24"
-                    FontSize="9" 
-                    Click="CloseWindow">
-                Salir
-            </Button>
+                    FontSize="9"
+                    Content="Salir"
+                    Click="CloseWindow" />
         </Grid>
     </Grid>
 </model:MyWindow>
