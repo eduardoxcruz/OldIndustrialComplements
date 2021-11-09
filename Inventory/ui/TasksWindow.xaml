@@ -28,9 +28,8 @@
                 VerticalAlignment="Top" 
                 Width="60" 
                 Height="18" 
-                FontSize="9">
-            Ejecutar
-        </Button>
+                FontSize="9"
+                Content="Ejecutar" />
         <Button x:Name="BtnExit" 
                 HorizontalAlignment="Left" 
                 Margin="75,241,0,0" 
@@ -38,29 +37,24 @@
                 Width="60"
                 Height="18"
                 FontSize="9"
-                Click="CloseWindow">
-            Salir
-        </Button>
+                Content="Salir"
+                Click="CloseWindow" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="10,10,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top" 
                    Width="54"
                    Height="18" 
-                   TextAlignment="Left">
-	        <Run Language="es-es" 
-	             Text="Tareas"/>
-        </TextBlock>
+                   TextAlignment="Left"
+                   Text="Tareas" />
         <TextBlock HorizontalAlignment="Left"
                    Margin="325,15,0,0" 
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    Width="19" 
                    Height="18" 
-                   TextAlignment="Center">
-	        <Run Language="es-es"
-	             Text="ID"/>
-        </TextBlock>
+                   TextAlignment="Center"
+                   Text="ID" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="10,33,0,0" 
                    TextWrapping="Wrap" 
@@ -68,10 +62,8 @@
                    Width="96" 
                    Height="12" 
                    FontSize="9" 
-                   TextAlignment="Left">
-	        <Run Language="es-es"
-	             Text="Buscar por ID o Codigo"/>
-        </TextBlock>
+                   TextAlignment="Left"
+                   Text="Buscar por ID o Codigo" />
         <ComboBox x:Name="CmbBoxIdOrDebugCode" 
                   HorizontalAlignment="Left" 
                   Margin="9,50,0,0"
@@ -110,10 +102,8 @@
                    VerticalAlignment="Top" 
                    Width="80"
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es"
-	             Text="Fecha y hora"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Fecha y hora" />
         <TextBlock x:Name="TxtBlckDateTime" 
                    HorizontalAlignment="Left" 
                    Margin="10,90,0,0" 
@@ -194,30 +184,24 @@
                    VerticalAlignment="Top" 
                    Width="72"
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="Cantidad"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Cantidad" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="265,113,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top" 
                    Width="72" 
                    Height="12"
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="Provedor"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Provedor" />
         <TextBlock HorizontalAlignment="Left"
                    Margin="180,113,0,0" 
                    TextWrapping="Wrap"
                    VerticalAlignment="Top" 
                    Width="72" 
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es"
-	             Text="Precio"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Precio" />
         <ComboBox x:Name="CmbBoxTask" 
                   HorizontalAlignment="Left"
                   Margin="10,130,0,0" 
@@ -268,10 +252,8 @@
                    VerticalAlignment="Top"
                    Width="402"
                    Height="12"
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="Descripcion Completa"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Descripcion Completa" />
         <TextBlock x:Name="TxtBlckFullDescription" 
                    HorizontalAlignment="Left" 
                    Margin="10,170,0,0" 
@@ -289,50 +271,40 @@
                    VerticalAlignment="Top" 
                    FontSize="9" 
                    Width="198"
-                   Height="12">
-	        <Run Language="es-es" 
-	             Text="Contenedor"/>
-        </TextBlock>
+                   Height="12"
+                   Text="Contenedor" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="213,199,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top" 
                    Width="72" 
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="Ubicacion"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="Ubicacion" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="290,199,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top"
                    Width="36"
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="S"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="S" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="331,199,0,0" 
                    TextWrapping="Wrap" 
                    VerticalAlignment="Top"
                    Width="36" 
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="E"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="E" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="372,199,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    Width="36" 
                    Height="12" 
-                   FontSize="9">
-	        <Run Language="es-es" 
-	             Text="S"/>
-        </TextBlock>
+                   FontSize="9"
+                   Text="S" />
         <TextBlock x:Name="TxtBlckContainer" 
                    HorizontalAlignment="Left" 
                    Margin="10,216,0,0" 
