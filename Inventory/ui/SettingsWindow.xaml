@@ -10,25 +10,70 @@
 		Width="712.5"
 		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen" 
+        Loaded="Window_Loaded">
     <Grid>
-		<TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="18" TextAlignment="Left"><Run Language="es-es" Text="Configuración"/></TextBlock>
-		<Button HorizontalAlignment="Left" Margin="551,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9" RenderTransformOrigin="0.458,0.543">
+		<TextBlock HorizontalAlignment="Left" 
+		           Margin="10,16,0,0" 
+		           TextWrapping="Wrap" 
+		           VerticalAlignment="Top" 
+		           Width="108" 
+		           Height="18" 
+		           TextAlignment="Left">
+			<Run Language="es-es" 
+			     Text="Configuración"/>
+		</TextBlock>
+		<Button HorizontalAlignment="Left" 
+		        Margin="551,10,0,0" 
+		        VerticalAlignment="Top" 
+		        Width="24" 
+		        Height="24" 
+		        FontSize="9"
+		        RenderTransformOrigin="0.458,0.543">
             Guardar
         </Button>
-        <Button HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+        <Button HorizontalAlignment="Left" 
+                Margin="589,10,0,0" 
+                VerticalAlignment="Top" 
+                Width="24" 
+                Height="24" 
+                FontSize="9">
             Minimizar
         </Button>
-        <Button HorizontalAlignment="Left" Margin="628,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+        <Button HorizontalAlignment="Left" 
+                Margin="628,10,0,0" 
+                VerticalAlignment="Top"
+                Width="24" 
+                Height="24"
+                FontSize="9">
             Excel
         </Button>
-        <Button HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="24" Height="24" FontSize="9">
+        <Button HorizontalAlignment="Left"
+                Margin="666,10,0,0" 
+                VerticalAlignment="Top"
+                Width="24"
+                Height="24"
+                FontSize="9">
             Configuración
         </Button>
-        <Button x:Name="BtnSave" HorizontalAlignment="Left" Margin="563,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="BtnSave_Click">
+        <Button x:Name="BtnSave" 
+                HorizontalAlignment="Left" 
+                Margin="563,294,0,0" 
+                VerticalAlignment="Top" 
+                Width="60" 
+                Height="18" 
+                FontSize="9" 
+                Click="BtnSave_Click">
             Guardar
         </Button>
-        <Button x:Name="BtnExit" HorizontalAlignment="Left" Margin="642,294,0,0" VerticalAlignment="Top" Width="60" Height="18" FontSize="9" Click="CloseWindow">
+        <Button x:Name="BtnExit" 
+                HorizontalAlignment="Left"
+                Margin="642,294,0,0"
+                VerticalAlignment="Top"
+                Width="60"
+                Height="18" 
+                FontSize="9" 
+                Click="CloseWindow">
             Salir
         </Button>
         <TabControl Margin="0,45,0,33">
@@ -37,8 +82,24 @@
             </TabItem>
             <TabItem Header="Red">
                 <Grid Background="#FFE5E5E5">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="12" FontSize="9" TextAlignment="Center"><Run Language="es-es" Text="Dirección IP del servidor SQL"/></TextBlock>
-                    <TextBox x:Name="TxtBoxIpAdress" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,27,306,174"/>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="10,10,0,0" 
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Top"
+                               Width="126" 
+                               Height="12"
+                               FontSize="9" 
+                               TextAlignment="Center">
+	                    <Run Language="es-es" 
+	                         Text="Dirección IP del servidor SQL"/>
+                    </TextBlock>
+                    <TextBox x:Name="TxtBoxIpAdress" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             TextWrapping="Wrap" 
+                             Width="390" 
+                             Height="15" 
+                             Margin="10,27,306,174"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Sistema">
@@ -47,12 +108,70 @@
                         <ColumnDefinition Width="60*"/>
                         <ColumnDefinition Width="647*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Dirección del sistema"/></TextBlock>
-                    <TextBox x:Name="TxtxBoxSystemAdress" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="390" Height="15" Margin="10,20,0,0" Grid.ColumnSpan="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="8,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="es-es" Text="Usuario del sistema"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" Margin="12,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" Margin="12,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Año"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" Margin="12,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="12" FontSize="9" Grid.ColumnSpan="2"><Run Language="es-es" Text="Label 27"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="10,8,0,0" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               Width="85" 
+                               Height="12" 
+                               FontSize="9"
+                               TextAlignment="Center"
+                               Grid.ColumnSpan="2">
+	                    <Run Language="es-es" 
+	                         Text="Dirección del sistema"/>
+                    </TextBlock>
+                    <TextBox x:Name="TxtxBoxSystemAdress" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             TextWrapping="Wrap"
+                             Width="390" 
+                             Height="15" 
+                             Margin="10,20,0,0" 
+                             Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="8,47,0,0" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               Width="85" 
+                               Height="12" 
+                               FontSize="9" 
+                               TextAlignment="Center" 
+                               Grid.ColumnSpan="2">
+	                    <Run Language="es-es" 
+	                         Text="Usuario del sistema"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="12,59,0,0" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               Width="85" Height="12" 
+                               FontSize="9" 
+                               Grid.ColumnSpan="2">
+	                    <Run Language="es-es" 
+	                         Text="Label 27"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="12,84,0,0" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               Width="85" 
+                               Height="12" 
+                               FontSize="9" 
+                               Grid.ColumnSpan="2">
+	                    <Run Language="es-es" 
+	                         Text="Año"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="12,96,0,0" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               Width="85" 
+                               Height="12" 
+                               FontSize="9" 
+                               Grid.ColumnSpan="2">
+	                    <Run Language="es-es" 
+	                         Text="Label 27"/>
+                    </TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>
