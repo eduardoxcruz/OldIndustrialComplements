@@ -17,53 +17,47 @@
                 VerticalAlignment="Top"
                 Width="126" 
                 Height="24" 
-                Click="BtnOpenSearchProductWindow_Click">
-            Buscar Productos
-        </Button>
+                Content="Buscar Productos"
+                Click="BtnOpenSearchProductWindow_Click" />
         <Button x:Name="BtnOpenAddProductWindow" 
                 HorizontalAlignment="Left" 
                 Margin="10,340,0,0" 
                 VerticalAlignment="Top" 
                 Width="126" 
                 Height="24" 
-                Click="BtnOpenAddProductWindow_Click">
-            Agregar Productos
-        </Button>
+                Content="Agregar Productos"
+                Click="BtnOpenAddProductWindow_Click" />
         <Button x:Name="BtnOpenModifyWindow" 
                 HorizontalAlignment="Left" 
                 Margin="10,369,0,0" 
                 VerticalAlignment="Top"
                 Width="126" 
                 Height="24" 
-                Click="BtnOpenModifyWindow_Click">
-            Modificar Productos
-        </Button>
+                Content="Modificar Productos"
+                Click="BtnOpenModifyWindow_Click" />
         <Button x:Name="BtnOpenConecctionsWindow" 
                 HorizontalAlignment="Left" 
                 Margin="10,398,0,0" 
                 VerticalAlignment="Top" 
                 Width="126" 
                 Height="24" 
-                Click="BtnOpenConecctionsWindow_Click">
-            Prueba de Conexion
-        </Button>
+                Content="Prueba de Conexion"
+                Click="BtnOpenConecctionsWindow_Click" />
         <Button x:Name="BtnOpenTasksWindow" 
                 HorizontalAlignment="Left" 
                 Margin="10,427,0,0" 
                 VerticalAlignment="Top" 
                 Width="126" 
                 Height="24"
-                Click="BtnOpenTasksWindow_Click">
-            Tareas
-        </Button>
+                Content="Tareas"
+                Click="BtnOpenTasksWindow_Click" />
         <Button x:Name="BtnOpenSettingWindow" 
                 HorizontalAlignment="Left" 
                 Margin="10,456,0,0" 
                 VerticalAlignment="Top" 
                 Width="126" 
                 Height="24" 
-                Click="BtnOpenSettingWindow_Click">
-            Configuracion
-        </Button>
+                Content="Configuracion"
+                Click="BtnOpenSettingWindow_Click" />
     </Grid>
 </Window>
