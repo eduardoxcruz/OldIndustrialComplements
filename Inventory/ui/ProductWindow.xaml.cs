@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Inventory.enums;
@@ -109,28 +110,28 @@ namespace Inventory.ui
 		}
 		private void ConfigureControlsForTask()
 		{
-			if (CurrentTask == ProductWindowTasks.AddNewProduct)
+			switch (CurrentTask)
 			{
-				UnlockEditableControls();
-				TxtBlockProductTask.Text = "Nuevo Producto";
-				this.Title = TxtBlockProductTask.Text;
-				BtnAddModifyAndSave.Content = "Agregar";
-				return;
+				case ProductWindowTasks.AddNewProduct:
+					UnlockEditableControls();
+					TxtBlockProductTask.Text = "Nuevo Producto";
+					BtnAddModifyAndSave.Content = "Agregar";
+					break;
+				case ProductWindowTasks.Modify:
+					UnlockEditableControls();
+					TxtBlockProductTask.Text = "Modificar Producto";
+					BtnAddModifyAndSave.Content = "Guardar";
+					break;
+				case ProductWindowTasks.ShowDetails:
+					LockEditableControls();
+					TxtBlockProductTask.Text = "Detalles del Producto";
+					BtnAddModifyAndSave.Content = "Modificar";
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
 			}
-
-			if (CurrentTask == ProductWindowTasks.Modify)
-			{
-				UnlockEditableControls();
-				TxtBlockProductTask.Text = "Modificar Producto";
-				this.Title = TxtBlockProductTask.Text;
-				BtnAddModifyAndSave.Content = "Guardar";
-				return;
-			}
-
-			LockEditableControls();
-			TxtBlockProductTask.Text = "Detalles del Producto";
+			
 			this.Title = TxtBlockProductTask.Text;
-			BtnAddModifyAndSave.Content = "Modificar";
 		}
 		private void LockEditableControls()
 		{
