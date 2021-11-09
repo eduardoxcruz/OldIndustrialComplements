@@ -113,6 +113,7 @@ namespace Inventory.ui
 			{
 				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Nuevo Producto";
+				this.Title = TxtBlockProductTask.Text;
 				BtnAddModifyAndSave.Content = "Agregar";
 				return;
 			}
@@ -121,12 +122,14 @@ namespace Inventory.ui
 			{
 				UnlockEditableControls();
 				TxtBlockProductTask.Text = "Modificar Producto";
+				this.Title = TxtBlockProductTask.Text;
 				BtnAddModifyAndSave.Content = "Guardar";
 				return;
 			}
 
 			LockEditableControls();
 			TxtBlockProductTask.Text = "Detalles del Producto";
+			this.Title = TxtBlockProductTask.Text;
 			BtnAddModifyAndSave.Content = "Modificar";
 		}
 		private void LockEditableControls()
@@ -294,20 +297,18 @@ namespace Inventory.ui
 		}
 		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
 		{
-			if (CurrentTask == ProductWindowTasks.Modify)
+			switch (CurrentTask)
 			{
-				CurrentTask = ProductWindowTasks.ShowDetails;
+				case ProductWindowTasks.Modify:
+					ShowProductDetailsInstance.BringWindowToFront(TxtBoxId.Text);
+					break;
+				case ProductWindowTasks.ShowDetails:
+					ModifyProductInstance.BringWindowToFront(TxtBoxId.Text);
+					break;
+				case ProductWindowTasks.AddNewProduct:
+					ShowProductDetailsInstance.BringWindowToFront(TxtBoxId.Text);
+					break;
 			}
-			else if (CurrentTask == ProductWindowTasks.ShowDetails)
-			{
-				CurrentTask = ProductWindowTasks.Modify;
-			}
-			else if (CurrentTask == ProductWindowTasks.AddNewProduct)
-			{
-				CurrentTask = ProductWindowTasks.ShowDetails;
-			}
-			
-			ConfigureControlsForTask();
 		}
 		private void RadioBtnAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
 		{
