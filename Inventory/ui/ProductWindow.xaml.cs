@@ -41,7 +41,7 @@ namespace Inventory.ui
 			TxtBoxIdCode.Text = Product.Id.ToString();
 			TxtBoxEnrollment.Text = Product.Enrollment;
 			TxtBoxShortDescription.Text = Product.ShortDescription;
-			TxtBoxCurrentProductStock.Text = Product.ProductAmount.ToString();
+			TxtBoxCurrentProductStock.Text = Product.CurrentAmount.ToString();
 			TxtBoxMinProductStock.Text = Product.MinAmount.ToString();
 			TxtBoxMaxProductStock.Text = Product.MaxAmount.ToString();
 			TxtBoxContainer.Text = Product.Container;
