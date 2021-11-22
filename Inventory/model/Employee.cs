@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #nullable disable
 
-namespace MiPrimerEntityFramework.model
+namespace Inventory.model
 {
     public class Employee
     {

@@ -1,11 +1,10 @@
 ﻿using System;
-using Inventory.model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #nullable disable
 
-namespace MiPrimerEntityFramework.model
+namespace Inventory.model
 {
 	public class ProductForBuy
 	{
