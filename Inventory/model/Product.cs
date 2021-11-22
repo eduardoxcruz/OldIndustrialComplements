@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using Inventory.data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MiPrimerEntityFramework.model;
 
 namespace Inventory.model
@@ -135,6 +137,132 @@ namespace Inventory.model
 				MessageBox.Show("Error al obtener el producto de la base de datos.\n\nDetalles:\n" + exception , "Error");
 				AssignDefaultData();
 			}
+		}
+	}
+	
+	public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
+	{
+		public void Configure(EntityTypeBuilder<Product> builder)
+		{
+			builder.HasKey(product => product.Id);
+			
+			builder
+				.Property(product => product.Id)
+				.ValueGeneratedNever();
+
+			builder.Property(product => product.ManualProfit);
+
+			builder.Property(product => product.PercentageOfDiscount);
+			
+			builder.Property(product => product.CurrentAmount);
+
+			builder.Property(product => product.PercentageOfProfit);
+
+			builder.Property(product => product.ProductUseInventory);
+			
+			builder.Property(product => product.MaxAmount);
+			
+			builder.Property(product => product.MinAmount);
+
+			builder.Property(product => product.BuyPrice);
+
+			builder.Property(product => product.PriceWithDiscount);
+
+			builder.Property(product => product.SalePriceWithoutDiscount);
+			
+			builder.Property(product => product.ProfitWithoutDiscount);
+
+			builder.Property(product => product.ProfitWithDiscount);
+			
+			builder
+				.Property(product => product.Category)
+				.HasMaxLength(50)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.DebugCode)
+				.HasMaxLength(30)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Container)
+				.HasMaxLength(60)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.FullDescription)
+				.HasMaxLength(200)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.ShortDescription)
+				.HasMaxLength(200)
+				.IsUnicode(false);
+			
+			builder
+				.Property(product => product.Rack)
+				.HasMaxLength(10)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.EncapsulationType)
+				.HasMaxLength(20)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Status)
+				.HasMaxLength(10)
+				.IsUnicode(false);
+			
+			builder
+				.Property(product => product.Enrollment)
+				.HasMaxLength(60)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Memo)
+				.HasMaxLength(70)
+				.IsUnicode(false);
+			
+			builder
+				.Property(product => product.PartNumber)
+				.HasMaxLength(30)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Manufacturer)
+				.HasMaxLength(50)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Shelf)
+				.HasMaxLength(10)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.BranchOffice)
+				.HasMaxLength(10)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.MountingTechnology)
+				.HasMaxLength(16)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.TypeOfStock)
+				.HasMaxLength(20)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.Location)
+				.HasMaxLength(40)
+				.IsUnicode(false);
+
+			builder
+				.Property(product => product.UnitType)
+				.HasMaxLength(10)
+				.IsUnicode(false);
 		}
 	}
 }
