@@ -32,31 +32,31 @@ namespace Inventory.ui
 				return;
 			}
 
-			if (Product.ProductId == 0 || !id.Equals(Product.ProductId.ToString()))
+			if (Product.Id == 0 || !id.Equals(Product.Id.ToString()))
 			{
 				Product.GetDataFromSqlDatabase(id);
 			}
 
-			TxtBoxId.Text = Product.ProductId.ToString();
-			TxtBoxIdCode.Text = Product.ProductId.ToString();
+			TxtBoxId.Text = Product.Id.ToString();
+			TxtBoxIdCode.Text = Product.Id.ToString();
 			TxtBoxEnrollment.Text = Product.Enrollment;
 			TxtBoxShortDescription.Text = Product.ShortDescription;
-			TxtBoxCurrentProductStock.Text = Product.CurrentProductStock;
-			TxtBoxMinProductStock.Text = Product.MinProductStock;
-			TxtBoxMaxProductStock.Text = Product.MaxProductStock;
+			TxtBoxCurrentProductStock.Text = Product.ProductAmount.ToString();
+			TxtBoxMinProductStock.Text = Product.MinAmount.ToString();
+			TxtBoxMaxProductStock.Text = Product.MaxAmount.ToString();
 			TxtBoxContainer.Text = Product.Container;
 			TxtBoxLocation.Text = Product.Location;
 			TxtBoxBranchOffice.Text = Product.BranchOffice;
 			TxtBoxShelf.Text = Product.Shelf;
 			TxtBoxLedge.Text = Product.Rack;
-			TxtBoxPurchasePrice.Text = Product.PurchasePrice;
-			TxtBoxManufacturerPartNumber.Text = Product.ManufacturerPartNumber;
-			TxtBoxPercentageOfProfit.Text = Product.PercentageOfProfit;
-			TxtBoxDiscountRate.Text = Product.DiscountRate;
-			TxtBoxSalePrice.Text = Product.SalePrice;
-			TxtBoxPriceWithDiscount.Text = Product.PriceWithDiscount;
-			TxtBoxUtility.Text = Product.Utility;
-			TxtBoxProfitWithDiscount.Text = Product.ProfitWithDiscount;
+			TxtBoxPurchasePrice.Text = Product.BuyPrice.ToString();
+			TxtBoxManufacturerPartNumber.Text = Product.PartNumber;
+			TxtBoxPercentageOfProfit.Text = Product.PercentageOfProfit.ToString();
+			TxtBoxDiscountRate.Text = Product.PercentageOfDiscount.ToString();
+			TxtBoxSalePrice.Text = Product.SalePriceWithoutDiscount.ToString();
+			TxtBoxPriceWithDiscount.Text = Product.PriceWithDiscount.ToString();
+			TxtBoxUtility.Text = Product.ProfitWithoutDiscount.ToString();
+			TxtBoxProfitWithDiscount.Text = Product.ProfitWithDiscount.ToString();
 			TxtBoxFullDescription.Text = Product.FullDescription;
 			TxtBoxMemo.Text = Product.Memo;
 			
@@ -68,9 +68,9 @@ namespace Inventory.ui
 			CmbBoxEncapsulationType.Items.Clear();
 			CmbBoxMountingTechnology.Items.Clear();
 			
-			CmbBoxStatus.Items.Add(Product.State);
-			CmbBoxProductType.Items.Add(Product.ProductType);
-			CmbBoxUnit.Items.Add(Product.Unit);
+			CmbBoxStatus.Items.Add(Product.Status);
+			CmbBoxProductType.Items.Add(Product.TypeOfStock);
+			CmbBoxUnit.Items.Add(Product.UnitType);
 			CmbBoxManufacturer.Items.Add(Product.Manufacturer);
 			CmbBoxCategories.Items.Add(Product.Category);
 			CmbBoxMountingTechnology.Items.Add(Product.MountingTechnology);
@@ -84,25 +84,25 @@ namespace Inventory.ui
 			CmbBoxMountingTechnology.SelectedIndex = 0;
 			CmbBoxEncapsulationType.SelectedIndex = 0;
 			
-			if (Product.TheProductUsesInventory)
+			if (Product.ProductUseInventory.Equals(true))
 			{
 				ChkBoxTheProductUsesInventory.IsChecked = true;
 				EnableControlsForInventory();
 			}
 
-			if (!Product.TheProductUsesInventory)
+			if (Product.ProductUseInventory.Equals(false))
 			{
 				ChkBoxTheProductUsesInventory.IsChecked = false;
 				DisableControlsForInventory();
 			}
 
-			if (Product.ManualProfit)
+			if (Product.ManualProfit.Equals(true))
 			{
 				RadioBtnAutomaticProfit.IsChecked = false;
 				EnableControlsForManualProfit();
 			}
 
-			if (!Product.ManualProfit)
+			if (Product.ManualProfit.Equals(false))
 			{
 				RadioBtnAutomaticProfit.IsChecked = true;
 				DisableControlsForAutomaticProfit();

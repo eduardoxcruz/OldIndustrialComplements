@@ -3,42 +3,47 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using Inventory.data;
+using MiPrimerEntityFramework.model;
 
 namespace Inventory.model
 {
 	public class Product
 	{
-		public int ProductId { get; set; }
-		public string DebugCode { get; set; }
-		public string State { get; set; }
-		public string Enrollment { get; set; }
-		public string MountingTechnology { get; set; }
-		public string EncapsulationType { get; set; }
-		public string Category { get; set; }
-		public string ShortDescription { get; set; }
-		public string FullDescription { get; set; }
-		public bool TheProductUsesInventory { get; set; }
-		public string CurrentProductStock { get; set; }
-		public string MinProductStock { get; set; }
-		public string MaxProductStock { get; set; }
-		public string Container { get; set; }
-		public string Location { get; set; }
-		public string BranchOffice { get; set; }
-		public string Rack { get; set; }
-		public string Shelf { get; set; }
-		public string PurchasePrice { get; set; }
-		public string Unit { get; set; }
-		public string ProductType { get; set; }
-		public string Manufacturer { get; set; }
-		public string ManufacturerPartNumber { get; set; }
-		public bool ManualProfit { get; set; }
-		public string PercentageOfProfit { get; set; }
-		public string SalePrice { get; set; }
-		public string Utility { get; set; }
-		public string DiscountRate { get; set; }
-		public string PriceWithDiscount { get; set; }
-		public string ProfitWithDiscount { get; set; }
-		public string Memo { get; set; }
+		public int Id { get; set; }
+		public string? DebugCode { get; set; }
+		public string? Status { get; set; }
+		public string? Enrollment { get; set; }
+		public string? MountingTechnology { get; set; }
+		public string? EncapsulationType { get; set; }
+		public string? ShortDescription { get; set; }
+		public string? Category { get; set; }
+		public bool? ProductUseInventory { get; set; }
+		public int? ProductAmount { get; set; }
+		public int? MinAmount { get; set; }
+		public int? MaxAmount { get; set; }
+		public string? Container { get; set; }
+		public string? Location { get; set; }
+		public string? BranchOffice { get; set; }
+		public string? Rack { get; set; }
+		public string? Shelf { get; set; }
+		public decimal? BuyPrice { get; set; }
+		public string? UnitType { get; set; }
+		public string? Manufacturer { get; set; }
+		public string? PartNumber { get; set; }
+		public string? TypeOfStock { get; set; }
+		public bool? ManualProfit { get; set; }
+		public decimal? PercentageOfProfit { get; set; }
+		public decimal? PercentageOfDiscount { get; set; }
+		public decimal? SalePriceWithoutDiscount { get; set; }
+		public decimal? PriceWithDiscount { get; set; }
+		public decimal? ProfitWithoutDiscount { get; set; }
+		public decimal? ProfitWithDiscount { get; set; }
+		public string? FullDescription { get; set; }
+		public string? Memo { get; set; }
+		
+		public ProductForBuy ProductForBuy { get; set; }
+		public ProductRequest ProductRequest { get; set; }
+		public RecordOfProductMovement RecordOfProductMovement { get; set; }
 		public Product()
 		{
 			AssignDefaultData();
@@ -49,36 +54,36 @@ namespace Inventory.model
 		}
 		private void AssignDefaultData()
 		{
-			this.ProductId = 0;
+			this.Id = 0;
 			this.DebugCode = "";
-			this.State = "";
+			this.Status = "";
 			this.Enrollment = "";
 			this.MountingTechnology = "";
 			this.EncapsulationType = "";
 			this.Category = "";
 			this.ShortDescription = "";
 			this.FullDescription = "";
-			this.TheProductUsesInventory = false;
-			this.CurrentProductStock = "";
-			this.MinProductStock = "";
-			this.MaxProductStock = "";
+			this.ProductUseInventory = false;
+			this.ProductAmount = 0;
+			this.MinAmount = 1;
+			this.MaxAmount = 0;
 			this.Container = "";
 			this.Location = "";
 			this.BranchOffice = "";
 			this.Rack = "";
 			this.Shelf = "";
-			this.PurchasePrice = "";
-			this.Unit = "";
-			this.ProductType = "";
+			this.BuyPrice = 0.0M;
+			this.UnitType = "";
+			this.TypeOfStock = "";
 			this.Manufacturer = "";
-			this.ManufacturerPartNumber = "";
+			this.PartNumber = "";
 			this.ManualProfit = false;
-			this.PercentageOfProfit = "";
-			this.SalePrice = "";
-			this.Utility = "";
-			this.DiscountRate = "";
-			this.PriceWithDiscount = "";
-			this.ProfitWithDiscount = "";
+			this.PercentageOfProfit = 0.0M;
+			this.SalePriceWithoutDiscount = 0.0M;
+			this.ProfitWithoutDiscount = 0.0M;
+			this.PercentageOfDiscount = 0.0M;
+			this.PriceWithDiscount = 0.0M;
+			this.ProfitWithDiscount = 0.0M;
 			this.Memo = "";
 		}
 		public void GetDataFromSqlDatabase(string id)
@@ -92,35 +97,35 @@ namespace Inventory.model
 				
 				if (sqlDataReader.Read())
 				{
-					this.ProductId = int.Parse(sqlDataReader["id"].ToString());
+					this.Id = int.Parse(sqlDataReader["id"].ToString());
 					this.DebugCode = sqlDataReader["codigo"].ToString();
-					this.State = sqlDataReader["estado"].ToString();
+					this.Status = sqlDataReader["estado"].ToString();
 					this.Enrollment = sqlDataReader["matricula"].ToString();
 					this.MountingTechnology = sqlDataReader["tecmon"].ToString();
 					this.EncapsulationType = sqlDataReader["encapsulado"].ToString();
 					this.ShortDescription = sqlDataReader["descripcion"].ToString();
 					this.Category = sqlDataReader["categoria"].ToString();
-					this.TheProductUsesInventory = bool.Parse(sqlDataReader["inventario"].ToString());
-					this.CurrentProductStock = sqlDataReader["existencia"].ToString();
-					this.MinProductStock = sqlDataReader["minimo"].ToString();
-					this.MaxProductStock = sqlDataReader["maximo"].ToString();
+					this.ProductUseInventory = bool.Parse(sqlDataReader["inventario"].ToString());
+					this.ProductAmount = int.Parse((sqlDataReader["existencia"].ToString()));
+					this.MinAmount = int.Parse(sqlDataReader["minimo"].ToString());
+					this.MaxAmount = int.Parse((sqlDataReader["maximo"].ToString()));
 					this.Container = sqlDataReader["contenedor"].ToString();
 					this.Location = sqlDataReader["ubicacion"].ToString();
 					this.BranchOffice = sqlDataReader["s"].ToString();
 					this.Rack = sqlDataReader["e"].ToString();
 					this.Shelf = sqlDataReader["r"].ToString();
-					this.PurchasePrice = sqlDataReader["preciocomp"].ToString();
-					this.Unit = sqlDataReader["unidad"].ToString();
+					this.BuyPrice = decimal.Parse((sqlDataReader["preciocomp"].ToString()));
+					this.UnitType = sqlDataReader["unidad"].ToString();
 					this.Manufacturer = sqlDataReader["proveedor"].ToString();
-					this.ManufacturerPartNumber = sqlDataReader["parte"].ToString();
-					this.ProductType = sqlDataReader["tipo"].ToString();
+					this.PartNumber = sqlDataReader["parte"].ToString();
+					this.TypeOfStock = sqlDataReader["tipo"].ToString();
 					this.ManualProfit = bool.Parse(sqlDataReader["ajuste_manual"].ToString());
-					this.PercentageOfProfit = sqlDataReader["ganancia"].ToString();
-					this.DiscountRate = sqlDataReader["descuento"].ToString();
-					this.SalePrice = sqlDataReader["preciovent"].ToString();
-					this.PriceWithDiscount = sqlDataReader["preciodesc"].ToString();
-					this.Utility = sqlDataReader["utilidad"].ToString();
-					this.PriceWithDiscount = sqlDataReader["utilidaddesc"].ToString();
+					this.PercentageOfProfit = decimal.Parse((sqlDataReader["ganancia"].ToString()));
+					this.PercentageOfDiscount = decimal.Parse((sqlDataReader["descuento"].ToString()));
+					this.SalePriceWithoutDiscount = decimal.Parse((sqlDataReader["preciovent"].ToString()));
+					this.PriceWithDiscount = decimal.Parse((sqlDataReader["preciodesc"].ToString()));
+					this.ProfitWithoutDiscount = decimal.Parse((sqlDataReader["utilidad"].ToString()));
+					this.PriceWithDiscount = decimal.Parse((sqlDataReader["utilidaddesc"].ToString()));
 					this.FullDescription = sqlDataReader["descfull"].ToString();
 					this.Memo = sqlDataReader["memo"].ToString();
 				}
