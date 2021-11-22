@@ -20,7 +20,7 @@ namespace Inventory.ui
 			Product = new Product();
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
-			AssignProductDataToControls(Product.ProductId.ToString());
+			AssignProductDataToControls(Product.Id.ToString());
 		}
 		private TasksWindow(TasksWindowTasks task, Product product)
 		{
@@ -29,24 +29,24 @@ namespace Inventory.ui
 			Product = product;
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
-			AssignProductDataToControls(Product.ProductId.ToString());
+			AssignProductDataToControls(Product.Id.ToString());
 		}
 		private void AssignProductDataToControls(string id)
 		{
-			if (!id.Equals(Product.ProductId.ToString()))
+			if (!id.Equals(Product.Id.ToString()))
 			{
 				Product.GetDataFromSqlDatabase(id);
 			}
 
-			TxtBlckId.Text = Product.ProductId.ToString();
+			TxtBlckId.Text = Product.Id.ToString();
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
-			TxtBlckCurrentQuantityInStock.Text = Product.CurrentProductStock;
+			TxtBlckCurrentQuantityInStock.Text = Product.ProductAmount.ToString();
 			TxtBlckContainer.Text = Product.Container;
 			TxtBlckLocation.Text = Product.Location;
 			TxtBlckBranchOffice.Text = Product.BranchOffice;
 			TxtBlckShelf.Text = Product.Shelf;
 			TxtBlckRack.Text = Product.Rack;
-			TxtBlckPurchasePrice.Text = Product.PurchasePrice;
+			TxtBlckPurchasePrice.Text = Product.BuyPrice.ToString();
 			TxtBlckFullDescription.Text = Product.FullDescription;
 			TxtBlckEmployee.Text = Settings.Default.User;
 			
