@@ -18,7 +18,7 @@ namespace Inventory.model
 		public string? ShortDescription { get; set; }
 		public string? Category { get; set; }
 		public bool? ProductUseInventory { get; set; }
-		public int? ProductAmount { get; set; }
+		public int? CurrentAmount { get; set; }
 		public int? MinAmount { get; set; }
 		public int? MaxAmount { get; set; }
 		public string? Container { get; set; }
@@ -64,7 +64,7 @@ namespace Inventory.model
 			this.ShortDescription = "";
 			this.FullDescription = "";
 			this.ProductUseInventory = false;
-			this.ProductAmount = 0;
+			this.CurrentAmount = 0;
 			this.MinAmount = 1;
 			this.MaxAmount = 0;
 			this.Container = "";
@@ -106,7 +106,7 @@ namespace Inventory.model
 					this.ShortDescription = sqlDataReader["descripcion"].ToString();
 					this.Category = sqlDataReader["categoria"].ToString();
 					this.ProductUseInventory = bool.Parse(sqlDataReader["inventario"].ToString());
-					this.ProductAmount = int.Parse((sqlDataReader["existencia"].ToString()));
+					this.CurrentAmount = int.Parse((sqlDataReader["existencia"].ToString()));
 					this.MinAmount = int.Parse(sqlDataReader["minimo"].ToString());
 					this.MaxAmount = int.Parse((sqlDataReader["maximo"].ToString()));
 					this.Container = sqlDataReader["contenedor"].ToString();

@@ -40,7 +40,7 @@ namespace Inventory.ui
 
 			TxtBlckId.Text = Product.Id.ToString();
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
-			TxtBlckCurrentQuantityInStock.Text = Product.ProductAmount.ToString();
+			TxtBlckCurrentQuantityInStock.Text = Product.CurrentAmount.ToString();
 			TxtBlckContainer.Text = Product.Container;
 			TxtBlckLocation.Text = Product.Location;
 			TxtBlckBranchOffice.Text = Product.BranchOffice;
