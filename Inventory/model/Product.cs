@@ -5,7 +5,6 @@ using System.Windows;
 using Inventory.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MiPrimerEntityFramework.model;
 
 namespace Inventory.model
 {
