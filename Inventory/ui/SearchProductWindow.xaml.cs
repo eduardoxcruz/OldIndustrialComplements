@@ -1,54 +1,75 @@
 ﻿using System.Data;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ui
 {
 	public partial class SearchProductWindow
 	{
 		public static readonly SearchProductWindow Instance = new();
-		private SqlDataGrid SqlDataGrid { get; }
 
 		private SearchProductWindow()
 		{
 			InitializeComponent();
-			SqlDataGrid = new SqlDataGrid();
 		}
 		private void SearchProductWithQuickSearch(string text)
 		{
-			string query = "SELECT TOP 30 * FROM " + Sql.ProductsTableName + " WHERE id like('%" + text + "%') OR " +
-			               "matricula like ('%" + text + "%') OR " +
-			               "descripcion like ('%" + text + "%') OR " +
-			               "contenedor like ('%" + text + "%') OR " +
-			               "ubicacion like ('%" + text + "%') OR " +
-			               "estado like ('%"+ text + "%') OR " +
-			               "tecmon like ('%" + text + "%') OR " +
-			               "encapsulado like ('%" + text + "%')";
-			SqlDataGrid.FillDataGridWithQuery(query, DataGridProducts);
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			DataGridProducts.ItemsSource =
+				inventoryDb
+					.Products
+					.Where(product => product.Id.Equals(text) ||
+					                  product.DebugCode.Contains(text) ||
+					                  product.Status.Contains(text) ||
+					                  product.Enrollment.Contains(text) ||
+					                  product.MountingTechnology.Contains(text) ||
+					                  product.EncapsulationType.Contains(text) ||
+					                  product.ShortDescription.Contains(text) ||
+					                  product.Category.Contains(text) ||
+					                  product.Container.Contains(text) ||
+					                  product.Location.Contains(text) ||
+					                  product.Manufacturer.Contains(text) ||
+					                  product.PartNumber.Contains(text) ||
+					                  product.TypeOfStock.Contains(text) ||
+					                  product.Memo.Contains(text))
+					.ToList();
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
 		private void SearchProductWithFilters()
 		{
-			if (string.IsNullOrEmpty(TxtBoxId.Text) & string.IsNullOrEmpty(TxtBoxStatus.Text) & string.IsNullOrEmpty(TxtBoxEnrollment.Text) & string.IsNullOrEmpty(TxtBoxDescription.Text) & string.IsNullOrEmpty(TxtBoxMountingTechnology.Text) & string.IsNullOrEmpty(TxtBoxEncapsulation.Text) & string.IsNullOrEmpty(TxtBoxContainer.Text) & string.IsNullOrEmpty(TxtBoxLocation.Text) & string.IsNullOrEmpty(TxtBoxDebugCode.Text))
+			if (string.IsNullOrEmpty(TxtBoxId.Text) & 
+			    string.IsNullOrEmpty(TxtBoxStatus.Text) & 
+			    string.IsNullOrEmpty(TxtBoxEnrollment.Text) & 
+			    string.IsNullOrEmpty(TxtBoxDescription.Text) & 
+			    string.IsNullOrEmpty(TxtBoxMountingTechnology.Text) & 
+			    string.IsNullOrEmpty(TxtBoxEncapsulation.Text) & 
+			    string.IsNullOrEmpty(TxtBoxContainer.Text) & 
+			    string.IsNullOrEmpty(TxtBoxLocation.Text) & 
+			    string.IsNullOrEmpty(TxtBoxDebugCode.Text))
 			{
 				MessageBox.Show("Llene al menos un campo para buscar.");
 				return;
 			}
 
-			string query = "SELECT * FROM " + Sql.ProductsTableName + " WHERE id like('%" + TxtBoxId.Text + "%') AND " +
-			               "matricula like ('%" + TxtBoxEnrollment.Text + "%') AND " +
-			               "descripcion like ('%" + TxtBoxDescription.Text + "%') AND " +
-			               "contenedor like ('%" + TxtBoxContainer.Text + "%') AND " +
-			               "ubicacion like ('%" + TxtBoxLocation.Text + "%') AND " +
-			               "estado like ('%" + TxtBoxStatus.Text + "%') AND " +
-			               "tecmon like ('%" + TxtBoxMountingTechnology.Text + "%')AND " +
-			               "encapsulado like ('%" + TxtBoxEncapsulation.Text + "%')AND " +
-			               "codigo like ('%" + TxtBoxDebugCode.Text + "%')";
-			SqlDataGrid.FillDataGridWithQuery(query, DataGridProducts);
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+
+			DataGridProducts.ItemsSource = inventoryDb.Products
+				.FromSqlRaw("SELECT * FROM dbo.Products WHERE Id like('%" + TxtBoxId.Text + "%') AND " +
+				            "Enrollment like ('%" + TxtBoxEnrollment.Text + "%') AND " +
+				            "ShortDescription like ('%" + TxtBoxDescription.Text + "%') AND " +
+				            "Container like ('%" + TxtBoxContainer.Text + "%') AND " +
+				            "Location like ('%" + TxtBoxLocation.Text + "%') AND " +
+				            "Status like ('%" + TxtBoxStatus.Text + "%') AND " +
+				            "MountingTechnology like ('%" + TxtBoxMountingTechnology.Text + "%')AND " +
+				            "EncapsulationType like ('%" + TxtBoxEncapsulation.Text + "%')AND " +
+				            "DebugCode like ('%" + TxtBoxDebugCode.Text + "%')")
+				.ToList();
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
