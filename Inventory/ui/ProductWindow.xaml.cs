@@ -61,7 +61,7 @@ namespace Inventory.ui
 					BtnAddModifyAndSave.Content = "Guardar";
 					break;
 				case ProductWindowTasks.ShowDetails:
-					LockEditableControls();
+					LockControls();
 					TxtBlockProductTask.Text = "Detalles del Producto";
 					BtnAddModifyAndSave.Content = "Modificar";
 					break;
@@ -155,7 +155,7 @@ namespace Inventory.ui
 				DisableControlsForAutomaticProfit();
 			}
 		}
-		private void LockEditableControls()
+		private void LockControls()
 		{
 			TxtBlockProductTask.Foreground = CrimsonColorBrush;
 			
