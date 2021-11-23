@@ -24,6 +24,28 @@ namespace Inventory.ui
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
+		public void BringWindowToFront(string productId = "")
+		{
+			ConfigureControlsForTask();
+
+			if (!string.IsNullOrEmpty(productId))
+			{
+				AssignProductDataToControls(productId);
+			}
+
+			if (this.Visibility == Visibility.Collapsed)
+			{
+				this.Show();
+			}
+
+			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
+			{
+				this.Visibility = Visibility.Visible;
+				this.WindowState = WindowState.Normal;
+			}
+
+			this.Activate();
+		}
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
@@ -339,28 +361,6 @@ namespace Inventory.ui
 		private void BtnQuickLoad_OnClick(object sender, RoutedEventArgs e)
 		{
 			AssignProductDataToControls("1");
-		}
-		public void BringWindowToFront(string productId = "")
-		{
-			ConfigureControlsForTask();
-
-			if (!string.IsNullOrEmpty(productId))
-			{
-				AssignProductDataToControls(productId);
-			}
-
-			if (this.Visibility == Visibility.Collapsed)
-			{
-				this.Show();
-			}
-
-			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
-			{
-				this.Visibility = Visibility.Visible;
-				this.WindowState = WindowState.Normal;
-			}
-
-			this.Activate();
 		}
 	}
 }
