@@ -14,7 +14,7 @@ namespace Inventory.ui
 		public static readonly ProductWindow AddNewProductInstance = new(ProductWindowTasks.AddNewProduct);
 		private static readonly SolidColorBrush BlackColorBrush = new(Colors.Black);
 		private static readonly SolidColorBrush CrimsonColorBrush = new(Colors.Crimson);
-		private Product Product { get; } = new();
+		private Product Product { get; set; } = new();
 		private ProductWindowTasks CurrentTask { get; }
 
 		private ProductWindow(){}
