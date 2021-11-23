@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
 using Inventory.data;
 using Microsoft.EntityFrameworkCore;
@@ -47,14 +46,6 @@ namespace Inventory.model
 		public RecordOfProductMovement RecordOfProductMovement { get; set; }
 		public Product()
 		{
-			AssignDefaultData();
-		}
-		public Product(string id)
-		{
-			GetDataFromSqlDatabase(id);
-		}
-		private void AssignDefaultData()
-		{
 			this.Id = 0;
 			this.DebugCode = "";
 			this.Status = "";
@@ -87,55 +78,21 @@ namespace Inventory.model
 			this.ProfitWithDiscount = 0.0M;
 			this.Memo = "";
 		}
-		public void GetDataFromSqlDatabase(string id)
+		public static Product GetDataFromSqlDatabase(int id)
 		{
+			Product product;
 			try
 			{
-				string queryDataFromProductId = "SELECT * FROM " + Sql.ProductsTableName + " WHERE id=@id";
-
-				using SqlDatabase sqlDatabase = new SqlDatabase();
-				using SqlDataReader sqlDataReader = sqlDatabase.Read(queryDataFromProductId, new Dictionary<string, string> {{"@id", id}});
-				
-				if (sqlDataReader.Read())
-				{
-					this.Id = int.Parse(sqlDataReader["id"].ToString());
-					this.DebugCode = sqlDataReader["codigo"].ToString();
-					this.Status = sqlDataReader["estado"].ToString();
-					this.Enrollment = sqlDataReader["matricula"].ToString();
-					this.MountingTechnology = sqlDataReader["tecmon"].ToString();
-					this.EncapsulationType = sqlDataReader["encapsulado"].ToString();
-					this.ShortDescription = sqlDataReader["descripcion"].ToString();
-					this.Category = sqlDataReader["categoria"].ToString();
-					this.ProductUseInventory = bool.Parse(sqlDataReader["inventario"].ToString());
-					this.CurrentAmount = int.Parse((sqlDataReader["existencia"].ToString()));
-					this.MinAmount = int.Parse(sqlDataReader["minimo"].ToString());
-					this.MaxAmount = int.Parse((sqlDataReader["maximo"].ToString()));
-					this.Container = sqlDataReader["contenedor"].ToString();
-					this.Location = sqlDataReader["ubicacion"].ToString();
-					this.BranchOffice = sqlDataReader["s"].ToString();
-					this.Rack = sqlDataReader["e"].ToString();
-					this.Shelf = sqlDataReader["r"].ToString();
-					this.BuyPrice = decimal.Parse((sqlDataReader["preciocomp"].ToString()));
-					this.UnitType = sqlDataReader["unidad"].ToString();
-					this.Manufacturer = sqlDataReader["proveedor"].ToString();
-					this.PartNumber = sqlDataReader["parte"].ToString();
-					this.TypeOfStock = sqlDataReader["tipo"].ToString();
-					this.ManualProfit = bool.Parse(sqlDataReader["ajuste_manual"].ToString());
-					this.PercentageOfProfit = decimal.Parse((sqlDataReader["ganancia"].ToString()));
-					this.PercentageOfDiscount = decimal.Parse((sqlDataReader["descuento"].ToString()));
-					this.SalePriceWithoutDiscount = decimal.Parse((sqlDataReader["preciovent"].ToString()));
-					this.PriceWithDiscount = decimal.Parse((sqlDataReader["preciodesc"].ToString()));
-					this.ProfitWithoutDiscount = decimal.Parse((sqlDataReader["utilidad"].ToString()));
-					this.PriceWithDiscount = decimal.Parse((sqlDataReader["utilidaddesc"].ToString()));
-					this.FullDescription = sqlDataReader["descfull"].ToString();
-					this.Memo = sqlDataReader["memo"].ToString();
-				}
+				using InventoryDbContext inventoryDb = new InventoryDbContext();
+				product = inventoryDb.Products.Single(searchProduct => searchProduct.Id == id);
 			}
 			catch(Exception exception)
 			{
 				MessageBox.Show("Error al obtener el producto de la base de datos.\n\nDetalles:\n" + exception , "Error");
-				AssignDefaultData();
+				product = new Product();
 			}
+
+			return product;
 		}
 	}
 	
