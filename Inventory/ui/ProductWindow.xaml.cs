@@ -46,6 +46,31 @@ namespace Inventory.ui
 
 			this.Activate();
 		}
+		private void ConfigureControlsForTask()
+		{
+			switch (CurrentTask)
+			{
+				case ProductWindowTasks.AddNewProduct:
+					UnlockEditableControls();
+					TxtBlockProductTask.Text = "Nuevo Producto";
+					BtnAddModifyAndSave.Content = "Agregar";
+					break;
+				case ProductWindowTasks.Modify:
+					UnlockEditableControls();
+					TxtBlockProductTask.Text = "Modificar Producto";
+					BtnAddModifyAndSave.Content = "Guardar";
+					break;
+				case ProductWindowTasks.ShowDetails:
+					LockEditableControls();
+					TxtBlockProductTask.Text = "Detalles del Producto";
+					BtnAddModifyAndSave.Content = "Modificar";
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+			
+			this.Title = TxtBlockProductTask.Text;
+		}
 		private void AssignProductDataToControls(string id)
 		{
 			if (string.IsNullOrEmpty(id))
@@ -129,31 +154,6 @@ namespace Inventory.ui
 				RadioBtnAutomaticProfit.IsChecked = true;
 				DisableControlsForAutomaticProfit();
 			}
-		}
-		private void ConfigureControlsForTask()
-		{
-			switch (CurrentTask)
-			{
-				case ProductWindowTasks.AddNewProduct:
-					UnlockEditableControls();
-					TxtBlockProductTask.Text = "Nuevo Producto";
-					BtnAddModifyAndSave.Content = "Agregar";
-					break;
-				case ProductWindowTasks.Modify:
-					UnlockEditableControls();
-					TxtBlockProductTask.Text = "Modificar Producto";
-					BtnAddModifyAndSave.Content = "Guardar";
-					break;
-				case ProductWindowTasks.ShowDetails:
-					LockEditableControls();
-					TxtBlockProductTask.Text = "Detalles del Producto";
-					BtnAddModifyAndSave.Content = "Modificar";
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
-			
-			this.Title = TxtBlockProductTask.Text;
 		}
 		private void LockEditableControls()
 		{
