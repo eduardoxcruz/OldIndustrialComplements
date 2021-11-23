@@ -1,26 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Linq;
 using System.Windows;
 using Inventory.data;
+using Inventory.model;
 
 namespace Inventory.ui
 {
 	public partial class LoginWindow
 	{
-		private SqlDataTable SqlDataTable { get; }
-		private SqlDatabase SqlDatabase { get; }
-
 		public LoginWindow()
 		{
 			InitializeComponent();
-			SqlDatabase = new SqlDatabase();
-			SqlDataTable = new SqlDataTable();
 			LoadUsersFromDatabaseToComboBox();
 		}
 		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password) && string.IsNullOrEmpty(CmbBoxUsers.Text))
+			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{
 				ChkBoxRememberData.IsChecked = false;
 				MessageBox.Show("Introduce datos para guardar la información");
@@ -33,7 +27,7 @@ namespace Inventory.ui
 		}
 		private void BtnConnect_Click(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password) || string.IsNullOrEmpty(CmbBoxUsers.Text))
+			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{
 				ChkBoxRememberData.IsChecked = false;
 				MessageBox.Show("El campo de contraseña esta vacío");
@@ -63,32 +57,23 @@ namespace Inventory.ui
 		}
 		private void LoadUsersFromDatabaseToComboBox()
 		{
-			string queryUserNamesFromUsersTable = "SELECT nombre FROM dbo.usuarios";
-			using SqlDataReader dataReader = SqlDatabase.Read(queryUserNamesFromUsersTable);
-
-			while (dataReader.Read())
-			{
-				CmbBoxUsers.Items.Add(dataReader["nombre"].ToString());
-			}
-			
-			SqlDatabase.Dispose();
-			CmbBoxUsers.SelectedIndex = App.GetItemIndexFromComboBoxItems(CmbBoxUsers, Properties.Settings.Default.User);
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			CmbBoxUsers.ItemsSource = inventoryDb.Employees.ToList();
+			CmbBoxUsers.DisplayMemberPath = "FullName";
+			CmbBoxUsers.SelectedValuePath = "FullName";
+			CmbBoxUsers.SelectedItem =  inventoryDb.Employees
+				.FirstOrDefault(employee => employee.FullName.Equals(Properties.Settings.Default.User));
 		}
 		private bool CredentialsAreCorrect()
 		{
-			string queryCredentials = "SELECT * FROM dbo.usuarios WHERE nombre = @nombre AND contraseña = @pass";
-			Dictionary<string, string> sqlCommandParams = new Dictionary<string, string>();
-			sqlCommandParams.Add("@nombre", CmbBoxUsers.Text);
-			sqlCommandParams.Add("@pass", TxtBoxPassword.Password);
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			Employee employee = inventoryDb.Employees
+				.FirstOrDefault(employee => employee == CmbBoxUsers.SelectedItem);
 
-			DataTable dataTable = SqlDataTable.GetFilledDataTableWithSqlDataAdapter(queryCredentials, sqlCommandParams);
+			if (employee == null || !employee.Password.Equals(TxtBoxPassword.Password)) 
+				return false;
 
-			if (dataTable.Rows.Count == 1)
-			{
-				return true;
-			}
-
-			return false;
+			return true;
 		}
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
