@@ -257,7 +257,7 @@
 		</GroupBox>
 		<GroupBox Header="Inventario" 
 		          Margin="5,228,348,232">
-			<Grid>
+			<Grid x:Name="GridInventory">
 				<CheckBox x:Name="ChkBoxTheProductUsesInventory" 
 				          Content="Producto usa Inventario" 
 				          Margin="10,10,80,43"
