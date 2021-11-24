@@ -424,7 +424,7 @@
 		</GroupBox>
 		<GroupBox Header="Detalle de Precios" 
 		          Margin="5,328,197,58" >
-			<Grid Height="149">
+			<Grid Height="149" x:Name="GridPriceDetails">
 				<TextBlock HorizontalAlignment="Left" 
 				           Margin="10,10,0,0" 
 				           TextWrapping="Wrap" 
