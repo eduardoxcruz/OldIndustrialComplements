@@ -79,7 +79,7 @@ namespace Inventory.ui
 
 		private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			if (DataGridProducts.ItemsSource == null)
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
