@@ -21,23 +21,24 @@ namespace Inventory.ui
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 			DataGridProducts.ItemsSource =
-				inventoryDb
-					.Products
-					.Where(product => product.Id.Equals(text) ||
-					                  product.DebugCode.Contains(text) ||
-					                  product.Status.Contains(text) ||
-					                  product.Enrollment.Contains(text) ||
-					                  product.MountingTechnology.Contains(text) ||
-					                  product.EncapsulationType.Contains(text) ||
-					                  product.ShortDescription.Contains(text) ||
-					                  product.Category.Contains(text) ||
-					                  product.Container.Contains(text) ||
-					                  product.Location.Contains(text) ||
-					                  product.Manufacturer.Contains(text) ||
-					                  product.PartNumber.Contains(text) ||
-					                  product.TypeOfStock.Contains(text) ||
-					                  product.Memo.Contains(text))
-					.ToList();
+				(from product in inventoryDb.Products 
+					where
+						EF.Functions.Like(product.Id.ToString(), text) ||
+						EF.Functions.Like(product.DebugCode, "%" + text + "%") ||
+						EF.Functions.Like(product.Status, "%" + text + "%") ||
+						EF.Functions.Like(product.Enrollment, "%" + text + "%") ||
+						EF.Functions.Like(product.MountingTechnology, "%" + text + "%") ||
+						EF.Functions.Like(product.EncapsulationType, "%" + text + "%") ||
+						EF.Functions.Like(product.ShortDescription, "%" + text + "%") ||
+						EF.Functions.Like(product.Category, "%" + text + "%") ||
+						EF.Functions.Like(product.Container, "%" + text + "%") ||
+						EF.Functions.Like(product.Location, "%" + text + "%") ||
+						EF.Functions.Like(product.Manufacturer, "%" + text + "%") ||
+						EF.Functions.Like(product.PartNumber, "%" + text + "%") ||
+						EF.Functions.Like(product.TypeOfStock, "%" + text + "%") ||
+						EF.Functions.Like(product.Location, "%" + text + "%")
+					select product)
+				.ToList();
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
@@ -59,17 +60,20 @@ namespace Inventory.ui
 
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 
-			DataGridProducts.ItemsSource = inventoryDb.Products
-				.FromSqlRaw("SELECT * FROM dbo.Products WHERE Id like('%" + TxtBoxId.Text + "%') AND " +
-				            "Enrollment like ('%" + TxtBoxEnrollment.Text + "%') AND " +
-				            "ShortDescription like ('%" + TxtBoxDescription.Text + "%') AND " +
-				            "Container like ('%" + TxtBoxContainer.Text + "%') AND " +
-				            "Location like ('%" + TxtBoxLocation.Text + "%') AND " +
-				            "Status like ('%" + TxtBoxStatus.Text + "%') AND " +
-				            "MountingTechnology like ('%" + TxtBoxMountingTechnology.Text + "%')AND " +
-				            "EncapsulationType like ('%" + TxtBoxEncapsulation.Text + "%')AND " +
-				            "DebugCode like ('%" + TxtBoxDebugCode.Text + "%')")
-				.ToList();
+			DataGridProducts.ItemsSource = 
+				(from product in inventoryDb.Products 
+					where
+						EF.Functions.Like(product.Id.ToString(), TxtBoxId.Text) &&
+						EF.Functions.Like(product.Enrollment, "%" + TxtBoxEnrollment.Text + "%") &&
+						EF.Functions.Like(product.ShortDescription, "%" + TxtBoxDescription.Text + "%") &&
+						EF.Functions.Like(product.Container, "%" + TxtBoxContainer.Text + "%") &&
+						EF.Functions.Like(product.Location, "%" + TxtBoxLocation.Text + "%") &&
+						EF.Functions.Like(product.Status, "%" + TxtBoxStatus.Text + "%") &&
+						EF.Functions.Like(product.MountingTechnology, "%" + TxtBoxMountingTechnology.Text + "%") &&
+						EF.Functions.Like(product.EncapsulationType, "%" + TxtBoxEncapsulation.Text + "%") &&
+						EF.Functions.Like(product.DebugCode, "%" + TxtBoxDebugCode.Text + "%")
+					select product).ToList();
+
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
