@@ -422,8 +422,7 @@
 				         TextAlignment="Center" />
 			</Grid>
 		</GroupBox>
-		<GroupBox x:Name="GrpBoxPriceDetails" 
-		          Header="Detalle de Precios" 
+		<GroupBox Header="Detalle de Precios" 
 		          Margin="5,328,197,58" >
 			<Grid Height="149">
 				<TextBlock HorizontalAlignment="Left" 
