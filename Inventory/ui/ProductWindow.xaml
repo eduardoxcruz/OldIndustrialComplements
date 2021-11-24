@@ -107,7 +107,7 @@
 		          Margin="10,25,13,331"
 		          Width="672" 
 		          Height="198">
-			<Grid>
+			<Grid x:Name="GridProductDetails">
 				<TextBlock HorizontalAlignment="Left" 
 				           Margin="10,3,0,0" 
 				           TextWrapping="Wrap" 
