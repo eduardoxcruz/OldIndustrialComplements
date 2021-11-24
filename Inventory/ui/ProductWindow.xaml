@@ -103,8 +103,7 @@
 		        Height="24" 
 		        FontSize="9"
 		        Content="Buscar" />
-		<GroupBox x:Name="GrpBoxProductDetails" 
-		          Header="Datos del producto" 
+		<GroupBox Header="Datos del producto" 
 		          Margin="10,25,13,331"
 		          Width="672" 
 		          Height="198">
