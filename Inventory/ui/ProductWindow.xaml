@@ -327,8 +327,7 @@
 				        Content="Tareas"/>
 			</Grid>
 		</GroupBox>
-		<GroupBox x:Name="GrpBoxLocation" 
-		          Header="Ubicación" 
+		<GroupBox Header="Ubicación" 
 		          Margin="353,228,10,232" >
 			<Grid>
 				<TextBlock HorizontalAlignment="Left"
