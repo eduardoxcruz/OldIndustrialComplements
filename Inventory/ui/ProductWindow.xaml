@@ -255,8 +255,7 @@
 				         TextAlignment="Center" />
 			</Grid>
 		</GroupBox>
-		<GroupBox x:Name="GrpBoxInventory" 
-		          Header="Inventario" 
+		<GroupBox Header="Inventario" 
 		          Margin="5,228,348,232">
 			<Grid>
 				<CheckBox x:Name="ChkBoxTheProductUsesInventory" 
