@@ -11,7 +11,7 @@
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-	<Grid>
+	<Grid x:Name="GridMain">
 		<TextBlock x:Name="TxtBlockProductTask" 
 		           HorizontalAlignment="Left" 
 		           Margin="18,5,0,0" 
