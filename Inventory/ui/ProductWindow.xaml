@@ -329,7 +329,7 @@
 		</GroupBox>
 		<GroupBox Header="Ubicación" 
 		          Margin="353,228,10,232" >
-			<Grid>
+			<Grid x:Name="GridLocation">
 				<TextBlock HorizontalAlignment="Left"
 				           Margin="10,5,0,0" 
 				           TextWrapping="Wrap" 
