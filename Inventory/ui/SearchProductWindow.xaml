@@ -38,7 +38,7 @@
                 Height="24"
 		        FontSize="9"
                 Content="+"
-                Click="BtnPlus_Click" />
+                Click="AddNewProduct" />
         <Button x:Name="BtnTool" 
                 HorizontalAlignment="Left" 
                 Margin="152,4,0,0"
