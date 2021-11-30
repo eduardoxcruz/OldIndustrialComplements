@@ -102,7 +102,7 @@ namespace Inventory.ui
 				QuickSearch(TxtBoxQuickSearch.Text);
 			}
 		}
-		private void EnterPressed(object sender, KeyEventArgs e)
+		private void EnterKeyPressed(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
 			{
