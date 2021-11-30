@@ -7,39 +7,389 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class Product
+	public class Product : INotifyPropertyChanged
 	{
-		public int Id { get; set; }
-		public string? DebugCode { get; set; }
-		public string? Status { get; set; }
-		public string? Enrollment { get; set; }
-		public string? MountingTechnology { get; set; }
-		public string? EncapsulationType { get; set; }
-		public string? ShortDescription { get; set; }
-		public string? Category { get; set; }
-		public bool? ProductUseInventory { get; set; }
-		public int? CurrentAmount { get; set; }
-		public int? MinAmount { get; set; }
-		public int? MaxAmount { get; set; }
-		public string? Container { get; set; }
-		public string? Location { get; set; }
-		public string? BranchOffice { get; set; }
-		public string? Rack { get; set; }
-		public string? Shelf { get; set; }
-		public decimal? BuyPrice { get; set; }
-		public string? UnitType { get; set; }
-		public string? Manufacturer { get; set; }
-		public string? PartNumber { get; set; }
-		public string? TypeOfStock { get; set; }
-		public bool? ManualProfit { get; set; }
-		public decimal? PercentageOfProfit { get; set; }
-		public decimal? PercentageOfDiscount { get; set; }
-		public decimal? SalePriceWithoutDiscount { get; set; }
-		public decimal? PriceWithDiscount { get; set; }
-		public decimal? ProfitWithoutDiscount { get; set; }
-		public decimal? ProfitWithDiscount { get; set; }
-		public string? FullDescription { get; set; }
-		public string? Memo { get; set; }
+		public event PropertyChangedEventHandler? PropertyChanged;
+		
+		private int _id;
+		private string? _debugCode;
+		private string? _status;
+		private string? _enrollment;
+		private string? _mountingTechnology;
+		private string? _encapsulationType;
+		private string? _shortDescription;
+		private string? _category;
+		private bool? _isUsingInventory;
+		private int? _currentAmount;
+		private int? _minAmount;
+		private int? _maxAmount;
+		private string? _container;
+		private string? _location;
+		private string? _branchOffice;
+		private string? _rack;
+		private string? _shelf;
+		private decimal? _buyPrice;
+		private string? _unitType;
+		private string? _manufacturer;
+		private string? _partNumber;
+		private string? _typeOfStock;
+		private bool? _isManualProfit;
+		private decimal? _percentageOfProfit;
+		private decimal? _percentageOfDiscount;
+		private decimal? _salePriceWithoutDiscount;
+		private decimal? _salePriceWithDiscount;
+		private decimal? _profitWithoutDiscount;
+		private decimal? _profitWithDiscount;
+		private string? _fullDescription;
+		private string? _memo;
+		public int Id
+		{
+			get
+			{
+				return _id;
+			}
+			set
+			{
+				_id = value;
+				OnPropertyChanged(nameof(Id));
+			}
+		}
+		public string? DebugCode
+		{
+			get
+			{
+				return _debugCode;
+			}
+			set
+			{
+				_debugCode = value;
+				OnPropertyChanged(nameof(DebugCode));
+			}
+		}
+		public string? Status
+		{
+			get
+			{
+				return _status;
+			}
+			set
+			{
+				_status = value;
+				OnPropertyChanged(nameof(Status));
+			}
+		}
+		public string? Enrollment { 
+			get
+			{
+				return _enrollment;
+			} 
+			set
+			{
+				_enrollment = value;
+				OnPropertyChanged(nameof(Enrollment));
+			} 
+		}
+		public string? MountingTechnology { 
+			get
+			{
+				return _mountingTechnology;
+			} 
+			set
+			{
+				_mountingTechnology = value;
+				OnPropertyChanged(nameof(MountingTechnology));
+			} 
+		}
+		public string? EncapsulationType { 
+			get
+			{
+				return _encapsulationType;
+			} 
+			set
+			{
+				_encapsulationType = value;
+				OnPropertyChanged(nameof(EncapsulationType));
+			} 
+		}
+		public string? ShortDescription { 
+			get
+			{
+				return _shortDescription;
+			} 
+			set
+			{
+				_shortDescription = value;
+				OnPropertyChanged(nameof(ShortDescription));
+			} 
+		}
+		public string? Category { 
+			get
+			{
+				return _category;
+			} 
+			set
+			{
+				_category = value;
+				OnPropertyChanged(nameof(Category));
+			} 
+		}
+		public bool? IsUsingInventory { 
+			get
+			{
+				return _isUsingInventory;
+			} 
+			set
+			{
+				_isUsingInventory = value;
+				OnPropertyChanged(nameof(IsUsingInventory));
+			} 
+		}
+		public int? CurrentAmount { 
+			get
+			{
+				return _currentAmount;
+			} 
+			set
+			{
+				_currentAmount = value;
+				OnPropertyChanged(nameof(CurrentAmount));
+			} 
+		}
+		public int? MinAmount { 
+			get
+			{
+				return _minAmount;
+			} 
+			set
+			{
+				if (value > MaxAmount)
+				{
+					_minAmount = MaxAmount;
+					return;
+				}
+				_minAmount = value;
+				OnPropertyChanged(nameof(MinAmount));
+			} 
+		}
+		public int? MaxAmount { 
+			get
+			{
+				return _maxAmount;
+			} 
+			set
+			{
+				_maxAmount = value;
+				OnPropertyChanged(nameof(MaxAmount));
+			} 
+		}
+		public string? Container { 
+			get
+			{
+				return _container;
+			} 
+			set
+			{
+				_container = value;
+				OnPropertyChanged(nameof(Container));
+			} 
+		}
+		public string? Location { 
+			get
+			{
+				return _location;
+			} 
+			set
+			{
+				_location = value;
+				OnPropertyChanged(nameof(Location));
+			} 
+		}
+		public string? BranchOffice { 
+			get
+			{
+				return _branchOffice;
+			} 
+			set
+			{
+				_branchOffice = value;
+				OnPropertyChanged(nameof(BranchOffice));
+			} 
+		}
+		public string? Rack { 
+			get
+			{
+				return _rack;
+			} 
+			set
+			{
+				_rack = value;
+				OnPropertyChanged(nameof(Rack));
+			} 
+		}
+		public string? Shelf { 
+			get
+			{
+				return _shelf;
+			} 
+			set
+			{
+				_shelf = value;
+				OnPropertyChanged(nameof(Shelf));
+			} 
+		}
+		public decimal? BuyPrice { 
+			get
+			{
+				return _buyPrice;
+			} 
+			set
+			{
+				_buyPrice = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(BuyPrice));
+			} 
+		}
+		public string? UnitType { 
+			get
+			{
+				return _unitType;
+			} 
+			set
+			{
+				_unitType = value;
+				OnPropertyChanged(nameof(UnitType));
+			} 
+		}
+		public string? Manufacturer { 
+			get
+			{
+				return _manufacturer;
+			} 
+			set
+			{
+				_manufacturer = value;
+				OnPropertyChanged(nameof(Manufacturer));
+			} 
+		}
+		public string? PartNumber { 
+			get
+			{
+				return _partNumber;
+			} 
+			set
+			{
+				_partNumber = value;
+				OnPropertyChanged(nameof(PartNumber));
+			} 
+		}
+		public string? TypeOfStock { 
+			get
+			{
+				return _typeOfStock;
+			} 
+			set
+			{
+				_typeOfStock = value;
+				OnPropertyChanged(nameof(TypeOfStock));
+			} 
+		}
+		public bool? IsManualProfit { 
+			get
+			{
+				return _isManualProfit;
+			} 
+			set
+			{
+				_isManualProfit = value;
+				OnPropertyChanged(nameof(IsManualProfit));
+			} 
+		}
+		public decimal? PercentageOfProfit { 
+			get
+			{
+				return _percentageOfProfit;
+			} 
+			set
+			{
+				_percentageOfProfit = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(PercentageOfProfit));
+			} 
+		}
+		public decimal? PercentageOfDiscount { 
+			get
+			{
+				return _percentageOfDiscount;
+			} 
+			set
+			{
+				_percentageOfDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(PercentageOfDiscount));
+			} 
+		}
+		public decimal? SalePriceWithoutDiscount { 
+			get
+			{
+				return _salePriceWithoutDiscount;
+			} 
+			set
+			{
+				_salePriceWithoutDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(SalePriceWithoutDiscount));
+			} 
+		}
+		public decimal? SalePriceWithDiscount { 
+			get
+			{
+				return _salePriceWithDiscount;
+			} 
+			set
+			{
+				_salePriceWithDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(SalePriceWithDiscount));
+			} 
+		}
+		public decimal? ProfitWithoutDiscount { 
+			get
+			{
+				return _profitWithoutDiscount;
+			} 
+			set{
+				_profitWithoutDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(ProfitWithoutDiscount));
+			} 
+		}
+		public decimal? ProfitWithDiscount { 
+			get
+			{
+				return _profitWithDiscount;
+			} 
+			set
+			{
+				_profitWithDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
+				OnPropertyChanged(nameof(ProfitWithDiscount));
+			} 
+		}
+		public string? FullDescription { 
+			get
+			{
+				return _fullDescription;
+			} 
+			set
+			{
+				_fullDescription = value;
+				OnPropertyChanged(nameof(FullDescription));
+			} 
+		}
+		public string? Memo { 
+			get
+			{
+				return _memo;
+			} 
+			set
+			{
+				_memo = value;
+				OnPropertyChanged(nameof(Memo));
+			} 
+		}
 		
 		public ProductForBuy ProductForBuy { get; set; }
 		public ProductRequest ProductRequest { get; set; }
@@ -55,7 +405,7 @@ namespace Inventory.model
 			this.Category = "";
 			this.ShortDescription = "";
 			this.FullDescription = "";
-			this.ProductUseInventory = false;
+			this.IsUsingInventory = false;
 			this.CurrentAmount = 0;
 			this.MinAmount = 1;
 			this.MaxAmount = 0;
@@ -69,12 +419,12 @@ namespace Inventory.model
 			this.TypeOfStock = "";
 			this.Manufacturer = "";
 			this.PartNumber = "";
-			this.ManualProfit = false;
+			this.IsManualProfit = false;
 			this.PercentageOfProfit = 0.0M;
 			this.SalePriceWithoutDiscount = 0.0M;
 			this.ProfitWithoutDiscount = 0.0M;
 			this.PercentageOfDiscount = 0.0M;
-			this.PriceWithDiscount = 0.0M;
+			this.SalePriceWithDiscount = 0.0M;
 			this.ProfitWithDiscount = 0.0M;
 			this.Memo = "";
 		}
@@ -106,29 +456,43 @@ namespace Inventory.model
 				.Property(product => product.Id)
 				.ValueGeneratedNever();
 
-			builder.Property(product => product.ManualProfit);
+			builder.Property(product => product.IsManualProfit);
 
-			builder.Property(product => product.PercentageOfDiscount);
+			builder.Property(product => product.IsUsingInventory);
 			
 			builder.Property(product => product.CurrentAmount);
 
-			builder.Property(product => product.PercentageOfProfit);
-
-			builder.Property(product => product.ProductUseInventory);
-			
 			builder.Property(product => product.MaxAmount);
-			
+
 			builder.Property(product => product.MinAmount);
-
-			builder.Property(product => product.BuyPrice);
-
-			builder.Property(product => product.PriceWithDiscount);
-
-			builder.Property(product => product.SalePriceWithoutDiscount);
 			
-			builder.Property(product => product.ProfitWithoutDiscount);
+			builder
+				.Property(product => product.BuyPrice)
+				.HasPrecision(6, 2);
 
-			builder.Property(product => product.ProfitWithDiscount);
+			builder
+				.Property(product => product.PercentageOfDiscount)
+				.HasPrecision(6, 2);
+
+			builder
+				.Property(product => product.PercentageOfProfit)
+				.HasPrecision(6, 2);
+			
+			builder
+				.Property(product => product.SalePriceWithDiscount)
+				.HasPrecision(6, 2);
+
+			builder
+				.Property(product => product.SalePriceWithoutDiscount)
+				.HasPrecision(6, 2);
+			
+			builder
+				.Property(product => product.ProfitWithoutDiscount)
+				.HasPrecision(6, 2);
+
+			builder
+				.Property(product => product.ProfitWithDiscount)
+				.HasPrecision(6, 2);
 			
 			builder
 				.Property(product => product.Category)
