@@ -67,7 +67,7 @@ namespace Inventory.ui
 
 			return true;
 		}
-		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
+		private void Exit(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
