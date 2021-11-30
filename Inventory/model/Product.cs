@@ -406,9 +406,9 @@ namespace Inventory.model
 			this.Category = "";
 			this.ShortDescription = "";
 			this.FullDescription = "";
-			this.IsUsingInventory = false;
+			this.IsUsingInventory = true;
 			this.CurrentAmount = 0;
-			this.MinAmount = 1;
+			this.MinAmount = 0;
 			this.MaxAmount = 0;
 			this.Container = "";
 			this.Location = "";
@@ -420,7 +420,7 @@ namespace Inventory.model
 			this.TypeOfStock = "";
 			this.Manufacturer = "";
 			this.PartNumber = "";
-			this.IsManualProfit = false;
+			this.IsManualProfit = true;
 			this.PercentageOfProfit = 0.0M;
 			this.SalePriceWithoutDiscount = 0.0M;
 			this.ProfitWithoutDiscount = 0.0M;
