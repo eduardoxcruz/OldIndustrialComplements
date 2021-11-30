@@ -46,7 +46,7 @@
                 Height="18" 
                 FontSize="9" 
                 Content="Conectar"
-                Click="BtnTestConnection_OnClick" />
+                Click="TestConnection" />
         <Button x:Name="BtnExit" 
                 HorizontalAlignment="Left" 
                 Margin="80,46,0,0" 
