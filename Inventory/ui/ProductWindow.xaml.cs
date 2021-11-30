@@ -45,7 +45,7 @@ namespace Inventory.ui
 
 			if (product != null)
 			{
-				AssignProductDataToControls(product.Id);
+				UpdateProduct(product.Id);
 			}
 
 			if (this.Visibility == Visibility.Collapsed)
@@ -115,14 +115,15 @@ namespace Inventory.ui
 				return;
 			}
 
-			AssignProductDataToControls(int.Parse(TxtBoxIdCode.Text));
+			UpdateProduct(int.Parse(TxtBoxIdCode.Text));
 		}
-		private void AssignProductDataToControls(int id)
+		private void UpdateOnClick(object sender, RoutedEventArgs e)
 		{
-			if (Product.Id == 0 || Product.Id != id)
-			{
-				this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
-			}
+			UpdateProduct(Product.Id);
+		}
+		private void UpdateProduct(int id)
+		{
+			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
 
 			if (Product.IsUsingInventory.Equals(true))
 			{
@@ -277,28 +278,24 @@ namespace Inventory.ui
 		}
 		private void LoadFirstProduct(object sender, RoutedEventArgs e)
 		{
-			AssignProductDataToControls(1);
+			UpdateProduct(1);
 		}
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
 			
 		}
-
 		private void AddProfit(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfProfit += 1;
 		}
-
 		private void RemoveProfit(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfProfit -= 1;
 		}
-
 		private void AddDiscount(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfDiscount += 1;
 		}
-
 		private void RemoveDiscount(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfDiscount -= 1;
