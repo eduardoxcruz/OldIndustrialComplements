@@ -18,6 +18,13 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 		}
+		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
+		{
+			if (TxtBoxQuickSearch.Text.Length > 2)
+			{
+				QuickSearch(TxtBoxQuickSearch.Text);
+			}
+		}
 		private void QuickSearch(string text)
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
@@ -42,7 +49,13 @@ namespace Inventory.ui
 				.ToList();
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
-
+		private void EnterKeyPressed(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				SearchWithFilters(sender, e);
+			}
+		}
 		private void SearchWithFilters(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxId.Text) & 
@@ -77,7 +90,6 @@ namespace Inventory.ui
 
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
-
 		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
@@ -88,26 +100,10 @@ namespace Inventory.ui
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct);
 		}
-
 		private void AllowOnlyNumbers(object sender, TextCompositionEventArgs e)
 		{
 			Regex regex = new Regex("[^0-9]+");
 			e.Handled = regex.IsMatch(e.Text);
-		}
-
-		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
-		{
-			if (TxtBoxQuickSearch.Text.Length > 2)
-			{
-				QuickSearch(TxtBoxQuickSearch.Text);
-			}
-		}
-		private void EnterKeyPressed(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Enter)
-			{
-				SearchWithFilters(sender, e);
-			}
 		}
 		private void CleanFilters(object sender, RoutedEventArgs e)
 		{
@@ -124,33 +120,27 @@ namespace Inventory.ui
 			TxtBoxDebugCode.Text = null;
 			TxtBoxCount.Text = "00";
 		}
-
 		private void OpenSettings(object sender, RoutedEventArgs e)
 		{
 			SettingsWindow.Instance.BringWindowToFront();
 		}
-
 		private void OpenProductRequests(object sender, RoutedEventArgs e)
 		{
 			RequestsWindow.Instance.BringWindowToFront();
 		}
-
 		private void AddNewProduct(object sender, RoutedEventArgs e)
 		{
 			ProductWindow.AddNewProductInstance.BringWindowToFront();
 		}
-
 		private void AddProductToSeparateDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
 			DataGridAddedProducts.Items.Add(selectedRow);
 		}
-
 		private void RequestProduct(object sender, RoutedEventArgs e)
 		{
 			MessageBox.Show("Click Derecho Solicitar");
 		}
-
 		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataGridAddedProducts.Items.Clear();
