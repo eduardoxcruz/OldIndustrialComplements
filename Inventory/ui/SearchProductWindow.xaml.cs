@@ -95,7 +95,7 @@ namespace Inventory.ui
 			e.Handled = regex.IsMatch(e.Text);
 		}
 
-		private void TxtBoxQuickSearch_TextChanged(object sender, TextChangedEventArgs e)
+		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
 		{
 			if (TxtBoxQuickSearch.Text.Length > 2)
 			{
