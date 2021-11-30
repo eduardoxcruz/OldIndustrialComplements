@@ -106,7 +106,7 @@ namespace Inventory.ui
 		{
 			if (e.Key == Key.Enter)
 			{
-				SearchWithFilters();
+				SearchWithFilters(sender, e);
 			}
 		}
 		private void CleanFilters(object sender, RoutedEventArgs e)
