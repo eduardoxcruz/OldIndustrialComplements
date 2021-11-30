@@ -110,7 +110,8 @@
 		        Width="24"
 		        Height="24" 
 		        FontSize="9"
-		        Content="Buscar" />
+		        Content="Actualizar"
+		        Click="UpdateOnClick"/>
         <GroupBox Header="Datos del producto" 
 		          Margin="10,25,13,331"
 		          Width="672" 
