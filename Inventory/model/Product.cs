@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using Inventory.data;
@@ -443,6 +444,64 @@ namespace Inventory.model
 			}
 
 			return product;
+		}
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+			switch (propertyName)
+			{
+				case nameof(Enrollment):
+					goto case "ChangeFullDescription";
+				case nameof(Manufacturer):
+					goto case "ChangeFullDescription";
+				case nameof(PartNumber):
+					goto case "ChangeFullDescription";
+				case nameof(ShortDescription):
+					goto case "ChangeFullDescription";
+				case nameof(MountingTechnology):
+					goto case "ChangeFullDescription";
+				case nameof(EncapsulationType):
+					goto case "ChangeFullDescription";
+				case "ChangeFullDescription":
+					FullDescription = Id + " - " + Manufacturer + ", " + Enrollment + ", " + ShortDescription +
+					                  ", " + MountingTechnology + ", " + EncapsulationType;
+					break;
+				case nameof(IsUsingInventory):
+					if (!IsUsingInventory ?? true)
+					{
+						CurrentAmount = 0;
+						MinAmount = 0;
+						MaxAmount = 0;
+					}
+					break;
+				case nameof(IsManualProfit):
+					if (!IsManualProfit ?? true)
+					{
+						PercentageOfProfit = 25.0M;
+						PercentageOfDiscount = 10.0M;
+					}
+					break;
+				case nameof(BuyPrice):
+					goto case nameof(PercentageOfProfit);
+				case nameof(PercentageOfProfit):
+					ProfitWithoutDiscount = (PercentageOfProfit * 0.01M) * BuyPrice;
+					break;
+				case nameof(ProfitWithoutDiscount):
+					SalePriceWithoutDiscount = BuyPrice + ProfitWithoutDiscount;
+					break;
+				case nameof(SalePriceWithoutDiscount):
+					goto case nameof(PercentageOfDiscount);
+				case nameof(PercentageOfDiscount):
+					if (PercentageOfDiscount > 100)
+					{
+						PercentageOfDiscount = 100;
+					}
+					
+					ProfitWithDiscount = (PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount;
+					SalePriceWithDiscount = SalePriceWithoutDiscount - ProfitWithDiscount;
+					break;
+			}
 		}
 	}
 	
