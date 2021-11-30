@@ -433,7 +433,7 @@ namespace Inventory.model
 			Product product;
 			try
 			{
-				using InventoryDbContext inventoryDb = new InventoryDbContext();
+				using InventoryDbContext inventoryDb = new();
 				product = inventoryDb.Products.Single(searchProduct => searchProduct.Id == id);
 			}
 			catch(Exception exception)
