@@ -121,6 +121,10 @@ namespace Inventory.ui
 		{
 			UpdateProduct(Product.Id);
 		}
+		private void LoadFirstProduct(object sender, RoutedEventArgs e)
+		{
+			UpdateProduct(1);
+		}
 		private void UpdateProduct(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
@@ -275,10 +279,6 @@ namespace Inventory.ui
 				inventoryDb.Products.Add(Product);
 			
 			inventoryDb.SaveChanges();
-		}
-		private void LoadFirstProduct(object sender, RoutedEventArgs e)
-		{
-			UpdateProduct(1);
 		}
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
