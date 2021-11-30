@@ -109,13 +109,7 @@ namespace Inventory.ui
 				SearchWithFilters();
 			}
 		}
-
-		private void BtnSearch_Click(object sender, RoutedEventArgs e)
-		{
-			SearchWithFilters();
-		}
-
-		private void BtnClean_Click(object sender, RoutedEventArgs e)
+		private void CleanFilters(object sender, RoutedEventArgs e)
 		{
 			DataGridProducts.ItemsSource = null;
 			TxtBoxId.Text = null;
