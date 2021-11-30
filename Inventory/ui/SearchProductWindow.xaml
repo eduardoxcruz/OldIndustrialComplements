@@ -30,8 +30,7 @@
 		           Height="18" 
                    TextAlignment="Left"
                    Text="Buscar Producto" />
-        <Button x:Name="BtnPlus" 
-                HorizontalAlignment="Left"
+        <Button HorizontalAlignment="Left"
                 Margin="123,4,0,0" 
                 VerticalAlignment="Top" 
                 Width="24" 
@@ -39,8 +38,7 @@
 		        FontSize="9"
                 Content="+"
                 Click="AddNewProduct" />
-        <Button x:Name="BtnTool" 
-                HorizontalAlignment="Left" 
+        <Button HorizontalAlignment="Left" 
                 Margin="152,4,0,0"
                 VerticalAlignment="Top"
                 Width="24" 
@@ -48,8 +46,7 @@
 		        FontSize="9"
                 Content="Herramienta"
                 Click="OpenSettings" />
-        <Button x:Name="BtnBuy" 
-                HorizontalAlignment="Left"
+        <Button HorizontalAlignment="Left"
                 Margin="181,4,0,0"
                 VerticalAlignment="Top"
                 Width="24"
@@ -281,8 +278,7 @@
 		         Height="18" 
                  FontSize="9"
                  KeyDown="EnterKeyPressed" />
-        <Button x:Name="BtnSearch" 
-                HorizontalAlignment="Left" 
+        <Button HorizontalAlignment="Left" 
                 Margin="10,115,0,0" 
                 VerticalAlignment="Top" 
                 Width="60"
@@ -290,8 +286,7 @@
                 FontSize="9"
                 Content="Buscar"
                 Click="SearchWithFilters" />
-        <Button x:Name="BtnClean" 
-                HorizontalAlignment="Left"
+        <Button HorizontalAlignment="Left"
                 Margin="70,115,0,0"
                 VerticalAlignment="Top"
                 Width="60"
@@ -299,8 +294,7 @@
                 FontSize="9"
                 Content="Limpiar"
                 Click="CleanFilters" />
-        <Button x:Name="BtnRequest" 
-                HorizontalAlignment="Left" 
+        <Button HorizontalAlignment="Left" 
                 Margin="130,115,0,0" 
                 VerticalAlignment="Top" 
                 Width="60"
@@ -353,8 +347,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Button x:Name="BtnExit" 
-                HorizontalAlignment="Left" 
+        <Button HorizontalAlignment="Left" 
                 Margin="10,644,0,0" 
                 VerticalAlignment="Top" 
                 Width="60"
@@ -399,8 +392,7 @@
 	                                Binding="{Binding Shelf}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="BtnCleanDataGridAddedProducts" 
-                HorizontalAlignment="Left" 
+        <Button HorizontalAlignment="Left" 
                 Margin="87,644,0,0"
                 VerticalAlignment="Top" 
                 Width="60"
