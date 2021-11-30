@@ -298,7 +298,7 @@
 		        Height="24"
                 FontSize="9"
                 Content="Limpiar"
-                Click="BtnClean_Click" />
+                Click="CleanFilters" />
         <Button x:Name="BtnRequest" 
                 HorizontalAlignment="Left" 
                 Margin="130,115,0,0" 
