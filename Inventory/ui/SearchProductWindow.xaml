@@ -311,7 +311,7 @@
                   AutoGenerateColumns="False" 
                   Margin="10,144,16,220" 
                   IsReadOnly="True"
-		          MouseDoubleClick="DataGridProducts_MouseDoubleClick" 
+		          MouseDoubleClick="SelectProductFromDataGrid" 
                   Width="990" 
                   Height="300"
                   ColumnWidth="*"
