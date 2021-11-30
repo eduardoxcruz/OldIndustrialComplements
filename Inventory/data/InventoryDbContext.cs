@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.data
 {
-    public partial class InventoryDbContext : DbContext
+    public class InventoryDbContext : DbContext
     {
         public virtual DbSet<ProductForBuy> ProductsForBuy { get; set; }
         public virtual DbSet<RecordOfProductMovement> RecordsOfProductMovements { get; set; }
@@ -28,10 +28,6 @@ namespace Inventory.data
                                                  ";Password=" + Password +
                                                  ";MultipleActiveResultSets=" + MultipleActiveResultSets +
                                                  ";Connection Timeout=" + ConnectionTimeoutInSeconds;
-        
-        public InventoryDbContext()
-        {
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
