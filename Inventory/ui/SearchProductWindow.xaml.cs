@@ -136,7 +136,7 @@ namespace Inventory.ui
 			SettingsWindow.Instance.BringWindowToFront();
 		}
 
-		private void BtnBuy_Click(object sender, RoutedEventArgs e)
+		private void OpenProductRequests(object sender, RoutedEventArgs e)
 		{
 			RequestsWindow.Instance.BringWindowToFront();
 		}
