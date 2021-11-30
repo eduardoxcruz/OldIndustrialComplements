@@ -17,8 +17,6 @@ namespace Inventory.ui
 		public static readonly ProductWindow ShowProductDetailsInstance = new(ProductWindowTasks.ShowDetails);
 		public static readonly ProductWindow ModifyProductInstance = new(ProductWindowTasks.Modify);
 		public static readonly ProductWindow AddNewProductInstance = new(ProductWindowTasks.AddNewProduct);
-		private static readonly SolidColorBrush BlackColorBrush = new(Colors.Black);
-		private static readonly SolidColorBrush CrimsonColorBrush = new(Colors.Crimson);
 		private static SolidColorBrush ForegroundColor { get; set; }
 		private static List<String> Statuses { get; set; } 
 		private static List<String> MountingTechnologies { get; set; }
@@ -34,18 +32,14 @@ namespace Inventory.ui
 			InitializeComponent();
 			Product = new Product();
 			this.DataContext = Product;
-			Statuses = new List<string>() {"ACTIVO", "OBSOLETO"};
-			MountingTechnologies = new List<String>() {"N/A", "THT", "SMD", "LIBRE SUSPENSION", "PANEL", "RIEL"};
 			CurrentTask = task;
-			ConfigureControlsForTask();
+			ConfigureWindowForTask();
 		}
 		public void BringWindowToFront(Product product = null)
 		{
-			ConfigureControlsForTask();
-
 			if (product != null)
 			{
-				UpdateProduct(product.Id);
+				SearchProductById(product.Id);
 			}
 
 			if (this.Visibility == Visibility.Collapsed)
@@ -61,23 +55,12 @@ namespace Inventory.ui
 
 			this.Activate();
 		}
-		private void ConfigureControlsForTask()
+		private void ConfigureWindowForTask()
 		{
-			using InventoryDbContext inventoryDb = new();
-			
 			switch (CurrentTask)
 			{
 				case ProductWindowTasks.AddNewProduct:
-					UnlockAllControls();
-					TxtBoxIdCode.IsReadOnly = true;
-					TxtBoxDebugCode.IsReadOnly = true;
-					TxtBlockProductTask.Text = "Nuevo Producto";
-					BtnAddModifyAndSave.Content = "Agregar";
-					Product.Id = inventoryDb
-						.Products
-						.OrderByDescending(product => product.Id)
-						.FirstOrDefault()
-						.Id + 1;
+					ConfigureWindowForAddProduct();
 					break;
 				case ProductWindowTasks.Modify:
 					UnlockAllControls();
@@ -92,16 +75,37 @@ namespace Inventory.ui
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
-
+			
+			this.Title = TxtBlockProductTask.Text;
+			SetComboBoxesItemSource();
+			ConfigureInventoryAndProfitControls();
+		}
+		private void ConfigureWindowForAddProduct()
+		{
+			UnlockAllControls();
+			TxtBoxIdCode.IsReadOnly = true;
+			TxtBoxDebugCode.IsReadOnly = true;
+			BtnRefreshProduct.IsEnabled = false;
+			BtnVerifySearch.IsEnabled = false;
+			BtnLoadFirstProduct.IsEnabled = false;
+			TxtBlockProductTask.Text = "Nuevo Producto";
+			BtnAddModifyAndSave.Content = "Agregar";
+			using InventoryDbContext inventoryDb = new();
+			Product.Id = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault().Id + 1;
+		}
+		private void SetComboBoxesItemSource()
+		{
+			Statuses = new List<string>() {"ACTIVO", "OBSOLETO"};
+			MountingTechnologies = new List<String>() {"N/A", "THT", "SMD", "LIBRE SUSPENSION", "PANEL", "RIEL"};
+			
 			CmbBoxStatus.ItemsSource = Statuses;
 			CmbBoxMountingTechnology.ItemsSource = MountingTechnologies;
-			this.Title = TxtBlockProductTask.Text;
 		}
-		private void TxtBoxIdCodeEnterPressed(object sender, KeyEventArgs e)
+		private void TxtBoxIdCodeEnterKeyPressed(object sender, KeyEventArgs e)
 		{
-			if (e.Key==Key.Enter) SearchProduct(null, null);
+			if (e.Key==Key.Enter) VerifySearch(sender, e);
 		}
-		private void SearchProduct(object sender, RoutedEventArgs e)
+		private void VerifySearch(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
 			{
@@ -115,63 +119,41 @@ namespace Inventory.ui
 				return;
 			}
 
-			UpdateProduct(int.Parse(TxtBoxIdCode.Text));
+			SearchProductById(int.Parse(TxtBoxIdCode.Text));
 		}
-		private void UpdateOnClick(object sender, RoutedEventArgs e)
+		private void RefreshProduct(object sender, RoutedEventArgs e)
 		{
-			UpdateProduct(Product.Id);
+			if (Product.Id > 0)
+				SearchProductById(Product.Id);
 		}
 		private void LoadFirstProduct(object sender, RoutedEventArgs e)
 		{
-			UpdateProduct(1);
+			SearchProductById(1);
 		}
-		private void UpdateProduct(int id)
+		private void SearchProductById(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
-
-			if (Product.IsUsingInventory.Equals(true))
-			{
-				ChkBoxUseInventory.IsChecked = true;
-				UseInventoryEnabled(null, null);
-			}
-
-			if (Product.IsUsingInventory.Equals(false))
-			{
-				ChkBoxUseInventory.IsChecked = false;
-				UseInventoryDisabled(null, null);
-			}
-
-			if (Product.IsManualProfit.Equals(true))
-			{
-				RadioBtnAutomaticProfit.IsChecked = false;
-				EnableManualProfit(null, null);
-			}
-
-			if (Product.IsManualProfit.Equals(false))
-			{
-				RadioBtnAutomaticProfit.IsChecked = true;
-				EnableAutomaticProfit(null, null);
-			}
+			ConfigureInventoryAndProfitControls();
 		}
 		private void LockAllControls()
 		{
-			ForegroundColor = CrimsonColorBrush;
+			ForegroundColor = new SolidColorBrush(Colors.Crimson);
 			
-			ReadonlyControlsInGrid(GridProductDetails, true);
-			ReadonlyControlsInGrid(GridInventory, true);
-			ReadonlyControlsInGrid(GridLocation, true);
-			ReadonlyControlsInGrid(GridPriceDetails, true);
+			SetControlsInPanelAsReadonly(GridProductDetails, true);
+			SetControlsInPanelAsReadonly(GridInventory, true);
+			SetControlsInPanelAsReadonly(GridLocation, true);
+			SetControlsInPanelAsReadonly(GridPriceDetails, true);
 		}
 		private void UnlockAllControls()
 		{
-			ForegroundColor = BlackColorBrush;
+			ForegroundColor = new SolidColorBrush(Colors.Black);
 			
-			ReadonlyControlsInGrid(GridProductDetails, false);
-			ReadonlyControlsInGrid(GridInventory, false);
-			ReadonlyControlsInGrid(GridLocation, false);
-			ReadonlyControlsInGrid(GridPriceDetails, false);
+			SetControlsInPanelAsReadonly(GridProductDetails, false);
+			SetControlsInPanelAsReadonly(GridInventory, false);
+			SetControlsInPanelAsReadonly(GridLocation, false);
+			SetControlsInPanelAsReadonly(GridPriceDetails, false);
 		}
-		private static void ReadonlyControlsInGrid(Panel panel, bool readOnly)
+		private static void SetControlsInPanelAsReadonly(Panel panel, bool readOnly)
 		{
 			for (int index = 0; index < panel.Children.Count; index++)
 			{
@@ -198,13 +180,34 @@ namespace Inventory.ui
 				}
 			}
 		}
+		private void ConfigureInventoryAndProfitControls()
+		{
+			if (Product.IsUsingInventory ?? false)
+			{
+				ChkBoxUseInventory.IsChecked = true;
+				EnableInventory(null, null);
+			}
+			else
+			{
+				ChkBoxUseInventory.IsChecked = false;
+				DisableInventory(null, null);
+			}
+
+			if (Product.IsManualProfit ?? false)
+			{
+				RadioBtnAutomaticProfit.IsChecked = false;
+				EnableManualProfit(null, null);
+			}
+			else 
+			{
+				RadioBtnAutomaticProfit.IsChecked = true;
+				EnableAutomaticProfit(null, null);
+			}
+		}
 		private void EnableManualProfit(object sender, RoutedEventArgs e)
 		{
 			RadioBtnAutomaticProfit.IsChecked = false;
-			ConfigureForManualProfit();
-		}
-		private void ConfigureForManualProfit()
-		{
+			
 			TxtBoxPercentageOfProfit.IsReadOnly = false;
 			TxtBoxPercentageOfDiscount.IsReadOnly = false;
 			BtnAddProfit.IsEnabled = true;
@@ -215,10 +218,7 @@ namespace Inventory.ui
 		private void EnableAutomaticProfit(object sender, RoutedEventArgs e)
 		{
 			RadioBtnIsManualProfit.IsChecked = false;
-			ConfigureForAutomaticProfit();
-		}
-		private void ConfigureForAutomaticProfit()
-		{
+			
 			TxtBoxPercentageOfProfit.IsReadOnly = true;
 			TxtBoxPercentageOfDiscount.IsReadOnly = true;
 			BtnAddProfit.IsEnabled = false;
@@ -226,13 +226,13 @@ namespace Inventory.ui
 			BtnAddDiscount.IsEnabled = false;
 			BtnRemoveDiscount.IsEnabled = false;
 		}
-		private void UseInventoryEnabled(object sender, RoutedEventArgs e)
+		private void EnableInventory(object sender, RoutedEventArgs e)
 		{
 			TxtBoxCurrentAmount.IsReadOnly = false;
 			TxtBoxMinAmount.IsReadOnly = false;
 			TxtBoxMaxProductStock.IsReadOnly = false;
 		}
-		private void UseInventoryDisabled(object sender, RoutedEventArgs e)
+		private void DisableInventory(object sender, RoutedEventArgs e)
 		{
 			TxtBoxCurrentAmount.IsReadOnly = true;
 			TxtBoxMinAmount.IsReadOnly = true;
@@ -263,7 +263,7 @@ namespace Inventory.ui
 					{
 						SaveProduct();
 						ShowProductDetailsInstance.BringWindowToFront(Product);
-						ConfigureControlsForTask();
+						ConfigureWindowForTask();
 					}
 					break;
 			}
@@ -282,7 +282,7 @@ namespace Inventory.ui
 		}
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
-			
+			TasksWindow.Instance.BringWindowToFront();
 		}
 		private void AddProfit(object sender, RoutedEventArgs e)
 		{

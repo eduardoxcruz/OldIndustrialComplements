@@ -70,7 +70,7 @@
 		         Height="18" 
 		         FontSize="11" 
 		         TextAlignment="Center"
-		         KeyDown="TxtBoxIdCodeEnterPressed" />
+		         KeyDown="TxtBoxIdCodeEnterKeyPressed" />
         <TextBlock HorizontalAlignment="Left" 
 		           Margin="403,0,0,0" 
 		           TextWrapping="Wrap" 
@@ -89,29 +89,24 @@
 		         Height="18"
 		         FontSize="11" 
 		         TextAlignment="Center" />
-        <Button HorizontalAlignment="Left" 
+        <Button x:Name="BtnVerifySearch" 
+                HorizontalAlignment="Left" 
                 Margin="474,14,0,0"
                 VerticalAlignment="Top"
                 Width="60" 
                 Height="18" 
                 FontSize="9" 
                 Content="Buscar" 
-                Click="SearchProduct" />
-        <Button HorizontalAlignment="Left" 
-		        Margin="631,2,0,0"
-		        VerticalAlignment="Top"
-		        Width="24"
-		        Height="24" 
-		        FontSize="9"
-		        Content="+" />
-        <Button HorizontalAlignment="Left" 
-		        Margin="660,2,0,0"
-		        VerticalAlignment="Top" 
-		        Width="24"
-		        Height="24" 
-		        FontSize="9"
-		        Content="Actualizar"
-		        Click="UpdateOnClick"/>
+                Click="VerifySearch" />
+        <Button x:Name="BtnRefreshProduct" 
+                HorizontalAlignment="Left" 
+                Margin="660,2,0,0"
+                VerticalAlignment="Top" 
+                Width="24"
+                Height="24" 
+                FontSize="9"
+                Content="Actualizar"
+                Click="RefreshProduct"/>
         <GroupBox Header="Datos del producto" 
 		          Margin="10,25,13,331"
 		          Width="672" 
@@ -328,8 +323,8 @@
                 <CheckBox x:Name="ChkBoxUseInventory" 
 				          Content="Producto usa Inventario" 
 				          Margin="10,10,80,43"
-				          Checked="UseInventoryEnabled" 
-				          Unchecked="UseInventoryDisabled">
+				          Checked="EnableInventory" 
+				          Unchecked="DisableInventory">
                     <CheckBox.IsChecked>
                         <Binding Path="IsUsingInventory" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
                     </CheckBox.IsChecked>
@@ -906,7 +901,7 @@
 		         Width="672"
 		         Height="18" 
 		         FontSize="9" />
-        <Button x:Name="BtnAddModifyAndSave" 
+        <Button x:Name="BtnAddModifyAndSave"
 		        HorizontalAlignment="Left"
 		        Margin="10,528,0,0"
 		        VerticalAlignment="Top" 
@@ -923,7 +918,7 @@
 		        FontSize="9"
 		        Content="Salir"
 		        Click="CloseWindow" />
-        <Button x:Name="BtnQuickLoad" 
+        <Button x:Name="BtnLoadFirstProduct" 
 		        HorizontalAlignment="Left" 
 		        Margin="622,528,0,0"
 		        VerticalAlignment="Top" 
