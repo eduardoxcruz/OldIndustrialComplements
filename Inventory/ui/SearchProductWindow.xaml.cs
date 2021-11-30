@@ -151,7 +151,7 @@ namespace Inventory.ui
 			MessageBox.Show("Click Derecho Solicitar");
 		}
 
-		private void BtnCleanDataGridAddedProducts_Click(object sender, RoutedEventArgs e)
+		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataGridAddedProducts.Items.Clear();
 		}
