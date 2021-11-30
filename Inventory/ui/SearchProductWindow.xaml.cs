@@ -43,7 +43,7 @@ namespace Inventory.ui
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
-		private void SearchWithFilters()
+		private void SearchWithFilters(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxId.Text) & 
 			    string.IsNullOrEmpty(TxtBoxStatus.Text) & 
