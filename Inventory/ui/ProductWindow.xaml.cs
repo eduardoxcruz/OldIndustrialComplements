@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Inventory.data;
 using Inventory.enums;
 using Inventory.model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ui
 {
@@ -14,23 +19,33 @@ namespace Inventory.ui
 		public static readonly ProductWindow AddNewProductInstance = new(ProductWindowTasks.AddNewProduct);
 		private static readonly SolidColorBrush BlackColorBrush = new(Colors.Black);
 		private static readonly SolidColorBrush CrimsonColorBrush = new(Colors.Crimson);
-		private Product Product { get; set; } = new();
+		private static SolidColorBrush ForegroundColor { get; set; }
+		private static List<String> Statuses { get; set; } 
+		private static List<String> MountingTechnologies { get; set; }
+		private Product Product { get; set; }
 		private ProductWindowTasks CurrentTask { get; }
 
-		private ProductWindow(){}
+		private ProductWindow()
+		{
+			InitializeComponent();
+		}
 		private ProductWindow(ProductWindowTasks task)
 		{
 			InitializeComponent();
+			Product = new Product();
+			this.DataContext = Product;
+			Statuses = new List<string>() {"ACTIVO", "OBSOLETO"};
+			MountingTechnologies = new List<String>() {"N/A", "THT", "SMD", "LIBRE SUSPENSION", "PANEL", "RIEL"};
 			CurrentTask = task;
 			ConfigureControlsForTask();
 		}
-		public void BringWindowToFront(string productId = "")
+		public void BringWindowToFront(Product product = null)
 		{
 			ConfigureControlsForTask();
 
-			if (!string.IsNullOrEmpty(productId))
+			if (product != null)
 			{
-				AssignProductDataToControls(productId);
+				AssignProductDataToControls(product.Id);
 			}
 
 			if (this.Visibility == Visibility.Collapsed)
@@ -48,319 +63,245 @@ namespace Inventory.ui
 		}
 		private void ConfigureControlsForTask()
 		{
+			using InventoryDbContext inventoryDb = new();
+			
 			switch (CurrentTask)
 			{
 				case ProductWindowTasks.AddNewProduct:
-					UnlockEditableControls();
+					UnlockAllControls();
+					TxtBoxIdCode.IsReadOnly = true;
+					TxtBoxDebugCode.IsReadOnly = true;
 					TxtBlockProductTask.Text = "Nuevo Producto";
 					BtnAddModifyAndSave.Content = "Agregar";
+					Product.Id = inventoryDb
+						.Products
+						.OrderByDescending(product => product.Id)
+						.FirstOrDefault()
+						.Id + 1;
 					break;
 				case ProductWindowTasks.Modify:
-					UnlockEditableControls();
+					UnlockAllControls();
 					TxtBlockProductTask.Text = "Modificar Producto";
 					BtnAddModifyAndSave.Content = "Guardar";
 					break;
 				case ProductWindowTasks.ShowDetails:
-					LockControls();
+					LockAllControls();
 					TxtBlockProductTask.Text = "Detalles del Producto";
 					BtnAddModifyAndSave.Content = "Modificar";
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
-			
+
+			CmbBoxStatus.ItemsSource = Statuses;
+			CmbBoxMountingTechnology.ItemsSource = MountingTechnologies;
 			this.Title = TxtBlockProductTask.Text;
 		}
-		private void AssignProductDataToControls(string id)
+		private void TxtBoxIdCodeEnterPressed(object sender, KeyEventArgs e)
 		{
-			if (string.IsNullOrEmpty(id))
+			if (e.Key==Key.Enter) SearchProduct(null, null);
+		}
+		private void SearchProduct(object sender, RoutedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
 			{
-				MessageBox.Show("El campo ID no puede estar vacio", "Error");
+				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Error");
 				return;
 			}
 
-			if (Product.Id == 0 || !id.Equals(Product.Id.ToString()))
+			if (int.Parse(TxtBoxIdCode.Text) <= 0)
 			{
-				Product.GetDataFromSqlDatabase(id);
+				MessageBox.Show("Ingresa un Id o Codigo Debug valido.", "Error");
+				return;
 			}
 
-			TxtBoxId.Text = Product.Id.ToString();
-			TxtBoxIdCode.Text = Product.Id.ToString();
-			TxtBoxEnrollment.Text = Product.Enrollment;
-			TxtBoxShortDescription.Text = Product.ShortDescription;
-			TxtBoxCurrentProductStock.Text = Product.CurrentAmount.ToString();
-			TxtBoxMinProductStock.Text = Product.MinAmount.ToString();
-			TxtBoxMaxProductStock.Text = Product.MaxAmount.ToString();
-			TxtBoxContainer.Text = Product.Container;
-			TxtBoxLocation.Text = Product.Location;
-			TxtBoxBranchOffice.Text = Product.BranchOffice;
-			TxtBoxShelf.Text = Product.Shelf;
-			TxtBoxLedge.Text = Product.Rack;
-			TxtBoxPurchasePrice.Text = Product.BuyPrice.ToString();
-			TxtBoxManufacturerPartNumber.Text = Product.PartNumber;
-			TxtBoxPercentageOfProfit.Text = Product.PercentageOfProfit.ToString();
-			TxtBoxDiscountRate.Text = Product.PercentageOfDiscount.ToString();
-			TxtBoxSalePrice.Text = Product.SalePriceWithoutDiscount.ToString();
-			TxtBoxPriceWithDiscount.Text = Product.PriceWithDiscount.ToString();
-			TxtBoxUtility.Text = Product.ProfitWithoutDiscount.ToString();
-			TxtBoxProfitWithDiscount.Text = Product.ProfitWithDiscount.ToString();
-			TxtBoxFullDescription.Text = Product.FullDescription;
-			TxtBoxMemo.Text = Product.Memo;
-			
-			CmbBoxStatus.Items.Clear();
-			CmbBoxProductType.Items.Clear();
-			CmbBoxCategories.Items.Clear();
-			CmbBoxManufacturer.Items.Clear();
-			CmbBoxUnit.Items.Clear();
-			CmbBoxEncapsulationType.Items.Clear();
-			CmbBoxMountingTechnology.Items.Clear();
-			
-			CmbBoxStatus.Items.Add(Product.Status);
-			CmbBoxProductType.Items.Add(Product.TypeOfStock);
-			CmbBoxUnit.Items.Add(Product.UnitType);
-			CmbBoxManufacturer.Items.Add(Product.Manufacturer);
-			CmbBoxCategories.Items.Add(Product.Category);
-			CmbBoxMountingTechnology.Items.Add(Product.MountingTechnology);
-			CmbBoxEncapsulationType.Items.Add(Product.EncapsulationType);
-			
-			CmbBoxStatus.SelectedIndex = 0;
-			CmbBoxProductType.SelectedIndex = 0;
-			CmbBoxUnit.SelectedIndex = 0;
-			CmbBoxManufacturer.SelectedIndex = 0;
-			CmbBoxCategories.SelectedIndex = 0;
-			CmbBoxMountingTechnology.SelectedIndex = 0;
-			CmbBoxEncapsulationType.SelectedIndex = 0;
-			
-			if (Product.ProductUseInventory.Equals(true))
+			AssignProductDataToControls(int.Parse(TxtBoxIdCode.Text));
+		}
+		private void AssignProductDataToControls(int id)
+		{
+			if (Product.Id == 0 || Product.Id != id)
 			{
-				ChkBoxTheProductUsesInventory.IsChecked = true;
-				EnableControlsForInventory();
+				this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
 			}
 
-			if (Product.ProductUseInventory.Equals(false))
+			if (Product.IsUsingInventory.Equals(true))
 			{
-				ChkBoxTheProductUsesInventory.IsChecked = false;
-				DisableControlsForInventory();
+				ChkBoxUseInventory.IsChecked = true;
+				UseInventoryEnabled(null, null);
 			}
 
-			if (Product.ManualProfit.Equals(true))
+			if (Product.IsUsingInventory.Equals(false))
+			{
+				ChkBoxUseInventory.IsChecked = false;
+				UseInventoryDisabled(null, null);
+			}
+
+			if (Product.IsManualProfit.Equals(true))
 			{
 				RadioBtnAutomaticProfit.IsChecked = false;
-				EnableControlsForManualProfit();
+				EnableManualProfit(null, null);
 			}
 
-			if (Product.ManualProfit.Equals(false))
+			if (Product.IsManualProfit.Equals(false))
 			{
 				RadioBtnAutomaticProfit.IsChecked = true;
-				DisableControlsForAutomaticProfit();
+				EnableAutomaticProfit(null, null);
 			}
 		}
-		private void LockControls()
+		private void LockAllControls()
 		{
-			TxtBlockProductTask.Foreground = CrimsonColorBrush;
+			ForegroundColor = CrimsonColorBrush;
 			
-			CmbBoxStatus.IsReadOnly = true;
-			CmbBoxStatus.Foreground = CrimsonColorBrush;
-			TxtBoxEnrollment.IsReadOnly = true;
-			TxtBoxEnrollment.Foreground = CrimsonColorBrush;
-			CmbBoxMountingTechnology.IsReadOnly = true;
-			CmbBoxMountingTechnology.Foreground = CrimsonColorBrush;
-			CmbBoxEncapsulationType.IsReadOnly = true;
-			CmbBoxEncapsulationType.Foreground = CrimsonColorBrush;
-			TxtBoxShortDescription.IsReadOnly = true;
-			TxtBoxShortDescription.Foreground = CrimsonColorBrush;
-			CmbBoxCategories.IsReadOnly = true;
-			CmbBoxCategories.Foreground = CrimsonColorBrush;
-			TxtBoxFullDescription.IsReadOnly = true;
-			TxtBoxFullDescription.Foreground = CrimsonColorBrush;
-
-			ChkBoxTheProductUsesInventory.IsEnabled = false;
-			TxtBoxCurrentProductStock.Foreground = CrimsonColorBrush;
-			TxtBoxMinProductStock.Foreground = CrimsonColorBrush;
-			TxtBoxMaxProductStock.Foreground = CrimsonColorBrush;
-			DisableControlsForInventory();
-
-			TxtBoxContainer.IsReadOnly = true;
-			TxtBoxContainer.Foreground = CrimsonColorBrush;
-			TxtBoxLocation.IsReadOnly = true;
-			TxtBoxLocation.Foreground = CrimsonColorBrush;
-			TxtBoxBranchOffice.IsReadOnly = true;
-			TxtBoxBranchOffice.Foreground = CrimsonColorBrush;
-			TxtBoxShelf.IsReadOnly = true;
-			TxtBoxShelf.Foreground = CrimsonColorBrush;
-			TxtBoxLedge.IsReadOnly = true;
-			TxtBoxLedge.Foreground = CrimsonColorBrush;
-
-			TxtBoxPurchasePrice.IsReadOnly = true;
-			TxtBoxPurchasePrice.Foreground = CrimsonColorBrush;
-			CmbBoxUnit.IsReadOnly = true;
-			CmbBoxUnit.Foreground = CrimsonColorBrush;
-			CmbBoxProductType.IsReadOnly = true;
-			CmbBoxProductType.Foreground = CrimsonColorBrush;
-			CmbBoxManufacturer.IsReadOnly = true;
-			CmbBoxManufacturer.Foreground = CrimsonColorBrush;
-			TxtBoxManufacturerPartNumber.IsReadOnly = true;
-			TxtBoxManufacturerPartNumber.Foreground = CrimsonColorBrush;
-			
-			RadioBtnAutomaticProfit.IsEnabled = false;
-			RadioBtnManualProfit.IsEnabled = false;
-			TxtBoxPercentageOfProfit.Foreground = CrimsonColorBrush;
-			TxtBoxSalePrice.Foreground = CrimsonColorBrush;
-			TxtBoxUtility.Foreground = CrimsonColorBrush;
-			TxtBoxDiscountRate.Foreground = CrimsonColorBrush;
-			TxtBoxPriceWithDiscount.Foreground = CrimsonColorBrush;
-			TxtBoxProfitWithDiscount.Foreground = CrimsonColorBrush;
-			LockControlsForAutomaticProfit();
-
-			TxtBoxMemo.IsReadOnly = true;
-			TxtBoxMemo.Foreground = CrimsonColorBrush;
+			ReadonlyControlsInGrid(GridProductDetails, true);
+			ReadonlyControlsInGrid(GridInventory, true);
+			ReadonlyControlsInGrid(GridLocation, true);
+			ReadonlyControlsInGrid(GridPriceDetails, true);
 		}
-		private void UnlockEditableControls()
+		private void UnlockAllControls()
 		{
-			TxtBlockProductTask.Foreground = BlackColorBrush;
+			ForegroundColor = BlackColorBrush;
 			
-			CmbBoxStatus.IsReadOnly = false;
-			CmbBoxStatus.Foreground = BlackColorBrush;
-			TxtBoxEnrollment.IsReadOnly = false;
-			TxtBoxEnrollment.Foreground = BlackColorBrush;
-			CmbBoxMountingTechnology.IsReadOnly = false;
-			CmbBoxMountingTechnology.Foreground = BlackColorBrush;
-			CmbBoxEncapsulationType.IsReadOnly = false;
-			CmbBoxEncapsulationType.Foreground = BlackColorBrush;
-			TxtBoxShortDescription.IsReadOnly = false;
-			TxtBoxShortDescription.Foreground = BlackColorBrush;
-			CmbBoxCategories.IsReadOnly = false;
-			CmbBoxCategories.Foreground = BlackColorBrush;
-			TxtBoxFullDescription.IsReadOnly = false;
-			TxtBoxFullDescription.Foreground = BlackColorBrush;
-
-			ChkBoxTheProductUsesInventory.IsEnabled = true;
-			TxtBoxCurrentProductStock.Foreground = BlackColorBrush;
-			TxtBoxMinProductStock.Foreground = BlackColorBrush;
-			TxtBoxMaxProductStock.Foreground = BlackColorBrush;
-			EnableControlsForInventory();
-
-			TxtBoxContainer.IsReadOnly = false;
-			TxtBoxContainer.Foreground = BlackColorBrush;
-			TxtBoxLocation.IsReadOnly = false;
-			TxtBoxLocation.Foreground = BlackColorBrush;
-			TxtBoxBranchOffice.IsReadOnly = false;
-			TxtBoxBranchOffice.Foreground = BlackColorBrush;
-			TxtBoxShelf.IsReadOnly = false;
-			TxtBoxShelf.Foreground = BlackColorBrush;
-			TxtBoxLedge.IsReadOnly = false;
-			TxtBoxLedge.Foreground = BlackColorBrush;
-			CmbBoxUnit.IsReadOnly = false;
-			CmbBoxUnit.Foreground = BlackColorBrush;
-			TxtBoxPurchasePrice.IsReadOnly = false;
-			TxtBoxPurchasePrice.Foreground = BlackColorBrush;
-			CmbBoxProductType.IsReadOnly = false;
-			CmbBoxProductType.Foreground = BlackColorBrush;
-			CmbBoxManufacturer.IsReadOnly = false;
-			CmbBoxManufacturer.Foreground = BlackColorBrush;
-			TxtBoxManufacturerPartNumber.IsReadOnly = false;
-			TxtBoxManufacturerPartNumber.Foreground = BlackColorBrush;
-			
-			RadioBtnAutomaticProfit.IsEnabled = true;
-			RadioBtnManualProfit.IsEnabled = true;
-			TxtBoxPercentageOfProfit.Foreground = BlackColorBrush;
-			TxtBoxSalePrice.Foreground = BlackColorBrush;
-			TxtBoxUtility.Foreground = BlackColorBrush;
-			TxtBoxDiscountRate.Foreground = BlackColorBrush;
-			TxtBoxPriceWithDiscount.Foreground = BlackColorBrush;
-			TxtBoxProfitWithDiscount.Foreground = BlackColorBrush;
-			UnlockControlsForManualProfit();
-
-			TxtBoxMemo.IsReadOnly = false;
-			TxtBoxMemo.Foreground = BlackColorBrush;
+			ReadonlyControlsInGrid(GridProductDetails, false);
+			ReadonlyControlsInGrid(GridInventory, false);
+			ReadonlyControlsInGrid(GridLocation, false);
+			ReadonlyControlsInGrid(GridPriceDetails, false);
 		}
-		private void UnlockControlsForManualProfit()
+		private static void ReadonlyControlsInGrid(Panel panel, bool readOnly)
+		{
+			for (int index = 0; index < panel.Children.Count; index++)
+			{
+				switch (panel.Children[index])
+				{
+					case TextBox textBox:
+						textBox = (TextBox)panel.Children[index];
+						textBox.Foreground = ForegroundColor;
+						textBox.IsReadOnly = readOnly;
+						panel.Children[index] = textBox;
+						break;
+					case ComboBox comboBox:
+						comboBox = (ComboBox)panel.Children[index];
+						comboBox.Foreground = ForegroundColor;
+						comboBox.IsReadOnly = readOnly;
+						panel.Children[index] = comboBox;
+						break;
+					case CheckBox:
+						panel.Children[index].IsEnabled = !readOnly;
+						break;
+					case RadioButton:
+						panel.Children[index].IsEnabled = !readOnly;
+						break;
+				}
+			}
+		}
+		private void EnableManualProfit(object sender, RoutedEventArgs e)
+		{
+			RadioBtnAutomaticProfit.IsChecked = false;
+			ConfigureForManualProfit();
+		}
+		private void ConfigureForManualProfit()
 		{
 			TxtBoxPercentageOfProfit.IsReadOnly = false;
-			TxtBoxSalePrice.IsReadOnly = false;
-			TxtBoxUtility.IsReadOnly = false;
-			TxtBoxDiscountRate.IsReadOnly = false;
-			TxtBoxPriceWithDiscount.IsReadOnly = false;
-			TxtBoxProfitWithDiscount.IsReadOnly = false;
+			TxtBoxPercentageOfDiscount.IsReadOnly = false;
+			BtnAddProfit.IsEnabled = true;
+			BtnRemoveProfit.IsEnabled = true;
+			BtnAddDiscount.IsEnabled = true;
+			BtnRemoveDiscount.IsEnabled = true;
 		}
-		private void EnableControlsForManualProfit()
+		private void EnableAutomaticProfit(object sender, RoutedEventArgs e)
 		{
-			RadioBtnManualProfit.IsChecked = true;
-			UnlockControlsForManualProfit();
+			RadioBtnIsManualProfit.IsChecked = false;
+			ConfigureForAutomaticProfit();
 		}
-		private void LockControlsForAutomaticProfit()
+		private void ConfigureForAutomaticProfit()
 		{
 			TxtBoxPercentageOfProfit.IsReadOnly = true;
-			TxtBoxSalePrice.IsReadOnly = true;
-			TxtBoxUtility.IsReadOnly = true;
-			TxtBoxDiscountRate.IsReadOnly = true;
-			TxtBoxPriceWithDiscount.IsReadOnly = true;
-			TxtBoxProfitWithDiscount.IsReadOnly = true;
+			TxtBoxPercentageOfDiscount.IsReadOnly = true;
+			BtnAddProfit.IsEnabled = false;
+			BtnRemoveProfit.IsEnabled = false;
+			BtnAddDiscount.IsEnabled = false;
+			BtnRemoveDiscount.IsEnabled = false;
 		}
-		private void DisableControlsForAutomaticProfit()
+		private void UseInventoryEnabled(object sender, RoutedEventArgs e)
 		{
-			RadioBtnManualProfit.IsChecked = false;
-			LockControlsForAutomaticProfit();
-		}
-		private void EnableControlsForInventory()
-		{
-			TxtBoxCurrentProductStock.IsReadOnly = false;
-			TxtBoxMinProductStock.IsReadOnly = false;
+			TxtBoxCurrentAmount.IsReadOnly = false;
+			TxtBoxMinAmount.IsReadOnly = false;
 			TxtBoxMaxProductStock.IsReadOnly = false;
 		}
-		private void DisableControlsForInventory()
+		private void UseInventoryDisabled(object sender, RoutedEventArgs e)
 		{
-			TxtBoxCurrentProductStock.IsReadOnly = true;
-			TxtBoxMinProductStock.IsReadOnly = true;
+			TxtBoxCurrentAmount.IsReadOnly = true;
+			TxtBoxMinAmount.IsReadOnly = true;
 			TxtBoxMaxProductStock.IsReadOnly = true;
 		}
-		private void BtnSearch_Click(object sender, RoutedEventArgs e)
+		private void ChangeTask(object sender, RoutedEventArgs e)
 		{
-			AssignProductDataToControls(TxtBoxIdCode.Text);
-		}
-		private void BtnAddModifyAndSave_OnClick(object sender, RoutedEventArgs e)
-		{
+			if (Product.Id < 1)
+				return;
+			
 			switch (CurrentTask)
 			{
 				case ProductWindowTasks.Modify:
-					ShowProductDetailsInstance.BringWindowToFront(TxtBoxId.Text);
+					if (MessageBox.Show(
+						"¿Esta seguro de guardar los cambios?", 
+						"Confirmacion",
+						MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+						SaveProduct();
 					break;
 				case ProductWindowTasks.ShowDetails:
-					ModifyProductInstance.BringWindowToFront(TxtBoxId.Text);
+					ModifyProductInstance.BringWindowToFront(Product);
 					break;
 				case ProductWindowTasks.AddNewProduct:
-					ShowProductDetailsInstance.BringWindowToFront(TxtBoxId.Text);
+					if (MessageBox.Show(
+						"¿Esta seguro de guardar el nuevo producto?",
+						"Confirmacion",
+						MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+					{
+						SaveProduct();
+						ShowProductDetailsInstance.BringWindowToFront(Product);
+						ConfigureControlsForTask();
+					}
 					break;
 			}
 		}
-		private void RadioBtnAutomaticProfit_OnChecked(object sender, RoutedEventArgs e)
+		private void SaveProduct()
 		{
-			RadioBtnManualProfit.IsChecked = false;
-			DisableControlsForAutomaticProfit();
+			using InventoryDbContext inventoryDb = new();
+			
+			if (CurrentTask == ProductWindowTasks.Modify)
+				inventoryDb.Entry(Product).State = EntityState.Modified;
+			
+			if (CurrentTask == ProductWindowTasks.AddNewProduct)
+				inventoryDb.Products.Add(Product);
+			
+			inventoryDb.SaveChanges();
 		}
-		private void RadioBtnAutomaticProfit_OnUnchecked(object sender, RoutedEventArgs e)
+		private void LoadFirstProduct(object sender, RoutedEventArgs e)
 		{
-			RadioBtnManualProfit.IsChecked = true;
-			EnableControlsForManualProfit();
+			AssignProductDataToControls(1);
 		}
-		private void ChkBoxTheProductUsesInventory_OnChecked(object sender, RoutedEventArgs e)
+		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
-			EnableControlsForInventory();
+			
 		}
-		private void ChkBoxTheProductUsesInventory_OnUnchecked(object sender, RoutedEventArgs e)
+
+		private void AddProfit(object sender, RoutedEventArgs e)
 		{
-			DisableControlsForInventory();
+			Product.PercentageOfProfit += 1;
 		}
-		private void TxtBoxIdCode_KeyDown(object sender, KeyEventArgs e)
+
+		private void RemoveProfit(object sender, RoutedEventArgs e)
 		{
-			if (e.Key==Key.Enter)
-			{
-				AssignProductDataToControls(TxtBoxIdCode.Text);
-			}
+			Product.PercentageOfProfit -= 1;
 		}
-		private void BtnQuickLoad_OnClick(object sender, RoutedEventArgs e)
+
+		private void AddDiscount(object sender, RoutedEventArgs e)
 		{
-			AssignProductDataToControls("1");
+			Product.PercentageOfDiscount += 1;
+		}
+
+		private void RemoveDiscount(object sender, RoutedEventArgs e)
+		{
+			Product.PercentageOfDiscount -= 1;
 		}
 	}
 }
