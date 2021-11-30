@@ -408,7 +408,7 @@
                 Width="60"
                 Height="18" 
                 FontSize="9" 
-                Click="BtnCleanDataGridAddedProducts_Click" 
+                Click="CleanOtherDataGrid" 
                 Content="Limpiar"/>
     </Grid>
 </model:MyWindow>
