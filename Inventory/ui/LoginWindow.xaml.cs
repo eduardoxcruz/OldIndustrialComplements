@@ -71,7 +71,7 @@ namespace Inventory.ui
 		{
 			this.Close();
 		}
-		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
+		private void RememberDataIsChecked(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{

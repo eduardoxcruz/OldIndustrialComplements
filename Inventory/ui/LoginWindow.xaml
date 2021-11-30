@@ -66,7 +66,7 @@
                 Click="Exit"/>
         <CheckBox x:Name="ChkBoxRememberData" 
                   Margin="9,92,111,28" 
-                  Checked="ChkBoxRememberData_Checked" 
+                  Checked="RememberDataIsChecked" 
                   Content="Guardar Datos"/>
     </Grid>
 </Window>
