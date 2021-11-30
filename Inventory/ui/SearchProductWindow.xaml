@@ -289,7 +289,7 @@
 		        Height="24" 
                 FontSize="9"
                 Content="Buscar"
-                Click="BtnSearch_Click" />
+                Click="SearchWithFilters" />
         <Button x:Name="BtnClean" 
                 HorizontalAlignment="Left"
                 Margin="70,115,0,0"
