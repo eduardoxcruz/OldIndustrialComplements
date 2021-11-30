@@ -140,13 +140,13 @@ namespace Inventory.ui
 			ProductWindow.AddNewProductInstance.BringWindowToFront();
 		}
 
-		private void AddProductToDataGrid_Click(object sender, RoutedEventArgs e)
+		private void AddProductToSeparateDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
 			DataGridAddedProducts.Items.Add(selectedRow);
 		}
 
-		private void RequestProduct_Click(object sender, RoutedEventArgs e)
+		private void RequestProduct(object sender, RoutedEventArgs e)
 		{
 			MessageBox.Show("Click Derecho Solicitar");
 		}

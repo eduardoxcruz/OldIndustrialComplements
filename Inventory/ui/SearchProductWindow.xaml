@@ -346,12 +346,10 @@
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="AddProductToDataGrid" 
-                              Header="Agregar" 
-                              Click="AddProductToDataGrid_Click"/>
-                    <MenuItem x:Name="RequestProduct" 
-                              Header="Solicitar" 
-                              Click="RequestProduct_Click"/>
+                    <MenuItem Header="Agregar" 
+                              Click="AddProductToSeparateDataGrid"/>
+                    <MenuItem Header="Solicitar" 
+                              Click="RequestProduct"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
