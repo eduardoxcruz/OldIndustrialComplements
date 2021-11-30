@@ -12,18 +12,19 @@ namespace Inventory.ui
 			InitializeComponent();
 			LoadUsersFromDatabaseToComboBox();
 		}
-		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
-		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
-			{
-				ChkBoxRememberData.IsChecked = false;
-				MessageBox.Show("Introduce datos para guardar la información");
-			}
-		}
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			TxtBoxPassword.Password = Properties.Settings.Default.Pass;
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
+		}
+		private void LoadUsersFromDatabaseToComboBox()
+		{
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			CmbBoxEmployees.ItemsSource = inventoryDb.Employees.ToList();
+			CmbBoxEmployees.DisplayMemberPath = "FullName";
+			CmbBoxEmployees.SelectedValuePath = "FullName";
+			CmbBoxEmployees.SelectedItem =  inventoryDb.Employees
+				.FirstOrDefault(employee => employee.FullName.Equals(Properties.Settings.Default.User));
 		}
 		private void BtnConnect_Click(object sender, RoutedEventArgs e)
 		{
@@ -55,15 +56,7 @@ namespace Inventory.ui
 			Properties.Settings.Default.SaveSession = false;
 			Properties.Settings.Default.Save();
 		}
-		private void LoadUsersFromDatabaseToComboBox()
-		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			CmbBoxEmployees.ItemsSource = inventoryDb.Employees.ToList();
-			CmbBoxEmployees.DisplayMemberPath = "FullName";
-			CmbBoxEmployees.SelectedValuePath = "FullName";
-			CmbBoxEmployees.SelectedItem =  inventoryDb.Employees
-				.FirstOrDefault(employee => employee.FullName.Equals(Properties.Settings.Default.User));
-		}
+
 		private bool CredentialsAreCorrect()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
@@ -78,6 +71,14 @@ namespace Inventory.ui
 		private void BtnExit_OnClick(object sender, RoutedEventArgs e)
 		{
 			this.Close();
+		}
+		private void ChkBoxRememberData_Checked(object sender, RoutedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
+			{
+				ChkBoxRememberData.IsChecked = false;
+				MessageBox.Show("Introduce datos para guardar la información");
+			}
 		}
 	}
 }
