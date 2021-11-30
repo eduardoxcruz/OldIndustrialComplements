@@ -138,8 +138,8 @@
 		         Width="96"
 		         Height="18"
                  FontSize="9" 
-                 PreviewTextInput="TxtBoxId_PreviewTextInput" 
-                 KeyDown="EnterPressed" />
+                 PreviewTextInput="AllowOnlyNumbers" 
+                 KeyDown="EnterKeyPressed" />
         <TextBlock HorizontalAlignment="Left" 
                    Margin="111,80,0,0" 
                    TextWrapping="Wrap" 
