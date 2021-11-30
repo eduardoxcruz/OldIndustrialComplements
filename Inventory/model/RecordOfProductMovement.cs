@@ -43,7 +43,9 @@ namespace Inventory.model
 
             builder.Property(recordOfProductMovement => recordOfProductMovement.Date);
 
-            builder.Property(recordOfProductMovement => recordOfProductMovement.PurchasePrice);
+            builder
+	            .Property(recordOfProductMovement => recordOfProductMovement.PurchasePrice)
+	            .HasPrecision(6,2);
             
             builder
                 .Property(recordOfProductMovement => recordOfProductMovement.EmployeeName)
