@@ -37,24 +37,28 @@ namespace Inventory.ui
 
 			if (ChkBoxRememberData.IsChecked == true)
 			{
-				Properties.Settings.Default.User = CmbBoxEmployees.Text;
 				Properties.Settings.Default.Pass = TxtBoxPassword.Password;
 				Properties.Settings.Default.SaveSession = true;
-				Properties.Settings.Default.Save();
+			}
+			else
+			{
+				Properties.Settings.Default.Pass = "";
+				Properties.Settings.Default.SaveSession = false;
 			}
 
-			if (CredentialsAreCorrect())
+			Properties.Settings.Default.User = CmbBoxEmployees.Text;
+			Properties.Settings.Default.Save();
+			
+			if (!CredentialsAreCorrect())
 			{
-				new MainWindow().Show();
-				this.Close();
+				TxtBoxPassword.Password = "";
+				ChkBoxRememberData.IsChecked = false;
+				MessageBox.Show("Usuario o contraseña incorrectos.");
 				return;
 			}
-
-			MessageBox.Show("Usuario o contraseña incorrectos.");
-			Properties.Settings.Default.User = "";
-			Properties.Settings.Default.Pass = "";
-			Properties.Settings.Default.SaveSession = false;
-			Properties.Settings.Default.Save();
+			
+			new MainWindow().Show();
+			this.Close();
 		}
 		private bool CredentialsAreCorrect()
 		{
