@@ -36,7 +36,7 @@ namespace Inventory.ui
 
 			if (ChkBoxRememberData.IsChecked == true)
 			{
-				Properties.Settings.Default.User = CmbBoxUsers.Text;
+				Properties.Settings.Default.User = CmbBoxEmployees.Text;
 				Properties.Settings.Default.Pass = TxtBoxPassword.Password;
 				Properties.Settings.Default.SaveSession = true;
 				Properties.Settings.Default.Save();
@@ -58,17 +58,17 @@ namespace Inventory.ui
 		private void LoadUsersFromDatabaseToComboBox()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			CmbBoxUsers.ItemsSource = inventoryDb.Employees.ToList();
-			CmbBoxUsers.DisplayMemberPath = "FullName";
-			CmbBoxUsers.SelectedValuePath = "FullName";
-			CmbBoxUsers.SelectedItem =  inventoryDb.Employees
+			CmbBoxEmployees.ItemsSource = inventoryDb.Employees.ToList();
+			CmbBoxEmployees.DisplayMemberPath = "FullName";
+			CmbBoxEmployees.SelectedValuePath = "FullName";
+			CmbBoxEmployees.SelectedItem =  inventoryDb.Employees
 				.FirstOrDefault(employee => employee.FullName.Equals(Properties.Settings.Default.User));
 		}
 		private bool CredentialsAreCorrect()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 			Employee employee = inventoryDb.Employees
-				.FirstOrDefault(employee => employee == CmbBoxUsers.SelectedItem);
+				.FirstOrDefault(employee => employee == CmbBoxEmployees.SelectedItem);
 
 			if (employee == null || !employee.Password.Equals(TxtBoxPassword.Password)) 
 				return false;

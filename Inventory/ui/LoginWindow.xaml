@@ -27,7 +27,7 @@
                    Height="12" 
                    FontSize="9"
                    Text="Nombre de Usuario" />
-        <ComboBox x:Name="CmbBoxUsers" 
+        <ComboBox x:Name="CmbBoxEmployees" 
                   Margin="10,39,16,82" 
                   Width="200" 
                   Height="18" 
