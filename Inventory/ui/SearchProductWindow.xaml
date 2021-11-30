@@ -47,7 +47,7 @@
                 Height="24"
 		        FontSize="9"
                 Content="Herramienta"
-                Click="BtnTool_Click" />
+                Click="OpenSettings" />
         <Button x:Name="BtnBuy" 
                 HorizontalAlignment="Left"
                 Margin="181,4,0,0"

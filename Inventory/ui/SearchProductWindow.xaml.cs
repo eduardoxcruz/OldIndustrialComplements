@@ -131,7 +131,7 @@ namespace Inventory.ui
 			TxtBoxCount.Text = "00";
 		}
 
-		private void BtnTool_Click(object sender, RoutedEventArgs e)
+		private void OpenSettings(object sender, RoutedEventArgs e)
 		{
 			SettingsWindow.Instance.BringWindowToFront();
 		}
