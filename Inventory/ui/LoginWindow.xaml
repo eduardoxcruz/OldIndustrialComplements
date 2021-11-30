@@ -55,7 +55,7 @@
                 Height="18" 
                 FontSize="9" 
                 Content="Conectar"
-                Click="BtnConnect_Click"/>
+                Click="TryToLogin"/>
         <Button HorizontalAlignment="Center" 
                 Margin="0,116,0,0" 
                 VerticalAlignment="Top" 

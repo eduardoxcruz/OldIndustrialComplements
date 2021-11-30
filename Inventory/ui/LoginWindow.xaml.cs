@@ -26,7 +26,7 @@ namespace Inventory.ui
 			CmbBoxEmployees.SelectedItem =  inventoryDb.Employees
 				.FirstOrDefault(employee => employee.FullName.Equals(Properties.Settings.Default.User));
 		}
-		private void BtnConnect_Click(object sender, RoutedEventArgs e)
+		private void TryToLogin(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{
@@ -56,7 +56,6 @@ namespace Inventory.ui
 			Properties.Settings.Default.SaveSession = false;
 			Properties.Settings.Default.Save();
 		}
-
 		private bool CredentialsAreCorrect()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
