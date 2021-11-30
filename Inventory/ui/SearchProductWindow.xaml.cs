@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Inventory.data;
+using Inventory.model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ui
@@ -17,7 +18,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 		}
-		private void SearchProductWithQuickSearch(string text)
+		private void QuickSearch(string text)
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 			DataGridProducts.ItemsSource =
@@ -98,7 +99,7 @@ namespace Inventory.ui
 		{
 			if (TxtBoxQuickSearch.Text.Length > 2)
 			{
-				SearchProductWithQuickSearch(TxtBoxQuickSearch.Text);
+				QuickSearch(TxtBoxQuickSearch.Text);
 			}
 		}
 		private void EnterPressed(object sender, KeyEventArgs e)
