@@ -42,7 +42,7 @@ namespace Inventory.ui
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
-		private void SearchProductWithFilters()
+		private void SearchWithFilters()
 		{
 			if (string.IsNullOrEmpty(TxtBoxId.Text) & 
 			    string.IsNullOrEmpty(TxtBoxStatus.Text) & 
@@ -63,7 +63,7 @@ namespace Inventory.ui
 			DataGridProducts.ItemsSource = 
 				(from product in inventoryDb.Products 
 					where
-						EF.Functions.Like(product.Id.ToString(), TxtBoxId.Text) &&
+						EF.Functions.Like(product.Id.ToString(), "%" + TxtBoxId.Text + "%") &&
 						EF.Functions.Like(product.Enrollment, "%" + TxtBoxEnrollment.Text + "%") &&
 						EF.Functions.Like(product.ShortDescription, "%" + TxtBoxDescription.Text + "%") &&
 						EF.Functions.Like(product.Container, "%" + TxtBoxContainer.Text + "%") &&
@@ -83,12 +83,9 @@ namespace Inventory.ui
 			{
 				return;
 			}
-			
-			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-		
-			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(
-				selectedRow.Row[0].ToString()
-				);
+
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct);
 		}
 
 		private void TxtBoxId_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -108,13 +105,13 @@ namespace Inventory.ui
 		{
 			if (e.Key == Key.Enter)
 			{
-				SearchProductWithFilters();
+				SearchWithFilters();
 			}
 		}
 
 		private void BtnSearch_Click(object sender, RoutedEventArgs e)
 		{
-			SearchProductWithFilters();
+			SearchWithFilters();
 		}
 
 		private void BtnClean_Click(object sender, RoutedEventArgs e)
