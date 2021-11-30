@@ -78,7 +78,7 @@ namespace Inventory.ui
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
 
-		private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
