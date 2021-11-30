@@ -7,12 +7,12 @@ namespace Inventory.ui
 	public partial class ConnectionsWindow
 	{
 		public static readonly ConnectionsWindow Instance = new();
+		
 		private ConnectionsWindow()
 		{
 			InitializeComponent();
 		}
-
-		private void BtnTestConnection_OnClick(object sender, RoutedEventArgs routedEventArgs)
+		private void TestConnection(object sender, RoutedEventArgs routedEventArgs)
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 
