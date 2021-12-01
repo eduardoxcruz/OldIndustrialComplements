@@ -113,12 +113,6 @@ namespace Inventory.ui
 				return;
 			}
 
-			if (int.Parse(TxtBoxIdCode.Text) <= 0)
-			{
-				MessageBox.Show("Ingresa un Id o Codigo Debug valido.", "Error");
-				return;
-			}
-
 			SearchProductById(int.Parse(TxtBoxIdCode.Text));
 		}
 		private void RefreshProduct(object sender, RoutedEventArgs e)
