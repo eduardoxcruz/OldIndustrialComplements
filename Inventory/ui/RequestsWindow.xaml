@@ -11,9 +11,9 @@
 		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid>
-            <TextBlock HorizontalAlignment="Left" 
+	<Grid>
+		<Grid>
+			<TextBlock HorizontalAlignment="Left" 
                        Margin="10,8,0,0" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top" 
@@ -21,7 +21,7 @@
                        Height="18" 
                        TextAlignment="Left"
                        Text="Buscar Producto" />
-            <TextBlock HorizontalAlignment="Left" 
+			<TextBlock HorizontalAlignment="Left" 
                        Margin="10,34,0,0" 
                        TextWrapping="Wrap"
                        VerticalAlignment="Top" 
@@ -30,14 +30,14 @@
                        TextAlignment="Left" 
                        FontSize="9"
                        Text="Busqueda Rapida" />
-            <TextBox HorizontalAlignment="Left" 
+			<TextBox HorizontalAlignment="Left" 
                      Margin="10,46,0,0" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="990" 
                      Height="18" 
                      FontSize="9"/>
-            <TextBlock HorizontalAlignment="Left" 
+			<TextBlock HorizontalAlignment="Left" 
                        Margin="934,34,0,0" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top" 
@@ -46,7 +46,7 @@
                        TextAlignment="Left"
                        FontSize="9"
                        Text="Recuento:" />
-            <TextBlock HorizontalAlignment="Left" 
+			<TextBlock HorizontalAlignment="Left" 
                        Margin="976,34,0,0" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
@@ -62,7 +62,8 @@
                     Height="24" 
                     FontSize="9"
                     Content="Actualizar" />
-			<Button x:Name="BtnDropElement" HorizontalAlignment="Left" 
+			<Button x:Name="BtnDropElement" 
+			        HorizontalAlignment="Left" 
                     Margin="10,69,0,0" 
                     VerticalAlignment="Top" 
                     Width="60" 
@@ -104,6 +105,6 @@
                     FontSize="9"
                     Content="Salir"
                     Click="CloseWindow" />
-        </Grid>
-    </Grid>
+		</Grid>
+	</Grid>
 </model:MyWindow>
