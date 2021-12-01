@@ -20,8 +20,7 @@
                 Height="18" 
                 Width="58" 
                 FontSize="9" 
-                Content="Buscar" 
-                Click="BtnSearch_OnClick"/>
+                Content="Buscar"/>
         <Button x:Name="BtnExecuteTask" 
                 HorizontalAlignment="Left" 
                 Margin="10,241,0,0" 
