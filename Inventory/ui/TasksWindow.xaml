@@ -385,8 +385,11 @@
                    Width="36" 
                    Height="18" 
                    FontSize="9"
-                   Text="" 
                    TextAlignment="Left"
-                   Foreground="#FFF10C0C"/>
+                   Foreground="#FFF10C0C">
+	        <TextBlock.Text>
+		        <Binding Path="Shelf" Mode="OneWay"/>
+	        </TextBlock.Text>
+        </TextBlock>
     </Grid>
 </model:MyWindow>
