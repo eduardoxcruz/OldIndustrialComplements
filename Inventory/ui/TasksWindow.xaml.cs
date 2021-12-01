@@ -9,6 +9,10 @@ namespace Inventory.ui
 		private TasksWindowTasks CurrentTask { get; set; }
 		private Product Product { get; set; }
 
+		private TasksWindow()
+		{
+			InitializeComponent();
+		}
 		private TasksWindow(TasksWindowTasks task)
 		{
 			InitializeComponent();
