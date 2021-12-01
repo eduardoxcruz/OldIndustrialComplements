@@ -276,9 +276,12 @@
                    Width="402"
                    Height="22.5" 
                    FontSize="9" 
-                   Text="" 
                    TextAlignment="Center" 
-                   Foreground="#FFF10C0C"/>
+                   Foreground="#FFF10C0C">
+	        <TextBlock.Text>
+		        <Binding Path="FullDescription" Mode="OneWay"/>
+	        </TextBlock.Text>
+        </TextBlock>
         <TextBlock HorizontalAlignment="Left"
                    Margin="10,199,0,0" 
                    TextWrapping="Wrap"
