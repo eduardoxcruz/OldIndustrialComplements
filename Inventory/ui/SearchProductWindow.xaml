@@ -344,6 +344,18 @@
                               Click="AddProductToSeparateDataGrid"/>
                     <MenuItem Header="Solicitar para venta" 
                               Click="RequestForSell"/>
+                    <MenuItem Header="Solicitar para tienda" 
+                              Click="RequestForStore"/>
+                    <MenuItem Header="Solicitar sin surtir" 
+                              Click="RequestWithoutSupply"/>
+                    <MenuItem Header="Solicitar para verificar" 
+                              Click="RequestForVerify"/>
+                    <MenuItem Header="Entrada de producto" 
+                              Click="IngressProduct"/>
+                    <MenuItem Header="Ajuste de cantidad" 
+                              Click="AdjustStock"/>
+                    <MenuItem Header="Comprar mas producto" 
+                              Click="BuyMoreProduct"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
