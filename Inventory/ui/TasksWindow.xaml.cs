@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
+using Inventory.data;
 using Inventory.model;
+using Microsoft.EntityFrameworkCore;
 using static System.DateTime;
 
 namespace Inventory.ui
