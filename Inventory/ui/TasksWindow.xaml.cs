@@ -58,6 +58,29 @@ namespace Inventory.ui
 
 			this.Activate();
 		}
+		public void BringWindowToFront(Product product = null, string task = "ENTRADA DE PRODUCTO")
+		{
+			RefresthDateTime();
+			CmbBoxTask.SelectedItem = task;
+			
+			if (product != null)
+			{
+				SearchProductById(product.Id);
+			}
+
+			if (this.Visibility == Visibility.Collapsed)
+			{
+				this.Show();
+			}
+
+			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
+			{
+				this.Visibility = Visibility.Visible;
+				this.WindowState = WindowState.Normal;
+			}
+
+			this.Activate();
+		}
 		private void VerifySearch(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
