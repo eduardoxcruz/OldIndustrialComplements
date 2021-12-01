@@ -4,10 +4,9 @@
 	{
 		Entrance,
 		Egress,
-		Adjustment,
+		AdjustmentOfAmount,
 		Devolution,
-		Request,
-		AdjustPurchasePrice,
-		Purchase
+		RequestProduct,
+		BuyMoreProducts
 	}
 }
