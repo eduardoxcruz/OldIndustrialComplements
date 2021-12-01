@@ -308,8 +308,7 @@
 		          MouseDoubleClick="SelectProductFromDataGrid" 
                   Width="990" 
                   Height="300"
-                  ColumnWidth="*"
-                  d:DataContext="{d:DesignData }">
+                  ColumnWidth="*">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" 
                                     Binding="{Binding Id}"/>
