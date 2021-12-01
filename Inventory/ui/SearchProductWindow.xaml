@@ -300,7 +300,7 @@
                 Width="60"
 		        Height="24"
                 FontSize="9"
-                Content="Solicitar" />
+                Content="Tareas" />
         <DataGrid x:Name="DataGridProducts" 
                   AutoGenerateColumns="False" 
                   Margin="10,144,16,220" 
