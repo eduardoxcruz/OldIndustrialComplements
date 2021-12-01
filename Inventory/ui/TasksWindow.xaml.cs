@@ -32,7 +32,17 @@ namespace Inventory.ui
 		}
 		private void AssignItemSourceToComboBox()
 		{
-			Tasks = new List<string>() {"ENTRADA", "SALIDA", "DEVOLUCION", "AJUSTE", "SOLICITAR", "COMPRAR"};
+			Tasks = new List<string>() {
+				"ENTRADA DE PRODUCTO", 
+				"SALIDA DE PRODUCTO", 
+				"DEVOLUCION DE PRODUCTO", 
+				"AJUSTE DE CANTIDAD",
+				"COMPRAR MAS PRODUCTO",
+				"SOLICITAR PARA VENTA",
+				"SOLICITAR PARA TIENDA",
+				"SOLICITAR SIN SURTIR",
+				"SOLICITAR PARA VERIFICAR"
+			};
 			CmbBoxTask.ItemsSource = Tasks;
 		}
 		public void BringWindowToFront(Product product = null)
