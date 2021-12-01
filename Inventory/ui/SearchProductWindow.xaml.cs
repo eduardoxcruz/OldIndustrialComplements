@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -99,11 +98,6 @@ namespace Inventory.ui
 
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct);
-		}
-		private void AllowOnlyNumbers(object sender, TextCompositionEventArgs e)
-		{
-			Regex regex = new Regex("[^0-9]+");
-			e.Handled = regex.IsMatch(e.Text);
 		}
 		private void CleanFilters(object sender, RoutedEventArgs e)
 		{
