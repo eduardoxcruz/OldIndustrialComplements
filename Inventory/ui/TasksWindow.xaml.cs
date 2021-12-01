@@ -1,9 +1,5 @@
-﻿using System.Globalization;
-using System.Windows;
-using Inventory.enums;
+﻿using Inventory.enums;
 using Inventory.model;
-using Inventory.Properties;
-using static System.DateTime;
 
 namespace Inventory.ui
 {
@@ -20,7 +16,6 @@ namespace Inventory.ui
 			Product = new Product();
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
-			AssignProductDataToControls(Product.Id.ToString());
 		}
 	}
 }
