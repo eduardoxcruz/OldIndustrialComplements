@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using Inventory.enums;
 using Inventory.model;
+using static System.DateTime;
 
 namespace Inventory.ui
 {
@@ -25,6 +27,8 @@ namespace Inventory.ui
 		}
 		public void BringWindowToFront(Product product = null)
 		{
+			RefresthDateTime();
+			
 			if (product != null)
 			{
 				SearchProductById(product.Id);
@@ -46,6 +50,10 @@ namespace Inventory.ui
 		private void SearchProductById(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
+		}
+		private void RefresthDateTime()
+		{
+			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
 		}
 	}
 }
