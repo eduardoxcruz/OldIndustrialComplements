@@ -110,14 +110,77 @@ namespace Inventory.ui
 				case "COMPRAR MAS PRODUCTO":
 					break;
 				case "SOLICITAR PARA VENTA":
+					ExecuteRequest("SOLICITAR PARA VENTA");
 					break;
 				case "SOLICITAR PARA TIENDA":
+					ExecuteRequest("SOLICITAR PARA TIENDA");
 					break;
 				case "SOLICITAR SIN SURTIR":
+					ExecuteRequest("SOLICITAR SIN SURTIR");
 					break;
 				case "SOLICITAR PARA VERIFICAR":
+					ExecuteRequest("SOLICITAR PARA VERIFICAR");
 					break;
 			}
+		}
+		private void ExecuteRequest(string type)
+		{
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			{
+				MessageBox.Show("Ingrese una cantidad valida.", "Error");
+				return;
+			}
+			
+			if (int.Parse(TxtBoxInputQuantity.Text) > Product.CurrentAmount)
+			{
+				MessageBox.Show("Cantidad solicitada es mayor a la cantidad disponible.", "Error");
+				return;
+			}
+
+			using InventoryDbContext inventoryDb = new();
+
+			try
+			{
+				Employee employee = inventoryDb.Employees
+					.Single(productRequest => productRequest.FullName == Properties.Settings.Default.User);
+				ProductRequest request = new();
+			
+				switch (type)
+				{
+					case "SOLICITAR PARA VENTA":
+						request.Type = "PARA VENTA";
+						break;
+					case "SOLICITAR PARA TIENDA":
+						request.Type = "PARA TIENDA";
+						break;
+					case "SOLICITAR SIN SURTIR":
+						request.Type = "NO SURTIR";
+						break;
+					case "SOLICITAR PARA VERIFICAR":
+						request.Type = "PARA VERIFICAR";
+						break;
+				}
+			
+				request.Id = inventoryDb.ProductRequests
+					.OrderByDescending(productRequest => productRequest.Id)
+					.FirstOrDefault().Id + 1;
+				request.Status = "NO SURTIDO";
+				request.Amount = int.Parse(TxtBoxInputQuantity.Text);
+				request.Date = Now;
+				request.Employee = employee;
+				request.Product = Product;
+
+				inventoryDb.Entry(request).State = EntityState.Modified;
+				inventoryDb.ProductRequests.Add(request);
+				inventoryDb.SaveChanges();
+
+				MessageBox.Show("Completado.", "Exito");
+			}
+			catch (Exception exception)
+			{
+				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
+			}
+				
 		}
 		private void RefresthDateTime()
 		{
