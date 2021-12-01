@@ -136,9 +136,15 @@ namespace Inventory.ui
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			DataGridAddedProducts.Items.Add(selectedProduct);
 		}
-		private void RequestProduct(object sender, RoutedEventArgs e)
+		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("Click Derecho Solicitar");
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
 		}
 		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{

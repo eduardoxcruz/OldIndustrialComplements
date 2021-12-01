@@ -342,8 +342,8 @@
                 <ContextMenu>
                     <MenuItem Header="Agregar" 
                               Click="AddProductToSeparateDataGrid"/>
-                    <MenuItem Header="Solicitar" 
-                              Click="RequestProduct"/>
+                    <MenuItem Header="Solicitar para venta" 
+                              Click="RequestForSell"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
