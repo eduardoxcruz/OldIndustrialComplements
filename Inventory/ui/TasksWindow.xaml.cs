@@ -16,8 +16,9 @@ namespace Inventory.ui
 		private TasksWindow(TasksWindowTasks task)
 		{
 			InitializeComponent();
-			CurrentTask = task;
 			Product = new Product();
+			this.DataContext = Product;
+			CurrentTask = task;
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 		}
