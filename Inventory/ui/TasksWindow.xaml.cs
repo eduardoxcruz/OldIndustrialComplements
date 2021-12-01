@@ -21,6 +21,15 @@ namespace Inventory.ui
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 			AssignItemSourceToComboBox();
 		}
+		private TasksWindow(string task)
+		{
+			InitializeComponent();
+			Product = new Product();
+			this.DataContext = Product;
+			AssignItemSourceToComboBox();
+			CmbBoxTask.SelectedItem = task;
+			CmbBoxIdOrDebugCode.SelectedIndex = 0;
+		}
 		private void AssignItemSourceToComboBox()
 		{
 			Tasks = new List<string>() {"ENTRADA", "SALIDA", "DEVOLUCION", "AJUSTE", "SOLICITAR", "COMPRAR"};
