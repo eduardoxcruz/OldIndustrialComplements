@@ -23,6 +23,20 @@ namespace Inventory.model
         public int? EmployeeId { get; set; }
         public Product Product { get; set; }
         public int? ProductId { get; set; }
+
+        public RecordOfProductMovement()
+        {
+	        this.Id = 0;
+			this.Date = DateTime.Now;
+			this.Type = "";
+			this.Amount = 0;
+			this.PreviousAmount = 0;
+			this.NewAmount = 0;
+			this.PurchasePrice = 0;
+			this.Provider = "";
+			this.ProductFullDescription = "";
+			this.EmployeeName = "";
+        } 
     }
 
     public class RecordOfProductMovementEntityTypeConfiguration : IEntityTypeConfiguration<RecordOfProductMovement>
