@@ -22,45 +22,6 @@ namespace Inventory.ui
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 			AssignProductDataToControls(Product.Id.ToString());
 		}
-		private TasksWindow(TasksWindowTasks task, Product product)
-		{
-			InitializeComponent();
-			CurrentTask = task;
-			Product = product;
-			CmbBoxTask.SelectedIndex = (int)CurrentTask;
-			CmbBoxIdOrDebugCode.SelectedIndex = 0;
-			AssignProductDataToControls(Product.Id.ToString());
-		}
-		private void AssignProductDataToControls(string id)
-		{
-			if (!id.Equals(Product.Id.ToString()))
-			{
-				Product.GetDataFromSqlDatabase(id);
-			}
-
-			TxtBlckId.Text = Product.Id.ToString();
-			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
-			TxtBlckCurrentQuantityInStock.Text = Product.CurrentAmount.ToString();
-			TxtBlckContainer.Text = Product.Container;
-			TxtBlckLocation.Text = Product.Location;
-			TxtBlckBranchOffice.Text = Product.BranchOffice;
-			TxtBlckShelf.Text = Product.Shelf;
-			TxtBlckRack.Text = Product.Rack;
-			TxtBlckPurchasePrice.Text = Product.BuyPrice.ToString();
-			TxtBlckFullDescription.Text = Product.FullDescription;
-			TxtBlckEmployee.Text = Settings.Default.User;
-			
-			CmbBoxProvider.Items.Clear();
-		}
-		private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
-		{
-			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
-			{
-				return;
-			}
-			
-			AssignProductDataToControls(TxtBoxIdOrDebugCode.Text);
-		}
 	}
 }
 
