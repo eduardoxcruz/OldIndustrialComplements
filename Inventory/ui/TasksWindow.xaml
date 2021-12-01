@@ -30,7 +30,8 @@
                 Width="60" 
                 Height="18" 
                 FontSize="9"
-                Content="Ejecutar" />
+                Content="Ejecutar" 
+                Click="ExecuteTask"/>
         <Button x:Name="BtnExit" 
                 HorizontalAlignment="Left" 
                 Margin="75,241,0,0" 
