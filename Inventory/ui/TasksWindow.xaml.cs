@@ -8,21 +8,15 @@ namespace Inventory.ui
 {
 	public partial class TasksWindow
 	{
-		public static readonly TasksWindow Instance = new(TasksWindowTasks.Entrance);
-		private TasksWindowTasks CurrentTask { get; set; }
+		public static readonly TasksWindow Instance = new();
 		private Product Product { get; set; }
 
 		private TasksWindow()
 		{
 			InitializeComponent();
-		}
-		private TasksWindow(TasksWindowTasks task)
-		{
-			InitializeComponent();
 			Product = new Product();
 			this.DataContext = Product;
-			CurrentTask = task;
-			CmbBoxTask.SelectedIndex = (int)CurrentTask;
+			CmbBoxTask.SelectedIndex = 0;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 		}
 		public void BringWindowToFront(Product product = null)
