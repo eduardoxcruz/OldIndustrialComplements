@@ -19,6 +19,16 @@ namespace Inventory.model
 		public int? EmployeeId { get; set; }
 		public Product Product { get; set; }
 		public int? ProductId { get; set; }
+
+		public ProductForBuy()
+		{
+			this.Id = 0;
+			this.Provider = "";
+			this.Date = DateTime.Now;
+			this.Status = "";
+			this.RequestedAmount = 0;
+			this.EmployeeName = "";
+		}
 	}
 
 	public class ProductForBuyEntityTypeConfiguration : IEntityTypeConfiguration<ProductForBuy>
