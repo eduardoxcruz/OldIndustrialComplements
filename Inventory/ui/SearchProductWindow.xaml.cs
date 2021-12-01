@@ -128,8 +128,13 @@ namespace Inventory.ui
 		}
 		private void AddProductToSeparateDataGrid(object sender, RoutedEventArgs e)
 		{
-			DataRowView selectedRow = (DataRowView)DataGridProducts.SelectedItems[0];
-			DataGridAddedProducts.Items.Add(selectedRow);
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			DataGridAddedProducts.Items.Add(selectedProduct);
 		}
 		private void RequestProduct(object sender, RoutedEventArgs e)
 		{
