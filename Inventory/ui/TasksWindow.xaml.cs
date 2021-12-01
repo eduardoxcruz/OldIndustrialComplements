@@ -81,6 +81,30 @@ namespace Inventory.ui
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
 		}
+		private void ExecuteTask(object sender, RoutedEventArgs e)
+		{
+			switch (CmbBoxTask.SelectedItem)
+			{
+				case "ENTRADA DE PRODUCTO":
+					break;
+				case "SALIDA DE PRODUCTO":
+					break;
+				case "DEVOLUCION DE PRODUCTO":
+					break;
+				case "AJUSTE DE CANTIDAD":
+					break;
+				case "COMPRAR MAS PRODUCTO":
+					break;
+				case "SOLICITAR PARA VENTA":
+					break;
+				case "SOLICITAR PARA TIENDA":
+					break;
+				case "SOLICITAR SIN SURTIR":
+					break;
+				case "SOLICITAR PARA VERIFICAR":
+					break;
+			}
+		}
 		private void RefresthDateTime()
 		{
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
