@@ -47,6 +47,16 @@ namespace Inventory.ui
 
 			this.Activate();
 		}
+		private void VerifySearch(object sender, RoutedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
+			{
+				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Error");
+				return;
+			}
+
+			SearchProductById(int.Parse(TxtBoxIdOrDebugCode.Text));
+		}
 		private void SearchProductById(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
