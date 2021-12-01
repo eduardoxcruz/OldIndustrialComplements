@@ -70,6 +70,7 @@
 		         Height="18" 
 		         FontSize="11" 
 		         TextAlignment="Center"
+		         PreviewTextInput="AllowOnlyNumbers"
 		         KeyDown="TxtBoxIdCodeEnterKeyPressed" />
         <TextBlock HorizontalAlignment="Left" 
 		           Margin="403,0,0,0" 
