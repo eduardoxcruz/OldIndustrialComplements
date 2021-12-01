@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:system="clr-namespace:System;assembly=System.Runtime"
         xmlns:model="clr-namespace:Inventory.model"
+        xmlns:properties="clr-namespace:Inventory.Properties"
         mc:Ignorable="d"
         Title="Tareas" 
 		Height="285" 
@@ -131,7 +132,11 @@
                    Height="18"
                    FontSize="9"
                    TextAlignment="Left" 
-                   Foreground="#FFF10C0C"/>
+                   Foreground="#FFF10C0C">
+	        <TextBlock.Text>
+		        <Binding Source="{x:Static properties:Settings.Default}" Path="User"/>
+	        </TextBlock.Text>
+        </TextBlock>
         <TextBlock HorizontalAlignment="Left" 
                    Margin="236,73,0,0" 
                    TextWrapping="Wrap" 
