@@ -22,6 +22,10 @@ namespace Inventory.ui
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
 		}
+		private void SearchProductById(int id)
+		{
+			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
+		}
 	}
 }
 
