@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
-using Inventory.enums;
 using Inventory.model;
 using static System.DateTime;
 
@@ -8,6 +8,7 @@ namespace Inventory.ui
 {
 	public partial class TasksWindow
 	{
+		private static List<string> Tasks { get; set; }
 		public static readonly TasksWindow Instance = new();
 		private Product Product { get; set; }
 
