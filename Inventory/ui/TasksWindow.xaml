@@ -224,17 +224,7 @@
                   Width="80"
                   Height="18" 
                   HorizontalContentAlignment="Center" 
-                  FontSize="9">
-            <ComboBox.Items>
-                <system:String>ENTRADA</system:String>
-                <system:String>SALIDA</system:String>
-                <system:String>AJUSTE</system:String>
-                <system:String>DEVOLUCION</system:String>
-                <system:String>SOLICITAR</system:String>
-                <system:String>AJUSTAR PRECIO COMPRA</system:String>
-                <system:String>COMPRAR</system:String>
-            </ComboBox.Items>
-        </ComboBox>
+                  FontSize="9" />
         <TextBox x:Name="TxtBoxInputQuantity" 
                  HorizontalAlignment="Left"
                  Margin="95,130,0,0" 
