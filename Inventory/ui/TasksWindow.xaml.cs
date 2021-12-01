@@ -1,4 +1,5 @@
-﻿using Inventory.enums;
+﻿using System.Windows;
+using Inventory.enums;
 using Inventory.model;
 
 namespace Inventory.ui
@@ -21,6 +22,26 @@ namespace Inventory.ui
 			CurrentTask = task;
 			CmbBoxTask.SelectedIndex = (int)CurrentTask;
 			CmbBoxIdOrDebugCode.SelectedIndex = 0;
+		}
+		public void BringWindowToFront(Product product = null)
+		{
+			if (product != null)
+			{
+				SearchProductById(product.Id);
+			}
+
+			if (this.Visibility == Visibility.Collapsed)
+			{
+				this.Show();
+			}
+
+			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
+			{
+				this.Visibility = Visibility.Visible;
+				this.WindowState = WindowState.Normal;
+			}
+
+			this.Activate();
 		}
 		private void SearchProductById(int id)
 		{
