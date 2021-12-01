@@ -357,9 +357,12 @@
                    VerticalAlignment="Top"
                    Width="36" Height="18" 
                    FontSize="9" 
-                   Text="" 
                    TextAlignment="Left" 
-                   Foreground="#FFF10C0C"/>
+                   Foreground="#FFF10C0C">
+	        <TextBlock.Text>
+		        <Binding Path="BranchOffice" Mode="OneWay"/>
+	        </TextBlock.Text>
+        </TextBlock>
         <TextBlock x:Name="TxtBlckRack" 
                    HorizontalAlignment="Left" 
                    Margin="331,216,0,0" 
