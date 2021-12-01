@@ -15,6 +15,14 @@ namespace Inventory.model
         public ProductForBuy ProductForBuy { get; set; }
         public ProductRequest ProductRequest { get; set; }
         public RecordOfProductMovement RecordOfProductMovement { get; set; }
+
+        public Employee()
+        {
+	        this.Id = 0;
+	        this.Type = "";
+	        this.FullName = "";
+	        this.Password = "";
+        }
     }
 
     public class EmployeeEntityTypeConfiguration : IEntityTypeConfiguration<Employee>
