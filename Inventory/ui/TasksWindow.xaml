@@ -234,7 +234,8 @@
                  Width="80" 
                  Height="18" 
                  FontSize="9" 
-                 TextAlignment="Center"/>
+                 TextAlignment="Center"
+                 PreviewTextInput="AllowOnlyNumbers"/>
         <TextBox x:Name="TxtBoxInputPrice"
                  HorizontalAlignment="Left" 
                  Margin="180,130,0,0" 
