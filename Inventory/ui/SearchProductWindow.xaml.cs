@@ -135,6 +135,56 @@ namespace Inventory.ui
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			DataGridAddedProducts.Items.Add(selectedProduct);
 		}
+		private void IngressProduct(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "ENTRADA DE PRODUCTO");
+		}
+		private void EgressProduct(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SALIDA DE PRODUCTO");
+		}
+		private void ReturnProduct(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "DEVOLUCION DE PRODUCTO");
+		}
+		private void AdjustStock(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "AJUSTE DE CANTIDAD");
+		}
+		private void BuyMoreProduct(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "COMPRAR MAS PRODUCTO");
+		}
 		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
@@ -144,6 +194,36 @@ namespace Inventory.ui
 			
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
+		}
+		private void RequestForStore(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA TIENDA");
+		}
+		private void RequestWithoutSupply(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR SIN SURTIR");
+		}
+		private void RequestForVerify(object sender, RoutedEventArgs e)
+		{
+			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+			
+			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
+			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VERIFICAR");
 		}
 		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{
