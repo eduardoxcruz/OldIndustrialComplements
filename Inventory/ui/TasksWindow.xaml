@@ -371,9 +371,12 @@
                    Width="36"
                    Height="18" 
                    FontSize="9" 
-                   Text="" 
                    TextAlignment="Left" 
-                   Foreground="#FFF10C0C"/>
+                   Foreground="#FFF10C0C">
+	        <TextBlock.Text>
+		        <Binding Path="Rack" Mode="OneWay"/>
+	        </TextBlock.Text>
+        </TextBlock>
         <TextBlock x:Name="TxtBlckShelf"
                    HorizontalAlignment="Left" 
                    Margin="372,216,0,0" 
