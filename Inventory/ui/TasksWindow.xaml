@@ -112,8 +112,7 @@
                    Width="108" 
                    Height="18"
                    FontSize="9" 
-                   TextAlignment="Left" 
-                   Text="" 
+                   TextAlignment="Left"
                    Foreground="#FFF10C0C"/>
         <TextBlock HorizontalAlignment="Left" 
                    Margin="123,73,0,0"
