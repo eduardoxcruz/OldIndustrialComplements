@@ -17,7 +17,7 @@ namespace Inventory.model
         public RecordOfProductMovement RecordOfProductMovement { get; set; }
 
         public Employee()
-        {
+        { 
 	        this.Id = 0;
 	        this.Type = "";
 	        this.FullName = "";
@@ -43,7 +43,6 @@ namespace Inventory.model
                 .Property(employee => employee.Password)
                 .HasMaxLength(10)
                 .IsUnicode(false);
-
 
             builder
                 .Property(employee => employee.Type)
