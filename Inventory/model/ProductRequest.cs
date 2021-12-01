@@ -12,6 +12,8 @@ namespace Inventory.model
 		public DateTime? Date { get; set; }
 		public int? Amount { get; set; }
 		public string? EmployeeName { get; set; }
+		public string? Type { get; set; }
+		public string? Status { get; set; }
 
 		public Employee Employee { get; set; }
 		public int? EmployeeId { get; set; }
@@ -35,6 +37,16 @@ namespace Inventory.model
 
 			builder
 				.Property(productRequest => productRequest.EmployeeName)
+				.HasMaxLength(35)
+				.IsUnicode(false);
+
+			builder
+				.Property(productRequest => productRequest.Type)
+				.HasMaxLength(35)
+				.IsUnicode(false);
+			
+			builder
+				.Property(productRequest => productRequest.Status)
 				.HasMaxLength(35)
 				.IsUnicode(false);
 		}
