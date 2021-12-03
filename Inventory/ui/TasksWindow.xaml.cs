@@ -182,7 +182,6 @@ namespace Inventory.ui
 			{
 				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
 			}
-				
 		}
 		private void RefresthDateTime()
 		{
