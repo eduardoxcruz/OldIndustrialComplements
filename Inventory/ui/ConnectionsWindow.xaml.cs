@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
+using Inventory.data;
 
 namespace Inventory.ui
 {
@@ -13,15 +13,18 @@ namespace Inventory.ui
 		}
 		private void TestConnection(object sender, RoutedEventArgs routedEventArgs)
 		{
-			try
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
-				TxtBlockConnectionResult.Text = App.CanConnectToDatabase() ? "Conectado" : "No se puede conectar a la BD";
-			}
-			catch (Exception exception)
-			{
-				TxtBlockConnectionResult.Text = "Hubo un error al intentar conectar a la BD. Mas detalles: \n" + 
-				                                exception.Message;
-			}
+				using InventoryDbContext inventoryDb = new();
+
+				if (!inventoryDb.Database.CanConnect())
+				{
+					TxtBlockConnectionResult.Text = "No se puede conectar a la BD";
+					return;
+				}
+
+				TxtBlockConnectionResult.Text = "Conectado";
+			});
 		}
 	}
 }
