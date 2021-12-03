@@ -7,7 +7,7 @@ namespace Inventory.model
 {
 	public class MyWindow : Window
 	{
-		private static readonly Regex Regex = new Regex("[^0-9]+");
+		private static readonly Regex IntegersRegex = new Regex("[^0-9]+");
 		public void BringWindowToFront()
 		{
 			if (this.Visibility == Visibility.Collapsed)
@@ -38,7 +38,7 @@ namespace Inventory.model
 		}
 		private static bool TextMatchNumbers(string text)
 		{
-			return Regex.IsMatch(text);
+			return IntegersRegex.IsMatch(text);
 		}
 	}
 }
