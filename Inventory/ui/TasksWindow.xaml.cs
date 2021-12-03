@@ -6,6 +6,7 @@ using System.Windows;
 using Inventory.data;
 using Inventory.model;
 using Inventory.Properties;
+using Microsoft.EntityFrameworkCore;
 using static System.DateTime;
 
 namespace Inventory.ui
@@ -111,12 +112,16 @@ namespace Inventory.ui
 			switch (CmbBoxTask.SelectedItem)
 			{
 				case "ENTRADA DE PRODUCTO":
+					ExecuteProductAmountModification("ENTRADA DE PRODUCTO");
 					break;
 				case "SALIDA DE PRODUCTO":
+					ExecuteProductAmountModification("SALIDA DE PRODUCTO");
 					break;
 				case "DEVOLUCION DE PRODUCTO":
+					ExecuteProductAmountModification("DEVOLUCION DE PRODUCTO");
 					break;
 				case "AJUSTE DE CANTIDAD":
+					ExecuteProductAmountModification("AJUSTE DE CANTIDAD");
 					break;
 				case "COMPRAR MAS PRODUCTO":
 					break;
@@ -135,6 +140,102 @@ namespace Inventory.ui
 			}
 			
 			RefresthDateTime();
+		}
+		private void ExecuteProductAmountModification(string type)
+		{
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			{
+				MessageBox.Show("Ingrese una cantidad valida.", "Error");
+				return;
+			}
+			
+			using InventoryDbContext inventoryDb = new();
+			RecordOfProductMovement newMovement = new();
+			int totalPieces = 0;
+			string message = "¿Desea confirmar el siguiente movimiento?:\n\n";
+
+			try
+			{
+				newMovement.Id = inventoryDb.RecordsOfProductMovements
+					.OrderByDescending(record => record.Id)
+					.FirstOrDefault().Id + 1;
+				newMovement.Date = Now;
+				newMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
+				newMovement.PreviousAmount = Product.CurrentAmount;
+				newMovement.EmployeeId = Employee.Id;
+				newMovement.ProductId = Product.Id;
+
+				switch (type)
+				{
+					case "ENTRADA DE PRODUCTO":
+						if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
+						{
+							MessageBox.Show("Ingrese un precio mayor a 0.", "Error");
+							return;
+						}
+						
+						if (string.IsNullOrEmpty(CmbBoxProvider.Text))
+						{
+							MessageBox.Show("Ingrese proveedor.", "Error");
+							return;
+						}
+
+						totalPieces = (Product.CurrentAmount ?? default(int)) + (newMovement.Amount ?? default(int));
+						newMovement.Type = "ENTRADA";
+						newMovement.PurchasePrice = GetNewBuyPrice(totalPieces);
+						newMovement.Provider = CmbBoxProvider.Text;
+						Product.BuyPrice = newMovement.PurchasePrice;
+						message = message + "Nuevo precio de compra: " + Product.BuyPrice + "\n";
+						break;
+					case "SALIDA DE PRODUCTO":
+						totalPieces = (Product.CurrentAmount ?? default(int)) - (newMovement.Amount ?? default(int));
+						newMovement.Type = "SALIDA";
+						break;
+					case "DEVOLUCION DE PRODUCTO":
+						totalPieces = (Product.CurrentAmount ?? default(int)) + (newMovement.Amount ?? default(int));
+						newMovement.Type = "DEVOLUCION";
+						break;
+					case "AJUSTE DE CANTIDAD":
+						totalPieces = (newMovement.Amount ?? default(int));
+						newMovement.Type = "AJUSTE";
+						break;
+				}
+
+				message = message + "Cantidad de pzs anterior: " + Product.CurrentAmount + "\n" +
+				          "Cantidad de pzs nueva: " + totalPieces;
+
+				if (MessageBox.Show(message, "Confirmacion", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+				{
+					newMovement.NewAmount = totalPieces;
+					Product.CurrentAmount = totalPieces;
+				
+					inventoryDb.Entry(Product).State = EntityState.Modified;
+					inventoryDb.RecordsOfProductMovements.Add(newMovement);
+					inventoryDb.SaveChanges();
+					
+					MessageBox.Show("Completado.", "Exito");
+				}
+			}
+			catch (Exception exception)
+			{
+				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
+			}
+		}
+		private decimal GetNewBuyPrice(int totalPieces)
+		{
+			if (decimal.Parse(TxtBoxInputPrice.Text) >= Product.BuyPrice)
+			{
+				return decimal.Parse(TxtBoxInputPrice.Text);
+			}
+			
+			return (
+				(
+					(Product.CurrentAmount ?? default(int)) * (Product.BuyPrice ?? default(decimal)) 
+					+ 
+					(int.Parse(TxtBoxInputQuantity.Text)) * decimal.Parse(TxtBoxInputPrice.Text))
+				)
+				/
+				totalPieces;
 		}
 		private void ExecuteRequest(string type)
 		{
