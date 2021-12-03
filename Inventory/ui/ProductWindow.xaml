@@ -376,6 +376,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="MinAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -403,6 +404,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="MaxAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
