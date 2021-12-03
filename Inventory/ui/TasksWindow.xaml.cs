@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using Inventory.data;
 using Inventory.model;
-using Microsoft.EntityFrameworkCore;
+using Inventory.Properties;
 using static System.DateTime;
 
 namespace Inventory.ui
@@ -170,10 +170,9 @@ namespace Inventory.ui
 				request.Status = "NO SURTIDO";
 				request.Amount = int.Parse(TxtBoxInputQuantity.Text);
 				request.Date = Now;
-				request.Employee = employee;
-				request.Product = Product;
+				request.EmployeeId = Employee.Id;
+				request.ProductId = Product.Id;
 
-				inventoryDb.Entry(request).State = EntityState.Modified;
 				inventoryDb.ProductRequests.Add(request);
 				inventoryDb.SaveChanges();
 
