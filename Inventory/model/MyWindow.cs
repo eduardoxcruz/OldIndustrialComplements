@@ -8,6 +8,7 @@ namespace Inventory.model
 	public class MyWindow : Window
 	{
 		private static readonly Regex IntegersRegex = new Regex("[^0-9]+");
+		private static readonly Regex DecimalsRegex = new Regex("[^0-9-.]+");
 		public void BringWindowToFront()
 		{
 			if (this.Visibility == Visibility.Collapsed)
@@ -39,6 +40,14 @@ namespace Inventory.model
 		private static bool TextMatchIntegers(string text)
 		{
 			return IntegersRegex.IsMatch(text);
+		}
+		protected void AllowOnlyDecimals(object sender, TextCompositionEventArgs e)
+		{
+			e.Handled = TextMatchDecimals(e.Text);
+		}
+		private static bool TextMatchDecimals(string text)
+		{
+			return DecimalsRegex.IsMatch(text);
 		}
 	}
 }
