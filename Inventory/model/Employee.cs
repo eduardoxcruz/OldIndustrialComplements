@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #nullable disable
@@ -12,9 +13,9 @@ namespace Inventory.model
         public string FullName { get; set; }
         public string? Password { get; set; }
         
-        public ProductForBuy ProductForBuy { get; set; }
-        public ProductRequest ProductRequest { get; set; }
-        public RecordOfProductMovement RecordOfProductMovement { get; set; }
+        public List<ProductForBuy> ProductForBuys { get; set; }
+        public List<ProductRequest> ProductRequests { get; set; }
+        public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
 
         public Employee()
         { 
