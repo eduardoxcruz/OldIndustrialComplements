@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using Inventory.data;
 
 namespace Inventory.ui
 {
@@ -14,18 +13,9 @@ namespace Inventory.ui
 		}
 		private void TestConnection(object sender, RoutedEventArgs routedEventArgs)
 		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-
 			try
 			{
-				if (inventoryDb.Database.CanConnect())
-				{
-					TxtBlockConnectionResult.Text = "Conectado";
-				}
-				else
-				{
-					TxtBlockConnectionResult.Text = "No se puede conectar a la BD";
-				}
+				TxtBlockConnectionResult.Text = App.CanConnectToDatabase() ? "Conectado" : "No se puede conectar a la BD";
 			}
 			catch (Exception exception)
 			{
