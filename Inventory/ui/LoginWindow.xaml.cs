@@ -14,12 +14,12 @@ namespace Inventory.ui
 		}
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
+			
 			if (Properties.Settings.Default.SaveSession)
 			{
-				TxtBoxPassword.Password = Properties.Settings.Default.User.Password;
+				TxtBoxPassword.Password = Properties.Settings.Default.User.Password ?? "";
 			}
-			
-			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
 		}
 		private void LoadUsersFromDatabaseToComboBox()
 		{
