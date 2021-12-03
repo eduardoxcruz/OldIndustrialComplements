@@ -1,10 +1,14 @@
-﻿using Inventory.model;
+﻿using System;
+using System.Windows;
+using Inventory.model;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
 namespace Inventory.data
 {
+	public delegate void DatabaseRequest();
+	
     public class InventoryDbContext : DbContext
     {
         public virtual DbSet<ProductForBuy> ProductsForBuy { get; set; }
@@ -151,6 +155,19 @@ namespace Inventory.data
                 .IsUnique(false);
             
             return modelBuilder;
+        }
+        public static void ExecuteDatabaseRequest(DatabaseRequest request)
+        {
+	        try
+	        {
+		        request();
+	        }
+	        catch (Exception exception)
+	        {
+		        MessageBox.Show("Ha ocurrido un error al procesar su solicitud. Intentelo de nuevo.\nMas info: \n\n" 
+		                        + exception.Message,
+			        "Error");
+	        }
         }
     }
 }
