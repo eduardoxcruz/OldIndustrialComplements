@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using System.Windows;
 using Inventory.data;
 using Inventory.model;
@@ -23,11 +24,20 @@ namespace Inventory.ui
 		}
 		private void LoadUsersFromDatabaseToComboBox()
 		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			CmbBoxEmployees.ItemsSource = inventoryDb.Employees.ToList();
-			CmbBoxEmployees.DisplayMemberPath = "FullName";
-			CmbBoxEmployees.SelectedItem =  inventoryDb.Employees
-				.FirstOrDefault(employee => employee == Properties.Settings.Default.User);
+			while (!new InventoryDbContext().Database.CanConnect())
+			{
+				MessageBox.Show("No hay conexion al servidor.", "Error");
+				Thread.Sleep(5000);
+			}
+
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new InventoryDbContext();
+				CmbBoxEmployees.ItemsSource = inventoryDb.Employees.ToList();
+				CmbBoxEmployees.DisplayMemberPath = "FullName";
+				CmbBoxEmployees.SelectedItem = inventoryDb.Employees
+					.FirstOrDefault(employee => employee == Properties.Settings.Default.User);
+			});
 		}
 		private void TryToLogin(object sender, RoutedEventArgs e)
 		{
