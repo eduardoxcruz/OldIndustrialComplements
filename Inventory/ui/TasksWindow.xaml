@@ -88,7 +88,7 @@
                  Height="18" 
                  FontSize="9"
                  TextAlignment="Center"
-                 PreviewTextInput="AllowOnlyNumbers"/>
+                 PreviewTextInput="AllowOnlyIntegers"/>
         <TextBlock x:Name="TxtBlckId" 
                    HorizontalAlignment="Left" 
                    Margin="349,15,0,0" 
@@ -235,7 +235,7 @@
                  Height="18" 
                  FontSize="9" 
                  TextAlignment="Center"
-                 PreviewTextInput="AllowOnlyNumbers"/>
+                 PreviewTextInput="AllowOnlyIntegers"/>
         <TextBox x:Name="TxtBoxInputPrice"
                  HorizontalAlignment="Left" 
                  Margin="180,130,0,0" 
