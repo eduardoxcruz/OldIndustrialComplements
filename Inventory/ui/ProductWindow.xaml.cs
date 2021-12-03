@@ -276,7 +276,7 @@ namespace Inventory.ui
 		}
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
-			TasksWindow.Instance.BringWindowToFront();
+			TasksWindow.Instance.BringWindowToFront(Product);
 		}
 		private void AddProfit(object sender, RoutedEventArgs e)
 		{
