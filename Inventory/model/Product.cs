@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -392,9 +393,9 @@ namespace Inventory.model
 			} 
 		}
 		
-		public ProductForBuy ProductForBuy { get; set; }
-		public ProductRequest ProductRequest { get; set; }
-		public RecordOfProductMovement RecordOfProductMovement { get; set; }
+		public List<ProductForBuy> ProductForBuys { get; set; }
+		public List<ProductRequest> ProductRequests { get; set; }
+		public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
 		public Product()
 		{
 			this.Id = 0;

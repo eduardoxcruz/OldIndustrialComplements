@@ -48,76 +48,76 @@ namespace Inventory.data
         }
         private static ModelBuilder ConfigureRelationships(ModelBuilder modelBuilder)
         {
-            modelBuilder
+	        modelBuilder
+		        .Entity<ProductForBuy>()
+		        .HasOne(productForBuy => productForBuy.Product)
+		        .WithMany(product => product.ProductForBuys)
+		        .HasForeignKey(productForBuy => productForBuy.ProductId)
+		        .OnDelete(DeleteBehavior.Cascade);
+	        
+	        modelBuilder
+		        .Entity<ProductForBuy>()
+		        .HasOne(productForBuy => productForBuy.Employee)
+		        .WithMany(employee => employee.ProductForBuys)
+		        .HasForeignKey(productForBuy => productForBuy.EmployeeId)
+		        .OnDelete(DeleteBehavior.SetNull);
+	        
+	        modelBuilder
+		        .Entity<ProductRequest>()
+		        .HasOne(productRequest => productRequest.Product)
+		        .WithMany(product => product.ProductRequests)
+		        .HasForeignKey(productRequest => productRequest.ProductId)
+		        .OnDelete(DeleteBehavior.Cascade);
+	        
+	        modelBuilder
+		        .Entity<ProductRequest>()
+		        .HasOne(productRequest => productRequest.Employee)
+		        .WithMany(employee => employee.ProductRequests)
+		        .HasForeignKey(productRequest => productRequest.EmployeeId)
+		        .OnDelete(DeleteBehavior.SetNull);
+	        
+	        modelBuilder
+		        .Entity<RecordOfProductMovement>()
+		        .HasOne(recordOfProductMovement => recordOfProductMovement.Product)
+		        .WithMany(product => product.RecordOfProductMovements)
+		        .HasForeignKey(recordOfProductMovement => recordOfProductMovement.ProductId)
+		        .OnDelete(DeleteBehavior.Cascade);
+	        
+	        modelBuilder
+		        .Entity<RecordOfProductMovement>()
+		        .HasOne(recordOfProductMovement => recordOfProductMovement.Employee)
+		        .WithMany(employee => employee.RecordOfProductMovements)
+		        .HasForeignKey(recordOfProductMovement => recordOfProductMovement.EmployeeId)
+		        .OnDelete(DeleteBehavior.SetNull);
+	        
+	        modelBuilder
                 .Entity<Product>()
-                .HasOne(product => product.ProductForBuy)
-                .WithOne(productForBuy => productForBuy.Product)
-                .HasForeignKey<ProductForBuy>(productForBuy => productForBuy.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .Navigation(product => product.ProductForBuys)
+                .UsePropertyAccessMode(PropertyAccessMode.Property);
 
             modelBuilder
                 .Entity<Employee>()
-                .HasOne(employee => employee.ProductForBuy)
-                .WithOne(productForBuy => productForBuy.Employee)
-                .HasForeignKey<ProductForBuy>(productForBuy => productForBuy.EmployeeId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .Navigation(employee => employee.ProductForBuys)
+                .UsePropertyAccessMode(PropertyAccessMode.Property);
 
             modelBuilder
                 .Entity<Product>()
-                .HasOne(product => product.ProductRequest)
-                .WithOne(productRequest => productRequest.Product)
-                .HasForeignKey<ProductRequest>(productRequest => productRequest.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .Navigation(product => product.ProductRequests)
+                .UsePropertyAccessMode(PropertyAccessMode.Property);
 
             modelBuilder
                 .Entity<Employee>()
-                .HasOne(employee => employee.ProductRequest)
-                .WithOne(productRequest => productRequest.Employee)
-                .HasForeignKey<ProductRequest>(productRequest => productRequest.EmployeeId)
-                .OnDelete(DeleteBehavior.SetNull);
-
-            modelBuilder
-                .Entity<Product>()
-                .HasOne(product => product.RecordOfProductMovement)
-                .WithOne(recordOfProductMovement => recordOfProductMovement.Product)
-                .HasForeignKey<RecordOfProductMovement>(recordOfProductMovement => recordOfProductMovement.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder
-                .Entity<Employee>()
-                .HasOne(employee => employee.RecordOfProductMovement)
-                .WithOne(recordOfProductMovement => recordOfProductMovement.Employee)
-                .HasForeignKey<RecordOfProductMovement>(recordOfProductMovement => recordOfProductMovement.EmployeeId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .Navigation(employee => employee.ProductRequests)
+                .UsePropertyAccessMode(PropertyAccessMode.Property);
             
             modelBuilder
                 .Entity<Product>()
-                .Navigation(product => product.ProductForBuy)
+                .Navigation(product => product.RecordOfProductMovements)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
 
             modelBuilder
                 .Entity<Employee>()
-                .Navigation(employee => employee.ProductForBuy)
-                .UsePropertyAccessMode(PropertyAccessMode.Property);
-
-            modelBuilder
-                .Entity<Product>()
-                .Navigation(product => product.ProductRequest)
-                .UsePropertyAccessMode(PropertyAccessMode.Property);
-
-            modelBuilder
-                .Entity<Employee>()
-                .Navigation(employee => employee.ProductRequest)
-                .UsePropertyAccessMode(PropertyAccessMode.Property);
-            
-            modelBuilder
-                .Entity<Product>()
-                .Navigation(product => product.RecordOfProductMovement)
-                .UsePropertyAccessMode(PropertyAccessMode.Property);
-
-            modelBuilder
-                .Entity<Employee>()
-                .Navigation(employee => employee.RecordOfProductMovement)
+                .Navigation(employee => employee.RecordOfProductMovements)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
             
             modelBuilder
