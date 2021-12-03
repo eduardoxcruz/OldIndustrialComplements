@@ -112,16 +112,16 @@ namespace Inventory.ui
 			switch (CmbBoxTask.SelectedItem)
 			{
 				case "ENTRADA DE PRODUCTO":
-					ExecuteProductAmountModification("ENTRADA DE PRODUCTO");
+					ExecuteProductAmountChange("ENTRADA DE PRODUCTO");
 					break;
 				case "SALIDA DE PRODUCTO":
-					ExecuteProductAmountModification("SALIDA DE PRODUCTO");
+					ExecuteProductAmountChange("SALIDA DE PRODUCTO");
 					break;
 				case "DEVOLUCION DE PRODUCTO":
-					ExecuteProductAmountModification("DEVOLUCION DE PRODUCTO");
+					ExecuteProductAmountChange("DEVOLUCION DE PRODUCTO");
 					break;
 				case "AJUSTE DE CANTIDAD":
-					ExecuteProductAmountModification("AJUSTE DE CANTIDAD");
+					ExecuteProductAmountChange("AJUSTE DE CANTIDAD");
 					break;
 				case "COMPRAR MAS PRODUCTO":
 					break;
@@ -141,85 +141,73 @@ namespace Inventory.ui
 			
 			RefresthDateTime();
 		}
-		private void ExecuteProductAmountModification(string type)
+		private void ExecuteProductAmountChange(string typeOfChange)
 		{
-			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
-			{
-				MessageBox.Show("Ingrese una cantidad valida.", "Error");
-				return;
-			}
+			if (!IsProductAmountChangeValid(typeOfChange)) return;
 			
-			using InventoryDbContext inventoryDb = new();
-			RecordOfProductMovement newMovement = new();
-			int totalPieces = 0;
-			string message = "¿Desea confirmar el siguiente movimiento?:\n\n";
-
 			try
 			{
-				newMovement.Id = inventoryDb.RecordsOfProductMovements
-					.OrderByDescending(record => record.Id)
-					.FirstOrDefault().Id + 1;
-				newMovement.Date = Now;
-				newMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
-				newMovement.PreviousAmount = Product.CurrentAmount;
-				newMovement.EmployeeId = Employee.Id;
-				newMovement.ProductId = Product.Id;
-
-				switch (type)
+				RecordOfProductMovement recordOfProductMovement = new();
+				int totalPieces = 0;
+				
+				switch (typeOfChange)
 				{
 					case "ENTRADA DE PRODUCTO":
-						if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
-						{
-							MessageBox.Show("Ingrese un precio mayor a 0.", "Error");
-							return;
-						}
-						
-						if (string.IsNullOrEmpty(CmbBoxProvider.Text))
-						{
-							MessageBox.Show("Ingrese proveedor.", "Error");
-							return;
-						}
-
-						totalPieces = (Product.CurrentAmount ?? default(int)) + (newMovement.Amount ?? default(int));
-						newMovement.Type = "ENTRADA";
-						newMovement.PurchasePrice = GetNewBuyPrice(totalPieces);
-						newMovement.Provider = CmbBoxProvider.Text;
-						Product.BuyPrice = newMovement.PurchasePrice;
-						message = message + "Nuevo precio de compra: " + Product.BuyPrice + "\n";
+						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
+						recordOfProductMovement = AddPurchasePriceAndProvider(recordOfProductMovement, totalPieces);
 						break;
 					case "SALIDA DE PRODUCTO":
-						totalPieces = (Product.CurrentAmount ?? default(int)) - (newMovement.Amount ?? default(int));
-						newMovement.Type = "SALIDA";
+						totalPieces = (Product.CurrentAmount ?? default(int)) - (recordOfProductMovement.Amount ?? default(int));
+						recordOfProductMovement.Type = "SALIDA";
 						break;
 					case "DEVOLUCION DE PRODUCTO":
-						totalPieces = (Product.CurrentAmount ?? default(int)) + (newMovement.Amount ?? default(int));
-						newMovement.Type = "DEVOLUCION";
+						totalPieces = (Product.CurrentAmount ?? default(int)) + (recordOfProductMovement.Amount ?? default(int));
+						recordOfProductMovement.Type = "DEVOLUCION";
 						break;
 					case "AJUSTE DE CANTIDAD":
-						totalPieces = (newMovement.Amount ?? default(int));
-						newMovement.Type = "AJUSTE";
+						totalPieces = (recordOfProductMovement.Amount ?? default(int));
+						recordOfProductMovement.Type = "AJUSTE";
 						break;
 				}
-
-				message = message + "Cantidad de pzs anterior: " + Product.CurrentAmount + "\n" +
-				          "Cantidad de pzs nueva: " + totalPieces;
-
-				if (MessageBox.Show(message, "Confirmacion", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-				{
-					newMovement.NewAmount = totalPieces;
-					Product.CurrentAmount = totalPieces;
 				
-					inventoryDb.Entry(Product).State = EntityState.Modified;
-					inventoryDb.RecordsOfProductMovements.Add(newMovement);
-					inventoryDb.SaveChanges();
-					
-					MessageBox.Show("Completado.", "Exito");
-				}
+				ConfigureRecordForProductAmountChange(recordOfProductMovement, totalPieces);
 			}
 			catch (Exception exception)
 			{
 				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
 			}
+		}
+		private bool IsProductAmountChangeValid(string typeOfChange)
+		{
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			{
+				MessageBox.Show("Ingrese una cantidad valida.", "Error");
+				return false;
+			}
+
+			if (!typeOfChange.Equals("ENTRADA DE PRODUCTO")) return true;
+			
+			if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
+			{
+				MessageBox.Show("Ingrese un precio mayor a 0.", "Error");
+				return false;
+			}
+						
+			if (string.IsNullOrEmpty(CmbBoxProvider.Text))
+			{
+				MessageBox.Show("Ingrese proveedor.", "Error");
+				return false;
+			}
+
+			return true;
+		}
+		private RecordOfProductMovement AddPurchasePriceAndProvider(RecordOfProductMovement recordOfProductMovement, int totalPieces)
+		{
+			recordOfProductMovement.Type = "ENTRADA";
+			recordOfProductMovement.PurchasePrice = GetNewBuyPrice(totalPieces);
+			recordOfProductMovement.Provider = CmbBoxProvider.Text;
+
+			return recordOfProductMovement;
 		}
 		private decimal GetNewBuyPrice(int totalPieces)
 		{
@@ -229,13 +217,55 @@ namespace Inventory.ui
 			}
 			
 			return (
-				(
-					(Product.CurrentAmount ?? default(int)) * (Product.BuyPrice ?? default(decimal)) 
-					+ 
-					(int.Parse(TxtBoxInputQuantity.Text)) * decimal.Parse(TxtBoxInputPrice.Text))
-				)
-				/
-				totalPieces;
+				       (
+					       (Product.CurrentAmount ?? default(int)) * (Product.BuyPrice ?? default(decimal)) 
+					       + 
+					       (int.Parse(TxtBoxInputQuantity.Text)) * decimal.Parse(TxtBoxInputPrice.Text))
+			       )
+			       /
+			       totalPieces;
+		}
+		private void ConfigureRecordForProductAmountChange(RecordOfProductMovement recordOfProductMovement, int totalPieces)
+		{
+			using InventoryDbContext inventoryDb = new();
+			string message = "¿Desea confirmar el siguiente movimiento?:\n\n";
+
+			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
+				message = message + "Nuevo precio de compra: " + recordOfProductMovement.PurchasePrice + "\n";
+
+			recordOfProductMovement.Id = inventoryDb.RecordsOfProductMovements
+				.OrderByDescending(record => record.Id)
+				.FirstOrDefault().Id + 1;
+			recordOfProductMovement.Date = Now;
+			recordOfProductMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
+			recordOfProductMovement.PreviousAmount = Product.CurrentAmount;
+			recordOfProductMovement.EmployeeId = Employee.Id;
+			recordOfProductMovement.ProductId = Product.Id;
+			recordOfProductMovement.NewAmount = totalPieces;
+
+			message = message + "Cantidad de pzs anterior: " + Product.CurrentAmount + "\n" +
+			          "Cantidad de pzs nueva: " + totalPieces;
+
+			SaveProductAmountChangeInDatabase(recordOfProductMovement, message);
+		}
+		private void SaveProductAmountChangeInDatabase(RecordOfProductMovement recordOfProductMovement, string confirmationMessage)
+		{
+			if (MessageBox.Show(confirmationMessage, "Confirmacion", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+			{
+				return;
+			}
+
+			using InventoryDbContext inventoryDb = new();
+			
+			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
+				Product.BuyPrice = recordOfProductMovement.PurchasePrice;
+			
+			Product.CurrentAmount = recordOfProductMovement.NewAmount;
+			inventoryDb.Entry(Product).State = EntityState.Modified;
+			inventoryDb.RecordsOfProductMovements.Add(recordOfProductMovement);
+			inventoryDb.SaveChanges();
+					
+			MessageBox.Show("Completado.", "Exito");
 		}
 		private void ExecuteProductRequestForWarehouse(string type)
 		{
