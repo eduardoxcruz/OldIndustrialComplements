@@ -102,6 +102,12 @@ namespace Inventory.ui
 		}
 		private void ExecuteTask(object sender, RoutedEventArgs e)
 		{
+			if (Product == null || Product.Id == 0)
+			{
+				MessageBox.Show("Seleccione un producto valido.", "Error");
+				return;
+			}
+			
 			switch (CmbBoxTask.SelectedItem)
 			{
 				case "ENTRADA DE PRODUCTO":
