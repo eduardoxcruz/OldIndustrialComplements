@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using Inventory.data;
@@ -97,6 +98,10 @@ namespace Inventory.ui
 				ChkBoxRememberData.IsChecked = false;
 				MessageBox.Show("Introduce datos para guardar la información");
 			}
+		}
+		protected override void OnClosing(CancelEventArgs cancelEventArgs)
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }
