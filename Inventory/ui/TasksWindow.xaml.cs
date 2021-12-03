@@ -239,58 +239,67 @@ namespace Inventory.ui
 		}
 		private void ExecuteProductRequestForWareHouse(string type)
 		{
-			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
-			{
-				MessageBox.Show("Ingrese una cantidad valida.", "Error");
-				return;
-			}
+			if (!IsProductRequestForWarehouseValid()) return;
 			
-			if (int.Parse(TxtBoxInputQuantity.Text) > Product.CurrentAmount)
-			{
-				MessageBox.Show("Cantidad solicitada es mayor a la cantidad disponible.", "Error");
-				return;
-			}
-
-			using InventoryDbContext inventoryDb = new();
-
 			try
 			{
-				ProductRequest request = new();
-			
-				switch (type)
-				{
-					case "SOLICITAR PARA VENTA":
-						request.Type = "PARA VENTA";
-						break;
-					case "SOLICITAR PARA TIENDA":
-						request.Type = "PARA TIENDA";
-						break;
-					case "SOLICITAR SIN SURTIR":
-						request.Type = "NO SURTIR";
-						break;
-					case "SOLICITAR PARA VERIFICAR":
-						request.Type = "PARA VERIFICAR";
-						break;
-				}
-			
-				request.Id = inventoryDb.ProductRequests
-					.OrderByDescending(productRequest => productRequest.Id)
-					.FirstOrDefault().Id + 1;
-				request.Status = "NO SURTIDO";
-				request.Amount = int.Parse(TxtBoxInputQuantity.Text);
-				request.Date = Now;
-				request.EmployeeId = Employee.Id;
-				request.ProductId = Product.Id;
-
-				inventoryDb.ProductRequests.Add(request);
-				inventoryDb.SaveChanges();
-
-				MessageBox.Show("Completado.", "Exito");
+				SaveProductRequestToWarehouseInDatabase(type);
 			}
 			catch (Exception exception)
 			{
 				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
 			}
+		}
+		private bool IsProductRequestForWarehouseValid()
+		{
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			{
+				MessageBox.Show("Ingrese una cantidad valida.", "Error");
+				return false;
+			}
+			
+			if (int.Parse(TxtBoxInputQuantity.Text) > Product.CurrentAmount)
+			{
+				MessageBox.Show("Cantidad solicitada es mayor a la cantidad disponible.", "Error");
+				return false;
+			}
+
+			return true;
+		}
+		private void SaveProductRequestToWarehouseInDatabase(string type)
+		{
+			using InventoryDbContext inventoryDb = new();
+			ProductRequest request = new();
+			
+			switch (type)
+			{
+				case "SOLICITAR PARA VENTA":
+					request.Type = "PARA VENTA";
+					break;
+				case "SOLICITAR PARA TIENDA":
+					request.Type = "PARA TIENDA";
+					break;
+				case "SOLICITAR SIN SURTIR":
+					request.Type = "NO SURTIR";
+					break;
+				case "SOLICITAR PARA VERIFICAR":
+					request.Type = "PARA VERIFICAR";
+					break;
+			}
+			
+			request.Id = inventoryDb.ProductRequests
+				.OrderByDescending(productRequest => productRequest.Id)
+				.FirstOrDefault().Id + 1;
+			request.Status = "NO SURTIDO";
+			request.Amount = int.Parse(TxtBoxInputQuantity.Text);
+			request.Date = Now;
+			request.EmployeeId = Employee.Id;
+			request.ProductId = Product.Id;
+
+			inventoryDb.ProductRequests.Add(request);
+			inventoryDb.SaveChanges();
+
+			MessageBox.Show("Completado.", "Exito");
 		}
 		private void RefresthDateTime()
 		{
