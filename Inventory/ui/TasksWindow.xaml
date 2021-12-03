@@ -139,7 +139,7 @@
                    TextAlignment="Left" 
                    Foreground="#FFF10C0C">
 	        <TextBlock.Text>
-		        <Binding Source="{x:Static properties:Settings.Default}" Path="User"/>
+		        <Binding Source="{x:Static properties:Settings.Default}" Path="User.FullName"/>
 	        </TextBlock.Text>
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" 
