@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace Inventory.ui
 {
@@ -34,6 +35,10 @@ namespace Inventory.ui
 		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
 		{
 			ProductWindow.AddNewProductInstance.BringWindowToFront();
+		}
+		protected override void OnClosing(CancelEventArgs cancelEventArgs)
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }
