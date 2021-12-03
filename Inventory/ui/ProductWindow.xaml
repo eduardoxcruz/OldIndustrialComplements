@@ -348,6 +348,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="CurrentAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
