@@ -32,11 +32,11 @@ namespace Inventory.model
 		{
 			this.Close();
 		}
-		protected void AllowOnlyNumbers(object sender, TextCompositionEventArgs e)
+		protected void AllowOnlyIntegers(object sender, TextCompositionEventArgs e)
 		{
-			e.Handled = TextMatchNumbers(e.Text);
+			e.Handled = TextMatchIntegers(e.Text);
 		}
-		private static bool TextMatchNumbers(string text)
+		private static bool TextMatchIntegers(string text)
 		{
 			return IntegersRegex.IsMatch(text);
 		}
