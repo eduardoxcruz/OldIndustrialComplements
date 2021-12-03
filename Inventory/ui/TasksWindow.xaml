@@ -244,7 +244,8 @@
                  Width="80" 
                  Height="18"
                  FontSize="9" 
-                 TextAlignment="Center"/>
+                 TextAlignment="Center"
+                 PreviewTextInput="AllowOnlyDecimals"/>
         <ComboBox x:Name="CmbBoxProvider" 
                   HorizontalAlignment="Left" 
                   Margin="265,130,0,0" 
