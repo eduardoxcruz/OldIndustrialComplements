@@ -73,14 +73,18 @@ namespace Inventory.ui
 		}
 		private bool CredentialsAreCorrect()
 		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			Employee employee = inventoryDb.Employees
-				.FirstOrDefault(employee => employee == CmbBoxEmployees.SelectedItem);
+			bool credentialsAreCorrect = true;
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new InventoryDbContext();
+				Employee employee = inventoryDb.Employees
+					.FirstOrDefault(employee => employee == CmbBoxEmployees.SelectedItem);
 
-			if (employee == null || !employee.Password.Equals(TxtBoxPassword.Password)) 
-				return false;
+				if (employee == null || !employee.Password.Equals(TxtBoxPassword.Password))
+					credentialsAreCorrect = false;
+			});
 
-			return true;
+			return credentialsAreCorrect;
 		}
 		private void Exit(object sender, RoutedEventArgs e)
 		{
