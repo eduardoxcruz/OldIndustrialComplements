@@ -126,16 +126,16 @@ namespace Inventory.ui
 				case "COMPRAR MAS PRODUCTO":
 					break;
 				case "SOLICITAR PARA VENTA":
-					ExecuteRequest("SOLICITAR PARA VENTA");
+					ExecuteProductRequestForWareHouse("SOLICITAR PARA VENTA");
 					break;
 				case "SOLICITAR PARA TIENDA":
-					ExecuteRequest("SOLICITAR PARA TIENDA");
+					ExecuteProductRequestForWareHouse("SOLICITAR PARA TIENDA");
 					break;
 				case "SOLICITAR SIN SURTIR":
-					ExecuteRequest("SOLICITAR SIN SURTIR");
+					ExecuteProductRequestForWareHouse("SOLICITAR SIN SURTIR");
 					break;
 				case "SOLICITAR PARA VERIFICAR":
-					ExecuteRequest("SOLICITAR PARA VERIFICAR");
+					ExecuteProductRequestForWareHouse("SOLICITAR PARA VERIFICAR");
 					break;
 			}
 			
@@ -237,7 +237,7 @@ namespace Inventory.ui
 				/
 				totalPieces;
 		}
-		private void ExecuteRequest(string type)
+		private void ExecuteProductRequestForWareHouse(string type)
 		{
 			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
 			{
