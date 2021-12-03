@@ -126,16 +126,16 @@ namespace Inventory.ui
 				case "COMPRAR MAS PRODUCTO":
 					break;
 				case "SOLICITAR PARA VENTA":
-					ExecuteProductRequestForWareHouse("SOLICITAR PARA VENTA");
+					ExecuteProductRequestForWarehouse("SOLICITAR PARA VENTA");
 					break;
 				case "SOLICITAR PARA TIENDA":
-					ExecuteProductRequestForWareHouse("SOLICITAR PARA TIENDA");
+					ExecuteProductRequestForWarehouse("SOLICITAR PARA TIENDA");
 					break;
 				case "SOLICITAR SIN SURTIR":
-					ExecuteProductRequestForWareHouse("SOLICITAR SIN SURTIR");
+					ExecuteProductRequestForWarehouse("SOLICITAR SIN SURTIR");
 					break;
 				case "SOLICITAR PARA VERIFICAR":
-					ExecuteProductRequestForWareHouse("SOLICITAR PARA VERIFICAR");
+					ExecuteProductRequestForWarehouse("SOLICITAR PARA VERIFICAR");
 					break;
 			}
 			
@@ -237,7 +237,7 @@ namespace Inventory.ui
 				/
 				totalPieces;
 		}
-		private void ExecuteProductRequestForWareHouse(string type)
+		private void ExecuteProductRequestForWarehouse(string type)
 		{
 			if (!IsProductRequestForWarehouseValid()) return;
 			
