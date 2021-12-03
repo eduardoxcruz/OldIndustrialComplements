@@ -127,6 +127,8 @@ namespace Inventory.ui
 					ExecuteRequest("SOLICITAR PARA VERIFICAR");
 					break;
 			}
+			
+			RefresthDateTime();
 		}
 		private void ExecuteRequest(string type)
 		{
@@ -182,8 +184,6 @@ namespace Inventory.ui
 			{
 				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
 			}
-			
-			RefresthDateTime();
 		}
 		private void RefresthDateTime()
 		{
