@@ -580,6 +580,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyDecimals"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="BuyPrice" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
@@ -734,6 +735,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyDecimals"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="PercentageOfProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
@@ -805,6 +807,7 @@
 				         Height="18" 
 				         FontSize="11" 
 				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyDecimals"
 				         Style="{StaticResource TextBoxInError}">
                     <TextBox.Text>
                         <Binding Path="PercentageOfDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
