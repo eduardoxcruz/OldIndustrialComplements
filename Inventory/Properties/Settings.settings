@@ -1,12 +1,9 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Inventory.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="User" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Pass" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="User" Type="Employee" Scope="User">
+      <Value Profile="(Default)">new Employee()</Value>
     </Setting>
     <Setting Name="SaveSession" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

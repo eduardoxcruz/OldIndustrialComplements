@@ -7,6 +7,7 @@
 //     se vuelve a generar el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using Inventory.model;
 
 namespace Inventory.Properties {
     
@@ -26,24 +27,12 @@ namespace Inventory.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string User {
+        public Employee User {
             get {
-                return ((string)(this["User"]));
+                return ((Employee)(this["User"]));
             }
             set {
                 this["User"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Pass {
-            get {
-                return ((string)(this["Pass"]));
-            }
-            set {
-                this["Pass"] = value;
             }
         }
         
