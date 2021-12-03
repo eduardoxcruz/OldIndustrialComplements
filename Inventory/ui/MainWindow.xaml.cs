@@ -13,7 +13,7 @@ namespace Inventory.ui
 		}
 		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
 		{
-			TasksWindow.Instance.BringWindowToFront();
+			TasksWindow.Instance.BringWindowToFront(null);
 		}
 		private void BtnOpenSearchProductWindow_Click(object sender, RoutedEventArgs e)
 		{
