@@ -70,7 +70,7 @@ namespace Inventory.ui
 			}
 			
 			new MainWindow().Show();
-			this.Close();
+			this.Hide();
 		}
 		private bool CredentialsAreCorrect()
 		{
