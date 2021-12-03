@@ -157,15 +157,15 @@ namespace Inventory.ui
 						recordOfProductMovement = AddPurchasePriceAndProvider(recordOfProductMovement, totalPieces);
 						break;
 					case "SALIDA DE PRODUCTO":
-						totalPieces = (Product.CurrentAmount ?? default(int)) - (recordOfProductMovement.Amount ?? default(int));
+						totalPieces = (Product.CurrentAmount ?? default(int)) - int.Parse(TxtBoxInputQuantity.Text);
 						recordOfProductMovement.Type = "SALIDA";
 						break;
 					case "DEVOLUCION DE PRODUCTO":
-						totalPieces = (Product.CurrentAmount ?? default(int)) + (recordOfProductMovement.Amount ?? default(int));
+						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
 						recordOfProductMovement.Type = "DEVOLUCION";
 						break;
 					case "AJUSTE DE CANTIDAD":
-						totalPieces = (recordOfProductMovement.Amount ?? default(int));
+						totalPieces = int.Parse(TxtBoxInputQuantity.Text);
 						recordOfProductMovement.Type = "AJUSTE";
 						break;
 				}
