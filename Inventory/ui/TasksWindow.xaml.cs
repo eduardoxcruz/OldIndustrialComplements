@@ -14,7 +14,8 @@ namespace Inventory.ui
 	{
 		private static List<string> Tasks { get; set; }
 		public static readonly TasksWindow Instance = new();
-		private Product Product { get; set; }
+		private static Product Product { get; set; }
+		private static Employee Employee { get; set; } = Settings.Default.User;
 
 		private TasksWindow()
 		{
@@ -145,8 +146,6 @@ namespace Inventory.ui
 
 			try
 			{
-				Employee employee = inventoryDb.Employees
-					.Single(productRequest => productRequest.FullName == Properties.Settings.Default.User);
 				ProductRequest request = new();
 			
 				switch (type)
