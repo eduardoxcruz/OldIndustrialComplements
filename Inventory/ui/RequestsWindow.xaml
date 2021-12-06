@@ -95,7 +95,53 @@
 			        FontSize="9"
 			        Content="Devuelto" />
 			<DataGrid x:Name="DataGridRequests" 
-			          Margin="10,98,10,33"/>
+			          Margin="13,98,12,33"
+			          AutoGenerateColumns="False" 
+			          IsReadOnly="True"
+			          ColumnWidth="*"
+			          Width="1000" 
+			          Height="375">
+			<DataGrid.Columns>
+					<DataGridTextColumn Header="ID" 
+					                    Binding="{Binding Id}"/>
+					<DataGridTextColumn Header="Fecha"
+					                    Binding="{Binding 
+											Path=Date, 
+											Converter={x:Static Member=model:StringFormatConverter.Instance}, 
+											ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
+											ConverterParameter='\{0:dd / MMMM / yyyy hh:mm:ss\}'
+					                    }" />
+					<DataGridTextColumn Header="Empleado"
+					                    Binding="{Binding Path=Employee.FullName}" />
+					<DataGridTextColumn Header="Id de Producto"
+					                    Binding="{Binding Product.Id}" />
+					<DataGridTextColumn Header="Producto"
+					                    Binding="{Binding Product.FullDescription}" />
+					<DataGridTextColumn Header="Solicitado"
+					                    Binding="{Binding Amount}" />
+					<DataGridTextColumn Header="Existencia"
+					                    Binding="{Binding Product.CurrentAmount}" />
+					<DataGridTextColumn Header="Contenedor"
+					                    Binding="{Binding Product.Container}" />
+					<DataGridTextColumn Header="Ubicacion"
+					                    Binding="{Binding Product.Location}" />
+					<DataGridTextColumn Header="Sucursal"
+					                    Binding="{Binding Product.BranchOffice}" />
+					<DataGridTextColumn Header="Estante"
+					                    Binding="{Binding Product.Rack}" />
+					<DataGridTextColumn Header="Repisa"
+					                    Binding="{Binding Product.Shelf}" />
+					<DataGridTextColumn Header="Tipo"
+					                    Binding="{Binding Type}" />
+					<DataGridTextColumn Header="Estado"
+					                    Binding="{Binding Status}" />
+				</DataGrid.Columns>
+				<DataGrid.ContextMenu>
+					<ContextMenu>
+						<MenuItem Header="Marcar como entregado"/>
+					</ContextMenu>
+				</DataGrid.ContextMenu>
+			</DataGrid>
 			<Button x:Name="BtnExit" 
 			        HorizontalAlignment="Left" 
                     Margin="10,484,0,0" 
