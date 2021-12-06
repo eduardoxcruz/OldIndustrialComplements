@@ -264,15 +264,22 @@ namespace Inventory.ui
 		}
 		private void SaveProduct()
 		{
-			using InventoryDbContext inventoryDb = new();
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
 			
-			if (CurrentTask == ProductWindowTasks.Modify)
-				inventoryDb.Entry(Product).State = EntityState.Modified;
-			
-			if (CurrentTask == ProductWindowTasks.AddNewProduct)
-				inventoryDb.Products.Add(Product);
-			
-			inventoryDb.SaveChanges();
+				switch (CurrentTask)
+				{
+					case ProductWindowTasks.Modify:
+						inventoryDb.Entry(Product).State = EntityState.Modified;
+						break;
+					case ProductWindowTasks.AddNewProduct:
+						inventoryDb.Products.Add(Product);
+						break;
+				}
+
+				inventoryDb.SaveChanges();
+			});
 		}
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
