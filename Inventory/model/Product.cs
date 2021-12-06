@@ -432,19 +432,18 @@ namespace Inventory.model
 		}
 		public static Product GetDataFromSqlDatabase(int id)
 		{
-			Product product;
-			try
-			{
-				using InventoryDbContext inventoryDb = new();
-				product = inventoryDb.Products.Single(searchProduct => searchProduct.Id == id);
-			}
-			catch(Exception exception)
-			{
-				MessageBox.Show("Error al obtener el producto de la base de datos.\n\nDetalles:\n" + exception , "Error");
-				product = new Product();
-			}
+			using InventoryDbContext inventoryDb = new();
+			int lastId = inventoryDb.Products.OrderByDescending(searchProduct => searchProduct.Id).FirstOrDefault()!.Id;
 
-			return product;
+			if (id > lastId)
+			{
+				MessageBox.Show("El Id solicitado es mayor a la cantidad de productos guardados", "Error");
+				return new Product();
+			}
+			
+			Product? product = inventoryDb.Products.SingleOrDefault(searchProduct => searchProduct.Id == id);
+			
+			return product ?? new Product();
 		}
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
