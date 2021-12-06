@@ -90,12 +90,13 @@ namespace Inventory.ui
 			BtnLoadFirstProduct.IsEnabled = false;
 			TxtBlockProductTask.Text = "Nuevo Producto";
 			BtnAddModifyAndSave.Content = "Agregar";
+			Product lastProduct = null;
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
 				using InventoryDbContext inventoryDb = new();
-				Product lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
-				Product.Id = lastProduct == null ? 0 : lastProduct.Id + 1;
+				lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
 			});
+			Product.Id = lastProduct == null ? 0 : lastProduct.Id + 1;
 		}
 		private void SetComboBoxesItemSource()
 		{
