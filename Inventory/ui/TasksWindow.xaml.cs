@@ -179,26 +179,40 @@ namespace Inventory.ui
 		}
 		private bool IsProductAmountChangeValid(string typeOfChange)
 		{
-			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text))
 			{
 				MessageBox.Show("Ingrese una cantidad valida.", "Error");
 				return false;
 			}
 
-			if (!typeOfChange.Equals("ENTRADA DE PRODUCTO")) return true;
-			
-			if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
+			switch (typeOfChange)
 			{
-				MessageBox.Show("Ingrese un precio mayor a 0.", "Error");
-				return false;
-			}
-						
-			if (string.IsNullOrEmpty(CmbBoxProvider.Text))
-			{
-				MessageBox.Show("Ingrese proveedor.", "Error");
-				return false;
-			}
+				case "ENTRADA DE PRODUCTO":
+					if (QuantityIsZero()) return false;
+					
+					if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
+					{
+						MessageBox.Show("Ingrese un precio valido mayor a 0.", "Error");
+						return false;
+					}
 
+					if (string.IsNullOrEmpty(CmbBoxProvider.Text))
+					{
+						MessageBox.Show("Ingrese proveedor.", "Error");
+						return false;
+					}
+					
+					break;
+				case "SALIDA DE PRODUCTO":
+					if (QuantityIsZero()) return false;
+
+					break; 
+				case "DEVOLUCION DE PRODUCTO":
+					if (QuantityIsZero()) return false;
+					
+					break;
+			}
+			
 			return true;
 		}
 		private RecordOfProductMovement AddPurchasePriceAndProvider(RecordOfProductMovement recordOfProductMovement, int totalPieces)
@@ -233,9 +247,10 @@ namespace Inventory.ui
 			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
 				message = message + "Nuevo precio de compra: " + recordOfProductMovement.PurchasePrice + "\n";
 
-			recordOfProductMovement.Id = inventoryDb.RecordsOfProductMovements
+			RecordOfProductMovement lastRecord = inventoryDb.RecordsOfProductMovements
 				.OrderByDescending(record => record.Id)
-				.FirstOrDefault().Id + 1;
+				.FirstOrDefault();
+			recordOfProductMovement.Id = lastRecord == null ? 1 : lastRecord.Id + 1;
 			recordOfProductMovement.Date = Now;
 			recordOfProductMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
 			recordOfProductMovement.PreviousAmount = Product.CurrentAmount;
@@ -282,9 +297,8 @@ namespace Inventory.ui
 		}
 		private bool IsProductRequestForWarehouseValid()
 		{
-			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || int.Parse(TxtBoxInputQuantity.Text) <= 0)
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || QuantityIsZero())
 			{
-				MessageBox.Show("Ingrese una cantidad valida.", "Error");
 				return false;
 			}
 			
@@ -331,6 +345,16 @@ namespace Inventory.ui
 			inventoryDb.SaveChanges();
 
 			MessageBox.Show("Completado.", "Exito");
+		}
+		private bool QuantityIsZero()
+		{
+			if (int.Parse(TxtBoxInputQuantity.Text) != 0)
+			{
+				return false;
+			}
+
+			MessageBox.Show("Ingrese una cantidad valida mayor a 0.", "Error");
+			return true;
 		}
 		private void RefresthDateTime()
 		{
