@@ -6,7 +6,7 @@
         xmlns:model="clr-namespace:Inventory.model"
         xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
         mc:Ignorable="d"
-        Title="Buscar" 
+        Title="Solicitudes de Producto" 
 		Height="528" 
 		Width="1015.5"
 		ResizeMode="CanMinimize"
