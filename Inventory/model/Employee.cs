@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -6,14 +7,68 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-    public class Employee
+    public class Employee : INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public string? Type { get; set; }
-        public string FullName { get; set; }
-        public string? Password { get; set; }
-        
-        public List<ProductForBuy> ProductForBuys { get; set; }
+	    public event PropertyChangedEventHandler? PropertyChanged;
+
+	    private int _id;
+	    private string? _type;
+	    private string _fullName;
+	    private string? _password;
+
+	    public int Id
+	    {
+		    get
+		    {
+			    return _id;
+		    }
+		    set
+		    {
+			    _id = value;
+			    OnPropertyChanged(nameof(Id));
+		    }
+	    }
+
+	    public string? Type
+	    {
+		    get
+		    {
+			    return _type;
+		    }
+		    set
+		    {
+			    _type = value;
+			    OnPropertyChanged(nameof(Type));
+		    }
+	    }
+
+	    public string FullName
+	    {
+		    get
+		    {
+			    return _fullName;
+		    }
+		    set
+		    {
+			    _fullName = value;
+			    OnPropertyChanged(nameof(FullName));
+		    }
+	    }
+
+	    public string? Password
+	    {
+		    get
+		    {
+			    return _password;
+		    }
+		    set
+		    {
+			    _password = value;
+			    OnPropertyChanged(nameof(Password));
+		    }
+	    }
+
+	    public List<ProductForBuy> ProductForBuys { get; set; }
         public List<ProductRequest> ProductRequests { get; set; }
         public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
 
@@ -23,6 +78,10 @@ namespace Inventory.model
 	        this.Type = "";
 	        this.FullName = "";
 	        this.Password = "";
+        }
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+	        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
