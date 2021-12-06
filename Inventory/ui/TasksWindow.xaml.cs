@@ -299,34 +299,35 @@ namespace Inventory.ui
 		private void SaveProductRequestToWarehouseInDatabase(string type)
 		{
 			using InventoryDbContext inventoryDb = new();
-			ProductRequest request = new();
+			ProductRequest newRequest = new();
+			ProductRequest lastRequest = inventoryDb.ProductRequests
+				.OrderByDescending(productRequest => productRequest.Id)
+				.FirstOrDefault();
 			
 			switch (type)
 			{
 				case "SOLICITAR PARA VENTA":
-					request.Type = "PARA VENTA";
+					newRequest.Type = "PARA VENTA";
 					break;
 				case "SOLICITAR PARA TIENDA":
-					request.Type = "PARA TIENDA";
+					newRequest.Type = "PARA TIENDA";
 					break;
 				case "SOLICITAR SIN SURTIR":
-					request.Type = "NO SURTIR";
+					newRequest.Type = "NO SURTIR";
 					break;
 				case "SOLICITAR PARA VERIFICAR":
-					request.Type = "PARA VERIFICAR";
+					newRequest.Type = "PARA VERIFICAR";
 					break;
 			}
 			
-			request.Id = inventoryDb.ProductRequests
-				.OrderByDescending(productRequest => productRequest.Id)
-				.FirstOrDefault().Id + 1;
-			request.Status = "NO SURTIDO";
-			request.Amount = int.Parse(TxtBoxInputQuantity.Text);
-			request.Date = Now;
-			request.EmployeeId = Employee.Id;
-			request.ProductId = Product.Id;
+			newRequest.Id = lastRequest == null ? 1 : lastRequest.Id + 1;
+			newRequest.Status = "NO SURTIDO";
+			newRequest.Amount = int.Parse(TxtBoxInputQuantity.Text);
+			newRequest.Date = Now;
+			newRequest.EmployeeId = Employee.Id;
+			newRequest.ProductId = Product.Id;
 
-			inventoryDb.ProductRequests.Add(request);
+			inventoryDb.ProductRequests.Add(newRequest);
 			inventoryDb.SaveChanges();
 
 			MessageBox.Show("Completado.", "Exito");
