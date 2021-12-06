@@ -90,8 +90,12 @@ namespace Inventory.ui
 			BtnLoadFirstProduct.IsEnabled = false;
 			TxtBlockProductTask.Text = "Nuevo Producto";
 			BtnAddModifyAndSave.Content = "Agregar";
-			using InventoryDbContext inventoryDb = new();
-			Product.Id = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault().Id + 1;
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				Product lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
+				Product.Id = lastProduct == null ? 0 : lastProduct.Id + 1;
+			});
 		}
 		private void SetComboBoxesItemSource()
 		{
