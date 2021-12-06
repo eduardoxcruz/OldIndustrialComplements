@@ -12,6 +12,16 @@
 		ResizeMode="CanMinimize"
 		SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
+	<model:MyWindow.Resources>
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="HorizontalContentAlignment" 
+                    Value="Center"/>
+		</Style>
+		<Style TargetType="DataGridCell">
+			<Setter Property="TextBlock.TextAlignment" 
+                    Value="Center" />
+		</Style>
+	</model:MyWindow.Resources>
 	<Grid>
 		<Grid>
 			<TextBlock HorizontalAlignment="Left" 
