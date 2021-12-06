@@ -266,6 +266,8 @@ namespace Inventory.ui
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
+				if (Product.Id == 0) return;
+				
 				using InventoryDbContext inventoryDb = new();
 			
 				switch (CurrentTask)
