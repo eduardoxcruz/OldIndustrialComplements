@@ -281,6 +281,7 @@ namespace Inventory.ui
 			inventoryDb.SaveChanges();
 					
 			MessageBox.Show("Completado.", "Exito");
+			CleanControls();
 		}
 		private void ExecuteProductRequestForWarehouse(string type)
 		{
@@ -345,6 +346,7 @@ namespace Inventory.ui
 			inventoryDb.SaveChanges();
 
 			MessageBox.Show("Completado.", "Exito");
+			CleanControls();
 		}
 		private bool QuantityIsZero()
 		{
@@ -359,6 +361,12 @@ namespace Inventory.ui
 		private void RefresthDateTime()
 		{
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
+		}
+		private void CleanControls()
+		{
+			TxtBoxInputPrice.Text = "";
+			TxtBoxInputQuantity.Text = "";
+			CmbBoxProvider.Text = "";
 		}
 	}
 }
