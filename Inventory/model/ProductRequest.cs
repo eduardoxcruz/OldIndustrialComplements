@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -6,14 +7,88 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class ProductRequest
+	public class ProductRequest : INotifyPropertyChanged
 	{
-		public int? Id { get; set; }
-		public DateTime? Date { get; set; }
-		public int? Amount { get; set; }
-		public string? EmployeeName { get; set; }
-		public string? Type { get; set; }
-		public string? Status { get; set; }
+		public event PropertyChangedEventHandler? PropertyChanged;
+
+		private int? _id;
+		private DateTime? _date;
+		private int? _amount;
+		private string? _employeeName;
+		private string? _type;
+		private string? _status;
+
+		public int? Id
+		{
+			get
+			{
+				return _id;
+			}
+			set
+			{
+				_id = value;
+				OnPropertyChanged(nameof(Id));
+			}
+		}
+		public DateTime? Date
+		{
+			get
+			{
+				return _date;
+			}
+			set
+			{
+				_date = value;
+				OnPropertyChanged(nameof(Date));
+			}
+		}
+		public int? Amount { 
+			get
+			{
+				return _amount;
+			}
+			set
+			{
+				_amount = value;
+				OnPropertyChanged(nameof(Amount));
+			} 
+		}
+		public string? EmployeeName
+		{
+			get
+			{
+				return _employeeName;
+			}
+			set
+			{
+				_employeeName = value;
+				OnPropertyChanged(nameof(EmployeeName));
+			}
+		}
+		public string? Type
+		{
+			get
+			{
+				return _type;
+			}
+			set
+			{
+				_type = value;
+				OnPropertyChanged(nameof(Type));
+			}
+		}
+		public string? Status
+		{
+			get
+			{
+				return _status;
+			}
+			set
+			{
+				_status = value;
+				OnPropertyChanged(nameof(Status));
+			}
+		}
 
 		public Employee Employee { get; set; }
 		public int? EmployeeId { get; set; }
@@ -25,9 +100,13 @@ namespace Inventory.model
 			this.Id = 0;
 			this.Date = DateTime.Now;
 			this.Amount = 0;
-			this.EmployeeName = "";
+			this.EmployeeName = null;
 			this.Type = "";
 			this.Status = "";
+		}
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 
