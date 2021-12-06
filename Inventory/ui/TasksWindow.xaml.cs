@@ -241,15 +241,23 @@ namespace Inventory.ui
 		}
 		private void ConfigureRecordForProductAmountChange(RecordOfProductMovement recordOfProductMovement, int totalPieces)
 		{
-			using InventoryDbContext inventoryDb = new();
+			RecordOfProductMovement lastRecord = null;
+			
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				
+				 lastRecord = inventoryDb.RecordsOfProductMovements
+					.OrderByDescending(record => record.Id)
+					.FirstOrDefault();
+			});
+			
+			
 			string message = "¿Desea confirmar el siguiente movimiento?:\n\n";
 
 			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
 				message = message + "Nuevo precio de compra: " + recordOfProductMovement.PurchasePrice + "\n";
-
-			RecordOfProductMovement lastRecord = inventoryDb.RecordsOfProductMovements
-				.OrderByDescending(record => record.Id)
-				.FirstOrDefault();
+			
 			recordOfProductMovement.Id = lastRecord == null ? 1 : lastRecord.Id + 1;
 			recordOfProductMovement.Date = Now;
 			recordOfProductMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
@@ -270,18 +278,21 @@ namespace Inventory.ui
 				return;
 			}
 
-			using InventoryDbContext inventoryDb = new();
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				
+				if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
+					Product.BuyPrice = recordOfProductMovement.PurchasePrice;
 			
-			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m) 
-				Product.BuyPrice = recordOfProductMovement.PurchasePrice;
-			
-			Product.CurrentAmount = recordOfProductMovement.NewAmount;
-			inventoryDb.Entry(Product).State = EntityState.Modified;
-			inventoryDb.RecordsOfProductMovements.Add(recordOfProductMovement);
-			inventoryDb.SaveChanges();
+				Product.CurrentAmount = recordOfProductMovement.NewAmount;
+				inventoryDb.Entry(Product).State = EntityState.Modified;
+				inventoryDb.RecordsOfProductMovements.Add(recordOfProductMovement);
+				inventoryDb.SaveChanges();
 					
-			MessageBox.Show("Completado.", "Exito");
-			CleanControls();
+				MessageBox.Show("Completado.", "Exito");
+				CleanControls();
+			});
 		}
 		private void ExecuteProductRequestForWarehouse(string type)
 		{
