@@ -229,5 +229,9 @@ namespace Inventory.ui
 		{
 			DataGridAddedProducts.Items.Clear();
 		}
+		private void OpenTasksWindow(object sender, RoutedEventArgs e)
+		{
+			TasksWindow.Instance.BringWindowToFront(null);
+		}
 	}
 }
