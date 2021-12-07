@@ -1,7 +1,9 @@
 ﻿namespace Inventory.enums
 {
-	public enum ProductWindowTasks {
+	public enum ProductWindowTasks
+	{
 		ShowDetails,
 		Modify,
-		AddNewProduct}
+		AddNewProduct
+	}
 }
