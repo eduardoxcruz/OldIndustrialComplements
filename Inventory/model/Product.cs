@@ -12,7 +12,7 @@ namespace Inventory.model
 	public class Product : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler? PropertyChanged;
-		
+
 		private int _id;
 		private string? _debugCode;
 		private string? _status;
@@ -44,6 +44,7 @@ namespace Inventory.model
 		private decimal? _profitWithDiscount;
 		private string? _fullDescription;
 		private string? _memo;
+
 		public int Id
 		{
 			get
@@ -56,6 +57,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Id));
 			}
 		}
+
 		public string? DebugCode
 		{
 			get
@@ -68,6 +70,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(DebugCode));
 			}
 		}
+
 		public string? Status
 		{
 			get
@@ -80,88 +83,104 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Status));
 			}
 		}
-		public string? Enrollment { 
+
+		public string? Enrollment
+		{
 			get
 			{
 				return _enrollment;
-			} 
+			}
 			set
 			{
 				_enrollment = value;
 				OnPropertyChanged(nameof(Enrollment));
-			} 
+			}
 		}
-		public string? MountingTechnology { 
+
+		public string? MountingTechnology
+		{
 			get
 			{
 				return _mountingTechnology;
-			} 
+			}
 			set
 			{
 				_mountingTechnology = value;
 				OnPropertyChanged(nameof(MountingTechnology));
-			} 
+			}
 		}
-		public string? EncapsulationType { 
+
+		public string? EncapsulationType
+		{
 			get
 			{
 				return _encapsulationType;
-			} 
+			}
 			set
 			{
 				_encapsulationType = value;
 				OnPropertyChanged(nameof(EncapsulationType));
-			} 
+			}
 		}
-		public string? ShortDescription { 
+
+		public string? ShortDescription
+		{
 			get
 			{
 				return _shortDescription;
-			} 
+			}
 			set
 			{
 				_shortDescription = value;
 				OnPropertyChanged(nameof(ShortDescription));
-			} 
+			}
 		}
-		public string? Category { 
+
+		public string? Category
+		{
 			get
 			{
 				return _category;
-			} 
+			}
 			set
 			{
 				_category = value;
 				OnPropertyChanged(nameof(Category));
-			} 
+			}
 		}
-		public bool? IsUsingInventory { 
+
+		public bool? IsUsingInventory
+		{
 			get
 			{
 				return _isUsingInventory;
-			} 
+			}
 			set
 			{
 				_isUsingInventory = value;
 				OnPropertyChanged(nameof(IsUsingInventory));
-			} 
+			}
 		}
-		public int? CurrentAmount { 
+
+		public int? CurrentAmount
+		{
 			get
 			{
 				return _currentAmount;
-			} 
+			}
 			set
 			{
 				_currentAmount = value;
 				OnPropertyChanged(nameof(CurrentAmount));
-			} 
+			}
 		}
-		public int? MinAmount { 
+
+		public int? MinAmount
+		{
 			get
 			{
 				return _minAmount;
-			} 
+			}
 			set
 			{
 				if (value > MaxAmount)
@@ -169,233 +188,276 @@ namespace Inventory.model
 					_minAmount = MaxAmount;
 					return;
 				}
+
 				_minAmount = value;
 				OnPropertyChanged(nameof(MinAmount));
-			} 
+			}
 		}
-		public int? MaxAmount { 
+
+		public int? MaxAmount
+		{
 			get
 			{
 				return _maxAmount;
-			} 
+			}
 			set
 			{
 				_maxAmount = value;
 				OnPropertyChanged(nameof(MaxAmount));
-			} 
+			}
 		}
-		public string? Container { 
+
+		public string? Container
+		{
 			get
 			{
 				return _container;
-			} 
+			}
 			set
 			{
 				_container = value;
 				OnPropertyChanged(nameof(Container));
-			} 
+			}
 		}
-		public string? Location { 
+
+		public string? Location
+		{
 			get
 			{
 				return _location;
-			} 
+			}
 			set
 			{
 				_location = value;
 				OnPropertyChanged(nameof(Location));
-			} 
+			}
 		}
-		public string? BranchOffice { 
+
+		public string? BranchOffice
+		{
 			get
 			{
 				return _branchOffice;
-			} 
+			}
 			set
 			{
 				_branchOffice = value;
 				OnPropertyChanged(nameof(BranchOffice));
-			} 
+			}
 		}
-		public string? Rack { 
+
+		public string? Rack
+		{
 			get
 			{
 				return _rack;
-			} 
+			}
 			set
 			{
 				_rack = value;
 				OnPropertyChanged(nameof(Rack));
-			} 
+			}
 		}
-		public string? Shelf { 
+
+		public string? Shelf
+		{
 			get
 			{
 				return _shelf;
-			} 
+			}
 			set
 			{
 				_shelf = value;
 				OnPropertyChanged(nameof(Shelf));
-			} 
+			}
 		}
-		public decimal? BuyPrice { 
+
+		public decimal? BuyPrice
+		{
 			get
 			{
 				return _buyPrice;
-			} 
+			}
 			set
 			{
 				_buyPrice = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(BuyPrice));
-			} 
+			}
 		}
-		public string? UnitType { 
+
+		public string? UnitType
+		{
 			get
 			{
 				return _unitType;
-			} 
+			}
 			set
 			{
 				_unitType = value;
 				OnPropertyChanged(nameof(UnitType));
-			} 
+			}
 		}
-		public string? Manufacturer { 
+
+		public string? Manufacturer
+		{
 			get
 			{
 				return _manufacturer;
-			} 
+			}
 			set
 			{
 				_manufacturer = value;
 				OnPropertyChanged(nameof(Manufacturer));
-			} 
+			}
 		}
-		public string? PartNumber { 
+
+		public string? PartNumber
+		{
 			get
 			{
 				return _partNumber;
-			} 
+			}
 			set
 			{
 				_partNumber = value;
 				OnPropertyChanged(nameof(PartNumber));
-			} 
+			}
 		}
-		public string? TypeOfStock { 
+
+		public string? TypeOfStock
+		{
 			get
 			{
 				return _typeOfStock;
-			} 
+			}
 			set
 			{
 				_typeOfStock = value;
 				OnPropertyChanged(nameof(TypeOfStock));
-			} 
+			}
 		}
-		public bool? IsManualProfit { 
+
+		public bool? IsManualProfit
+		{
 			get
 			{
 				return _isManualProfit;
-			} 
+			}
 			set
 			{
 				_isManualProfit = value;
 				OnPropertyChanged(nameof(IsManualProfit));
-			} 
+			}
 		}
-		public decimal? PercentageOfProfit { 
+
+		public decimal? PercentageOfProfit
+		{
 			get
 			{
 				return _percentageOfProfit;
-			} 
+			}
 			set
 			{
 				_percentageOfProfit = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(PercentageOfProfit));
-			} 
+			}
 		}
-		public decimal? PercentageOfDiscount { 
+
+		public decimal? PercentageOfDiscount
+		{
 			get
 			{
 				return _percentageOfDiscount;
-			} 
+			}
 			set
 			{
 				_percentageOfDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(PercentageOfDiscount));
-			} 
+			}
 		}
-		public decimal? SalePriceWithoutDiscount { 
+
+		public decimal? SalePriceWithoutDiscount
+		{
 			get
 			{
 				return _salePriceWithoutDiscount;
-			} 
+			}
 			set
 			{
 				_salePriceWithoutDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(SalePriceWithoutDiscount));
-			} 
+			}
 		}
-		public decimal? SalePriceWithDiscount { 
+
+		public decimal? SalePriceWithDiscount
+		{
 			get
 			{
 				return _salePriceWithDiscount;
-			} 
+			}
 			set
 			{
 				_salePriceWithDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(SalePriceWithDiscount));
-			} 
+			}
 		}
-		public decimal? ProfitWithoutDiscount { 
+
+		public decimal? ProfitWithoutDiscount
+		{
 			get
 			{
 				return _profitWithoutDiscount;
-			} 
-			set{
+			}
+			set
+			{
 				_profitWithoutDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(ProfitWithoutDiscount));
-			} 
+			}
 		}
-		public decimal? ProfitWithDiscount { 
+
+		public decimal? ProfitWithDiscount
+		{
 			get
 			{
 				return _profitWithDiscount;
-			} 
+			}
 			set
 			{
 				_profitWithDiscount = Math.Round(value ?? 0.00M, 2, MidpointRounding.ToNegativeInfinity);
 				OnPropertyChanged(nameof(ProfitWithDiscount));
-			} 
+			}
 		}
-		public string? FullDescription { 
+
+		public string? FullDescription
+		{
 			get
 			{
 				return _fullDescription;
-			} 
+			}
 			set
 			{
 				_fullDescription = value;
 				OnPropertyChanged(nameof(FullDescription));
-			} 
+			}
 		}
-		public string? Memo { 
+
+		public string? Memo
+		{
 			get
 			{
 				return _memo;
-			} 
+			}
 			set
 			{
 				_memo = value;
 				OnPropertyChanged(nameof(Memo));
-			} 
+			}
 		}
-		
+
 		public List<ProductForBuy> ProductForBuys { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
 		public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
+
 		public Product()
 		{
 			this.Id = 0;
@@ -430,6 +492,7 @@ namespace Inventory.model
 			this.ProfitWithDiscount = 0.0M;
 			this.Memo = "";
 		}
+
 		public static Product GetDataFromSqlDatabase(int id)
 		{
 			using InventoryDbContext inventoryDb = new();
@@ -440,11 +503,12 @@ namespace Inventory.model
 				MessageBox.Show("El Id solicitado es mayor a la cantidad de productos guardados", "Error");
 				return new Product();
 			}
-			
+
 			Product? product = inventoryDb.Products.SingleOrDefault(searchProduct => searchProduct.Id == id);
-			
+
 			return product ?? new Product();
 		}
+
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -474,6 +538,7 @@ namespace Inventory.model
 						MinAmount = 0;
 						MaxAmount = 0;
 					}
+
 					break;
 				case nameof(IsManualProfit):
 					if (!IsManualProfit ?? true)
@@ -481,6 +546,7 @@ namespace Inventory.model
 						PercentageOfProfit = 25.0M;
 						PercentageOfDiscount = 10.0M;
 					}
+
 					break;
 				case nameof(BuyPrice):
 					goto case nameof(PercentageOfProfit);
@@ -497,20 +563,20 @@ namespace Inventory.model
 					{
 						PercentageOfDiscount = 100;
 					}
-					
+
 					ProfitWithDiscount = (PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount;
 					SalePriceWithDiscount = SalePriceWithoutDiscount - ProfitWithDiscount;
 					break;
 			}
 		}
 	}
-	
+
 	public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 	{
 		public void Configure(EntityTypeBuilder<Product> builder)
 		{
 			builder.HasKey(product => product.Id);
-			
+
 			builder
 				.Property(product => product.Id)
 				.ValueGeneratedNever();
@@ -518,13 +584,13 @@ namespace Inventory.model
 			builder.Property(product => product.IsManualProfit);
 
 			builder.Property(product => product.IsUsingInventory);
-			
+
 			builder.Property(product => product.CurrentAmount);
 
 			builder.Property(product => product.MaxAmount);
 
 			builder.Property(product => product.MinAmount);
-			
+
 			builder
 				.Property(product => product.BuyPrice)
 				.HasPrecision(6, 2);
@@ -536,7 +602,7 @@ namespace Inventory.model
 			builder
 				.Property(product => product.PercentageOfProfit)
 				.HasPrecision(6, 2);
-			
+
 			builder
 				.Property(product => product.SalePriceWithDiscount)
 				.HasPrecision(6, 2);
@@ -544,7 +610,7 @@ namespace Inventory.model
 			builder
 				.Property(product => product.SalePriceWithoutDiscount)
 				.HasPrecision(6, 2);
-			
+
 			builder
 				.Property(product => product.ProfitWithoutDiscount)
 				.HasPrecision(6, 2);
@@ -552,7 +618,7 @@ namespace Inventory.model
 			builder
 				.Property(product => product.ProfitWithDiscount)
 				.HasPrecision(6, 2);
-			
+
 			builder
 				.Property(product => product.Category)
 				.HasMaxLength(50)
@@ -577,7 +643,7 @@ namespace Inventory.model
 				.Property(product => product.ShortDescription)
 				.HasMaxLength(200)
 				.IsUnicode(false);
-			
+
 			builder
 				.Property(product => product.Rack)
 				.HasMaxLength(10)
@@ -592,7 +658,7 @@ namespace Inventory.model
 				.Property(product => product.Status)
 				.HasMaxLength(10)
 				.IsUnicode(false);
-			
+
 			builder
 				.Property(product => product.Enrollment)
 				.HasMaxLength(60)
@@ -602,7 +668,7 @@ namespace Inventory.model
 				.Property(product => product.Memo)
 				.HasMaxLength(70)
 				.IsUnicode(false);
-			
+
 			builder
 				.Property(product => product.PartNumber)
 				.HasMaxLength(30)
