@@ -9,7 +9,8 @@
         Width="225.75"
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
 	<Grid>
 		<TextBlock HorizontalAlignment="Left"
 		           Margin="9,4,0,0"
@@ -66,7 +67,6 @@
 		        Click="Exit" />
 		<CheckBox x:Name="ChkBoxRememberData"
 		          Margin="9,92,111,28"
-		          Checked="RememberDataIsChecked"
 		          Content="Guardar Datos" />
 	</Grid>
 </Window>
