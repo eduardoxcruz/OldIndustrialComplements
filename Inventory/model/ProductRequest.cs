@@ -30,6 +30,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Id));
 			}
 		}
+
 		public DateTime? Date
 		{
 			get
@@ -42,7 +43,9 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Date));
 			}
 		}
-		public int? Amount { 
+
+		public int? Amount
+		{
 			get
 			{
 				return _amount;
@@ -51,8 +54,9 @@ namespace Inventory.model
 			{
 				_amount = value;
 				OnPropertyChanged(nameof(Amount));
-			} 
+			}
 		}
+
 		public string? EmployeeName
 		{
 			get
@@ -65,6 +69,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(EmployeeName));
 			}
 		}
+
 		public string? Type
 		{
 			get
@@ -77,6 +82,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Type));
 			}
 		}
+
 		public string? Status
 		{
 			get
@@ -104,6 +110,7 @@ namespace Inventory.model
 			this.Type = "";
 			this.Status = "";
 		}
+
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -133,7 +140,7 @@ namespace Inventory.model
 				.Property(productRequest => productRequest.Type)
 				.HasMaxLength(35)
 				.IsUnicode(false);
-			
+
 			builder
 				.Property(productRequest => productRequest.Status)
 				.HasMaxLength(35)
