@@ -16,6 +16,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 		}
+
 		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
 		{
 			if (TxtBoxQuickSearch.Text.Length > 2)
@@ -23,11 +24,12 @@ namespace Inventory.ui
 				QuickSearch(TxtBoxQuickSearch.Text);
 			}
 		}
+
 		private void QuickSearch(string text)
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 			DataGridProducts.ItemsSource =
-				(from product in inventoryDb.Products 
+				(from product in inventoryDb.Products
 					where
 						EF.Functions.Like(product.Id.ToString(), text) ||
 						EF.Functions.Like(product.DebugCode, "%" + text + "%") ||
@@ -47,6 +49,7 @@ namespace Inventory.ui
 				.ToList();
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
+
 		private void EnterKeyPressed(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
@@ -54,16 +57,17 @@ namespace Inventory.ui
 				SearchWithFilters(sender, e);
 			}
 		}
+
 		private void SearchWithFilters(object sender, RoutedEventArgs e)
 		{
-			if (string.IsNullOrEmpty(TxtBoxId.Text) & 
-			    string.IsNullOrEmpty(TxtBoxStatus.Text) & 
-			    string.IsNullOrEmpty(TxtBoxEnrollment.Text) & 
-			    string.IsNullOrEmpty(TxtBoxDescription.Text) & 
-			    string.IsNullOrEmpty(TxtBoxMountingTechnology.Text) & 
-			    string.IsNullOrEmpty(TxtBoxEncapsulation.Text) & 
-			    string.IsNullOrEmpty(TxtBoxContainer.Text) & 
-			    string.IsNullOrEmpty(TxtBoxLocation.Text) & 
+			if (string.IsNullOrEmpty(TxtBoxId.Text) &
+			    string.IsNullOrEmpty(TxtBoxStatus.Text) &
+			    string.IsNullOrEmpty(TxtBoxEnrollment.Text) &
+			    string.IsNullOrEmpty(TxtBoxDescription.Text) &
+			    string.IsNullOrEmpty(TxtBoxMountingTechnology.Text) &
+			    string.IsNullOrEmpty(TxtBoxEncapsulation.Text) &
+			    string.IsNullOrEmpty(TxtBoxContainer.Text) &
+			    string.IsNullOrEmpty(TxtBoxLocation.Text) &
 			    string.IsNullOrEmpty(TxtBoxDebugCode.Text))
 			{
 				MessageBox.Show("Llene al menos un campo para buscar.");
@@ -72,8 +76,8 @@ namespace Inventory.ui
 
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
 
-			DataGridProducts.ItemsSource = 
-				(from product in inventoryDb.Products 
+			DataGridProducts.ItemsSource =
+				(from product in inventoryDb.Products
 					where
 						EF.Functions.Like(product.Id.ToString(), "%" + TxtBoxId.Text + "%") &&
 						EF.Functions.Like(product.Enrollment, "%" + TxtBoxEnrollment.Text + "%") &&
@@ -88,6 +92,7 @@ namespace Inventory.ui
 
 			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
 		}
+
 		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
@@ -98,6 +103,7 @@ namespace Inventory.ui
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct);
 		}
+
 		private void CleanFilters(object sender, RoutedEventArgs e)
 		{
 			DataGridProducts.ItemsSource = null;
@@ -113,122 +119,137 @@ namespace Inventory.ui
 			TxtBoxDebugCode.Text = null;
 			TxtBoxCount.Text = "00";
 		}
+
 		private void OpenSettings(object sender, RoutedEventArgs e)
 		{
 			SettingsWindow.Instance.BringWindowToFront();
 		}
+
 		private void OpenProductRequests(object sender, RoutedEventArgs e)
 		{
 			RequestsWindow.Instance.BringWindowToFront();
 		}
+
 		private void AddNewProduct(object sender, RoutedEventArgs e)
 		{
 			ProductWindow.AddNewProductInstance.BringWindowToFront();
 		}
+
 		private void AddProductToSeparateDataGrid(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			DataGridAddedProducts.Items.Add(selectedProduct);
 		}
+
 		private void IngressProduct(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "ENTRADA DE PRODUCTO");
 		}
+
 		private void EgressProduct(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SALIDA DE PRODUCTO");
 		}
+
 		private void ReturnProduct(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "DEVOLUCION DE PRODUCTO");
 		}
+
 		private void AdjustStock(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "AJUSTE DE CANTIDAD");
 		}
+
 		private void BuyMoreProduct(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "COMPRAR MAS PRODUCTO");
 		}
+
 		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
 		}
+
 		private void RequestForStore(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA TIENDA");
 		}
+
 		private void RequestWithoutSupply(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR SIN SURTIR");
 		}
+
 		private void RequestForVerify(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
 			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VERIFICAR");
 		}
+
 		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataGridAddedProducts.Items.Clear();
 		}
+
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
 			TasksWindow.Instance.BringWindowToFront(null);

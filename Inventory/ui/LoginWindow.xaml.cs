@@ -14,15 +14,17 @@ namespace Inventory.ui
 			InitializeComponent();
 			LoadUsersFromDatabaseToComboBox();
 		}
+
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			ChkBoxRememberData.IsChecked = Properties.Settings.Default.SaveSession;
-			
+
 			if (Properties.Settings.Default.SaveSession)
 			{
 				TxtBoxPassword.Password = Properties.Settings.Default.User.Password ?? "";
 			}
 		}
+
 		private void LoadUsersFromDatabaseToComboBox()
 		{
 			while (!new InventoryDbContext().Database.CanConnect())
@@ -40,6 +42,7 @@ namespace Inventory.ui
 					.FirstOrDefault(employee => employee == Properties.Settings.Default.User);
 			});
 		}
+
 		private void TryToLogin(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
@@ -60,7 +63,7 @@ namespace Inventory.ui
 
 			Properties.Settings.Default.User = (Employee)CmbBoxEmployees.SelectedItem;
 			Properties.Settings.Default.Save();
-			
+
 			if (!CredentialsAreCorrect())
 			{
 				TxtBoxPassword.Password = "";
@@ -68,10 +71,11 @@ namespace Inventory.ui
 				MessageBox.Show("Usuario o contraseña incorrectos.");
 				return;
 			}
-			
+
 			new MainWindow().Show();
 			this.Hide();
 		}
+
 		private bool CredentialsAreCorrect()
 		{
 			bool credentialsAreCorrect = true;
@@ -87,10 +91,12 @@ namespace Inventory.ui
 
 			return credentialsAreCorrect;
 		}
+
 		private void Exit(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
+
 		private void RememberDataIsChecked(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
@@ -99,6 +105,7 @@ namespace Inventory.ui
 				MessageBox.Show("Introduce datos para guardar la información");
 			}
 		}
+
 		protected override void OnClosing(CancelEventArgs cancelEventArgs)
 		{
 			Application.Current.Shutdown();

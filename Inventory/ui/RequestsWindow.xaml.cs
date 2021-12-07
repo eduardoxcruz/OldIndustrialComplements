@@ -26,25 +26,30 @@ namespace Inventory.ui
 			GetAllProductRequests();
 			StartDispatcherTimer();
 		}
+
 		private void GetAllProductRequests()
 		{
-			LastProductRequest = InventoryDb.ProductRequests.OrderByDescending(request => request.Id).FirstOrDefault() ?? new ProductRequest();
+			LastProductRequest =
+				InventoryDb.ProductRequests.OrderByDescending(request => request.Id).FirstOrDefault() ??
+				new ProductRequest();
 			InventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.Load();
 			ProductRequestsCollection = InventoryDb.ProductRequests.Local.ToObservableCollection();
-			ProductRequestsView = new CollectionViewSource(){Source = ProductRequestsCollection};
+			ProductRequestsView = new CollectionViewSource() {Source = ProductRequestsCollection};
 			ProductRequestsView.SortDescriptions.Clear();
-			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id",ListSortDirection.Descending));
+			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 			DataGridRequests.ItemsSource = ProductRequestsView.View;
 		}
+
 		private void StartDispatcherTimer()
 		{
 			DispatcherTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
 			DispatcherTimer.Tick += AddNewProductRequestToCollection;
 			DispatcherTimer.Start();
 		}
+
 		private void AddNewProductRequestToCollection(object sender, EventArgs e)
 		{
 			ProductRequest nextRequest = InventoryDb
@@ -52,18 +57,18 @@ namespace Inventory.ui
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.SingleOrDefault(request => request.Id == LastProductRequest.Id + 1);
-			
+
 			if (nextRequest == null)
 			{
 				return;
 			}
-			
+
 			if (ProductRequestsCollection.Count < nextRequest.Id)
 			{
 				LastProductRequest = nextRequest;
 				ProductRequestsCollection.Add(LastProductRequest);
 			}
-			
+
 			DataGridRequests.Items.Refresh();
 		}
 	}
