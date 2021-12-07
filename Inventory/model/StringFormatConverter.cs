@@ -7,6 +7,7 @@ namespace Inventory.model
 	public class StringFormatConverter : IValueConverter
 	{
 		private static readonly StringFormatConverter instance = new StringFormatConverter();
+
 		public static StringFormatConverter Instance
 		{
 			get
@@ -14,9 +15,9 @@ namespace Inventory.model
 				return instance;
 			}
 		}
-		
+
 		private StringFormatConverter() { }
-		
+
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			return string.Format(culture, (string)parameter, value);
