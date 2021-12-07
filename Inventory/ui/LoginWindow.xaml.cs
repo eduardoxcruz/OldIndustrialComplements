@@ -97,15 +97,6 @@ namespace Inventory.ui
 			this.Close();
 		}
 
-		private void RememberDataIsChecked(object sender, RoutedEventArgs e)
-		{
-			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
-			{
-				ChkBoxRememberData.IsChecked = false;
-				MessageBox.Show("Introduce datos para guardar la información");
-			}
-		}
-
 		protected override void OnClosing(CancelEventArgs cancelEventArgs)
 		{
 			Application.Current.Shutdown();
