@@ -36,7 +36,7 @@ namespace Inventory.model
 		public void Configure(EntityTypeBuilder<ProductForBuy> builder)
 		{
 			builder.HasKey(productForBuy => productForBuy.Id);
-			
+
 			builder
 				.Property(productForBuy => productForBuy.Id)
 				.ValueGeneratedNever();
@@ -48,13 +48,13 @@ namespace Inventory.model
 			builder
 				.Property(productForBuy => productForBuy.EmployeeName)
 				.HasMaxLength(35)
-				.IsUnicode(false);;
+				.IsUnicode(false);
 
 			builder
 				.Property(productForBuy => productForBuy.Provider)
 				.HasMaxLength(35)
 				.IsUnicode(false);
-			
+
 			builder
 				.Property(productForBuy => productForBuy.Status)
 				.HasMaxLength(10)
