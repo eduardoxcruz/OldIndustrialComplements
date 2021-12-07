@@ -1,949 +1,949 @@
 ﻿<model:MyWindow x:Class="Inventory.ui.ProductWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:model="clr-namespace:Inventory.model"
-        mc:Ignorable="d"
-        Title="ProductWindow"
-        Height="570"
-        Width="694.5"
-        ResizeMode="CanMinimize"
-        SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterScreen">
-    <model:MyWindow.Resources>
-        <Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:model="clr-namespace:Inventory.model"
+                mc:Ignorable="d"
+                Title="ProductWindow"
+                Height="570"
+                Width="694.5"
+                ResizeMode="CanMinimize"
+                SizeToContent="WidthAndHeight"
+                WindowStartupLocation="CenterScreen">
+	<model:MyWindow.Resources>
+		<Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
+			<Style.Triggers>
+				<Trigger Property="Validation.HasError" Value="true">
+					<Setter Property="ToolTip"
 					        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                              Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </model:MyWindow.Resources>
-    <Grid>
-        <TextBlock x:Name="TxtBlockProductTask" 
-		           HorizontalAlignment="Left" 
-		           Margin="18,5,0,0" 
+                              Path=(Validation.Errors)[0].ErrorContent}" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</model:MyWindow.Resources>
+	<Grid>
+		<TextBlock x:Name="TxtBlockProductTask"
+		           HorizontalAlignment="Left"
+		           Margin="18,5,0,0"
 		           TextWrapping="Wrap"
-		           VerticalAlignment="Top" 
-		           Width="138" 
-		           Height="18" 
+		           VerticalAlignment="Top"
+		           Width="138"
+		           Height="18"
 		           TextAlignment="Left" />
-        <TextBlock HorizontalAlignment="Left" 
-		           Margin="195,0,0,0" 
-		           TextWrapping="Wrap" 
-		           VerticalAlignment="Top" 
+		<TextBlock HorizontalAlignment="Left"
+		           Margin="195,0,0,0"
+		           TextWrapping="Wrap"
+		           VerticalAlignment="Top"
 		           Width="96"
-		           Height="12" 
-		           TextAlignment="Left" 
+		           Height="12"
+		           TextAlignment="Left"
 		           FontSize="9"
 		           Text="Buscar por ID o Codigo" />
-        <ComboBox x:Name="CmbBoxIdOrDebugCode" 
-		          Margin="195,14,404,522" 
-		          Width="96" 
-		          Height="18" 
+		<ComboBox x:Name="CmbBoxIdOrDebugCode"
+		          Margin="195,14,404,522"
+		          Width="96"
+		          Height="18"
 		          FontWeight="Normal"
-		          FontStyle="Normal" 
+		          FontStyle="Normal"
 		          FontSize="10"
 		          HorizontalContentAlignment="Center">
-            <ComboBoxItem Content="ID" 
+			<ComboBoxItem Content="ID"
 			              IsSelected="True" />
-            <ComboBoxItem Content="Debug" />
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Left" 
-		           TextWrapping="Wrap" 
-		           VerticalAlignment="Top" 
-		           Width="45" 
+			<ComboBoxItem Content="Debug" />
+		</ComboBox>
+		<TextBlock HorizontalAlignment="Left"
+		           TextWrapping="Wrap"
+		           VerticalAlignment="Top"
+		           Width="45"
 		           Height="12"
-		           TextAlignment="Left" 
-		           FontSize="9" 
+		           TextAlignment="Left"
+		           FontSize="9"
 		           Margin="324,0,0,0"
 		           Text="Codigo ID" />
-        <TextBox x:Name="TxtBoxIdCode" 
-		         HorizontalAlignment="Left" 
-		         Margin="296,14,0,0" 
+		<TextBox x:Name="TxtBoxIdCode"
+		         HorizontalAlignment="Left"
+		         Margin="296,14,0,0"
 		         TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="96"
-		         Height="18" 
-		         FontSize="11" 
+		         Height="18"
+		         FontSize="11"
 		         TextAlignment="Center"
 		         PreviewTextInput="AllowOnlyIntegers"
 		         KeyDown="TxtBoxIdCodeEnterKeyPressed" />
-        <TextBlock HorizontalAlignment="Left" 
-		           Margin="403,0,0,0" 
-		           TextWrapping="Wrap" 
+		<TextBlock HorizontalAlignment="Left"
+		           Margin="403,0,0,0"
+		           TextWrapping="Wrap"
 		           VerticalAlignment="Top"
 		           Width="60"
-		           Height="12" 
-		           TextAlignment="Left" 
+		           Height="12"
+		           TextAlignment="Left"
 		           FontSize="9"
 		           Text="Codigo Debug" />
-        <TextBox x:Name="TxtBoxDebugCode" 
-		         HorizontalAlignment="Left" 
+		<TextBox x:Name="TxtBoxDebugCode"
+		         HorizontalAlignment="Left"
 		         Margin="397,14,0,0"
 		         TextWrapping="Wrap"
-		         VerticalAlignment="Top" 
-		         Width="72" 
+		         VerticalAlignment="Top"
+		         Width="72"
 		         Height="18"
-		         FontSize="11" 
+		         FontSize="11"
 		         TextAlignment="Center" />
-        <Button x:Name="BtnVerifySearch" 
-                HorizontalAlignment="Left" 
-                Margin="474,14,0,0"
-                VerticalAlignment="Top"
-                Width="60" 
-                Height="18" 
-                FontSize="9" 
-                Content="Buscar" 
-                Click="VerifySearch" />
-        <Button x:Name="BtnRefreshProduct" 
-                HorizontalAlignment="Left" 
-                Margin="660,2,0,0"
-                VerticalAlignment="Top" 
-                Width="24"
-                Height="24" 
-                FontSize="9"
-                Content="Actualizar"
-                Click="RefreshProduct"/>
-        <GroupBox Header="Datos del producto" 
+		<Button x:Name="BtnVerifySearch"
+		        HorizontalAlignment="Left"
+		        Margin="474,14,0,0"
+		        VerticalAlignment="Top"
+		        Width="60"
+		        Height="18"
+		        FontSize="9"
+		        Content="Buscar"
+		        Click="VerifySearch" />
+		<Button x:Name="BtnRefreshProduct"
+		        HorizontalAlignment="Left"
+		        Margin="660,2,0,0"
+		        VerticalAlignment="Top"
+		        Width="24"
+		        Height="24"
+		        FontSize="9"
+		        Content="Actualizar"
+		        Click="RefreshProduct" />
+		<GroupBox Header="Datos del producto"
 		          Margin="10,25,13,331"
-		          Width="672" 
+		          Width="672"
 		          Height="198">
-            <Grid x:Name="GridProductDetails">
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,3,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="80"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9" 
-				           Grid.ColumnSpan="2"
-				           Text="ID" />
-                <TextBlock HorizontalAlignment="Left" 
-                           Margin="10,15,0,0" 
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Top" 
-                           Width="80"
-                           Height="18" 
-                           FontSize="11" 
-                           Grid.ColumnSpan="2"  
-                           TextAlignment="Center" >
-	                <TextBlock.Text>
-                        <Binding Path="Id" UpdateSourceTrigger="LostFocus" Mode="OneWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBlock.Text>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="105,3,0,0" 
-				           TextWrapping="Wrap" 
+			<Grid x:Name="GridProductDetails">
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,3,0,0"
+				           TextWrapping="Wrap"
 				           VerticalAlignment="Top"
 				           Width="80"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Grid.ColumnSpan="2"
+				           Text="ID" />
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,15,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="80"
+				           Height="18"
+				           FontSize="11"
+				           Grid.ColumnSpan="2"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="Id" UpdateSourceTrigger="LostFocus" Mode="OneWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBlock.Text>
+				</TextBlock>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="105,3,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="80"
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Estado*" />
-                <ComboBox x:Name="CmbBoxStatus" 
-				          Margin="105,15,475,142" 
-				          Width="80" 
-				          Height="18" 
-				          FontSize="10" 
+				<ComboBox x:Name="CmbBoxStatus"
+				          Margin="105,15,475,142"
+				          Width="80"
+				          Height="18"
+				          FontSize="10"
 				          HorizontalContentAlignment="Center"
 				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="Status" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="190,3,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<ComboBox.Text>
+						<Binding Path="Status" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="190,3,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Matricula*" />
-                <TextBox HorizontalAlignment="Left" 
-				         Margin="190,15,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="190,15,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="150"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="Enrollment" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
+					<TextBox.Text>
+						<Binding Path="Enrollment" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
 				           Margin="345,3,0,0"
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Tec. Montaje*" />
-                <ComboBox x:Name="CmbBoxMountingTechnology" 
-				          Margin="345,15,165,142" 
-				          Width="150" 
-				          Height="18" 
-				          FontSize="10" 
-				          HorizontalContentAlignment="Center" 
+				<ComboBox x:Name="CmbBoxMountingTechnology"
+				          Margin="345,15,165,142"
+				          Width="150"
+				          Height="18"
+				          FontSize="10"
+				          HorizontalContentAlignment="Center"
 				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="MountingTechnology" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="500,3,0,0" 
+					<ComboBox.Text>
+						<Binding Path="MountingTechnology" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="500,3,0,0"
 				           TextWrapping="Wrap"
-				           VerticalAlignment="Top" 
+				           VerticalAlignment="Top"
 				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Encapsulado o tipo de Conexión*" />
-                <ComboBox Margin="500,15,10,142" 
-				          Width="150" 
-				          Height="18" 
-				          FontSize="10" 
-				          HorizontalContentAlignment="Center" 
+				<ComboBox Margin="500,15,10,142"
+				          Width="150"
+				          Height="18"
+				          FontSize="10"
+				          HorizontalContentAlignment="Center"
 				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="EncapsulationType" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,38,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<ComboBox.Text>
+						<Binding Path="EncapsulationType" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,38,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="648"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9" 
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
 				           Grid.ColumnSpan="2"
 				           Text="Descripción Corta*" />
-                <TextBox HorizontalAlignment="Left" 
-				         Margin="10,50,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="10,50,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="648"
-				         Height="22.5" 
-				         FontSize="11" 
-				         Grid.ColumnSpan="2" 
+				         Height="22.5"
+				         FontSize="11"
+				         Grid.ColumnSpan="2"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="ShortDescription" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,78,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<TextBox.Text>
+						<Binding Path="ShortDescription" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,78,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="648"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9" 
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
 				           Grid.ColumnSpan="2"
 				           Text="Categoría" />
-                <ComboBox Margin="10,90,2,60" 
-				          Width="648" 
-				          Height="25.5" 
-				          Grid.ColumnSpan="2" 
-				          HorizontalContentAlignment="Center" 
-				          FontSize="10" 
+				<ComboBox Margin="10,90,2,60"
+				          Width="648"
+				          Height="25.5"
+				          Grid.ColumnSpan="2"
+				          HorizontalContentAlignment="Center"
+				          FontSize="10"
 				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="Category" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,118,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<ComboBox.Text>
+						<Binding Path="Category" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,118,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="648"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Grid.ColumnSpan="2"
 				           Text="Descripción Completa" />
-                <TextBlock HorizontalAlignment="Left" 
-                           Margin="10,130,0,0" 
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Top" 
-                           Width="648"
-                           Height="36" 
-                           FontSize="9"
-                           TextAlignment="Center">
-	                <TextBlock.Text>
-                        <Binding Path="FullDescription" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBlock.Text>
-                </TextBlock>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Inventario" 
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,130,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="648"
+				           Height="36"
+				           FontSize="9"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="FullDescription" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBlock.Text>
+				</TextBlock>
+			</Grid>
+		</GroupBox>
+		<GroupBox Header="Inventario"
 		          Margin="5,228,348,232">
-            <Grid x:Name="GridInventory">
-                <CheckBox x:Name="ChkBoxUseInventory" 
-				          Content="Producto usa Inventario" 
+			<Grid x:Name="GridInventory">
+				<CheckBox x:Name="ChkBoxUseInventory"
+				          Content="Producto usa Inventario"
 				          Margin="10,10,80,43"
-				          Checked="EnableInventory" 
+				          Checked="EnableInventory"
 				          Unchecked="DisableInventory">
-                    <CheckBox.IsChecked>
-                        <Binding Path="IsUsingInventory" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
-                    </CheckBox.IsChecked>
-                </CheckBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,35,0,0" 
-				           TextWrapping="Wrap" 
+					<CheckBox.IsChecked>
+						<Binding Path="IsUsingInventory" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+					</CheckBox.IsChecked>
+				</CheckBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,35,0,0"
+				           TextWrapping="Wrap"
 				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Existencia" />
-                <TextBox x:Name="TxtBoxCurrentAmount" 
-				         HorizontalAlignment="Left" 
-				         Margin="10,52,0,0" 
+				<TextBox x:Name="TxtBoxCurrentAmount"
+				         HorizontalAlignment="Left"
+				         Margin="10,52,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="CurrentAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="87,37,0,0" 
-				           TextWrapping="Wrap" 
+					<TextBox.Text>
+						<Binding Path="CurrentAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="87,37,0,0"
+				           TextWrapping="Wrap"
 				           VerticalAlignment="Top"
 				           Width="72"
 				           Height="12"
 				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Mínimo" />
-                <TextBox x:Name="TxtBoxMinAmount" 
-				         HorizontalAlignment="Left" 
-				         Margin="87,52,0,0" 
+				<TextBox x:Name="TxtBoxMinAmount"
+				         HorizontalAlignment="Left"
+				         Margin="87,52,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="MinAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left"
+					<TextBox.Text>
+						<Binding Path="MinAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
 				           Margin="164,39,0,0"
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="72"
 				           Height="12"
-				           TextAlignment="Left" 
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Máximo" />
-                <TextBox x:Name="TxtBoxMaxProductStock" 
+				<TextBox x:Name="TxtBoxMaxProductStock"
 				         HorizontalAlignment="Left"
-				         Margin="164,52,0,0" 
+				         Margin="164,52,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         PreviewTextInput="AllowOnlyIntegers"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="MaxAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <Button HorizontalAlignment="Left" 
-				        Margin="297,52,0,0" 
-				        VerticalAlignment="Top" 
-				        Width="29" 
+					<TextBox.Text>
+						<Binding Path="MaxAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<Button HorizontalAlignment="Left"
+				        Margin="297,52,0,0"
+				        VerticalAlignment="Top"
+				        Width="29"
 				        Height="18"
 				        FontSize="9"
 				        Content="Tareas"
-				        Click="OpenTasksWindow"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Ubicación" 
-		          Margin="353,228,10,232" >
-            <Grid x:Name="GridLocation">
-                <TextBlock HorizontalAlignment="Left"
-				           Margin="10,5,0,0" 
-				           TextWrapping="Wrap" 
+				        Click="OpenTasksWindow" />
+			</Grid>
+		</GroupBox>
+		<GroupBox Header="Ubicación"
+		          Margin="353,228,10,232">
+			<Grid x:Name="GridLocation">
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,5,0,0"
+				           TextWrapping="Wrap"
 				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Contenedor" />
-                <TextBox HorizontalAlignment="Left"
-				         Margin="10,17,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="10,17,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="198"
 				         Height="18"
-				         FontSize="11" 
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="Container" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
+					<TextBox.Text>
+						<Binding Path="Container" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
 				           Margin="10,40,0,0"
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Ubicación" />
-                <TextBox HorizontalAlignment="Left"
-				         Margin="10,52,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="10,52,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="Location" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="87,40,0,0" 
+					<TextBox.Text>
+						<Binding Path="Location" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="87,40,0,0"
 				           TextWrapping="Wrap"
-				           VerticalAlignment="Top" 
+				           VerticalAlignment="Top"
 				           Width="36"
 				           Height="12"
 				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="      S" />
-                <TextBox HorizontalAlignment="Left" 
-				         Margin="87,52,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="87,52,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="36"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="BranchOffice" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="128,40,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<TextBox.Text>
+						<Binding Path="BranchOffice" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="128,40,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="36"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="    E" />
-                <TextBox HorizontalAlignment="Left"
-				         Margin="128,52,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="128,52,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="36"
 				         Height="18"
-				         FontSize="11" 
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="Rack" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="172,40,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<TextBox.Text>
+						<Binding Path="Rack" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="172,40,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="36"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="    R" />
-                <TextBox HorizontalAlignment="Left" 
-				         Margin="169,52,0,0" 
+				<TextBox HorizontalAlignment="Left"
+				         Margin="169,52,0,0"
 				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
+				         VerticalAlignment="Top"
 				         Width="36"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="Shelf" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Detalle de Precios" 
+					<TextBox.Text>
+						<Binding Path="Shelf" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+			</Grid>
+		</GroupBox>
+		<GroupBox Header="Detalle de Precios"
 		          Margin="5,328,197,58">
-            <Grid Height="149" x:Name="GridPriceDetails">
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,10,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+			<Grid Height="149" x:Name="GridPriceDetails">
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,10,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
+				           Height="12"
 				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Precio Compra" />
-                <TextBox x:Name="TxtBoxBuyPrice" 
-				         HorizontalAlignment="Left" 
-				         Margin="10,22,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
-				         TextAlignment="Center"
-				         PreviewTextInput="AllowOnlyDecimals"
-				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="BuyPrice" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="87,10,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top"
-				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="Unidad*" />
-                <ComboBox x:Name="CmbBoxUnitType" 
-				          Margin="87,22,322,109" 
-				          Width="72" 
-				          Height="18" 
-				          FontSize="10" 
-				          HorizontalContentAlignment="Center" 
-				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="UnitType" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left"
-				           Margin="164,10,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="Tipo de Producto" />
-                <ComboBox x:Name="CmbBoxTypeOfStock" 
-				          Margin="164,22,167,109" 
-				          Width="150" 
-				          Height="18" 
-				          FontSize="10" 
-				          HorizontalContentAlignment="Center"
-				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="TypeOfStock" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="328,10,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="Fabricante" />
-                <ComboBox x:Name="CmbBoxManufacturer" 
-				          Margin="328,22,3,109" 
-				          Width="150" 
-				          Height="18" 
-				          FontSize="10" 
-				          HorizontalContentAlignment="Center" 
-				          IsEditable="True">
-                    <ComboBox.Text>
-                        <Binding Path="Manufacturer" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="328,40,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="No. Parte del Fabricante" />
-                <TextBox x:Name="TxtBoxPartNumber" 
-				         HorizontalAlignment="Left" 
-				         Margin="328,51,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="150"
-				         Height="18" 
-				         FontSize="11" 
-				         TextAlignment="Center"
-				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="PartNumber" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,45,0,0" 
-				           TextWrapping="Wrap"
-				           VerticalAlignment="Top" 
-				           Width="150"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="Ajuste de Ganancia" />
-                <RadioButton x:Name="RadioBtnAutomaticProfit" 
-				             Content="Automatica" 
-				             Margin="6,62,384,68" 
-				             Height="19.5" 
-				             FontSize="11"
-				             Checked="EnableAutomaticProfit"/>
-                <RadioButton x:Name="RadioBtnIsManualProfit" 
-				             Content="Entrada Manual" 
-				             Margin="90,62,282,69" 
-				             FontSize="11"
-				             Checked="EnableManualProfit">
-                    <RadioButton.IsChecked>
-                        <Binding Path="IsManualProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </RadioButton.IsChecked>
-                </RadioButton>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="9,80,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="%Ganancia" />
-                <TextBox x:Name="TxtBoxPercentageOfProfit" 
-				         HorizontalAlignment="Left" 
-				         Margin="10,92,0,0" 
+				<TextBox x:Name="TxtBoxBuyPrice"
+				         HorizontalAlignment="Left"
+				         Margin="10,22,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
+				         Height="18"
+				         FontSize="11"
 				         TextAlignment="Center"
 				         PreviewTextInput="AllowOnlyDecimals"
 				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="PercentageOfProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left"
-				           Margin="123,80,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+					<TextBox.Text>
+						<Binding Path="BuyPrice" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="87,10,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="Unidad*" />
+				<ComboBox x:Name="CmbBoxUnitType"
+				          Margin="87,22,322,109"
+				          Width="72"
+				          Height="18"
+				          FontSize="10"
+				          HorizontalContentAlignment="Center"
+				          IsEditable="True">
+					<ComboBox.Text>
+						<Binding Path="UnitType" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="164,10,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="150"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="Tipo de Producto" />
+				<ComboBox x:Name="CmbBoxTypeOfStock"
+				          Margin="164,22,167,109"
+				          Width="150"
+				          Height="18"
+				          FontSize="10"
+				          HorizontalContentAlignment="Center"
+				          IsEditable="True">
+					<ComboBox.Text>
+						<Binding Path="TypeOfStock" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="328,10,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="150"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="Fabricante" />
+				<ComboBox x:Name="CmbBoxManufacturer"
+				          Margin="328,22,3,109"
+				          Width="150"
+				          Height="18"
+				          FontSize="10"
+				          HorizontalContentAlignment="Center"
+				          IsEditable="True">
+					<ComboBox.Text>
+						<Binding Path="Manufacturer" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</ComboBox.Text>
+				</ComboBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="328,40,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="150"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="No. Parte del Fabricante" />
+				<TextBox x:Name="TxtBoxPartNumber"
+				         HorizontalAlignment="Left"
+				         Margin="328,51,0,0"
+				         TextWrapping="Wrap"
+				         VerticalAlignment="Top"
+				         Width="150"
+				         Height="18"
+				         FontSize="11"
+				         TextAlignment="Center"
+				         Style="{StaticResource TextBoxInError}">
+					<TextBox.Text>
+						<Binding Path="PartNumber" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,45,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="150"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="Ajuste de Ganancia" />
+				<RadioButton x:Name="RadioBtnAutomaticProfit"
+				             Content="Automatica"
+				             Margin="6,62,384,68"
+				             Height="19.5"
+				             FontSize="11"
+				             Checked="EnableAutomaticProfit" />
+				<RadioButton x:Name="RadioBtnIsManualProfit"
+				             Content="Entrada Manual"
+				             Margin="90,62,282,69"
+				             FontSize="11"
+				             Checked="EnableManualProfit">
+					<RadioButton.IsChecked>
+						<Binding Path="IsManualProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</RadioButton.IsChecked>
+				</RadioButton>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="9,80,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="%Ganancia" />
+				<TextBox x:Name="TxtBoxPercentageOfProfit"
+				         HorizontalAlignment="Left"
+				         Margin="10,92,0,0"
+				         TextWrapping="Wrap"
+				         VerticalAlignment="Top"
+				         Width="72"
+				         Height="18"
+				         FontSize="11"
+				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyDecimals"
+				         Style="{StaticResource TextBoxInError}">
+					<TextBox.Text>
+						<Binding Path="PercentageOfProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="123,80,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="12"
 				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Precio de Venta" />
-                <TextBlock x:Name="TxtBlockSalePriceWithoutDiscount" 
-				         HorizontalAlignment="Left"
-				         Margin="123,92,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="72"
-				         Height="18"
-				         FontSize="11" 
-				         TextAlignment="Center">
-                    <TextBlock.Text>
-                        <Binding Path="SalePriceWithoutDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                    </TextBlock.Text>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="242,80,0,0"
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="Utilidad" />
-                <TextBlock x:Name="TxtBlockProfitWithoutDiscount" 
-				         HorizontalAlignment="Left" 
-				         Margin="242,92,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
-				         TextAlignment="Center">
-                    <TextBlock.Text>
-                        <Binding Path="ProfitWithoutDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                    </TextBlock.Text>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="10,115,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
-				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
-				           FontSize="9"
-				           Text="%Descuento" />
-                <TextBox x:Name="TxtBoxPercentageOfDiscount" 
-				         HorizontalAlignment="Left" 
-				         Margin="10,127,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
-				         TextAlignment="Center"
-				         PreviewTextInput="AllowOnlyDecimals"
-				         Style="{StaticResource TextBoxInError}">
-                    <TextBox.Text>
-                        <Binding Path="PercentageOfDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
-                            <Binding.ValidationRules>
-                                <ExceptionValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="123,115,0,0" 
-				           TextWrapping="Wrap" 
+				<TextBlock x:Name="TxtBlockSalePriceWithoutDiscount"
+				           HorizontalAlignment="Left"
+				           Margin="123,92,0,0"
+				           TextWrapping="Wrap"
 				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
-				           TextAlignment="Left" 
+				           Height="18"
+				           FontSize="11"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="SalePriceWithoutDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+					</TextBlock.Text>
+				</TextBlock>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="242,80,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="12"
+				           TextAlignment="Left"
 				           FontSize="9"
-				           Text="Precio Descuento" />
-                <TextBlock x:Name="TxtBlockSalePriceWithDiscount" 
-				         HorizontalAlignment="Left" 
-				         Margin="123,127,0,0" 
+				           Text="Utilidad" />
+				<TextBlock x:Name="TxtBlockProfitWithoutDiscount"
+				           HorizontalAlignment="Left"
+				           Margin="242,92,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="18"
+				           FontSize="11"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="ProfitWithoutDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+					</TextBlock.Text>
+				</TextBlock>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="10,115,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="%Descuento" />
+				<TextBox x:Name="TxtBoxPercentageOfDiscount"
+				         HorizontalAlignment="Left"
+				         Margin="10,127,0,0"
 				         TextWrapping="Wrap"
 				         VerticalAlignment="Top"
 				         Width="72"
-				         Height="18" 
-				         FontSize="11" 
-				         TextAlignment="Center">
-                    <TextBlock.Text>
-                        <Binding Path="SalePriceWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                    </TextBlock.Text>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" 
-				           Margin="242,115,0,0" 
-				           TextWrapping="Wrap" 
-				           VerticalAlignment="Top" 
+				         Height="18"
+				         FontSize="11"
+				         TextAlignment="Center"
+				         PreviewTextInput="AllowOnlyDecimals"
+				         Style="{StaticResource TextBoxInError}">
+					<TextBox.Text>
+						<Binding Path="PercentageOfDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
+							<Binding.ValidationRules>
+								<ExceptionValidationRule />
+							</Binding.ValidationRules>
+						</Binding>
+					</TextBox.Text>
+				</TextBox>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="123,115,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
 				           Width="72"
-				           Height="12" 
+				           Height="12"
+				           TextAlignment="Left"
+				           FontSize="9"
+				           Text="Precio Descuento" />
+				<TextBlock x:Name="TxtBlockSalePriceWithDiscount"
+				           HorizontalAlignment="Left"
+				           Margin="123,127,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="18"
+				           FontSize="11"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="SalePriceWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+					</TextBlock.Text>
+				</TextBlock>
+				<TextBlock HorizontalAlignment="Left"
+				           Margin="242,115,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="12"
 				           TextAlignment="Left"
 				           FontSize="9"
 				           Text="Utilidad con Desc." />
-                <TextBlock x:Name="TxtBlockProfitWithDiscount" 
-				         HorizontalAlignment="Left"
-				         Margin="242,127,0,0" 
-				         TextWrapping="Wrap"
-				         VerticalAlignment="Top" 
-				         Width="72"
-				         Height="18" 
-				         FontSize="11"
-				         TextAlignment="Center">
-                    <TextBlock.Text>
-                        <Binding Path="ProfitWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                    </TextBlock.Text>
-                </TextBlock>
-                <Button x:Name="BtnAddProfit" 
-                        HorizontalAlignment="Left" 
-                        Margin="87,92,0,0" 
-                        VerticalAlignment="Top" 
-                        Height="9" 
-                        Width="14"
-                        Click="AddProfit"/>
-                <Button x:Name="BtnRemoveProfit" 
-                        HorizontalAlignment="Left" 
-                        Margin="87,101,0,0" 
-                        VerticalAlignment="Top" 
-                        Height="9" 
-                        Width="14"
-                        Click="RemoveProfit"/>
-                <Button x:Name="BtnAddDiscount" 
-                        HorizontalAlignment="Left" 
-                        Margin="87,127,0,0" 
-                        VerticalAlignment="Top" 
-                        Height="9" 
-                        Width="14"
-                        Click="AddDiscount"/>
-                <Button x:Name="BtnRemoveDiscount" 
-                        HorizontalAlignment="Left" 
-                        Margin="87,136,0,0" 
-                        VerticalAlignment="Top" 
-                        Height="9" 
-                        Width="14"
-                        Click="RemoveDiscount"/>
-            </Grid>
-        </GroupBox>
-        <TextBlock HorizontalAlignment="Left" 
-		           Margin="10,496,0,0" 
-		           TextWrapping="Wrap" 
+				<TextBlock x:Name="TxtBlockProfitWithDiscount"
+				           HorizontalAlignment="Left"
+				           Margin="242,127,0,0"
+				           TextWrapping="Wrap"
+				           VerticalAlignment="Top"
+				           Width="72"
+				           Height="18"
+				           FontSize="11"
+				           TextAlignment="Center">
+					<TextBlock.Text>
+						<Binding Path="ProfitWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+					</TextBlock.Text>
+				</TextBlock>
+				<Button x:Name="BtnAddProfit"
+				        HorizontalAlignment="Left"
+				        Margin="87,92,0,0"
+				        VerticalAlignment="Top"
+				        Height="9"
+				        Width="14"
+				        Click="AddProfit" />
+				<Button x:Name="BtnRemoveProfit"
+				        HorizontalAlignment="Left"
+				        Margin="87,101,0,0"
+				        VerticalAlignment="Top"
+				        Height="9"
+				        Width="14"
+				        Click="RemoveProfit" />
+				<Button x:Name="BtnAddDiscount"
+				        HorizontalAlignment="Left"
+				        Margin="87,127,0,0"
+				        VerticalAlignment="Top"
+				        Height="9"
+				        Width="14"
+				        Click="AddDiscount" />
+				<Button x:Name="BtnRemoveDiscount"
+				        HorizontalAlignment="Left"
+				        Margin="87,136,0,0"
+				        VerticalAlignment="Top"
+				        Height="9"
+				        Width="14"
+				        Click="RemoveDiscount" />
+			</Grid>
+		</GroupBox>
+		<TextBlock HorizontalAlignment="Left"
+		           Margin="10,496,0,0"
+		           TextWrapping="Wrap"
 		           VerticalAlignment="Top"
 		           Width="672"
-		           Height="12" 
-		           TextAlignment="Left" 
+		           Height="12"
+		           TextAlignment="Left"
 		           FontSize="9"
 		           Text="Memo" />
-        <TextBox x:Name="TxtBoxMemo" 
-		         HorizontalAlignment="Left" 
-		         Margin="10,508,0,0" 
+		<TextBox x:Name="TxtBoxMemo"
+		         HorizontalAlignment="Left"
+		         Margin="10,508,0,0"
 		         TextWrapping="Wrap"
 		         VerticalAlignment="Top"
 		         Width="672"
-		         Height="18" 
+		         Height="18"
 		         FontSize="9" />
-        <Button x:Name="BtnAddModifyAndSave"
+		<Button x:Name="BtnAddModifyAndSave"
 		        HorizontalAlignment="Left"
 		        Margin="10,528,0,0"
-		        VerticalAlignment="Top" 
-		        Width="60"
-		        Height="24" 
-		        FontSize="9"
-		        Click="ChangeTask" />
-        <Button x:Name="BtnExit" 
-		        HorizontalAlignment="Left" 
-		        Margin="79,528,0,0" 
 		        VerticalAlignment="Top"
 		        Width="60"
-		        Height="24" 
+		        Height="24"
+		        FontSize="9"
+		        Click="ChangeTask" />
+		<Button x:Name="BtnExit"
+		        HorizontalAlignment="Left"
+		        Margin="79,528,0,0"
+		        VerticalAlignment="Top"
+		        Width="60"
+		        Height="24"
 		        FontSize="9"
 		        Content="Salir"
 		        Click="CloseWindow" />
-        <Button x:Name="BtnLoadFirstProduct" 
-		        HorizontalAlignment="Left" 
+		<Button x:Name="BtnLoadFirstProduct"
+		        HorizontalAlignment="Left"
 		        Margin="622,528,0,0"
-		        VerticalAlignment="Top" 
+		        VerticalAlignment="Top"
 		        Width="60"
-		        Height="24" 
-		        FontSize="9" 
-		        Content="Cargar Primer" 
-		        Click="LoadFirstProduct"/>
-        <Border BorderThickness="1" 
-		        BorderBrush="Gray" 
-		        Margin="508,338,19,58" >
-            <Button HorizontalAlignment="Left" 
+		        Height="24"
+		        FontSize="9"
+		        Content="Cargar Primer"
+		        Click="LoadFirstProduct" />
+		<Border BorderThickness="1"
+		        BorderBrush="Gray"
+		        Margin="508,338,19,58">
+			<Button HorizontalAlignment="Left"
 			        Margin="132,9,0,0"
 			        VerticalAlignment="Top"
-			        Width="24" 
-			        Height="24" 
+			        Width="24"
+			        Height="24"
 			        FontSize="9"
 			        Content="Foto" />
-        </Border>
-    </Grid>
+		</Border>
+	</Grid>
 </model:MyWindow>
