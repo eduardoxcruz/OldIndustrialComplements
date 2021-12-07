@@ -112,6 +112,9 @@ namespace Inventory.ui
 			
 			switch (CmbBoxTask.SelectedItem)
 			{
+				case "AJUSTE DE PRECIO DE COMPRA":
+					ExecuteProductBuyPriceChange();
+					break;
 				case "ENTRADA DE PRODUCTO":
 					ExecuteProductAmountChange("ENTRADA DE PRODUCTO");
 					break;
@@ -141,6 +144,50 @@ namespace Inventory.ui
 			}
 			
 			RefresthDateTime();
+		}
+		private void ExecuteProductBuyPriceChange()
+		{
+			if (!IsProductBuyPriceChangeValid()) return;
+			
+			string message = "Confirmar el cambio?\n\nPrecio de compra anterior: " + Product.BuyPrice +
+			                 "\nPrecio de compra nuevo: " + TxtBoxInputPrice.Text;
+			if (MessageBox.Show(message, "Confirmacion", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+				return;
+			
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				Product.BuyPrice = decimal.Parse(TxtBoxInputPrice.Text);
+				inventoryDb.Entry(Product).State = EntityState.Modified;
+				inventoryDb.SaveChanges();
+				SaveProductBuyPriceChangeRecord();
+				CleanControls();
+			});
+		}
+		private bool IsProductBuyPriceChangeValid()
+		{
+			if (!string.IsNullOrEmpty(TxtBoxInputPrice.Text) && decimal.Parse(TxtBoxInputPrice.Text) >= 1) return true;
+
+			MessageBox.Show("Ingrese un precio valido mayor a 0.", "Error");
+			return false;
+		}
+		private void SaveProductBuyPriceChangeRecord()
+		{
+			using InventoryDbContext inventoryDb = new();
+			RecordOfProductMovement lastRecord = inventoryDb.RecordsOfProductMovements
+				.OrderByDescending(record => record.Id)
+				.FirstOrDefault();
+			RecordOfProductMovement newRecord = new()
+				{
+					Id = lastRecord == null ? 1 : lastRecord.Id + 1,
+					Date = Now, 
+					Type = "PRECIO", 
+					PurchasePrice = decimal.Parse(TxtBoxInputPrice.Text), 
+					ProductId = Product.Id,
+					EmployeeId = Employee.Id
+				};
+			inventoryDb.RecordsOfProductMovements.Add(newRecord);
+			inventoryDb.SaveChanges();
 		}
 		private void ExecuteProductAmountChange(string typeOfChange)
 		{
