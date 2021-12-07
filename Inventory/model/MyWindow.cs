@@ -9,6 +9,7 @@ namespace Inventory.model
 	{
 		private static readonly Regex IntegersRegex = new Regex("[^0-9]+");
 		private static readonly Regex DecimalsRegex = new Regex("[^0-9-.]+");
+
 		public void BringWindowToFront()
 		{
 			if (this.Visibility == Visibility.Collapsed)
@@ -24,27 +25,33 @@ namespace Inventory.model
 
 			this.Activate();
 		}
+
 		protected override void OnClosing(CancelEventArgs cancelEventArgs)
 		{
 			cancelEventArgs.Cancel = true;
 			this.Hide();
 		}
+
 		protected void CloseWindow(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
+
 		protected void AllowOnlyIntegers(object sender, TextCompositionEventArgs e)
 		{
 			e.Handled = TextMatchIntegers(e.Text);
 		}
+
 		private static bool TextMatchIntegers(string text)
 		{
 			return IntegersRegex.IsMatch(text);
 		}
+
 		protected void AllowOnlyDecimals(object sender, TextCompositionEventArgs e)
 		{
 			e.Handled = TextMatchDecimals(e.Text);
 		}
+
 		private static bool TextMatchDecimals(string text)
 		{
 			return DecimalsRegex.IsMatch(text);
