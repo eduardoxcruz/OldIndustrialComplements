@@ -30,11 +30,12 @@ namespace Inventory.ui
 		private void AssignItemSourceToComboBox()
 		{
 			Tasks = new List<string>() {
+				"COMPRAR MAS PRODUCTO",
+				"AJUSTE DE PRECIO DE COMPRA",
 				"ENTRADA DE PRODUCTO", 
 				"SALIDA DE PRODUCTO", 
 				"DEVOLUCION DE PRODUCTO", 
 				"AJUSTE DE CANTIDAD",
-				"COMPRAR MAS PRODUCTO",
 				"SOLICITAR PARA VENTA",
 				"SOLICITAR PARA TIENDA",
 				"SOLICITAR SIN SURTIR",
