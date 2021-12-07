@@ -6,11 +6,12 @@ namespace Inventory.ui
 	public partial class ConnectionsWindow
 	{
 		public static readonly ConnectionsWindow Instance = new();
-		
+
 		private ConnectionsWindow()
 		{
 			InitializeComponent();
 		}
+
 		private void TestConnection(object sender, RoutedEventArgs routedEventArgs)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
