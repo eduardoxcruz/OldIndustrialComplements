@@ -13,32 +13,32 @@ namespace Inventory.ui
 			InitializeComponent();
 		}
 
-		private void BtnOpenTasksWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenTasksWindow(object sender, RoutedEventArgs e)
 		{
 			TasksWindow.Instance.BringWindowToFront(null);
 		}
 
-		private void BtnOpenSearchProductWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenSearchProductWindow(object sender, RoutedEventArgs e)
 		{
 			SearchProductWindow.Instance.BringWindowToFront();
 		}
 
-		private void BtnOpenConecctionsWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenConnectionsWindow(object sender, RoutedEventArgs e)
 		{
 			ConnectionsWindow.Instance.BringWindowToFront();
 		}
 
-		private void BtnOpenSettingWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenSettingsWindow(object sender, RoutedEventArgs e)
 		{
 			SettingsWindow.Instance.BringWindowToFront();
 		}
 
-		private void BtnOpenModifyWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenModifyProductWindow(object sender, RoutedEventArgs e)
 		{
 			ProductWindow.ModifyProductInstance.BringWindowToFront();
 		}
 
-		private void BtnOpenAddProductWindow_Click(object sender, RoutedEventArgs e)
+		private void OpenAddProductWindow(object sender, RoutedEventArgs e)
 		{
 			ProductWindow.AddNewProductInstance.BringWindowToFront();
 		}
@@ -46,6 +46,16 @@ namespace Inventory.ui
 		protected override void OnClosing(CancelEventArgs cancelEventArgs)
 		{
 			Application.Current.Shutdown();
+		}
+
+		private void OpenProductDetailsWindow(object sender, RoutedEventArgs e)
+		{
+			ProductWindow.ShowProductDetailsInstance.BringWindowToFront();
+		}
+
+		private void OpenRequestsWindow(object sender, RoutedEventArgs e)
+		{
+			RequestsWindow.Instance.BringWindowToFront();
 		}
 	}
 }
