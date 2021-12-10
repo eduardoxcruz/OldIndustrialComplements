@@ -20,11 +20,11 @@ namespace Inventory.ui
 
 				if (!inventoryDb.Database.CanConnect())
 				{
-					TxtBlockConnectionResult.Text = "No se puede conectar a la BD";
+					LblConnectionResult.Content = "No se posible conectar a la Base de Datos";
 					return;
 				}
 
-				TxtBlockConnectionResult.Text = "Conectado";
+				LblConnectionResult.Content = "Existe conexion a la Base de Datos";
 			});
 		}
 	}
