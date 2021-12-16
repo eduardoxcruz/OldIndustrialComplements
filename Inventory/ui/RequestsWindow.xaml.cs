@@ -84,6 +84,11 @@ namespace Inventory.ui
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 
+		private void MenuItemSale_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeTypeForAllSelectedRows("PARA VENTA");
+		}
+
 		private void RemoveElement()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
