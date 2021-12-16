@@ -71,5 +71,16 @@ namespace Inventory.ui
 
 			DataGridRequests.Items.Refresh();
 		}
+
+		private void SelectProductFromDatagrid(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (DataGridRequests.ItemsSource == null || DataGridRequests.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			ProductRequest selectedProduct = (ProductRequest)DataGridRequests.SelectedItems[0];
+			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
+		}
 	}
 }
