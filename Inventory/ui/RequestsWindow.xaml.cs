@@ -99,6 +99,11 @@ namespace Inventory.ui
 			ChangeTypeForAllSelectedRows("NO SURTIR");
 		}
 
+		private void MenuItemVerify_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeTypeForAllSelectedRows("PARA VERIFICAR");
+		}
+
 		private void RemoveElement()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
