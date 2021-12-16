@@ -104,7 +104,7 @@
 			        Width="60"
 			        Height="24"
 			        FontSize="9"
-			        Content="Devuelto" />
+			        Content="Devuelto" Click="BtnMarkAsReturned_Click" />
 			<DataGrid x:Name="DataGridRequests"
 			          Margin="13,98,12,33"
 			          AutoGenerateColumns="False"

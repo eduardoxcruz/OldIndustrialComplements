@@ -128,6 +128,11 @@ namespace Inventory.ui
 			ChangeStatusForAllSelectedRows("NO SURTIDO");
 		}
 
+		private void BtnMarkAsReturned_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("DEVUELTO");
+		}
+
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {
