@@ -94,6 +94,11 @@ namespace Inventory.ui
 			ChangeTypeForAllSelectedRows("PARA TIENDA");
 		}
 
+		private void MenuItemNoSupply_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeTypeForAllSelectedRows("NO SURTIR");
+		}
+
 		private void RemoveElement()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
@@ -108,7 +113,6 @@ namespace Inventory.ui
 			RemoveElement();
 		}
 
-		
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {
