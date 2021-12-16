@@ -89,6 +89,11 @@ namespace Inventory.ui
 			ChangeTypeForAllSelectedRows("PARA VENTA");
 		}
 
+		private void MenuItemStore_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeTypeForAllSelectedRows("PARA TIENDA");
+		}
+
 		private void RemoveElement()
 		{
 			using InventoryDbContext inventoryDb = new InventoryDbContext();
