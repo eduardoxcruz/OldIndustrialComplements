@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="resources\images\defaultProductImage.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="C:\Users\Eduardo\Code\IndustrialComplements\Inventory\.editorconfig" />
   </ItemGroup>
 
@@ -33,6 +37,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\images\defaultProductImage.jpg" />
   </ItemGroup>
 
   <ItemGroup>
