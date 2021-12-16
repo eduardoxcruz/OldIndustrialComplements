@@ -3,12 +3,11 @@ using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-#nullable disable
-
 namespace Inventory.model
 {
 	public class ProductRequest : INotifyPropertyChanged
 	{
+#pragma warning disable 8632
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		private int? _id;
@@ -100,7 +99,8 @@ namespace Inventory.model
 		public int? EmployeeId { get; set; }
 		public Product Product { get; set; }
 		public int? ProductId { get; set; }
-
+#pragma warning restore 8632
+		
 		public ProductRequest()
 		{
 			this.Id = 0;

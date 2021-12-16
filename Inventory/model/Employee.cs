@@ -3,12 +3,11 @@ using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-#nullable disable
-
 namespace Inventory.model
 {
 	public class Employee : INotifyPropertyChanged
 	{
+#pragma warning disable 8632
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		private int _id;
@@ -67,7 +66,7 @@ namespace Inventory.model
 				OnPropertyChanged(nameof(Password));
 			}
 		}
-
+#pragma warning restore 8632
 		public List<ProductForBuy> ProductForBuys { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
 		public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
