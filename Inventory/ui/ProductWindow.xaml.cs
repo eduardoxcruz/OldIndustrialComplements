@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Inventory.data;
 using Inventory.enums;
 using Inventory.model;
@@ -66,33 +67,28 @@ namespace Inventory.ui
 					ConfigureWindowForAddProduct();
 					break;
 				case ProductWindowTasks.Modify:
-					UnlockAllControls();
-					TxtBlockProductTask.Text = "Modificar Producto";
+					TxtBlockProductTask.Content = "Modificar Producto";
 					BtnAddModifyAndSave.Content = "Guardar";
 					break;
 				case ProductWindowTasks.ShowDetails:
-					LockAllControls();
-					TxtBlockProductTask.Text = "Detalles del Producto";
-					BtnAddModifyAndSave.Content = "Modificar";
+					ConfigureWindowForShowDetails();
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
 
-			this.Title = TxtBlockProductTask.Text;
+			this.Title = TxtBlockProductTask.Content.ToString();
 			SetComboBoxesItemSource();
-			ConfigureInventoryAndProfitControls();
 		}
 
 		private void ConfigureWindowForAddProduct()
 		{
-			UnlockAllControls();
 			TxtBoxIdCode.IsReadOnly = true;
 			TxtBoxDebugCode.IsReadOnly = true;
 			BtnRefreshProduct.IsEnabled = false;
 			BtnVerifySearch.IsEnabled = false;
 			BtnLoadFirstProduct.IsEnabled = false;
-			TxtBlockProductTask.Text = "Nuevo Producto";
+			TxtBlockProductTask.Content = "Nuevo Producto";
 			BtnAddModifyAndSave.Content = "Agregar";
 			Product lastProduct = null;
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
@@ -101,6 +97,55 @@ namespace Inventory.ui
 				lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
 			});
 			Product.Id = lastProduct == null ? 0 : lastProduct.Id + 1;
+		}
+
+		private void ConfigureWindowForShowDetails()
+		{
+			ForegroundColor = new SolidColorBrush(Colors.Crimson);
+
+			TxtBlockProductTask.Content = "Detalles del Producto";
+			TxtBlockProductTask.Foreground = ForegroundColor;
+			BtnAddModifyAndSave.Content = "Modificar";
+
+			RadioBtnIsAutomaticProfit.IsEnabled = false;
+			RadioBtnIsManualProfit.IsEnabled = false;
+			TxtBoxShortDescription.IsReadOnly = true;
+			TxtBoxMemo.IsReadOnly = true;
+			TxtBoxMemo.Foreground = ForegroundColor;
+
+			SetControlsInPanelAsReadonly(GridProductDetails, true);
+			SetControlsInPanelAsReadonly(GridInventory, true);
+			SetControlsInPanelAsReadonly(GridLocation, true);
+			SetControlsInPanelAsReadonly(GridPriceDetails, true);
+		}
+
+		private static void SetControlsInPanelAsReadonly(Panel panel, bool readOnly)
+		{
+			for (int index = 0; index < panel.Children.Count; index++)
+			{
+				switch (panel.Children[index])
+				{
+					case TextBox textBox:
+						textBox = (TextBox)panel.Children[index];
+						textBox.Foreground = ForegroundColor;
+						textBox.IsReadOnly = readOnly;
+						panel.Children[index] = textBox;
+						break;
+					case ComboBox comboBox:
+						comboBox = (ComboBox)panel.Children[index];
+						comboBox.Foreground = ForegroundColor;
+						comboBox.IsReadOnly = readOnly;
+						panel.Children[index] = comboBox;
+						break;
+					case Button button:
+						button = (Button)panel.Children[index];
+						if (!button.Name.Equals("BtnOpenTasks")) button.IsEnabled = !readOnly;
+						break;
+					case CheckBox:
+						panel.Children[index].IsEnabled = !readOnly;
+						break;
+				}
+			}
 		}
 
 		private void SetComboBoxesItemSource()
@@ -150,118 +195,23 @@ namespace Inventory.ui
 		private void SearchProductById(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
-			ConfigureInventoryAndProfitControls();
+			if (Product != null && Product.Id != 0) LoadProductImage();
 		}
 
-		private void LockAllControls()
+		private void LoadProductImage()
 		{
-			ForegroundColor = new SolidColorBrush(Colors.Crimson);
+			Uri imageUri = null;
 
-			SetControlsInPanelAsReadonly(GridProductDetails, true);
-			SetControlsInPanelAsReadonly(GridInventory, true);
-			SetControlsInPanelAsReadonly(GridLocation, true);
-			SetControlsInPanelAsReadonly(GridPriceDetails, true);
-		}
-
-		private void UnlockAllControls()
-		{
-			ForegroundColor = new SolidColorBrush(Colors.Black);
-
-			SetControlsInPanelAsReadonly(GridProductDetails, false);
-			SetControlsInPanelAsReadonly(GridInventory, false);
-			SetControlsInPanelAsReadonly(GridLocation, false);
-			SetControlsInPanelAsReadonly(GridPriceDetails, false);
-		}
-
-		private static void SetControlsInPanelAsReadonly(Panel panel, bool readOnly)
-		{
-			for (int index = 0; index < panel.Children.Count; index++)
+			try
 			{
-				switch (panel.Children[index])
-				{
-					case TextBox textBox:
-						textBox = (TextBox)panel.Children[index];
-						textBox.Foreground = ForegroundColor;
-						textBox.IsReadOnly = readOnly;
-						panel.Children[index] = textBox;
-						break;
-					case ComboBox comboBox:
-						comboBox = (ComboBox)panel.Children[index];
-						comboBox.Foreground = ForegroundColor;
-						comboBox.IsReadOnly = readOnly;
-						panel.Children[index] = comboBox;
-						break;
-					case CheckBox:
-						panel.Children[index].IsEnabled = !readOnly;
-						break;
-					case RadioButton:
-						panel.Children[index].IsEnabled = !readOnly;
-						break;
-				}
+				imageUri = new Uri(Properties.Settings.Default.PhotosPath + "\\" + Product.Id + ".jpg");
+				ProductImage.Source = new BitmapImage(imageUri);
 			}
-		}
-
-		private void ConfigureInventoryAndProfitControls()
-		{
-			if (Product.IsUsingInventory ?? false)
+			catch (Exception exception)
 			{
-				ChkBoxUseInventory.IsChecked = true;
-				EnableInventory(null, null);
+				imageUri = new Uri("/resources/images/defaultProductImage.jpg", UriKind.Relative);
+				ProductImage.Source = new BitmapImage(imageUri);
 			}
-			else
-			{
-				ChkBoxUseInventory.IsChecked = false;
-				DisableInventory(null, null);
-			}
-
-			if (Product.IsManualProfit ?? false)
-			{
-				RadioBtnAutomaticProfit.IsChecked = false;
-				EnableManualProfit(null, null);
-			}
-			else
-			{
-				RadioBtnAutomaticProfit.IsChecked = true;
-				EnableAutomaticProfit(null, null);
-			}
-		}
-
-		private void EnableManualProfit(object sender, RoutedEventArgs e)
-		{
-			RadioBtnAutomaticProfit.IsChecked = false;
-
-			TxtBoxPercentageOfProfit.IsReadOnly = false;
-			TxtBoxPercentageOfDiscount.IsReadOnly = false;
-			BtnAddProfit.IsEnabled = true;
-			BtnRemoveProfit.IsEnabled = true;
-			BtnAddDiscount.IsEnabled = true;
-			BtnRemoveDiscount.IsEnabled = true;
-		}
-
-		private void EnableAutomaticProfit(object sender, RoutedEventArgs e)
-		{
-			RadioBtnIsManualProfit.IsChecked = false;
-
-			TxtBoxPercentageOfProfit.IsReadOnly = true;
-			TxtBoxPercentageOfDiscount.IsReadOnly = true;
-			BtnAddProfit.IsEnabled = false;
-			BtnRemoveProfit.IsEnabled = false;
-			BtnAddDiscount.IsEnabled = false;
-			BtnRemoveDiscount.IsEnabled = false;
-		}
-
-		private void EnableInventory(object sender, RoutedEventArgs e)
-		{
-			TxtBoxCurrentAmount.IsReadOnly = false;
-			TxtBoxMinAmount.IsReadOnly = false;
-			TxtBoxMaxProductStock.IsReadOnly = false;
-		}
-
-		private void DisableInventory(object sender, RoutedEventArgs e)
-		{
-			TxtBoxCurrentAmount.IsReadOnly = true;
-			TxtBoxMinAmount.IsReadOnly = true;
-			TxtBoxMaxProductStock.IsReadOnly = true;
 		}
 
 		private void ChangeTask(object sender, RoutedEventArgs e)
@@ -318,9 +268,50 @@ namespace Inventory.ui
 			});
 		}
 
-		private void OpenTasksWindow(object sender, RoutedEventArgs e)
+		private void EnableInventory(object sender, RoutedEventArgs e)
 		{
-			TasksWindow.Instance.BringWindowToFront(Product);
+			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
+
+			TxtBoxCurrentAmount.IsReadOnly = false;
+			TxtBoxMaxAmount.IsReadOnly = false;
+			TxtBoxMinAmount.IsReadOnly = false;
+		}
+
+		private void DisableInventory(object sender, RoutedEventArgs e)
+		{
+			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
+
+			TxtBoxCurrentAmount.IsReadOnly = true;
+			TxtBoxMaxAmount.IsReadOnly = true;
+			TxtBoxMinAmount.IsReadOnly = true;
+		}
+
+		private void EnableManualProfit(object sender, RoutedEventArgs e)
+		{
+			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
+
+			BtnAddProfit.IsEnabled = true;
+			BtnAddDiscount.IsEnabled = true;
+			BtnRemoveProfit.IsEnabled = true;
+			BtnRemoveDiscount.IsEnabled = true;
+
+			TxtBoxPercentageOfProfit.IsReadOnly = false;
+			TxtBoxPercentageOfDiscount.IsReadOnly = false;
+		}
+
+		private void EnableAutomaticProfit(object sender, RoutedEventArgs e)
+		{
+			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
+
+			RadioBtnIsAutomaticProfit.IsChecked = true;
+
+			BtnAddProfit.IsEnabled = false;
+			BtnAddDiscount.IsEnabled = false;
+			BtnRemoveProfit.IsEnabled = false;
+			BtnRemoveDiscount.IsEnabled = false;
+
+			TxtBoxPercentageOfProfit.IsReadOnly = true;
+			TxtBoxPercentageOfDiscount.IsReadOnly = true;
 		}
 
 		private void AddProfit(object sender, RoutedEventArgs e)
@@ -341,6 +332,11 @@ namespace Inventory.ui
 		private void RemoveDiscount(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfDiscount -= 1;
+		}
+
+		private void OpenTasksWindow(object sender, RoutedEventArgs e)
+		{
+			TasksWindow.Instance.BringWindowToFront(Product);
 		}
 	}
 }
