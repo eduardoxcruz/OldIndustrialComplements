@@ -110,5 +110,17 @@ namespace Inventory.ui
 				InventoryDb.SaveChanges();
 			});
 		}
+
+		private void ChangeStatusForAllSelectedRows(string message)
+		{
+			InventoryDbContext.ExecuteDatabaseRequest(() => {
+				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
+				{
+					selectedItem.Status = message;
+					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+				}
+				InventoryDb.SaveChanges();
+			});
+		}
 	}
 }
