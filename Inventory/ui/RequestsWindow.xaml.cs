@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
 using Inventory.data;
@@ -37,7 +38,7 @@ namespace Inventory.ui
 				.Include(productRequest => productRequest.Product)
 				.Load();
 			ProductRequestsCollection = InventoryDb.ProductRequests.Local.ToObservableCollection();
-			ProductRequestsView = new CollectionViewSource() {Source = ProductRequestsCollection};
+			ProductRequestsView = new CollectionViewSource() { Source = ProductRequestsCollection };
 			ProductRequestsView.SortDescriptions.Clear();
 			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 			DataGridRequests.ItemsSource = ProductRequestsView.View;
@@ -45,7 +46,7 @@ namespace Inventory.ui
 
 		private void StartDispatcherTimer()
 		{
-			DispatcherTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
+			DispatcherTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 3) };
 			DispatcherTimer.Tick += AddNewProductRequestToCollection;
 			DispatcherTimer.Start();
 		}
@@ -95,6 +96,19 @@ namespace Inventory.ui
 		private void BtnDropElement_Click(object sender, RoutedEventArgs e)
 		{
 			RemoveElement();
+		}
+
+		
+		private void ChangeTypeForAllSelectedRows(string message)
+		{
+			InventoryDbContext.ExecuteDatabaseRequest(() => {
+				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
+				{
+					selectedItem.Type = message;
+					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+				}
+				InventoryDb.SaveChanges();
+			});
 		}
 	}
 }
