@@ -11,6 +11,7 @@ namespace Inventory.model
 {
 	public class Product : INotifyPropertyChanged
 	{
+#pragma warning disable 8632
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		private int _id;
@@ -508,7 +509,7 @@ namespace Inventory.model
 
 			return product ?? new Product();
 		}
-
+#pragma warning restore 8632
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -559,13 +560,8 @@ namespace Inventory.model
 				case nameof(SalePriceWithoutDiscount):
 					goto case nameof(PercentageOfDiscount);
 				case nameof(PercentageOfDiscount):
-					if (PercentageOfDiscount > 100)
-					{
-						PercentageOfDiscount = 100;
-					}
-
-					ProfitWithDiscount = (PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount;
-					SalePriceWithDiscount = SalePriceWithoutDiscount - ProfitWithDiscount;
+					SalePriceWithDiscount = SalePriceWithoutDiscount - ((PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount);
+					ProfitWithDiscount = SalePriceWithDiscount - BuyPrice;
 					break;
 			}
 		}

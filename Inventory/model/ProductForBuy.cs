@@ -2,12 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-#nullable disable
-
 namespace Inventory.model
 {
 	public class ProductForBuy
 	{
+#pragma warning disable 8632
 		public int? Id { get; set; }
 		public string? Provider { get; set; }
 		public DateTime? Date { get; set; }
@@ -19,7 +18,8 @@ namespace Inventory.model
 		public int? EmployeeId { get; set; }
 		public Product Product { get; set; }
 		public int? ProductId { get; set; }
-
+#pragma warning restore 8632
+		
 		public ProductForBuy()
 		{
 			this.Id = 0;
