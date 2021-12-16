@@ -118,6 +118,11 @@ namespace Inventory.ui
 			RemoveElement();
 		}
 
+		private void BtnMarkAsDelivered_Click(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("SURTIDO");
+		}
+
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {

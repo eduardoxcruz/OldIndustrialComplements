@@ -88,7 +88,7 @@
 			        Width="60"
 			        Height="24"
 			        FontSize="9"
-			        Content="Entregado" />
+			        Content="Surtido" Click="BtnMarkAsDelivered_Click" />
 			<Button x:Name="BtnMarkAsNotDelivered"
 			        HorizontalAlignment="Left"
 			        Margin="140,69,0,0"
