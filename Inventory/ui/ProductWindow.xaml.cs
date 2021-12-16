@@ -112,6 +112,7 @@ namespace Inventory.ui
 			TxtBoxShortDescription.IsReadOnly = true;
 			TxtBoxMemo.IsReadOnly = true;
 			TxtBoxMemo.Foreground = ForegroundColor;
+			DisableProfitAndDiscountButtons();
 
 			SetControlsInPanelAsReadonly(GridProductDetails, true);
 			SetControlsInPanelAsReadonly(GridInventory, true);
@@ -136,10 +137,6 @@ namespace Inventory.ui
 						comboBox.Foreground = ForegroundColor;
 						comboBox.IsReadOnly = readOnly;
 						panel.Children[index] = comboBox;
-						break;
-					case Button button:
-						button = (Button)panel.Children[index];
-						if (!button.Name.Equals("BtnOpenTasks")) button.IsEnabled = !readOnly;
 						break;
 					case CheckBox:
 						panel.Children[index].IsEnabled = !readOnly;
@@ -290,11 +287,8 @@ namespace Inventory.ui
 		{
 			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
 
-			BtnAddProfit.IsEnabled = true;
-			BtnAddDiscount.IsEnabled = true;
-			BtnRemoveProfit.IsEnabled = true;
-			BtnRemoveDiscount.IsEnabled = true;
-
+			EnableProfitAndDiscountButtons();
+			
 			TxtBoxPercentageOfProfit.IsReadOnly = false;
 			TxtBoxPercentageOfDiscount.IsReadOnly = false;
 		}
@@ -305,15 +299,28 @@ namespace Inventory.ui
 
 			RadioBtnIsAutomaticProfit.IsChecked = true;
 
-			BtnAddProfit.IsEnabled = false;
-			BtnAddDiscount.IsEnabled = false;
-			BtnRemoveProfit.IsEnabled = false;
-			BtnRemoveDiscount.IsEnabled = false;
+			DisableProfitAndDiscountButtons();
 
 			TxtBoxPercentageOfProfit.IsReadOnly = true;
 			TxtBoxPercentageOfDiscount.IsReadOnly = true;
 		}
 
+		private void EnableProfitAndDiscountButtons()
+		{
+			BtnAddProfit.IsEnabled = true;
+			BtnAddDiscount.IsEnabled = true;
+			BtnRemoveProfit.IsEnabled = true;
+			BtnRemoveDiscount.IsEnabled = true;
+		}
+
+		private void DisableProfitAndDiscountButtons()
+		{
+			BtnAddProfit.IsEnabled = false;
+			BtnAddDiscount.IsEnabled = false;
+			BtnRemoveProfit.IsEnabled = false;
+			BtnRemoveDiscount.IsEnabled = false;
+		}
+		
 		private void AddProfit(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfProfit += 1;
