@@ -96,7 +96,7 @@
 			        Width="60"
 			        Height="24"
 			        FontSize="9"
-			        Content="No Entregado" />
+			        Content="No Surtido" Click="BtnMarkAsNotDelivered_Click" />
 			<Button x:Name="BtnMarkAsReturned"
 			        HorizontalAlignment="Left"
 			        Margin="205,69,0,0"
