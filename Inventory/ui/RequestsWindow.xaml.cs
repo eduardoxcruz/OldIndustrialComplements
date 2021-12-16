@@ -82,5 +82,19 @@ namespace Inventory.ui
 			ProductRequest selectedProduct = (ProductRequest)DataGridRequests.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
+
+		private void RemoveElement()
+		{
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			ProductRequest productToDelete = (ProductRequest)DataGridRequests.SelectedItems[0];
+			inventoryDb.Remove(productToDelete);
+			inventoryDb.SaveChanges();
+			GetAllProductRequests();
+		}
+
+		private void BtnDropElement_Click(object sender, RoutedEventArgs e)
+		{
+			RemoveElement();
+		}
 	}
 }
