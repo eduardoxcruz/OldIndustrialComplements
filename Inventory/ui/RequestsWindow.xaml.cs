@@ -133,6 +133,11 @@ namespace Inventory.ui
 			ChangeStatusForAllSelectedRows("DEVUELTO");
 		}
 
+		private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+		{
+			GetAllProductRequests();
+		}
+
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {
