@@ -111,7 +111,7 @@
 			          IsReadOnly="True"
 			          ColumnWidth="*"
 			          Width="1000"
-			          Height="375">
+			          Height="375" MouseDoubleClick="SelectProductFromDatagrid">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="ID"
 					                    Binding="{Binding Id}" />
