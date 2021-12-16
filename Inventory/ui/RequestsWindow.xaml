@@ -149,7 +149,10 @@
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>
 					<ContextMenu>
-						<MenuItem Header="Marcar como entregado" />
+						<MenuItem x:Name="MenuItemChangeType_Sale" Header="Solicitar para venta" Click="MenuItemSale_Click" />
+						<MenuItem x:Name="MenuItemChangeType_Store" Header="Solicitar para tienda" Click="MenuItemStore_Click" />
+						<MenuItem x:Name="MenuItemChangeType_NoSupply" Header="Solicitar para no surtir" Click="MenuItemNoSupply_Click" />
+						<MenuItem x:Name="MenuItemChangeType_Verify" Header="Solicitar para verificar" Click="MenuItemVerify_Click" />
 					</ContextMenu>
 				</DataGrid.ContextMenu>
 			</DataGrid>
