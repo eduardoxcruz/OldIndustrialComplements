@@ -196,6 +196,7 @@ namespace Inventory.ui
 				ProductId = Product.Id,
 				EmployeeId = Employee.Id
 			};
+			
 			inventoryDb.RecordsOfProductMovements.Add(newRecord);
 			inventoryDb.SaveChanges();
 		}
