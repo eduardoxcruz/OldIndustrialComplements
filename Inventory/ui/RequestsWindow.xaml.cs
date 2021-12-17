@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Threading;
 using Inventory.data;
 using Inventory.model;
@@ -26,6 +27,7 @@ namespace Inventory.ui
 			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests();
 			StartDispatcherTimer();
+			ProductRequestsView.Filter += FiltersToProductRequestsView;
 		}
 
 		private void GetAllProductRequests()
@@ -73,7 +75,7 @@ namespace Inventory.ui
 			DataGridRequests.Items.Refresh();
 		}
 
-		private void SelectProductFromDatagrid(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void SelectProductFromDatagrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridRequests.ItemsSource == null || DataGridRequests.SelectedItems.Count <= 0)
 			{
@@ -160,6 +162,36 @@ namespace Inventory.ui
 				}
 				InventoryDb.SaveChanges();
 			});
+		}
+
+		private void FiltersToProductRequestsView(object sender, FilterEventArgs filterEventArgs)
+		{	
+			if (filterEventArgs.Item is not ProductRequest productRequest) return;
+			
+			if (ChkBoxFilterByDelivered.IsChecked == false &&
+			    ChkBoxFilterByNotDelivered.IsChecked == false &&
+			    ChkBoxFilterByReturned.IsChecked == false)
+			{
+				filterEventArgs.Accepted = true;
+				return;
+			}
+
+			switch (productRequest.Status)
+			{
+				case "SURTIDO" when ChkBoxFilterByDelivered.IsChecked == true:
+				case "NO SURTIDO" when ChkBoxFilterByNotDelivered.IsChecked == true:
+				case "DEVUELTO" when ChkBoxFilterByReturned.IsChecked == true:
+					filterEventArgs.Accepted = true;
+					break;
+				default:
+					filterEventArgs.Accepted = false;
+					break;
+			}
+		}
+
+		private void RefreshProductRequestsView(object sender, RoutedEventArgs e)
+		{
+			ProductRequestsView.View.Refresh();
 		}
 	}
 }
