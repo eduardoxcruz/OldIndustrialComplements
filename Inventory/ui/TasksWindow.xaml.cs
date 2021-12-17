@@ -171,7 +171,7 @@ namespace Inventory.ui
 				inventoryDb.Entry(Product).State = EntityState.Modified;
 				inventoryDb.SaveChanges();
 				SaveProductBuyPriceChangeRecord();
-				CleanControls();
+				ClearControls();
 			});
 		}
 
@@ -361,7 +361,7 @@ namespace Inventory.ui
 				inventoryDb.SaveChanges();
 
 				MessageBox.Show("Completado.", "Exito");
-				CleanControls();
+				ClearControls();
 			});
 		}
 
@@ -430,7 +430,7 @@ namespace Inventory.ui
 			inventoryDb.SaveChanges();
 
 			MessageBox.Show("Completado.", "Exito");
-			CleanControls();
+			ClearControls();
 		}
 
 		private bool QuantityIsZero()
@@ -449,7 +449,7 @@ namespace Inventory.ui
 			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
 		}
 
-		private void CleanControls()
+		private void ClearControls()
 		{
 			TxtBoxInputPrice.Text = "";
 			TxtBoxInputQuantity.Text = "";
