@@ -25,12 +25,12 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			InventoryDb = new InventoryDbContext();
-			GetAllProductRequests();
+			GetAllProductRequests(null, null);
 			StartDispatcherTimer();
 			ProductRequestsView.Filter += FiltersToProductRequestsView;
 		}
 
-		private void GetAllProductRequests()
+		private void GetAllProductRequests(object sender, RoutedEventArgs e)
 		{
 			LastProductRequest =
 				InventoryDb.ProductRequests.OrderByDescending(request => request.Id).FirstOrDefault() ??
@@ -86,60 +86,26 @@ namespace Inventory.ui
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 
-		private void MenuItemSale_Click(object sender, RoutedEventArgs e)
+		private void ChangeSelectedRowTypeAsForSale(object sender, RoutedEventArgs e)
 		{
 			ChangeTypeForAllSelectedRows("PARA VENTA");
 		}
 
-		private void MenuItemStore_Click(object sender, RoutedEventArgs e)
+		private void ChangeSelectedRowTypeAsForStore(object sender, RoutedEventArgs e)
 		{
 			ChangeTypeForAllSelectedRows("PARA TIENDA");
 		}
 
-		private void MenuItemNoSupply_Click(object sender, RoutedEventArgs e)
+		private void ChangeSelectedRowTypeAsNoSupply(object sender, RoutedEventArgs e)
 		{
 			ChangeTypeForAllSelectedRows("NO SURTIR");
 		}
 
-		private void MenuItemVerify_Click(object sender, RoutedEventArgs e)
+		private void ChangeSelectedRowTypeAsForVerify(object sender, RoutedEventArgs e)
 		{
 			ChangeTypeForAllSelectedRows("PARA VERIFICAR");
 		}
-
-		private void RemoveElement()
-		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			ProductRequest productToDelete = (ProductRequest)DataGridRequests.SelectedItems[0];
-			inventoryDb.Remove(productToDelete);
-			inventoryDb.SaveChanges();
-			GetAllProductRequests();
-		}
-
-		private void BtnDropElement_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveElement();
-		}
-
-		private void BtnMarkAsDelivered_Click(object sender, RoutedEventArgs e)
-		{
-			ChangeStatusForAllSelectedRows("SURTIDO");
-		}
-
-		private void BtnMarkAsNotDelivered_Click(object sender, RoutedEventArgs e)
-		{
-			ChangeStatusForAllSelectedRows("NO SURTIDO");
-		}
-
-		private void BtnMarkAsReturned_Click(object sender, RoutedEventArgs e)
-		{
-			ChangeStatusForAllSelectedRows("DEVUELTO");
-		}
-
-		private void BtnUpdate_Click(object sender, RoutedEventArgs e)
-		{
-			GetAllProductRequests();
-		}
-
+		
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {
@@ -150,6 +116,21 @@ namespace Inventory.ui
 				}
 				InventoryDb.SaveChanges();
 			});
+		}
+		
+		private void ChangeSelectedRowStatusAsDelivered(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("SURTIDO");
+		}
+
+		private void ChangeSelectedRowStatusAsNotDelivered(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("NO SURTIDO");
+		}
+
+		private void ChangeSelectedRowStatusAsReturned(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("DEVUELTO");
 		}
 
 		private void ChangeStatusForAllSelectedRows(string message)
@@ -162,6 +143,7 @@ namespace Inventory.ui
 				}
 				InventoryDb.SaveChanges();
 			});
+			RefreshProductRequestsView(null, null);
 		}
 
 		private void FiltersToProductRequestsView(object sender, FilterEventArgs filterEventArgs)
@@ -192,6 +174,14 @@ namespace Inventory.ui
 		private void RefreshProductRequestsView(object sender, RoutedEventArgs e)
 		{
 			ProductRequestsView.View.Refresh();
+		}
+		
+		private void RemoveElement(object sender, RoutedEventArgs e)
+		{
+			using InventoryDbContext inventoryDb = new InventoryDbContext();
+			ProductRequest productToDelete = (ProductRequest)DataGridRequests.SelectedItems[0];
+			inventoryDb.Remove(productToDelete);
+			inventoryDb.SaveChanges();
 		}
 	}
 }

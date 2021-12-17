@@ -57,35 +57,35 @@
 			        Margin="0,8,8,0"
 			        FontSize="12"
 			        Content="Actualizar"
-			        Click="BtnUpdate_Click" />
+			        Click="GetAllProductRequests" />
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
 			        Margin="8,8,0,0"
 			        FontSize="12"
 			        Content="Drop"
-			        Click="BtnDropElement_Click" />
+			        Click="RemoveElement" />
 			<Button x:Name="BtnMarkAsDelivered"
 			        Grid.Row="1"
 			        Grid.Column="1"
 			        Margin="8,8,0,0"
 			        FontSize="12"
 			        Content="Surtido"
-			        Click="BtnMarkAsDelivered_Click" />
+			        Click="ChangeSelectedRowStatusAsDelivered" />
 			<Button x:Name="BtnMarkAsNotDelivered"
 			        Grid.Row="1"
 			        Grid.Column="2"
 			        Margin="8,8,0,0"
 			        FontSize="12"
 			        Content="No Surtido"
-			        Click="BtnMarkAsNotDelivered_Click" />
+			        Click="ChangeSelectedRowStatusAsNotDelivered" />
 			<Button x:Name="BtnMarkAsReturned"
 			        Grid.Row="1"
 			        Grid.Column="3"
 			        Margin="8,8,0,0"
 			        FontSize="12"
 			        Content="Devuelto"
-			        Click="BtnMarkAsReturned_Click" />
+			        Click="ChangeSelectedRowStatusAsReturned" />
 			<CheckBox x:Name="ChkBoxFilterByDelivered"
 			          Grid.Row="1"
 			          Grid.Column="7"
@@ -176,10 +176,10 @@
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>
 					<ContextMenu>
-						<MenuItem x:Name="MenuItemChangeType_Sale" Header="Solicitar para venta" Click="MenuItemSale_Click" />
-						<MenuItem x:Name="MenuItemChangeType_Store" Header="Solicitar para tienda" Click="MenuItemStore_Click" />
-						<MenuItem x:Name="MenuItemChangeType_NoSupply" Header="Solicitar para no surtir" Click="MenuItemNoSupply_Click" />
-						<MenuItem x:Name="MenuItemChangeType_Verify" Header="Solicitar para verificar" Click="MenuItemVerify_Click" />
+						<MenuItem Header="Solicitar para venta" Click="ChangeSelectedRowTypeAsForSale" />
+						<MenuItem Header="Solicitar para tienda" Click="ChangeSelectedRowTypeAsForStore" />
+						<MenuItem Header="Solicitar para no surtir" Click="ChangeSelectedRowTypeAsNoSupply" />
+						<MenuItem Header="Solicitar para verificar" Click="ChangeSelectedRowTypeAsForVerify" />
 					</ContextMenu>
 				</DataGrid.ContextMenu>
 			</DataGrid>
