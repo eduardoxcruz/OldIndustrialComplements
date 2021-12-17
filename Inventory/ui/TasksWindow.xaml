@@ -224,7 +224,8 @@
 		          Width="80"
 		          Height="18"
 		          HorizontalContentAlignment="Center"
-		          FontSize="9" />
+		          FontSize="9"
+		          SelectionChanged="ConfigureControlsForTask"/>
 		<TextBox x:Name="TxtBoxInputQuantity"
 		         HorizontalAlignment="Left"
 		         Margin="95,130,0,0"

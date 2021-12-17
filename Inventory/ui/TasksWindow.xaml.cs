@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Inventory.data;
 using Inventory.model;
 using Inventory.Properties;
@@ -73,6 +74,7 @@ namespace Inventory.ui
 		{
 			RefresthDateTime();
 			CmbBoxTask.SelectedItem = task;
+			ConfigureControlsForTask(null, null);
 
 			if (product != null)
 			{
@@ -452,6 +454,64 @@ namespace Inventory.ui
 			TxtBoxInputPrice.Text = "";
 			TxtBoxInputQuantity.Text = "";
 			CmbBoxProvider.Text = "";
+		}
+
+		private void ConfigureControlsForTask(object sender, SelectionChangedEventArgs e)
+		{
+			switch (CmbBoxTask.SelectedItem)
+			{
+				case "AJUSTE DE PRECIO DE COMPRA":
+					EnableControlsForBuyPriceChange();
+					break;	
+				case "ENTRADA DE PRODUCTO":
+					EnableControlsForProductEntry();
+					break;
+				case "SALIDA DE PRODUCTO":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "DEVOLUCION DE PRODUCTO":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "AJUSTE DE CANTIDAD":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "COMPRAR MAS PRODUCTO":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "SOLICITAR PARA VENTA":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "SOLICITAR PARA TIENDA":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "SOLICITAR SIN SURTIR":
+					EnableControlsOnlyForQuantity();
+					break;
+				case "SOLICITAR PARA VERIFICAR":
+					EnableControlsOnlyForQuantity();
+					break;
+			}
+		}
+
+		private void EnableControlsOnlyForQuantity()
+		{
+			TxtBoxInputQuantity.IsEnabled = true;
+			TxtBoxInputPrice.IsEnabled = false;
+			CmbBoxProvider.IsEnabled = false;
+		}
+
+		private void EnableControlsForProductEntry()
+		{
+			TxtBoxInputQuantity.IsEnabled = true;
+			TxtBoxInputPrice.IsEnabled = true;
+			CmbBoxProvider.IsEnabled = true;
+		}
+
+		private void EnableControlsForBuyPriceChange()
+		{
+			TxtBoxInputQuantity.IsEnabled = false;
+			TxtBoxInputPrice.IsEnabled = true;
+			CmbBoxProvider.IsEnabled = false;
 		}
 	}
 }
