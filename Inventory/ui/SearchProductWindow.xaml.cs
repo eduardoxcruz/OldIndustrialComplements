@@ -47,7 +47,7 @@ namespace Inventory.ui
 						EF.Functions.Like(product.Location, "%" + text + "%")
 					select product)
 				.ToList();
-			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
+			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count.ToString();
 		}
 
 		private void EnterKeyPressed(object sender, KeyEventArgs e)
@@ -90,7 +90,7 @@ namespace Inventory.ui
 						EF.Functions.Like(product.DebugCode, "%" + TxtBoxDebugCode.Text + "%")
 					select product).ToList();
 
-			TxtBoxCount.Text = DataGridProducts.Items.Count.ToString();
+			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count.ToString();
 		}
 
 		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
@@ -117,7 +117,7 @@ namespace Inventory.ui
 			TxtBoxLocation.Text = null;
 			TxtBoxQuickSearch.Text = null;
 			TxtBoxDebugCode.Text = null;
-			TxtBoxCount.Text = "00";
+			LblResultCount.Content = "Recuento: 00";
 		}
 
 		private void OpenSettings(object sender, RoutedEventArgs e)
