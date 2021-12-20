@@ -120,21 +120,6 @@ namespace Inventory.ui
 			LblResultCount.Content = "Recuento: 00";
 		}
 
-		private void OpenSettings(object sender, RoutedEventArgs e)
-		{
-			SettingsWindow.Instance.BringWindowToFront();
-		}
-
-		private void OpenProductRequests(object sender, RoutedEventArgs e)
-		{
-			RequestsWindow.Instance.BringWindowToFront();
-		}
-
-		private void AddNewProduct(object sender, RoutedEventArgs e)
-		{
-			ProductWindow.AddNewProductInstance.BringWindowToFront();
-		}
-
 		private void AddProductToSeparateDataGrid(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
@@ -248,11 +233,6 @@ namespace Inventory.ui
 		private void CleanOtherDataGrid(object sender, RoutedEventArgs e)
 		{
 			DataGridAddedProducts.Items.Clear();
-		}
-
-		private void OpenTasksWindow(object sender, RoutedEventArgs e)
-		{
-			TasksWindow.Instance.BringWindowToFront(null);
 		}
 	}
 }
