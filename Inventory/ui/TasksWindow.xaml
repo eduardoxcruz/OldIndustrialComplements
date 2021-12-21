@@ -7,383 +7,417 @@
                 xmlns:properties="clr-namespace:Inventory.Properties"
                 mc:Ignorable="d"
                 Title="Tareas"
-                Height="285"
-                Width="427.5"
+                Width="600"
+                Height="350"
                 ResizeMode="CanMinimize"
-                SizeToContent="WidthAndHeight"
                 WindowStartupLocation="CenterScreen">
-	<Grid>
-		<Button x:Name="BtnSearch"
-		        HorizontalAlignment="Left"
-		        Margin="211,50,0,0"
-		        VerticalAlignment="Top"
-		        Height="18"
-		        Width="58"
-		        FontSize="9"
-		        Content="Buscar"
-		        Click="VerifySearch" />
-		<Button x:Name="BtnExecuteTask"
-		        HorizontalAlignment="Left"
-		        Margin="10,241,0,0"
-		        VerticalAlignment="Top"
-		        Width="60"
-		        Height="18"
-		        FontSize="9"
-		        Content="Ejecutar"
-		        Click="ExecuteTask" />
-		<Button x:Name="BtnExit"
-		        HorizontalAlignment="Left"
-		        Margin="75,241,0,0"
-		        VerticalAlignment="Top"
-		        Width="60"
-		        Height="18"
-		        FontSize="9"
-		        Content="Salir"
-		        Click="CloseWindow" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,10,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="54"
-		           Height="18"
-		           TextAlignment="Left"
-		           Text="Tareas" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="325,15,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="19"
-		           Height="18"
-		           TextAlignment="Center"
-		           Text="ID" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,33,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="96"
-		           Height="12"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Text="Buscar por ID o Codigo" />
-		<ComboBox x:Name="CmbBoxIdOrDebugCode"
-		          HorizontalAlignment="Left"
-		          Margin="9,50,0,0"
-		          VerticalAlignment="Top"
-		          Width="96"
-		          Height="18"
-		          FontSize="9"
-		          HorizontalContentAlignment="Center">
-			<ComboBox.Items>
-				<ComboBoxItem Content="ID" />
+	<Viewbox>
+		<Grid Width="670"
+		      Height="350">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0"
+			       Grid.Column="0"
+			       VerticalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="24"
+			       Content="Tareas" />
+			<Grid Grid.Row="0"
+			      Grid.Column="6">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Label Grid.Column="0"
+				       Margin="0,0,0,0"
+				       Padding="0,0,0,0"
+				       HorizontalContentAlignment="Right"
+				       VerticalContentAlignment="Center"
+				       FontSize="16"
+				       Content="ID:" />
+				<Label x:Name="LblId"
+				       Grid.Column="1"
+				       Margin="8,0,0,0"
+				       Padding="0,0,0,0"
+				       HorizontalContentAlignment="Left"
+				       VerticalContentAlignment="Center"
+				       FontSize="16"
+				       Foreground="#FFF10C0C">
+					<Label.Content>
+						<Binding Path="Id" Mode="OneWay" />
+					</Label.Content>
+				</Label>
+			</Grid>
+			<Label Grid.Row="1"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Buscar por" />
+			<Label Grid.Row="1"
+			       Grid.Column="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="ID" />
+			<Label Grid.Row="1"
+			       Grid.Column="3"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Codigo Debug" />
+			<ComboBox x:Name="CmbBoxIdOrDebugCode"
+			          Grid.Row="2"
+			          Grid.Column="0"
+			          Grid.ColumnSpan="2"
+			          Margin="8,0,0,0"
+			          FontSize="14"
+			          HorizontalContentAlignment="Center"
+			          IsEditable="False"
+			          IsReadOnly="True">
+				<ComboBoxItem Content="ID"
+				              IsSelected="True" />
 				<ComboBoxItem Content="DEBUG" />
-			</ComboBox.Items>
-		</ComboBox>
-		<TextBox x:Name="TxtBoxIdOrDebugCode"
-		         HorizontalAlignment="Left"
-		         Margin="110,50,0,0"
-		         TextWrapping="Wrap"
-		         VerticalAlignment="Top"
-		         Width="96"
-		         Height="18"
-		         FontSize="9"
-		         TextAlignment="Center"
-		         PreviewTextInput="AllowOnlyIntegers" />
-		<TextBlock x:Name="TxtBlckId"
-		           HorizontalAlignment="Left"
-		           Margin="349,15,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="48"
-		           Height="18"
-		           TextAlignment="Center"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="Id" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,73,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="80"
-		           Height="12"
-		           FontSize="9"
-		           Text="Fecha y hora" />
-		<TextBlock x:Name="TxtBlckDateTime"
-		           HorizontalAlignment="Left"
-		           Margin="10,90,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="108"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="123,73,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="80"
-		           Height="12"
-		           FontSize="9"
-		           Text="Empleado" />
-		<TextBlock x:Name="TxtBlckEmployee"
-		           HorizontalAlignment="Left"
-		           Margin="123,90,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="108"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Source="{x:Static properties:Settings.Default}" Path="User.FullName" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="236,73,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="80"
-		           Height="12"
-		           FontSize="9"
-		           Text="Precio de compra" />
-		<TextBlock x:Name="TxtBlckBuyPrice"
-		           HorizontalAlignment="Left"
-		           Margin="236,90,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="98"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="BuyPrice" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock x:Name="TxtBlckCurrentAmount"
-		           HorizontalAlignment="Left"
-		           Margin="338,89,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="77"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="CurrentAmount" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="338,73,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="80"
-		           Height="12"
-		           FontSize="9"
-		           Text="Cantidad actual" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,113,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="78"
-		           Height="12"
-		           FontSize="9"
-		           Text="Tipo" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="95,113,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="72"
-		           Height="12"
-		           FontSize="9"
-		           Text="Cantidad" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="265,113,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="72"
-		           Height="12"
-		           FontSize="9"
-		           Text="Provedor" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="180,113,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="72"
-		           Height="12"
-		           FontSize="9"
-		           Text="Precio" />
-		<ComboBox x:Name="CmbBoxTask"
-		          HorizontalAlignment="Left"
-		          Margin="10,130,0,0"
-		          VerticalAlignment="Top"
-		          Width="80"
-		          Height="18"
-		          HorizontalContentAlignment="Center"
-		          FontSize="9"
-		          SelectionChanged="ConfigureControlsForTask"/>
-		<TextBox x:Name="TxtBoxInputQuantity"
-		         HorizontalAlignment="Left"
-		         Margin="95,130,0,0"
-		         TextWrapping="Wrap"
-		         VerticalAlignment="Top"
-		         Width="80"
-		         Height="18"
-		         FontSize="9"
-		         TextAlignment="Center"
-		         PreviewTextInput="AllowOnlyIntegers" />
-		<TextBox x:Name="TxtBoxInputPrice"
-		         HorizontalAlignment="Left"
-		         Margin="180,130,0,0"
-		         TextWrapping="Wrap"
-		         VerticalAlignment="Top"
-		         Width="80"
-		         Height="18"
-		         FontSize="9"
-		         TextAlignment="Center"
-		         PreviewTextInput="AllowOnlyDecimals" />
-		<ComboBox x:Name="CmbBoxProvider"
-		          HorizontalAlignment="Left"
-		          Margin="265,130,0,0"
-		          VerticalAlignment="Top"
-		          Width="150"
-		          Height="18"
-		          FontSize="9"
-		          IsEditable="True" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,153,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="402"
-		           Height="12"
-		           FontSize="9"
-		           Text="Descripcion Completa" />
-		<TextBlock x:Name="TxtBlckFullDescription"
-		           HorizontalAlignment="Left"
-		           Margin="10,170,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="402"
-		           Height="22.5"
-		           FontSize="9"
-		           TextAlignment="Center"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="FullDescription" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="10,199,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           FontSize="9"
-		           Width="198"
-		           Height="12"
-		           Text="Contenedor" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="213,199,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="72"
-		           Height="12"
-		           FontSize="9"
-		           Text="Ubicacion" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="290,199,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36"
-		           Height="12"
-		           FontSize="9"
-		           Text="S" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="331,199,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36"
-		           Height="12"
-		           FontSize="9"
-		           Text="E" />
-		<TextBlock HorizontalAlignment="Left"
-		           Margin="372,199,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36"
-		           Height="12"
-		           FontSize="9"
-		           Text="R" />
-		<TextBlock x:Name="TxtBlckContainer"
-		           HorizontalAlignment="Left"
-		           Margin="10,216,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="198"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="Container" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock x:Name="TxtBlckLocation"
-		           HorizontalAlignment="Left"
-		           Margin="213,216,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="72"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="Location" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock x:Name="TxtBlckBranchOffice"
-		           HorizontalAlignment="Left"
-		           Margin="290,216,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36" Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="BranchOffice" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock x:Name="TxtBlckRack"
-		           HorizontalAlignment="Left"
-		           Margin="331,216,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="Rack" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-		<TextBlock x:Name="TxtBlckShelf"
-		           HorizontalAlignment="Left"
-		           Margin="372,216,0,0"
-		           TextWrapping="Wrap"
-		           VerticalAlignment="Top"
-		           Width="36"
-		           Height="18"
-		           FontSize="9"
-		           TextAlignment="Left"
-		           Foreground="#FFF10C0C">
-			<TextBlock.Text>
-				<Binding Path="Shelf" Mode="OneWay" />
-			</TextBlock.Text>
-		</TextBlock>
-	</Grid>
+			</ComboBox>
+			<TextBox x:Name="TxtBoxIdOrDebugCode"
+			         Grid.Row="2"
+			         Grid.Column="2"
+			         Margin="8,0,0,0"
+			         FontSize="14"
+			         HorizontalContentAlignment="Center"
+			         PreviewTextInput="AllowOnlyIntegers"
+			         KeyDown="EnterKeyPressed" />
+			<TextBox Grid.Row="2"
+			         Grid.Column="3"
+			         Margin="8,0,0,0"
+			         FontSize="14"
+			         HorizontalContentAlignment="Center" />
+			<Button x:Name="BtnSearch"
+			        Grid.Row="2"
+			        Grid.Column="4"
+			        Margin="8,0,0,0"
+			        HorizontalAlignment="Left"
+			        FontSize="14"
+			        Content="Buscar"
+			        Click="VerifySearch" />
+			<Label Grid.Row="3"
+			       Grid.Column="0"
+			       VerticalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Fecha y Hora" />
+			<Label Grid.Row="3"
+			       Grid.Column="2"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Empleado" />
+			<Label Grid.Row="3"
+			       Grid.Column="4"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Precio Compra" />
+			<Label Grid.Row="3"
+			       Grid.Column="5"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Cantidad actual" />
+			<Label x:Name="LblDateTime"
+			       Grid.Row="4"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       HorizontalContentAlignment="Center"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C" />
+			<Label x:Name="LblEmployee"
+			       Grid.Row="4"
+			       Grid.Column="2"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Source="{x:Static properties:Settings.Default}" Path="User.FullName" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblBuyPrice"
+			       Grid.Row="4"
+			       Grid.Column="4"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="BuyPrice" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblCurrentAmount"
+			       Grid.Row="4"
+			       Grid.Column="5"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="CurrentAmount" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label Grid.Row="5"
+			       Grid.Column="0"
+			       VerticalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Tipo" />
+			<Label Grid.Row="5"
+			       Grid.Column="2"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Cantidad" />
+			<Label Grid.Row="5"
+			       Grid.Column="3"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Precio" />
+			<Label Grid.Row="5"
+			       Grid.Column="4"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,8,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Proveedor" />
+			<ComboBox x:Name="CmbBoxTask"
+			          Grid.Row="6"
+			          Grid.Column="0"
+			          Grid.ColumnSpan="2"
+			          Margin="8,0,8,0"
+			          FontSize="14"
+			          HorizontalContentAlignment="Center"
+			          IsEditable="False"
+			          IsReadOnly="True"
+			          SelectionChanged="ConfigureControlsForTask" />
+			<TextBox x:Name="TxtBoxInputQuantity"
+			         Grid.Row="6"
+			         Grid.Column="2"
+			         Margin="0,0,8,0"
+			         FontSize="14"
+			         HorizontalContentAlignment="Center"
+			         PreviewTextInput="AllowOnlyIntegers" />
+			<TextBox x:Name="TxtBoxInputPrice"
+			         Grid.Row="6"
+			         Grid.Column="3"
+			         Margin="0,0,8,0"
+			         FontSize="14"
+			         HorizontalContentAlignment="Center"
+			         PreviewTextInput="AllowOnlyDecimals" />
+			<ComboBox x:Name="CmbBoxProvider"
+			          Grid.Row="6"
+			          Grid.Column="4"
+			          Grid.ColumnSpan="3"
+			          Margin="0,0,8,0"
+			          FontSize="14"
+			          HorizontalContentAlignment="Center"
+			          IsEditable="True"
+			          IsReadOnly="False" />
+			<Label Grid.Row="7"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Descripcion completa" />
+			<Label x:Name="LblFullDescription"
+			       Grid.Row="8"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="7"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="FullDescription" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label Grid.Row="9"
+			       Grid.Column="0"
+			       VerticalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Contenedor" />
+			<Label Grid.Row="9"
+			       Grid.Column="2"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Ubicacion" />
+			<Label Grid.Row="9"
+			       Grid.Column="4"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Sucursal" />
+			<Label Grid.Row="9"
+			       Grid.Column="5"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Estante" />
+			<Label Grid.Row="9"
+			       Grid.Column="6"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Content="Repisa" />
+			<Label x:Name="LblContainer"
+			       Grid.Row="10"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="8,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="Container" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblLocation"
+			       Grid.Row="10"
+			       Grid.Column="2"
+			       Grid.ColumnSpan="2"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="Location" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblBranchOffice"
+			       Grid.Row="10"
+			       Grid.Column="4"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="BranchOffice" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblRack"
+			       Grid.Row="10"
+			       Grid.Column="5"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="Rack" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Label x:Name="LblShelf"
+			       Grid.Row="10"
+			       Grid.Column="6"
+			       VerticalContentAlignment="Center"
+			       HorizontalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="14"
+			       Foreground="#FFF10C0C">
+				<Label.Content>
+					<Binding Path="Shelf" Mode="OneWay" />
+				</Label.Content>
+			</Label>
+			<Grid Grid.Row="11"
+			      Grid.Column="0"
+			      Grid.ColumnSpan="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Button x:Name="BtnExecuteTask"
+				        Grid.Column="0"
+				        Margin="8,8,0,0"
+				        FontSize="14"
+				        Content="Ejecutar"
+				        Click="ExecuteTask" />
+				<Button x:Name="BtnExit"
+				        Grid.Column="1"
+				        Margin="8,8,0,0"
+				        FontSize="14"
+				        Content="Salir"
+				        Click="CloseWindow" />
+			</Grid>
+		</Grid>
+	</Viewbox>
 </model:MyWindow>
