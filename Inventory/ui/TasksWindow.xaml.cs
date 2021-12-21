@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Inventory.data;
 using Inventory.model;
 using Inventory.Properties;
@@ -95,6 +96,12 @@ namespace Inventory.ui
 			this.Activate();
 		}
 
+		private void EnterKeyPressed(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+				VerifySearch(null, null);
+		}
+
 		private void VerifySearch(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
@@ -109,6 +116,7 @@ namespace Inventory.ui
 		private void SearchProductById(int id)
 		{
 			this.DataContext = Product = Product.GetDataFromSqlDatabase(id);
+			RefresthDateTime();
 		}
 
 		private void ExecuteTask(object sender, RoutedEventArgs e)
@@ -198,7 +206,7 @@ namespace Inventory.ui
 				ProductId = Product.Id,
 				EmployeeId = Employee.Id
 			};
-			
+
 			inventoryDb.RecordsOfProductMovements.Add(newRecord);
 			inventoryDb.SaveChanges();
 		}
@@ -446,7 +454,7 @@ namespace Inventory.ui
 
 		private void RefresthDateTime()
 		{
-			TxtBlckDateTime.Text = Now.ToString(CultureInfo.CurrentCulture);
+			LblDateTime.Content = Now.ToString(CultureInfo.CurrentCulture);
 		}
 
 		private void ClearControls()
@@ -462,7 +470,7 @@ namespace Inventory.ui
 			{
 				case "AJUSTE DE PRECIO DE COMPRA":
 					EnableControlsForBuyPriceChange();
-					break;	
+					break;
 				case "ENTRADA DE PRODUCTO":
 					EnableControlsForProductEntry();
 					break;
