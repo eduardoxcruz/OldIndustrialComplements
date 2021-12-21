@@ -11,7 +11,7 @@ namespace Inventory.ui
 			InitializeComponent();
 		}
 
-		private void BtnSave_Click(object sender, RoutedEventArgs e)
+		private void SaveDatabaseIpAndPhotosPath(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxIpAdress.Text) || string.IsNullOrEmpty(TxtxBoxSystemAdress.Text))
 			{
