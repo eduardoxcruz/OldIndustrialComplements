@@ -27,7 +27,6 @@ namespace Inventory.ui
 			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests(null, null);
 			StartDispatcherTimer();
-			ProductRequestsView.Filter += FiltersToProductRequestsView;
 		}
 
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
@@ -43,6 +42,7 @@ namespace Inventory.ui
 			ProductRequestsView = new CollectionViewSource() { Source = ProductRequestsCollection };
 			ProductRequestsView.SortDescriptions.Clear();
 			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
+			ProductRequestsView.Filter += FiltersToProductRequestsView;
 			DataGridRequests.ItemsSource = ProductRequestsView.View;
 		}
 
