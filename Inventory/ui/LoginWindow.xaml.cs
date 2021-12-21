@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using Inventory.data;
 using Inventory.model;
 
@@ -41,6 +42,12 @@ namespace Inventory.ui
 				CmbBoxEmployees.SelectedItem = inventoryDb.Employees
 					.FirstOrDefault(employee => employee == Properties.Settings.Default.User);
 			});
+		}
+		
+		private void EnterKeyPressed(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+				TryToLogin(null, null);
 		}
 
 		private void TryToLogin(object sender, RoutedEventArgs e)

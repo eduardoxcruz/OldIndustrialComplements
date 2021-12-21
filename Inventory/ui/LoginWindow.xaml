@@ -48,7 +48,8 @@
 			             Grid.Row="3"
 			             Margin="4"
 			             FontSize="12"
-			             HorizontalContentAlignment="Center"/>
+			             HorizontalContentAlignment="Center"
+			             KeyDown="EnterKeyPressed"/>
 			<CheckBox x:Name="ChkBoxRememberData"
 			          Grid.Column="0"
 			          Grid.Row="4"
