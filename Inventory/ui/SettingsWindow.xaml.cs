@@ -15,14 +15,14 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxIpAdress.Text) || string.IsNullOrEmpty(TxtxBoxSystemAdress.Text))
 			{
-				MessageBox.Show("Ningun campo puede quedar vacio");
+				MessageBox.Show("Ningun campo puede quedar vacio", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
 
 			Properties.Settings.Default.DatabaseIp = TxtBoxIpAdress.Text;
 			Properties.Settings.Default.PhotosPath = TxtxBoxSystemAdress.Text;
 			Properties.Settings.Default.Save();
-			MessageBox.Show("Campos guardados exitosamente");
+			MessageBox.Show("Datos guardados correctamente.", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)

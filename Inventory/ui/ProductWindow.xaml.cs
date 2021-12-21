@@ -171,7 +171,7 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
 			{
-				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Error");
+				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Id o Codigo Debug Invalido", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
 
@@ -222,7 +222,8 @@ namespace Inventory.ui
 					if (MessageBox.Show(
 						"¿Esta seguro de guardar los cambios?",
 						"Confirmacion",
-						MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+						MessageBoxButton.OKCancel,
+						MessageBoxImage.Question) == MessageBoxResult.OK)
 						SaveProduct();
 					break;
 				case ProductWindowTasks.ShowDetails:
@@ -232,7 +233,8 @@ namespace Inventory.ui
 					if (MessageBox.Show(
 						"¿Esta seguro de guardar el nuevo producto?",
 						"Confirmacion",
-						MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+						MessageBoxButton.OKCancel,
+						MessageBoxImage.Question) == MessageBoxResult.OK)
 					{
 						SaveProduct();
 						ShowProductDetailsInstance.BringWindowToFront(Product);
@@ -262,6 +264,7 @@ namespace Inventory.ui
 				}
 
 				inventoryDb.SaveChanges();
+				MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 			});
 		}
 
