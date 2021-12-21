@@ -256,9 +256,18 @@ namespace Inventory.ui
 				switch (CurrentTask)
 				{
 					case ProductWindowTasks.Modify:
+						if (ProfitWithoutDiscountIsZero())
+						{
+							MessageBox.Show("La utilidad debe ser mayor a 0.", 
+								"Error", 
+								MessageBoxButton.OK, 
+								MessageBoxImage.Error);
+							return;
+						}
 						inventoryDb.Entry(Product).State = EntityState.Modified;
 						break;
 					case ProductWindowTasks.AddNewProduct:
+						if (!IsNewProductValid()) return; 
 						inventoryDb.Products.Add(Product);
 						break;
 				}
@@ -266,6 +275,34 @@ namespace Inventory.ui
 				inventoryDb.SaveChanges();
 				MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 			});
+		}
+
+		private bool IsNewProductValid()
+		{
+			bool isValid = true;
+
+			if (string.IsNullOrEmpty(Product.Enrollment) ||
+			    string.IsNullOrEmpty(Product.Status) ||
+			    string.IsNullOrEmpty(Product.MountingTechnology) ||
+			    string.IsNullOrEmpty(Product.EncapsulationType) ||
+			    string.IsNullOrEmpty(Product.ShortDescription) ||
+			    string.IsNullOrEmpty(Product.TypeOfStock) ||
+			    string.IsNullOrEmpty(Product.UnitType) ||
+			    ProfitWithoutDiscountIsZero())
+			{
+				isValid = false;
+				MessageBox.Show("Los campos con * son obligatorios y la utilidad debe ser mayor a 0.", 
+					"Error", 
+					MessageBoxButton.OK, 
+					MessageBoxImage.Error);
+			}
+			
+			return isValid;
+		}
+
+		private bool ProfitWithoutDiscountIsZero()
+		{
+			return Product.ProfitWithoutDiscount <= 0;
 		}
 
 		private void EnableInventory(object sender, RoutedEventArgs e)
