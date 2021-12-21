@@ -19,6 +19,9 @@
 		<Style TargetType="DataGridCell">
 			<Setter Property="TextBlock.TextAlignment"
 			        Value="Center" />
+			<EventSetter Event="PreviewMouseLeftButtonDown" Handler="MouseLeftButtonClick"/>
+			<EventSetter Event="KeyUp" Handler="DataGridKeyPressed"/>
+			<EventSetter Event="MouseDoubleClick" Handler="SelectProductFromDataGrid" />
 		</Style>
 	</model:MyWindow.Resources>
 	<Viewbox Stretch="Fill">
@@ -43,7 +46,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="3*" />
+				<RowDefinition Height="4*" />
 				<RowDefinition Height="2*" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
@@ -136,8 +139,8 @@
 			       Grid.RowSpan="5"
 			       Grid.Column="6"
 			       Grid.ColumnSpan="1"
-			       Width="75"
-			       Height="65" />
+			       Width="90"
+			       Height="90" />
 			<TextBox x:Name="TxtBoxId"
 			         Grid.Row="5"
 			         Grid.Column="0"
@@ -204,21 +207,27 @@
 				       Margin="8,0,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Maximo" />
+				       Content="Minimo" />
 				<Label Grid.Row="0"
 				       Grid.Column="1"
 				       Margin="8,0,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Minimo" />
-				<TextBox Grid.Row="1"
+				       Content="Maximo" />
+				<TextBox x:Name="TxtBoxMinAmount"
+						 Grid.Row="1"
 				         Grid.Column="0"
 				         Margin="8,0,0,0"
-				         FontSize="12" />
-				<TextBox Grid.Row="1"
+				         FontSize="12"
+						 KeyDown="EnterKeyPressed"
+						 PreviewTextInput="AllowOnlyIntegers"/>
+				<TextBox x:Name="TxtBoxMaxAmount" 
+						 Grid.Row="1"
 				         Grid.Column="1"
 				         Margin="8,0,0,0"
-				         FontSize="12" />
+				         FontSize="12"
+						 PreviewTextInput="AllowOnlyIntegers"
+						 KeyDown="EnterKeyPressed"/>
 			</Grid>
 			<TextBox x:Name="TxtBoxContainer"
 			         Grid.Row="7"
@@ -244,13 +253,13 @@
 				        Margin="8,8,0,0"
 				        FontSize="12"
 				        Content="Buscar"
-				        Click="SearchWithFilters" />
+				        Click="SearchWithAdvancedFilters" />
 				<Button Grid.Row="0"
 				        Grid.Column="1"
 				        Margin="8,8,0,0"
 				        FontSize="12"
 				        Content="Limpiar"
-				        Click="CleanFilters" />
+				        Click="ClearFilters" />
 			</Grid>
 			<DataGrid x:Name="DataGridProducts"
 			          Grid.Row="9"
@@ -265,44 +274,63 @@
 			          IsReadOnly="True"
 			          FontSize="12"
 			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None"
-			          MouseDoubleClick="SelectProductFromDataGrid">
+			          GridLinesVisibility="None">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
+										MinWidth="20"
+										MaxWidth="50"
 					                    Binding="{Binding Id}" />
 					<DataGridTextColumn Header="Estado"
 					                    Width="SizeToCells"
+										MinWidth="50"
+										MaxWidth="70"
 					                    Binding="{Binding Status}" />
 					<DataGridTextColumn Header="Matricula"
 					                    Width="SizeToCells"
+					                    MaxWidth="150"
+										MinWidth="100"
 					                    Binding="{Binding Enrollment}" />
 					<DataGridTextColumn Header="Descripcion"
 					                    Width="SizeToCells"
+					                    MaxWidth="450"
+										MinWidth="400"
 					                    Binding="{Binding ShortDescription}" />
 					<DataGridTextColumn Header="Tec. de Montaje"
 					                    Width="SizeToCells"
+					                    MaxWidth="100"
+										MinWidth="40"
 					                    Binding="{Binding MountingTechnology}" />
 					<DataGridTextColumn Header="Encapsulado"
 					                    Width="SizeToCells"
+					                    MaxWidth="100"
+										MinWidth="50"
 					                    Binding="{Binding EncapsulationType}" />
 					<DataGridTextColumn Header="Precio de venta"
 					                    Width="SizeToHeader"
+										MinWidth="40"
+										MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
+										MaxWidth="80"
+										MinWidth="40"
 					                    Binding="{Binding CurrentAmount}" />
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
+					                    MaxWidth="170"
+										MinWidth="80"
 					                    Binding="{Binding Container}" />
 					<DataGridTextColumn Header="Ubicacion"
 					                    Width="SizeToCells"
+					                    MaxWidth="120"
+										MinWidth="80"
 					                    Binding="{Binding Location}" />
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>
 					<ContextMenu>
-						<MenuItem Header="Agregar"
-						          Click="AddProductToSeparateDataGrid" />
+						<MenuItem Header="Agregar a otra tabla"
+						          Click="AddProductToFilteredProducts" />
 						<MenuItem Header="Solicitar para venta"
 						          Click="RequestForSell" />
 						<MenuItem Header="Solicitar para tienda"
@@ -320,7 +348,7 @@
 					</ContextMenu>
 				</DataGrid.ContextMenu>
 			</DataGrid>
-			<DataGrid x:Name="DataGridAddedProducts"
+			<DataGrid x:Name="DataGridFilteredProducts"
 			          Grid.Row="10"
 			          Grid.Column="0"
 			          Grid.ColumnSpan="7"
@@ -337,33 +365,53 @@
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
+										MinWidth="20"
+										MaxWidth="50"
 					                    Binding="{Binding Id}" />
 					<DataGridTextColumn Header="Estado"
 					                    Width="SizeToCells"
+										MinWidth="50"
+										MaxWidth="70"
 					                    Binding="{Binding Status}" />
 					<DataGridTextColumn Header="Matricula"
 					                    Width="SizeToCells"
+					                    MaxWidth="150"
+										MinWidth="100"
 					                    Binding="{Binding Enrollment}" />
 					<DataGridTextColumn Header="Descripcion"
 					                    Width="SizeToCells"
+					                    MaxWidth="450"
+										MinWidth="400"
 					                    Binding="{Binding ShortDescription}" />
 					<DataGridTextColumn Header="Tec. de Montaje"
 					                    Width="SizeToCells"
+					                    MaxWidth="100"
+										MinWidth="40"
 					                    Binding="{Binding MountingTechnology}" />
 					<DataGridTextColumn Header="Encapsulado"
 					                    Width="SizeToCells"
+					                    MaxWidth="100"
+										MinWidth="50"
 					                    Binding="{Binding EncapsulationType}" />
 					<DataGridTextColumn Header="Precio de venta"
 					                    Width="SizeToHeader"
+										MinWidth="40"
+										MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
+										MaxWidth="80"
+										MinWidth="40"
 					                    Binding="{Binding CurrentAmount}" />
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
+					                    MaxWidth="120"
+										MinWidth="80"
 					                    Binding="{Binding Container}" />
 					<DataGridTextColumn Header="Ubicacion"
 					                    Width="SizeToCells"
+					                    MaxWidth="120"
+										MinWidth="80"
 					                    Binding="{Binding Location}" />
 				</DataGrid.Columns>
 			</DataGrid>
@@ -378,7 +426,7 @@
 			        Margin="8,8,0,8"
 			        FontSize="12"
 			        Content="Limpiar"
-			        Click="CleanOtherDataGrid" />
+			        Click="ClearDataGridFilteredProducts" />
 		</Grid>
 	</Viewbox>
 </model:MyWindow>
