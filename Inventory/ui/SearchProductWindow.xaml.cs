@@ -42,6 +42,7 @@ namespace Inventory.ui
 			ProductsView.SortDescriptions.Clear();
 			ProductsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Ascending));
 			DataGridProducts.ItemsSource = ProductsView.View;
+			RefreshLblItemCount();
 		}
 
 		private void StartDispatcherTimer()
@@ -112,7 +113,7 @@ namespace Inventory.ui
 			}
 
 			ProductsView.View.Refresh();
-			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count;
+			RefreshLblItemCount();
 		}
 		
 		private void QuickFilter(object sender, FilterEventArgs filterEventArgs)
@@ -237,7 +238,7 @@ namespace Inventory.ui
 
 			TxtBoxQuickSearch.Text = "";
 			ProductsView.View.Refresh();
-			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count;
+			RefreshLblItemCount();
 		}
 		
 		private void AdvancedFilter(object sender, FilterEventArgs filterEventArgs)
@@ -305,8 +306,13 @@ namespace Inventory.ui
 			TxtBoxDebugCode.Text = "";
 			TxtBoxMinAmount.Text = "";
 			TxtBoxMaxAmount.Text = "";
-			LblResultCount.Content = "Recuento: 00";
 			ProductsView.View.Refresh();
+			RefreshLblItemCount();
+		}
+
+		private void RefreshLblItemCount()
+		{
+			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count;
 		}
 
 		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
