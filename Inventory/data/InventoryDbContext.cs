@@ -169,8 +169,7 @@ namespace Inventory.data
 			catch (Exception exception)
 			{
 				MessageBox.Show("Ha ocurrido un error al procesar su solicitud. Intentelo de nuevo.\nMas info: \n\n"
-				                + exception.Message,
-					"Error");
+				                + exception.Message, "Error",MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 	}

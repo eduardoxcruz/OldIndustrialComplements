@@ -232,7 +232,7 @@ namespace Inventory.ui
 			    string.IsNullOrEmpty(TxtBoxMinAmount.Text) &&
 			    string.IsNullOrEmpty(TxtBoxMaxAmount.Text))
 			{
-				MessageBox.Show("Llene al menos un campo para buscar.");
+				MessageBox.Show("Llene al menos un campo para buscar.", "Filtro Invalido", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
 

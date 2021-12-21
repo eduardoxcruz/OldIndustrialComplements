@@ -106,7 +106,7 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdOrDebugCode.Text))
 			{
-				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Error");
+				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
 
@@ -123,7 +123,7 @@ namespace Inventory.ui
 		{
 			if (Product == null || Product.Id == 0)
 			{
-				MessageBox.Show("Seleccione un producto valido.", "Error");
+				MessageBox.Show("Seleccione un producto valido.", "Producto Invalido", MessageBoxButton.OK, MessageBoxImage.Error);
 				return;
 			}
 
@@ -169,7 +169,7 @@ namespace Inventory.ui
 
 			string message = "Confirmar el cambio?\n\nPrecio de compra anterior: " + Product.BuyPrice +
 			                 "\nPrecio de compra nuevo: " + TxtBoxInputPrice.Text;
-			if (MessageBox.Show(message, "Confirmacion", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+			if (MessageBox.Show(message, "Confirmacion", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
 				return;
 
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
@@ -187,7 +187,7 @@ namespace Inventory.ui
 		{
 			if (!string.IsNullOrEmpty(TxtBoxInputPrice.Text) && decimal.Parse(TxtBoxInputPrice.Text) >= 1) return true;
 
-			MessageBox.Show("Ingrese un precio valido mayor a 0.", "Error");
+			MessageBox.Show("Ingrese un precio valido mayor a 0.", "Precio Invalido", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			return false;
 		}
 
@@ -244,7 +244,7 @@ namespace Inventory.ui
 			}
 			catch (Exception exception)
 			{
-				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
+				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -252,7 +252,8 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text))
 			{
-				MessageBox.Show("Ingrese una cantidad valida.", "Error");
+				MessageBox.Show("Ingrese una cantidad valida", "Cantidad Invalida", MessageBoxButton.OK, MessageBoxImage.Warning);
+				
 				return false;
 			}
 
@@ -263,13 +264,14 @@ namespace Inventory.ui
 
 					if (string.IsNullOrEmpty(TxtBoxInputPrice.Text) || decimal.Parse(TxtBoxInputPrice.Text) <= 0)
 					{
-						MessageBox.Show("Ingrese un precio valido mayor a 0.", "Error");
+						MessageBox.Show("Ingrese un precio valido mayor a 0", "Precio Invalido", MessageBoxButton.OK, MessageBoxImage.Warning);
 						return false;
 					}
 
 					if (string.IsNullOrEmpty(CmbBoxProvider.Text))
 					{
 						MessageBox.Show("Ingrese proveedor.", "Error");
+						MessageBox.Show("Ingrese un proveedor.", "Proveedor Incorrecto", MessageBoxButton.OK, MessageBoxImage.Warning);
 						return false;
 					}
 
@@ -351,7 +353,7 @@ namespace Inventory.ui
 		private void SaveProductAmountChangeInDatabase(RecordOfProductMovement recordOfProductMovement,
 			string confirmationMessage)
 		{
-			if (MessageBox.Show(confirmationMessage, "Confirmacion", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+			if (MessageBox.Show(confirmationMessage, "Confirmacion", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
 			{
 				return;
 			}
@@ -368,7 +370,7 @@ namespace Inventory.ui
 				inventoryDb.RecordsOfProductMovements.Add(recordOfProductMovement);
 				inventoryDb.SaveChanges();
 
-				MessageBox.Show("Completado.", "Exito");
+				MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 				ClearControls();
 			});
 		}
@@ -383,7 +385,10 @@ namespace Inventory.ui
 			}
 			catch (Exception exception)
 			{
-				MessageBox.Show("Error al intentar enviar la solicitud. \nDetalles:\n\n" + exception.Message, "Error");
+				MessageBox.Show("Error al intentar enviar la solicitud.\nDetalles:\n\n" + exception.Message, 
+					"Error", 
+					MessageBoxButton.OK, 
+					MessageBoxImage.Error);
 			}
 		}
 
@@ -396,7 +401,10 @@ namespace Inventory.ui
 
 			if (int.Parse(TxtBoxInputQuantity.Text) > Product.CurrentAmount)
 			{
-				MessageBox.Show("Cantidad solicitada es mayor a la cantidad disponible.", "Error");
+				MessageBox.Show("La cantidad solicitada es mayor a la cantidad disponible.", 
+					"Cantidad invalida", 
+					MessageBoxButton.OK, 
+					MessageBoxImage.Warning);
 				return false;
 			}
 
@@ -437,7 +445,7 @@ namespace Inventory.ui
 			inventoryDb.ProductRequests.Add(newRequest);
 			inventoryDb.SaveChanges();
 
-			MessageBox.Show("Completado.", "Exito");
+			MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 			ClearControls();
 		}
 
@@ -448,7 +456,7 @@ namespace Inventory.ui
 				return false;
 			}
 
-			MessageBox.Show("Ingrese una cantidad valida mayor a 0.", "Error");
+			MessageBox.Show("Ingrese una cantidad valida mayor a 0.", "Cantidad Invalida", MessageBoxButton.OK, MessageBoxImage.Warning);
 			return true;
 		}
 

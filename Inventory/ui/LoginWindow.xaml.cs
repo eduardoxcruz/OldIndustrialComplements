@@ -55,7 +55,7 @@ namespace Inventory.ui
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{
 				ChkBoxRememberData.IsChecked = false;
-				MessageBox.Show("El campo de contraseña esta vacío");
+				MessageBox.Show("El campo de contraseña no puede estar vacio.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
 				return;
 			}
 
