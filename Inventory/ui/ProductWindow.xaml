@@ -202,7 +202,7 @@
 					          Margin="0,0,8,0"
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
-					          IsEditable="True"
+					          IsEditable="False"
 					          IsReadOnly="False">
 						<ComboBox.Text>
 							<Binding Path="Status" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -812,7 +812,7 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Tipo de Producto" />
+					       Content="Tipo de Producto*" />
 					<Label Grid.Column="2"
 					       Grid.Row="9"
 					       Margin="0,0,0,0"
