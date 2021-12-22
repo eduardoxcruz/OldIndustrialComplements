@@ -17,7 +17,10 @@ namespace Inventory.data
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 
-		private const string ServerIp = "192.168.0.254";
+		private static string ServerIp = 
+        			string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp) ? 
+        			"192.168.0.254" : 
+        			Properties.Settings.Default.DatabaseIp;
 		private const string ServerPort = "1433";
 		private const string DatabaseName = "inventory";
 		private const string IntegratedSecurity = "False";
@@ -26,7 +29,7 @@ namespace Inventory.data
 		private const string MultipleActiveResultSets = "True";
 		private const string ConnectionTimeoutInSeconds = "10";
 
-		private const string ConnectionString = "Server=" + ServerIp + "," + ServerPort +
+		private static string ConnectionString = "Server=" + ServerIp + "," + ServerPort +
 		                                        ";Database=" + DatabaseName +
 		                                        ";Integrated Security=" + IntegratedSecurity +
 		                                        ";User Id=" + UserId +
