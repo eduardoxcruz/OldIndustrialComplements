@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -9,14 +10,15 @@ using System.Windows.Threading;
 using Inventory.data;
 using Inventory.model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Inventory.ui
 {
 	public partial class RequestsWindow
 	{
 		public static readonly RequestsWindow Instance = new();
-		private DispatcherTimer DispatcherTimer { get; set; }
-		private ProductRequest LastProductRequest { get; set; }
+		private DispatcherTimer NewProductRequestLookupTimer { get; set; }
+		private int LastRequestsCount { get; set; }
 		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<ProductRequest> ProductRequestsCollection { get; set; }
 		private CollectionViewSource ProductRequestsView { get; set; }
@@ -26,14 +28,12 @@ namespace Inventory.ui
 			InitializeComponent();
 			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests(null, null);
-			StartDispatcherTimer();
+			StartNewProductRequestLookupTimer();
+			StartNewProductRequestNotificatorTimer();
 		}
 
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
 		{
-			LastProductRequest =
-				InventoryDb.ProductRequests.OrderByDescending(request => request.Id).FirstOrDefault() ??
-				new ProductRequest();
 			InventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
@@ -44,13 +44,14 @@ namespace Inventory.ui
 			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 			ProductRequestsView.Filter += FiltersToProductRequestsView;
 			DataGridRequests.ItemsSource = ProductRequestsView.View;
+			LastRequestsCount = ProductRequestsCollection.Count;
 		}
 
-		private void StartDispatcherTimer()
+		private void StartNewProductRequestLookupTimer()
 		{
-			DispatcherTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 3) };
-			DispatcherTimer.Tick += AddNewProductRequestToCollection;
-			DispatcherTimer.Start();
+			NewProductRequestLookupTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 3) };
+			NewProductRequestLookupTimer.Tick += AddNewProductRequestToCollection;
+			NewProductRequestLookupTimer.Start();
 		}
 
 		private void AddNewProductRequestToCollection(object sender, EventArgs e)
@@ -59,20 +60,42 @@ namespace Inventory.ui
 				.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
-				.SingleOrDefault(request => request.Id == LastProductRequest.Id + 1);
+				.SingleOrDefault(request => request.Id == ProductRequestsCollection.Last().Id + 1);
 
 			if (nextRequest == null)
 			{
 				return;
 			}
 
-			if (ProductRequestsCollection.Count < nextRequest.Id)
+			if (ProductRequestsCollection.Last().Id < nextRequest.Id)
 			{
-				LastProductRequest = nextRequest;
-				ProductRequestsCollection.Add(LastProductRequest);
+				ProductRequestsCollection.Add(nextRequest);
+				DataGridRequests.Items.Refresh();
 			}
+		}
 
-			DataGridRequests.Items.Refresh();
+		private void StartNewProductRequestNotificatorTimer()
+		{
+			new Thread(() =>
+			{
+				while (true)
+				{
+					NotifyForNewProductRequest();
+					Thread.Sleep(TimeSpan.FromSeconds(2));
+				}
+			}).Start();
+		}
+
+		private void NotifyForNewProductRequest()
+		{
+			if (LastRequestsCount >= ProductRequestsCollection.Count) return;
+			
+			new ToastContentBuilder()
+				.AddText("Solicitud")
+				.AddText("Hay una nueva solicitud de producto.")
+				.Show();
+
+			LastRequestsCount = ProductRequestsCollection.Count;
 		}
 
 		private void SelectProductFromDatagrid(object sender, MouseButtonEventArgs e)
