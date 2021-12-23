@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Inventory.data;
 using Inventory.model;
+using Inventory.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Toolkit.Uwp.Notifications;
 
@@ -28,8 +29,8 @@ namespace Inventory.ui
 			InitializeComponent();
 			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests(null, null);
+			if (Settings.Default.User.Type.Equals("ALMACEN")) StartNewProductRequestNotificatorTimer();
 			StartNewProductRequestLookupTimer();
-			StartNewProductRequestNotificatorTimer();
 		}
 
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
