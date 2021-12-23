@@ -408,6 +408,18 @@
 										MinWidth="80"
 					                    Binding="{Binding Location}" />
 				</DataGrid.Columns>
+				<DataGrid.ContextMenu>
+					<ContextMenu>
+						<MenuItem Header="Solicitar para venta"
+						          Click="RequestForSell" />
+						<MenuItem Header="Solicitar para tienda"
+						          Click="RequestForStore" />
+						<MenuItem Header="Solicitar sin surtir"
+						          Click="RequestWithoutSupply" />
+						<MenuItem Header="Solicitar para verificar"
+						          Click="RequestForVerify" />
+					</ContextMenu>
+				</DataGrid.ContextMenu>
 			</DataGrid>
 			<Button Grid.Row="11"
 			        Grid.Column="0"
