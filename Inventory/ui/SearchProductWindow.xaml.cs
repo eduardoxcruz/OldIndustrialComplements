@@ -26,7 +26,6 @@ namespace Inventory.ui
 		private SearchProductWindow()
 		{
 			InitializeComponent();
-			InventoryDb = new InventoryDbContext();
 			GetAllProducts();
 			StartDispatcherTimer();
 			ProductsView.Filter += MyProductsViewFilters;
@@ -34,6 +33,8 @@ namespace Inventory.ui
 
 		private void GetAllProducts()
 		{
+			InventoryDb = new InventoryDbContext();
+			
 			LastProduct = InventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault() ??
 			              new Product();
 			InventoryDb.Products.Load();
