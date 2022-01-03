@@ -376,39 +376,6 @@ namespace Inventory.ui
 			}
 		}
 
-		private void IngressProduct(object sender, RoutedEventArgs e)
-		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "ENTRADA DE PRODUCTO");
-		}
-
-		private void AdjustStock(object sender, RoutedEventArgs e)
-		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "AJUSTE DE CANTIDAD");
-		}
-
-		private void BuyMoreProduct(object sender, RoutedEventArgs e)
-		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "COMPRAR MAS PRODUCTO");
-		}
-
 		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
