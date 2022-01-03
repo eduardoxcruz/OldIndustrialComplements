@@ -27,7 +27,6 @@ namespace Inventory.ui
 		private RequestsWindow()
 		{
 			InitializeComponent();
-			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests(null, null);
 			if (Settings.Default.User.Type.Equals("ALMACEN")) StartNewProductRequestNotificatorTimer();
 			StartNewProductRequestLookupTimer();
@@ -35,6 +34,8 @@ namespace Inventory.ui
 
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
 		{
+			InventoryDb = new InventoryDbContext();
+			
 			InventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
