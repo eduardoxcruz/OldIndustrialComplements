@@ -140,6 +140,7 @@ namespace Inventory.ui
 				}
 				InventoryDb.SaveChanges();
 			});
+			RefreshProductRequestsView(null, null);
 		}
 		
 		private void ChangeSelectedRowStatusAsDelivered(object sender, RoutedEventArgs e)
