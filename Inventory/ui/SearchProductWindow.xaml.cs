@@ -378,46 +378,46 @@ namespace Inventory.ui
 
 		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
+			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
+			
+			if (selectedProduct != null) 
+				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
 		}
 
 		private void RequestForStore(object sender, RoutedEventArgs e)
 		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA TIENDA");
+			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
+			
+			if (selectedProduct != null) 
+				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA TIENDA");
 		}
 
 		private void RequestWithoutSupply(object sender, RoutedEventArgs e)
 		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
-			{
-				return;
-			}
-
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR SIN SURTIR");
+			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
+			
+			if (selectedProduct != null) 
+				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR SIN SURTIR");
 		}
 
 		private void RequestForVerify(object sender, RoutedEventArgs e)
 		{
-			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
+			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
+			
+				if (selectedProduct != null) 
+				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VERIFICAR");
+		}
+
+		private Product GetSelectedProductFromDataGrid(object sender)
+		{
+			DataGrid dataGridSource = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as DataGrid;
+
+			if (dataGridSource.SelectedItems.Count > 0)
 			{
-				return;
+				return dataGridSource.SelectedItems[0] as Product;
 			}
 
-			Product selectedProduct = (Product)DataGridProducts.SelectedItems[0];
-			TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VERIFICAR");
+			return null;
 		}
 	}
 }
