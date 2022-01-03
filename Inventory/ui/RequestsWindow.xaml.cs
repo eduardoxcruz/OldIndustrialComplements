@@ -20,14 +20,12 @@ namespace Inventory.ui
 		public static readonly RequestsWindow Instance = new();
 		private DispatcherTimer NewProductRequestLookupTimer { get; set; }
 		private int LastRequestsCount { get; set; }
-		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<ProductRequest> ProductRequestsCollection { get; set; }
 		private CollectionViewSource ProductRequestsView { get; set; }
 
 		private RequestsWindow()
 		{
 			InitializeComponent();
-			InventoryDb = new InventoryDbContext();
 			GetAllProductRequests(null, null);
 			if (Settings.Default.User.Type.Equals("ALMACEN")) StartNewProductRequestNotificatorTimer();
 			StartNewProductRequestLookupTimer();
@@ -35,11 +33,13 @@ namespace Inventory.ui
 
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
 		{
-			InventoryDb.ProductRequests
+			using InventoryDbContext inventoryDb = new();
+			
+			inventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.Load();
-			ProductRequestsCollection = InventoryDb.ProductRequests.Local.ToObservableCollection();
+			ProductRequestsCollection = inventoryDb.ProductRequests.Local.ToObservableCollection();
 			ProductRequestsView = new CollectionViewSource() { Source = ProductRequestsCollection };
 			ProductRequestsView.SortDescriptions.Clear();
 			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
@@ -57,7 +57,9 @@ namespace Inventory.ui
 
 		private void AddNewProductRequestToCollection(object sender, EventArgs e)
 		{
-			ProductRequest nextRequest = InventoryDb
+			using InventoryDbContext inventoryDb = new();
+			
+			ProductRequest nextRequest = inventoryDb
 				.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
@@ -133,12 +135,14 @@ namespace Inventory.ui
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() => {
+				using InventoryDbContext inventoryDb = new();
+				
 				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
 				{
 					selectedItem.Type = message;
-					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+					inventoryDb.Entry(selectedItem).State = EntityState.Modified;
 				}
-				InventoryDb.SaveChanges();
+				inventoryDb.SaveChanges();
 			});
 			RefreshProductRequestsView(null, null);
 		}
@@ -160,13 +164,16 @@ namespace Inventory.ui
 
 		private void ChangeStatusForAllSelectedRows(string message)
 		{
-			InventoryDbContext.ExecuteDatabaseRequest(() => {
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				
 				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
 				{
 					selectedItem.Status = message;
-					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+					inventoryDb.Entry(selectedItem).State = EntityState.Modified;
 				}
-				InventoryDb.SaveChanges();
+				inventoryDb.SaveChanges();
 			});
 			RefreshProductRequestsView(null, null);
 		}
