@@ -204,10 +204,11 @@ namespace Inventory.ui
 		
 		private void RemoveElement(object sender, RoutedEventArgs e)
 		{
-			using InventoryDbContext inventoryDb = new InventoryDbContext();
-			ProductRequest productToDelete = (ProductRequest)DataGridRequests.SelectedItems[0];
-			inventoryDb.Remove(productToDelete);
-			inventoryDb.SaveChanges();
+			if (DataGridRequests.ItemsSource == null || DataGridRequests.SelectedItems.Count <= 0) return;
+			
+			InventoryDb.Remove((ProductRequest)DataGridRequests.SelectedItems[0]);
+			InventoryDb.SaveChanges();
+			RefreshProductRequestsView(null, null);
 		}
 	}
 }
