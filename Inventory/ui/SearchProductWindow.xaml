@@ -243,11 +243,12 @@
 			         KeyDown="EnterKeyPressed" />
 			<Grid Grid.Row="8"
 			      Grid.Column="0"
+				  Grid.ColumnSpan="2"
 			      Margin="0,0,0,0">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<Button Grid.Row="0"
 				        Grid.Column="0"
@@ -318,6 +319,12 @@
 					                    MinWidth="40"
 					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
+					<DataGridCheckBoxColumn Header="Usa Inventario"
+											Width="SizeToHeader"
+											MinWidth="40"
+											MaxWidth="100"
+											IsThreeState="False"
+											Binding="{Binding IsUsingInventory}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
 					                    MaxWidth="80"
@@ -399,6 +406,12 @@
 					                    MinWidth="40"
 					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
+					<DataGridCheckBoxColumn Header="Usa Inventario"
+											Width="SizeToHeader"
+											MinWidth="40"
+											MaxWidth="100"
+											IsThreeState="False"
+											Binding="{Binding IsUsingInventory}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
 					                    MaxWidth="80"
