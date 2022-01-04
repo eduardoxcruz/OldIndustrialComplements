@@ -41,6 +41,8 @@ namespace Inventory.data
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer(ConnectionString);
+			optionsBuilder.EnableDetailedErrors();
+			optionsBuilder.EnableSensitiveDataLogging();
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
