@@ -247,6 +247,7 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<Button Grid.Row="0"
 				        Grid.Column="0"
@@ -260,6 +261,12 @@
 				        FontSize="12"
 				        Content="Limpiar"
 				        Click="ClearFilters" />
+				<Button Grid.Row="0"
+				        Grid.Column="2"
+				        Margin="8,8,0,0"
+				        FontSize="12"
+				        Content="Actualizar"
+				        Click="GetAllProducts" />
 			</Grid>
 			<DataGrid x:Name="DataGridProducts"
 			          Grid.Row="9"

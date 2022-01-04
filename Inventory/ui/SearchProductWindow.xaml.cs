@@ -26,12 +26,11 @@ namespace Inventory.ui
 		private SearchProductWindow()
 		{
 			InitializeComponent();
-			GetAllProducts();
+			GetAllProducts(null, null);
 			StartDispatcherTimer();
-			ProductsView.Filter += MyProductsViewFilters;
 		}
 
-		private void GetAllProducts()
+		private void GetAllProducts(object sender, RoutedEventArgs e)
 		{
 			InventoryDb = new InventoryDbContext();
 
@@ -42,6 +41,7 @@ namespace Inventory.ui
 			ProductsView = new CollectionViewSource() {Source = Products};
 			ProductsView.SortDescriptions.Clear();
 			ProductsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Ascending));
+			ProductsView.Filter += MyProductsViewFilters;
 			DataGridProducts.ItemsSource = ProductsView.View;
 			RefreshLblItemCount();
 		}
