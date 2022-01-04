@@ -22,12 +22,14 @@ namespace Inventory.ui
 		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<Product> Products { get; set; }
 		private CollectionViewSource ProductsView { get; set; }
+		private decimal FinalCost { get; set; }
 
 		private SearchProductWindow()
 		{
 			InitializeComponent();
 			GetAllProducts(null, null);
 			StartDispatcherTimer();
+			FinalCost = 0M;
 		}
 
 		private void GetAllProducts(object sender, RoutedEventArgs e)
@@ -335,12 +337,19 @@ namespace Inventory.ui
 			}
 
 			foreach (Product selectedProduct in DataGridProducts.SelectedItems)
+			{
+				FinalCost = FinalCost + selectedProduct.SalePriceWithoutDiscount ?? 0M;
 				DataGridFilteredProducts.Items.Add(selectedProduct);
+			}
+
+			LblFinalCost.Content = $"Costo total: ${FinalCost}";
 		}
 
 		private void ClearDataGridFilteredProducts(object sender, RoutedEventArgs e)
 		{
 			DataGridFilteredProducts.Items.Clear();
+			FinalCost = 0M;
+			LblFinalCost.Content = $"Costo total: ${FinalCost}";
 		}
 
 		private void DataGridKeyPressed(object sender, KeyEventArgs e)
