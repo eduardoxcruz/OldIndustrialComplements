@@ -88,6 +88,7 @@ namespace Inventory.ui
 			BtnRefreshProduct.IsEnabled = false;
 			BtnVerifySearch.IsEnabled = false;
 			BtnLoadFirstProduct.IsEnabled = false;
+			BtnLoadLastProduct.IsEnabled = false;
 			TxtBlockProductTask.Content = "Nuevo Producto";
 			BtnAddModifyAndSave.Content = "Agregar";
 			Product lastProduct = null;
@@ -188,6 +189,18 @@ namespace Inventory.ui
 		private void LoadFirstProduct(object sender, RoutedEventArgs e)
 		{
 			SearchProductById(1);
+		}
+		
+		private void LoadLastProduct(object sender, RoutedEventArgs e)
+		{
+			Product lastProduct = null;
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
+			});
+			
+			SearchProductById(lastProduct?.Id ?? 1);
 		}
 
 		private void SearchProductById(int id)
