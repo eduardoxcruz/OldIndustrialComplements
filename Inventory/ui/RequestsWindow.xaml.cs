@@ -133,12 +133,14 @@ namespace Inventory.ui
 		
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
-			InventoryDbContext.ExecuteDatabaseRequest(() => {
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
 				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
 				{
 					selectedItem.Type = message;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
 				}
+
 				InventoryDb.SaveChanges();
 			});
 			RefreshProductRequestsView(null, null);
@@ -161,24 +163,35 @@ namespace Inventory.ui
 
 		private void ChangeStatusForAllSelectedRows(string message)
 		{
-			InventoryDbContext.ExecuteDatabaseRequest(() => {
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
 				foreach (ProductRequest selectedItem in DataGridRequests.SelectedItems)
 				{
 					selectedItem.Status = message;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
 				}
+
 				InventoryDb.SaveChanges();
 			});
 			RefreshProductRequestsView(null, null);
 		}
 
 		private void FiltersToProductRequestsView(object sender, FilterEventArgs filterEventArgs)
-		{	
+		{
 			if (filterEventArgs.Item is not ProductRequest productRequest) return;
-			
-			if (ChkBoxFilterByDelivered.IsChecked == false &&
-			    ChkBoxFilterByNotDelivered.IsChecked == false &&
-			    ChkBoxFilterByReturned.IsChecked == false)
+
+			if (ChkBoxHideNoSupply.IsChecked == true)
+			{
+				if (productRequest.Type is "NO SURTIR")
+				{
+					filterEventArgs.Accepted = false;
+					return;
+				}
+
+				filterEventArgs.Accepted = true;
+			}
+
+			if (AllCheckBoxesAreNotChecked())
 			{
 				filterEventArgs.Accepted = true;
 				return;
@@ -197,15 +210,22 @@ namespace Inventory.ui
 			}
 		}
 
+		private bool AllCheckBoxesAreNotChecked()
+		{
+			return ChkBoxFilterByDelivered.IsChecked == false &&
+			       ChkBoxFilterByNotDelivered.IsChecked == false &&
+			       ChkBoxFilterByReturned.IsChecked == false;
+		}
+
 		private void RefreshProductRequestsView(object sender, RoutedEventArgs e)
 		{
 			ProductRequestsView.View.Refresh();
 		}
-		
+
 		private void RemoveElement(object sender, RoutedEventArgs e)
 		{
 			if (DataGridRequests.ItemsSource == null || DataGridRequests.SelectedItems.Count <= 0) return;
-			
+
 			InventoryDb.Remove((ProductRequest)DataGridRequests.SelectedItems[0]);
 			InventoryDb.SaveChanges();
 			RefreshProductRequestsView(null, null);
