@@ -255,6 +255,16 @@ namespace Inventory.ui
 
 		private bool IsProductAmountChangeValid(string typeOfChange)
 		{
+			if (Product.IsUsingInventory is null or false)
+			{
+				MessageBox.Show("No se puede ejecutar esta tarea, el producto no usa inventario.", 
+					"Producto invalido", 
+					MessageBoxButton.OK,
+					MessageBoxImage.Warning);
+
+				return false;
+			}
+			
 			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text))
 			{
 				MessageBox.Show("Ingrese una cantidad valida", "Cantidad Invalida", MessageBoxButton.OK,
@@ -403,6 +413,16 @@ namespace Inventory.ui
 
 		private bool IsProductRequestForWarehouseValid()
 		{
+			if (Product.IsUsingInventory is null or false)
+			{
+				MessageBox.Show("No se puede ejecutar esta tarea, el producto no usa inventario.", 
+					"Producto invalido", 
+					MessageBoxButton.OK,
+					MessageBoxImage.Warning);
+
+				return false;
+			}
+			
 			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || QuantityIsZero())
 			{
 				return false;
