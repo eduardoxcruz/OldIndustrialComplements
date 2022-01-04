@@ -560,7 +560,8 @@ namespace Inventory.model
 				case nameof(SalePriceWithoutDiscount):
 					goto case nameof(PercentageOfDiscount);
 				case nameof(PercentageOfDiscount):
-					SalePriceWithDiscount = SalePriceWithoutDiscount - ((PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount);
+					SalePriceWithDiscount = SalePriceWithoutDiscount -
+					                        ((PercentageOfDiscount * 0.01M) * SalePriceWithoutDiscount);
 					ProfitWithDiscount = SalePriceWithDiscount - BuyPrice;
 					break;
 			}

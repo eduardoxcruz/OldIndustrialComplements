@@ -34,7 +34,7 @@ namespace Inventory.ui
 		private void GetAllProducts()
 		{
 			InventoryDb = new InventoryDbContext();
-			
+
 			LastProduct = InventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault() ??
 			              new Product();
 			InventoryDb.Products.Load();
@@ -52,7 +52,7 @@ namespace Inventory.ui
 			DispatcherTimer.Tick += AddNewProductToCollection;
 			DispatcherTimer.Start();
 		}
-		
+
 		private void AddNewProductToCollection(object sender, EventArgs e)
 		{
 			Product nextProduct = InventoryDb.Products.SingleOrDefault(product => product.Id == LastProduct.Id + 1);
@@ -67,10 +67,10 @@ namespace Inventory.ui
 				LastProduct = nextProduct;
 				Products.Add(LastProduct);
 			}
-			
+
 			DataGridProducts.Items.Refresh();
 		}
-		
+
 		private void MyProductsViewFilters(object sender, FilterEventArgs filterEventArgs)
 		{
 			if (filterEventArgs.Item is not Product) return;
@@ -80,13 +80,13 @@ namespace Inventory.ui
 				filterEventArgs.Accepted = true;
 				return;
 			}
-			
+
 			if (!string.IsNullOrEmpty(TxtBoxQuickSearch.Text))
 			{
 				QuickFilter(sender, filterEventArgs);
 				return;
 			}
-			
+
 			AdvancedFilter(sender, filterEventArgs);
 		}
 
@@ -105,7 +105,7 @@ namespace Inventory.ui
 			       string.IsNullOrEmpty(TxtBoxMinAmount.Text) &&
 			       string.IsNullOrEmpty(TxtBoxMaxAmount.Text);
 		}
-		
+
 		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
 		{
 			if (TxtBoxQuickSearch.Text.Length <= 3)
@@ -116,7 +116,7 @@ namespace Inventory.ui
 			ProductsView.View.Refresh();
 			RefreshLblItemCount();
 		}
-		
+
 		private void QuickFilter(object sender, FilterEventArgs filterEventArgs)
 		{
 			Product product = (Product)filterEventArgs.Item;
@@ -205,7 +205,7 @@ namespace Inventory.ui
 				filterEventArgs.Accepted = true;
 				return;
 			}
-			
+
 			filterEventArgs.Accepted = false;
 		}
 
@@ -215,10 +215,10 @@ namespace Inventory.ui
 			{
 				return;
 			}
-			
+
 			SearchWithAdvancedFilters(null, null);
 		}
-		
+
 		private void SearchWithAdvancedFilters(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(TxtBoxId.Text) &&
@@ -233,7 +233,8 @@ namespace Inventory.ui
 			    string.IsNullOrEmpty(TxtBoxMinAmount.Text) &&
 			    string.IsNullOrEmpty(TxtBoxMaxAmount.Text))
 			{
-				MessageBox.Show("Llene al menos un campo para buscar.", "Filtro Invalido", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				MessageBox.Show("Llene al menos un campo para buscar.", "Filtro Invalido", MessageBoxButton.OK,
+					MessageBoxImage.Exclamation);
 				return;
 			}
 
@@ -241,24 +242,24 @@ namespace Inventory.ui
 			ProductsView.View.Refresh();
 			RefreshLblItemCount();
 		}
-		
+
 		private void AdvancedFilter(object sender, FilterEventArgs filterEventArgs)
 		{
 			Product product = (Product)filterEventArgs.Item;
 
 			if (product.Id.ToString().Contains(TxtBoxId.Text) &&
-				product.Enrollment.ToLower().Contains(TxtBoxEnrollment.Text.ToLower()) &&
-				product.ShortDescription.ToLower().Contains(TxtBoxDescription.Text.ToLower()) &&
-				product.Container.ToLower().Contains(TxtBoxContainer.Text.ToLower()) &&
-				product.Location.ToLower().Contains(TxtBoxLocation.Text.ToLower()) &&
-				product.Status.ToLower().Contains(TxtBoxStatus.Text.ToLower()) &&
-				product.MountingTechnology.ToLower().Contains(TxtBoxMountingTechnology.Text.ToLower()) &&
-				product.EncapsulationType.ToLower().Contains(TxtBoxEncapsulation.Text.ToLower()) &&
-				product.DebugCode.ToLower().Contains(TxtBoxDebugCode.Text.ToLower()) &&
-				IsValidAmount(filterEventArgs)
-				)
+			    product.Enrollment.ToLower().Contains(TxtBoxEnrollment.Text.ToLower()) &&
+			    product.ShortDescription.ToLower().Contains(TxtBoxDescription.Text.ToLower()) &&
+			    product.Container.ToLower().Contains(TxtBoxContainer.Text.ToLower()) &&
+			    product.Location.ToLower().Contains(TxtBoxLocation.Text.ToLower()) &&
+			    product.Status.ToLower().Contains(TxtBoxStatus.Text.ToLower()) &&
+			    product.MountingTechnology.ToLower().Contains(TxtBoxMountingTechnology.Text.ToLower()) &&
+			    product.EncapsulationType.ToLower().Contains(TxtBoxEncapsulation.Text.ToLower()) &&
+			    product.DebugCode.ToLower().Contains(TxtBoxDebugCode.Text.ToLower()) &&
+			    IsValidAmount(filterEventArgs)
+			   )
 			{
-				filterEventArgs.Accepted = true; 
+				filterEventArgs.Accepted = true;
 			}
 
 			else filterEventArgs.Accepted = false;
@@ -267,16 +268,15 @@ namespace Inventory.ui
 		private bool IsValidAmount(FilterEventArgs filterEventArgs)
 		{
 			if (string.IsNullOrEmpty(TxtBoxMinAmount.Text) && string.IsNullOrEmpty(TxtBoxMaxAmount.Text)) return true;
-			
+
 			Product product = (Product)filterEventArgs.Item;
 			int? minAmount = string.IsNullOrEmpty(TxtBoxMinAmount.Text) ? null : int.Parse(TxtBoxMinAmount.Text);
 			int? maxAmount = string.IsNullOrEmpty(TxtBoxMaxAmount.Text) ? null : int.Parse(TxtBoxMaxAmount.Text);
 
 			if (minAmount != null && maxAmount != null)
 			{
-
 				if (minAmount > maxAmount) return false;
-				
+
 				return product.CurrentAmount >= minAmount && product.CurrentAmount <= maxAmount;
 			}
 
@@ -292,7 +292,7 @@ namespace Inventory.ui
 
 			return false;
 		}
-		
+
 		private void ClearFilters(object sender, RoutedEventArgs e)
 		{
 			TxtBoxId.Text = "";
@@ -348,19 +348,19 @@ namespace Inventory.ui
 			if (e.Key == Key.Down || e.Key == Key.Up)
 				LoadProductImage(sender);
 		}
-		
+
 		private void MouseLeftButtonClick(object sender, MouseButtonEventArgs e)
 		{
 			LoadProductImage(sender);
 		}
-		
+
 		private void LoadProductImage(object sender)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
 			{
 				return;
 			}
-			
+
 			Uri imageUri = null;
 			Product product = ((sender as DataGridCell).DataContext as Product);
 
@@ -379,32 +379,32 @@ namespace Inventory.ui
 		private void RequestForSell(object sender, RoutedEventArgs e)
 		{
 			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
-			
-			if (selectedProduct != null) 
+
+			if (selectedProduct != null)
 				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VENTA");
 		}
 
 		private void RequestForStore(object sender, RoutedEventArgs e)
 		{
 			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
-			
-			if (selectedProduct != null) 
+
+			if (selectedProduct != null)
 				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA TIENDA");
 		}
 
 		private void RequestWithoutSupply(object sender, RoutedEventArgs e)
 		{
 			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
-			
-			if (selectedProduct != null) 
+
+			if (selectedProduct != null)
 				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR SIN SURTIR");
 		}
 
 		private void RequestForVerify(object sender, RoutedEventArgs e)
 		{
 			Product selectedProduct = GetSelectedProductFromDataGrid(sender);
-			
-				if (selectedProduct != null) 
+
+			if (selectedProduct != null)
 				TasksWindow.Instance.BringWindowToFront(selectedProduct, "SOLICITAR PARA VERIFICAR");
 		}
 

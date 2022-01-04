@@ -171,7 +171,8 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxIdCode.Text))
 			{
-				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Id o Codigo Debug Invalido", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				MessageBox.Show("Ingresa un Id o Codigo Debug de un producto.", "Id o Codigo Debug Invalido",
+					MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
 
@@ -220,10 +221,10 @@ namespace Inventory.ui
 			{
 				case ProductWindowTasks.Modify:
 					if (MessageBox.Show(
-						"¿Esta seguro de guardar los cambios?",
-						"Confirmacion",
-						MessageBoxButton.OKCancel,
-						MessageBoxImage.Question) == MessageBoxResult.OK)
+						    "¿Esta seguro de guardar los cambios?",
+						    "Confirmacion",
+						    MessageBoxButton.OKCancel,
+						    MessageBoxImage.Question) == MessageBoxResult.OK)
 						SaveProduct();
 					break;
 				case ProductWindowTasks.ShowDetails:
@@ -231,10 +232,10 @@ namespace Inventory.ui
 					break;
 				case ProductWindowTasks.AddNewProduct:
 					if (MessageBox.Show(
-						"¿Esta seguro de guardar el nuevo producto?",
-						"Confirmacion",
-						MessageBoxButton.OKCancel,
-						MessageBoxImage.Question) == MessageBoxResult.OK)
+						    "¿Esta seguro de guardar el nuevo producto?",
+						    "Confirmacion",
+						    MessageBoxButton.OKCancel,
+						    MessageBoxImage.Question) == MessageBoxResult.OK)
 					{
 						SaveProduct();
 						ShowProductDetailsInstance.BringWindowToFront(Product);
@@ -258,16 +259,17 @@ namespace Inventory.ui
 					case ProductWindowTasks.Modify:
 						if (ProfitWithoutDiscountIsZero())
 						{
-							MessageBox.Show("La utilidad debe ser mayor a 0.", 
-								"Error", 
-								MessageBoxButton.OK, 
+							MessageBox.Show("La utilidad debe ser mayor a 0.",
+								"Error",
+								MessageBoxButton.OK,
 								MessageBoxImage.Error);
 							return;
 						}
+
 						inventoryDb.Entry(Product).State = EntityState.Modified;
 						break;
 					case ProductWindowTasks.AddNewProduct:
-						if (!IsNewProductValid()) return; 
+						if (!IsNewProductValid()) return;
 						inventoryDb.Products.Add(Product);
 						break;
 				}
@@ -291,12 +293,12 @@ namespace Inventory.ui
 			    ProfitWithoutDiscountIsZero())
 			{
 				isValid = false;
-				MessageBox.Show("Los campos con * son obligatorios y la utilidad debe ser mayor a 0.", 
-					"Error", 
-					MessageBoxButton.OK, 
+				MessageBox.Show("Los campos con * son obligatorios y la utilidad debe ser mayor a 0.",
+					"Error",
+					MessageBoxButton.OK,
 					MessageBoxImage.Error);
 			}
-			
+
 			return isValid;
 		}
 
@@ -328,7 +330,7 @@ namespace Inventory.ui
 			if (CurrentTask == ProductWindowTasks.ShowDetails) return;
 
 			EnableProfitAndDiscountButtons();
-			
+
 			TxtBoxPercentageOfProfit.IsReadOnly = false;
 			TxtBoxPercentageOfDiscount.IsReadOnly = false;
 		}
@@ -360,7 +362,7 @@ namespace Inventory.ui
 			BtnRemoveProfit.IsEnabled = false;
 			BtnRemoveDiscount.IsEnabled = false;
 		}
-		
+
 		private void AddProfit(object sender, RoutedEventArgs e)
 		{
 			Product.PercentageOfProfit += 1;

@@ -11,10 +11,10 @@
         WindowStartupLocation="CenterScreen">
 	<Viewbox>
 		<Grid Width="800"
-              Height="600">
+		      Height="600">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="2*" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
@@ -75,8 +75,8 @@
 			        Grid.Row="8"
 			        Margin="8,0,0,8"
 			        FontSize="14"
-					Click="OpenConnectionsWindow"
-			        Content="Probar Conexion a la BD"/>
+			        Click="OpenConnectionsWindow"
+			        Content="Probar Conexion a la BD" />
 			<Button Grid.Column="0"
 			        Grid.Row="9"
 			        Margin="8,0,0,8"

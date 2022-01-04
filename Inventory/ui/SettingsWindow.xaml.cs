@@ -15,7 +15,8 @@ namespace Inventory.ui
 		{
 			if (string.IsNullOrEmpty(TxtBoxIpAdress.Text) || string.IsNullOrEmpty(TxtxBoxSystemAdress.Text))
 			{
-				MessageBox.Show("Ningun campo puede quedar vacio", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				MessageBox.Show("Ningun campo puede quedar vacio", "Datos Invalidos", MessageBoxButton.OK,
+					MessageBoxImage.Exclamation);
 				return;
 			}
 

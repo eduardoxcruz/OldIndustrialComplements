@@ -43,7 +43,7 @@ namespace Inventory.ui
 					.FirstOrDefault(employee => employee == Properties.Settings.Default.User);
 			});
 		}
-		
+
 		private void EnterKeyPressed(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
@@ -55,7 +55,8 @@ namespace Inventory.ui
 			if (string.IsNullOrEmpty(TxtBoxPassword.Password))
 			{
 				ChkBoxRememberData.IsChecked = false;
-				MessageBox.Show("El campo de contraseña no puede estar vacio.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("El campo de contraseña no puede estar vacio.", "Erro", MessageBoxButton.OK,
+					MessageBoxImage.Error);
 				return;
 			}
 

@@ -14,43 +14,43 @@
 		<Grid Width="300"
 		      Height="200">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Label Grid.Column="0"
 			       Grid.ColumnSpan="2"
 			       Grid.Row="0"
 			       Margin="8,0,0,0"
 			       FontSize="16"
-			       Content="Probar conexion a la BD"/>
+			       Content="Probar conexion a la BD" />
 			<Label Grid.Column="0"
 			       Grid.Row="1"
 			       Margin="8,0,0,0"
 			       FontSize="14"
-			       Content="Estado:"/>
+			       Content="Estado:" />
 			<Label x:Name="LblConnectionResult"
 			       Grid.Column="1"
 			       Grid.Row="1"
 			       Margin="0,0,0,0"
-			       FontSize="14"/>
+			       FontSize="14" />
 			<Button Grid.Column="0"
 			        Grid.ColumnSpan="2"
 			        Grid.Row="2"
 			        Margin="16,8,168,16"
 			        FontSize="14"
-					Click="TestConnection"
-			        Content="Probar"/>
+			        Click="TestConnection"
+			        Content="Probar" />
 			<Button Grid.Column="1"
 			        Grid.Row="2"
 			        FontSize="14"
 			        Margin="80,8,16,16"
-					Click="CloseWindow"
-			        Content="Salir"/>
+			        Click="CloseWindow"
+			        Content="Salir" />
 		</Grid>
 	</Viewbox>
 </model:MyWindow>

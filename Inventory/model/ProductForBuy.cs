@@ -19,7 +19,7 @@ namespace Inventory.model
 		public Product Product { get; set; }
 		public int? ProductId { get; set; }
 #pragma warning restore 8632
-		
+
 		public ProductForBuy()
 		{
 			this.Id = 0;

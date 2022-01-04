@@ -19,8 +19,8 @@
 		<Style TargetType="DataGridCell">
 			<Setter Property="TextBlock.TextAlignment"
 			        Value="Center" />
-			<EventSetter Event="PreviewMouseLeftButtonDown" Handler="MouseLeftButtonClick"/>
-			<EventSetter Event="KeyUp" Handler="DataGridKeyPressed"/>
+			<EventSetter Event="PreviewMouseLeftButtonDown" Handler="MouseLeftButtonClick" />
+			<EventSetter Event="KeyUp" Handler="DataGridKeyPressed" />
 			<EventSetter Event="MouseDoubleClick" Handler="SelectProductFromDataGrid" />
 		</Style>
 	</model:MyWindow.Resources>
@@ -215,19 +215,19 @@
 				       FontSize="12"
 				       Content="Maximo" />
 				<TextBox x:Name="TxtBoxMinAmount"
-						 Grid.Row="1"
+				         Grid.Row="1"
 				         Grid.Column="0"
 				         Margin="8,0,0,0"
 				         FontSize="12"
-						 KeyDown="EnterKeyPressed"
-						 PreviewTextInput="AllowOnlyIntegers"/>
-				<TextBox x:Name="TxtBoxMaxAmount" 
-						 Grid.Row="1"
+				         KeyDown="EnterKeyPressed"
+				         PreviewTextInput="AllowOnlyIntegers" />
+				<TextBox x:Name="TxtBoxMaxAmount"
+				         Grid.Row="1"
 				         Grid.Column="1"
 				         Margin="8,0,0,0"
 				         FontSize="12"
-						 PreviewTextInput="AllowOnlyIntegers"
-						 KeyDown="EnterKeyPressed"/>
+				         PreviewTextInput="AllowOnlyIntegers"
+				         KeyDown="EnterKeyPressed" />
 			</Grid>
 			<TextBox x:Name="TxtBoxContainer"
 			         Grid.Row="7"
@@ -278,53 +278,53 @@
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
-										MinWidth="20"
-										MaxWidth="50"
+					                    MinWidth="20"
+					                    MaxWidth="50"
 					                    Binding="{Binding Id}" />
 					<DataGridTextColumn Header="Estado"
 					                    Width="SizeToCells"
-										MinWidth="50"
-										MaxWidth="70"
+					                    MinWidth="50"
+					                    MaxWidth="70"
 					                    Binding="{Binding Status}" />
 					<DataGridTextColumn Header="Matricula"
 					                    Width="SizeToCells"
 					                    MaxWidth="150"
-										MinWidth="100"
+					                    MinWidth="100"
 					                    Binding="{Binding Enrollment}" />
 					<DataGridTextColumn Header="Descripcion"
 					                    Width="SizeToCells"
 					                    MaxWidth="450"
-										MinWidth="400"
+					                    MinWidth="400"
 					                    Binding="{Binding ShortDescription}" />
 					<DataGridTextColumn Header="Tec. de Montaje"
 					                    Width="SizeToCells"
 					                    MaxWidth="100"
-										MinWidth="40"
+					                    MinWidth="40"
 					                    Binding="{Binding MountingTechnology}" />
 					<DataGridTextColumn Header="Encapsulado"
 					                    Width="SizeToCells"
 					                    MaxWidth="100"
-										MinWidth="50"
+					                    MinWidth="50"
 					                    Binding="{Binding EncapsulationType}" />
 					<DataGridTextColumn Header="Precio de venta"
 					                    Width="SizeToHeader"
-										MinWidth="40"
-										MaxWidth="100"
+					                    MinWidth="40"
+					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
-										MaxWidth="80"
-										MinWidth="40"
+					                    MaxWidth="80"
+					                    MinWidth="40"
 					                    Binding="{Binding CurrentAmount}" />
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
 					                    MaxWidth="170"
-										MinWidth="80"
+					                    MinWidth="80"
 					                    Binding="{Binding Container}" />
 					<DataGridTextColumn Header="Ubicacion"
 					                    Width="SizeToCells"
 					                    MaxWidth="120"
-										MinWidth="80"
+					                    MinWidth="80"
 					                    Binding="{Binding Location}" />
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>
@@ -359,53 +359,53 @@
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
-										MinWidth="20"
-										MaxWidth="50"
+					                    MinWidth="20"
+					                    MaxWidth="50"
 					                    Binding="{Binding Id}" />
 					<DataGridTextColumn Header="Estado"
 					                    Width="SizeToCells"
-										MinWidth="50"
-										MaxWidth="70"
+					                    MinWidth="50"
+					                    MaxWidth="70"
 					                    Binding="{Binding Status}" />
 					<DataGridTextColumn Header="Matricula"
 					                    Width="SizeToCells"
 					                    MaxWidth="150"
-										MinWidth="100"
+					                    MinWidth="100"
 					                    Binding="{Binding Enrollment}" />
 					<DataGridTextColumn Header="Descripcion"
 					                    Width="SizeToCells"
 					                    MaxWidth="450"
-										MinWidth="400"
+					                    MinWidth="400"
 					                    Binding="{Binding ShortDescription}" />
 					<DataGridTextColumn Header="Tec. de Montaje"
 					                    Width="SizeToCells"
 					                    MaxWidth="100"
-										MinWidth="40"
+					                    MinWidth="40"
 					                    Binding="{Binding MountingTechnology}" />
 					<DataGridTextColumn Header="Encapsulado"
 					                    Width="SizeToCells"
 					                    MaxWidth="100"
-										MinWidth="50"
+					                    MinWidth="50"
 					                    Binding="{Binding EncapsulationType}" />
 					<DataGridTextColumn Header="Precio de venta"
 					                    Width="SizeToHeader"
-										MinWidth="40"
-										MaxWidth="100"
+					                    MinWidth="40"
+					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
-										MaxWidth="80"
-										MinWidth="40"
+					                    MaxWidth="80"
+					                    MinWidth="40"
 					                    Binding="{Binding CurrentAmount}" />
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
 					                    MaxWidth="120"
-										MinWidth="80"
+					                    MinWidth="80"
 					                    Binding="{Binding Container}" />
 					<DataGridTextColumn Header="Ubicacion"
 					                    Width="SizeToCells"
 					                    MaxWidth="120"
-										MinWidth="80"
+					                    MinWidth="80"
 					                    Binding="{Binding Location}" />
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>

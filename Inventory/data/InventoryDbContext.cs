@@ -17,10 +17,11 @@ namespace Inventory.data
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 
-		private static string ServerIp = 
-        			string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp) ? 
-        			"192.168.0.254" : 
-        			Properties.Settings.Default.DatabaseIp;
+		private static string ServerIp =
+			string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp)
+				? "192.168.0.254"
+				: Properties.Settings.Default.DatabaseIp;
+
 		private const string ServerPort = "1433";
 		private const string DatabaseName = "inventory";
 		private const string IntegratedSecurity = "False";
@@ -30,12 +31,12 @@ namespace Inventory.data
 		private const string ConnectionTimeoutInSeconds = "10";
 
 		private static string ConnectionString = "Server=" + ServerIp + "," + ServerPort +
-		                                        ";Database=" + DatabaseName +
-		                                        ";Integrated Security=" + IntegratedSecurity +
-		                                        ";User Id=" + UserId +
-		                                        ";Password=" + Password +
-		                                        ";MultipleActiveResultSets=" + MultipleActiveResultSets +
-		                                        ";Connection Timeout=" + ConnectionTimeoutInSeconds;
+		                                         ";Database=" + DatabaseName +
+		                                         ";Integrated Security=" + IntegratedSecurity +
+		                                         ";User Id=" + UserId +
+		                                         ";Password=" + Password +
+		                                         ";MultipleActiveResultSets=" + MultipleActiveResultSets +
+		                                         ";Connection Timeout=" + ConnectionTimeoutInSeconds;
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -172,7 +173,7 @@ namespace Inventory.data
 			catch (Exception exception)
 			{
 				MessageBox.Show("Ha ocurrido un error al procesar su solicitud. Intentelo de nuevo.\nMas info: \n\n"
-				                + exception.Message, "Error",MessageBoxButton.OK, MessageBoxImage.Error);
+				                + exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 	}

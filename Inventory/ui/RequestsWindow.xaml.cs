@@ -35,13 +35,13 @@ namespace Inventory.ui
 		private void GetAllProductRequests(object sender, RoutedEventArgs e)
 		{
 			InventoryDb = new InventoryDbContext();
-			
+
 			InventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.Load();
 			ProductRequestsCollection = InventoryDb.ProductRequests.Local.ToObservableCollection();
-			ProductRequestsView = new CollectionViewSource() { Source = ProductRequestsCollection };
+			ProductRequestsView = new CollectionViewSource() {Source = ProductRequestsCollection};
 			ProductRequestsView.SortDescriptions.Clear();
 			ProductRequestsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 			ProductRequestsView.Filter += FiltersToProductRequestsView;
@@ -51,7 +51,7 @@ namespace Inventory.ui
 
 		private void StartNewProductRequestLookupTimer()
 		{
-			NewProductRequestLookupTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 3) };
+			NewProductRequestLookupTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
 			NewProductRequestLookupTimer.Tick += AddNewProductRequestToCollection;
 			NewProductRequestLookupTimer.Start();
 		}
@@ -91,7 +91,7 @@ namespace Inventory.ui
 		private void NotifyForNewProductRequest()
 		{
 			if (LastRequestsCount >= ProductRequestsCollection.Count) return;
-			
+
 			new ToastContentBuilder()
 				.AddText("Solicitud")
 				.AddText("Hay una nueva solicitud de producto.")
@@ -130,7 +130,7 @@ namespace Inventory.ui
 		{
 			ChangeTypeForAllSelectedRows("PARA VERIFICAR");
 		}
-		
+
 		private void ChangeTypeForAllSelectedRows(string message)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
@@ -145,7 +145,7 @@ namespace Inventory.ui
 			});
 			RefreshProductRequestsView(null, null);
 		}
-		
+
 		private void ChangeSelectedRowStatusAsDelivered(object sender, RoutedEventArgs e)
 		{
 			ChangeStatusForAllSelectedRows("SURTIDO");
