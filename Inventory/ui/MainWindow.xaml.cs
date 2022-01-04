@@ -11,6 +11,12 @@ namespace Inventory.ui
 		public MainWindow()
 		{
 			InitializeComponent();
+			LoadAppVersion();
+		}
+
+		private void LoadAppVersion()
+		{
+			LblAppVersion.Content = $"Version {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
 		}
 
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
