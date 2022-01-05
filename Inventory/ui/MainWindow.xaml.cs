@@ -70,6 +70,8 @@ namespace Inventory.ui
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
 			string message = $"Cambios en la version: {AppVersion}\n\n" +
+			                 "General:\n" +
+			                 "*Arreglado bug en donde los threads secundarios quedan corriendo aun despues de cerrar la app.\n\n" +
 			                 "Ventana de Solicitudes de Producto: \n" +
 			                 "* Se agrego el filtro para ocultar las solicitudes de tipo 'No Surtir'\n\n" +
 			                 "Ventana de Tareas: \n" +
