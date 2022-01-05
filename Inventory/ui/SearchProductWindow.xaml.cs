@@ -52,6 +52,7 @@ namespace Inventory.ui
 		{
 			DispatcherTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 30)};
 			DispatcherTimer.Tick += AddNewProductToCollection;
+			DispatcherTimer.Dispatcher.Thread.IsBackground = true;
 			DispatcherTimer.Start();
 		}
 

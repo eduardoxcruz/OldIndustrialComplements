@@ -53,6 +53,7 @@ namespace Inventory.ui
 		{
 			NewProductRequestLookupTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
 			NewProductRequestLookupTimer.Tick += AddNewProductRequestToCollection;
+			NewProductRequestLookupTimer.Dispatcher.Thread.IsBackground = true;
 			NewProductRequestLookupTimer.Start();
 		}
 
@@ -78,14 +79,16 @@ namespace Inventory.ui
 
 		private void StartNewProductRequestNotificatorTimer()
 		{
-			new Thread(() =>
+			Thread notificatorTimer = new Thread(() =>
 			{
 				while (true)
 				{
 					NotifyForNewProductRequest();
 					Thread.Sleep(TimeSpan.FromSeconds(2));
 				}
-			}).Start();
+				
+			}) {IsBackground = true};
+			notificatorTimer.Start();
 		}
 
 		private void NotifyForNewProductRequest()
