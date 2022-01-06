@@ -77,6 +77,7 @@ namespace Inventory.ui
 			                 "Ventana de Tareas: \n" +
 			                 "* Se agrego el bloqueo de ejecucion de tareas para productos que no usan inventario.\n\n" +
 			                 "Ventana de Buscar Producto: \n" +
+			                 "* Se cambio el filtro de busqueda rapida para funcionar con 3 o mas caracteres en lugar de 4.\n" +
 			                 "* Se agrego la columna 'Usa Inventario' para ambas tablas de productos.\n" +
 			                 "* Se agrego un texto en la parte inferior que mostrara el costo total por todos los " +
 			                 "productos agregados a la tabla inferior.\n" +
