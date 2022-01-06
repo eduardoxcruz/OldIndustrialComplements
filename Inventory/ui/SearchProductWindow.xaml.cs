@@ -111,7 +111,7 @@ namespace Inventory.ui
 
 		private void SearchAfterThreeCharacteres(object sender, TextChangedEventArgs e)
 		{
-			if (TxtBoxQuickSearch.Text.Length <= 3)
+			if (TxtBoxQuickSearch.Text.Length < 3)
 			{
 				return;
 			}
