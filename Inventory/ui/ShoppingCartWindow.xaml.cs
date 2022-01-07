@@ -81,6 +81,21 @@ namespace Inventory.ui
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 
+		private void ChangeSelectedRowStatusAsPending(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("PENDIENTE");
+		}
+
+		private void ChangeSelectedRowStatusAsRequested(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("SOLICITADO");
+		}
+		
+		private void ChangeSelectedRowStatusAsPurchased(object sender, RoutedEventArgs e)
+		{
+			ChangeStatusForAllSelectedRows("COMPRADO");
+		}
+		
 		private void ChangeStatusForAllSelectedRows(string status)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
