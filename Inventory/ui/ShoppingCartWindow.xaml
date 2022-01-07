@@ -172,13 +172,12 @@
 											ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
 					                    }" />
 					<DataGridTextColumn Header="Proveedor"
-					                    Width="SizeToCells"
+					                    Width="SizeToHeader"
 					                    Binding="{Binding Path=Provider}" />
 					<DataGridTextColumn Header="Empleado"
 					                    Width="SizeToCells"
 					                    Binding="{Binding Path=Employee.FullName}" />
 					<DataGridTextColumn Header="Descripcion"
-					                    MaxWidth="400"
 					                    Binding="{Binding Product.FullDescription}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
