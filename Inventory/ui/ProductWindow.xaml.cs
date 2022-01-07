@@ -190,7 +190,7 @@ namespace Inventory.ui
 		{
 			SearchProductById(1);
 		}
-		
+
 		private void LoadLastProduct(object sender, RoutedEventArgs e)
 		{
 			Product lastProduct = null;
@@ -199,7 +199,7 @@ namespace Inventory.ui
 				using InventoryDbContext inventoryDb = new();
 				lastProduct = inventoryDb.Products.OrderByDescending(product => product.Id).FirstOrDefault();
 			});
-			
+
 			SearchProductById(lastProduct?.Id ?? 1);
 		}
 

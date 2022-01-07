@@ -10,6 +10,7 @@ namespace Inventory.ui
 	public partial class MainWindow
 	{
 		private Version? AppVersion { get; set; }
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -66,7 +67,7 @@ namespace Inventory.ui
 		{
 			RequestsWindow.Instance.BringWindowToFront();
 		}
-		
+
 		private void OpenShoppingCartWindow(object sender, RoutedEventArgs e)
 		{
 			ShoppingCartWindow.Instance.BringWindowToFront();

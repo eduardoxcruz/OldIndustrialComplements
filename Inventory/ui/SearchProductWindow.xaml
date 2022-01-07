@@ -243,7 +243,7 @@
 			         KeyDown="EnterKeyPressed" />
 			<Grid Grid.Row="8"
 			      Grid.Column="0"
-				  Grid.ColumnSpan="2"
+			      Grid.ColumnSpan="2"
 			      Margin="0,0,0,0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -320,11 +320,11 @@
 					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridCheckBoxColumn Header="Usa Inventario"
-											Width="SizeToHeader"
-											MinWidth="40"
-											MaxWidth="100"
-											IsThreeState="False"
-											Binding="{Binding IsUsingInventory}" />
+					                        Width="SizeToHeader"
+					                        MinWidth="40"
+					                        MaxWidth="100"
+					                        IsThreeState="False"
+					                        Binding="{Binding IsUsingInventory}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
 					                    MaxWidth="80"
@@ -407,11 +407,11 @@
 					                    MaxWidth="100"
 					                    Binding="{Binding SalePriceWithoutDiscount}" />
 					<DataGridCheckBoxColumn Header="Usa Inventario"
-											Width="SizeToHeader"
-											MinWidth="40"
-											MaxWidth="100"
-											IsThreeState="False"
-											Binding="{Binding IsUsingInventory}" />
+					                        Width="SizeToHeader"
+					                        MinWidth="40"
+					                        MaxWidth="100"
+					                        IsThreeState="False"
+					                        Binding="{Binding IsUsingInventory}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
 					                    MaxWidth="80"
@@ -442,31 +442,31 @@
 				</DataGrid.ContextMenu>
 			</DataGrid>
 			<Grid Grid.Row="11"
-				  Grid.Column="0"
-				  Grid.ColumnSpan="2">
+			      Grid.Column="0"
+			      Grid.ColumnSpan="2">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<Button Grid.Column="0"
-			        Margin="8,8,0,8"
-			        FontSize="12"
-			        Content="Salir"
-			        Click="CloseWindow" />
+				        Margin="8,8,0,8"
+				        FontSize="12"
+				        Content="Salir"
+				        Click="CloseWindow" />
 				<Button Grid.Column="1"
-			        Margin="8,8,0,8"
-			        FontSize="12"
-			        Content="Limpiar"
-			        Click="ClearDataGridFilteredProducts" />
+				        Margin="8,8,0,8"
+				        FontSize="12"
+				        Content="Limpiar"
+				        Click="ClearDataGridFilteredProducts" />
 				<Label x:Name="LblFinalCost"
 				       Grid.Column="2"
-					   Margin="0,0,0,0"
-					   Padding="0,0,0,0"
-					   FontSize="12"
-					   HorizontalContentAlignment="Center"
-					   VerticalContentAlignment="Center"
-					   Content="Costo Final: $0" />
+				       Margin="0,0,0,0"
+				       Padding="0,0,0,0"
+				       FontSize="12"
+				       HorizontalContentAlignment="Center"
+				       VerticalContentAlignment="Center"
+				       Content="Costo Final: $0" />
 			</Grid>
 		</Grid>
 	</Viewbox>

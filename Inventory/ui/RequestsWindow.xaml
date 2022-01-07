@@ -91,8 +91,8 @@
 			      Grid.RowSpan="1"
 			      Grid.Column="5"
 			      Grid.ColumnSpan="4"
-				  HorizontalAlignment="Right"
-				  Margin="0,0,8,0">
+			      HorizontalAlignment="Right"
+			      Margin="0,0,8,0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="Auto" />
@@ -101,12 +101,12 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<Label Grid.Column="0"
-			       HorizontalContentAlignment="Center"
-			       VerticalContentAlignment="Center"
-			       Margin="0,0,0,0"
-			       Padding="0,0,0,0"
-			       FontSize="12"
-			       Content="Filtrar por:" />
+				       HorizontalContentAlignment="Center"
+				       VerticalContentAlignment="Center"
+				       Margin="0,0,0,0"
+				       Padding="0,0,0,0"
+				       FontSize="12"
+				       Content="Filtrar por:" />
 				<CheckBox x:Name="ChkBoxFilterByDelivered"
 				          Grid.Column="1"
 				          Margin="8,0,0,0"

@@ -31,7 +31,7 @@
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Label x:Name="LblAppVersion"
-				   Grid.Row="0"
+			       Grid.Row="0"
 			       Grid.Column="1"
 			       Margin="0,0,8,0"
 			       Padding="0,0,0,0"
@@ -42,7 +42,7 @@
 			        Grid.Row="1"
 			        Margin="0,8,8,0"
 			        FontSize="14"
-					HorizontalAlignment="Right"
+			        HorizontalAlignment="Right"
 			        Click="OpenChangelog"
 			        Content="Change log" />
 			<Button Grid.Column="0"

@@ -86,7 +86,6 @@ namespace Inventory.ui
 					NotifyForNewProductRequest();
 					Thread.Sleep(TimeSpan.FromSeconds(2));
 				}
-				
 			}) {IsBackground = true};
 			notificatorTimer.Start();
 		}

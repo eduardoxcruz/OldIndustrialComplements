@@ -20,7 +20,7 @@ namespace Inventory.ui
 		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<ProductForBuy> ShoppingCartCollection { get; set; }
 		private CollectionViewSource ShoppingCartView { get; set; }
-		
+
 		public ShoppingCartWindow()
 		{
 			InitializeComponent();
@@ -51,7 +51,7 @@ namespace Inventory.ui
 
 			CmbBoxProviders.ItemsSource = providers;
 		}
-		
+
 		private void GetAllProductsToBuy(object sender, RoutedEventArgs e)
 		{
 			InventoryDb = new InventoryDbContext();
@@ -94,7 +94,7 @@ namespace Inventory.ui
 				DataGridShoppingCart.Items.Refresh();
 			}
 		}
-		
+
 		private void SelectProductFromDatagrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridShoppingCart.ItemsSource == null || DataGridShoppingCart.SelectedItems.Count <= 0)
@@ -129,7 +129,7 @@ namespace Inventory.ui
 					MessageBoxImage.Error);
 				return;
 			}
-			
+
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
 				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
@@ -137,17 +137,17 @@ namespace Inventory.ui
 					selectedItem.Provider = CmbBoxProviders.Text;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
 				}
-				
+
 				InventoryDb.SaveChanges();
 				ChangeStatusForAllSelectedRows("SOLICITADO");
 			});
 		}
-		
+
 		private void ChangeSelectedRowStatusAsPurchased(object sender, RoutedEventArgs e)
 		{
 			ChangeStatusForAllSelectedRows("COMPRADO");
 		}
-		
+
 		private void ChangeStatusForAllSelectedRows(string status)
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
@@ -162,7 +162,7 @@ namespace Inventory.ui
 			});
 			RefreshShoppingCartView(null, null);
 		}
-		
+
 		private void RefreshShoppingCartView(object sender, RoutedEventArgs e)
 		{
 			ShoppingCartView.View.Refresh();

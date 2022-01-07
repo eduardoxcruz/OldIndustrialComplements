@@ -940,41 +940,41 @@
 				</Grid>
 			</GroupBox>
 			<Grid Grid.Row="5"
-				  Grid.Column="0">
+			      Grid.Column="0">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<Button x:Name="BtnAddModifyAndSave"
-			        Grid.Column="0"
-			        Margin="8,8,8,8"
-			        FontSize="12"
-			        Click="ChangeTask" />
+				        Grid.Column="0"
+				        Margin="8,8,8,8"
+				        FontSize="12"
+				        Click="ChangeTask" />
 				<Button x:Name="BtnExit"
-			        Grid.Column="1"
-			        Margin="0,8,0,8"
-			        FontSize="12"
-			        Content="Salir"
-			        Click="CloseWindow" />
+				        Grid.Column="1"
+				        Margin="0,8,0,8"
+				        FontSize="12"
+				        Content="Salir"
+				        Click="CloseWindow" />
 			</Grid>
 			<Grid Grid.Row="5"
-				  Grid.Column="3">
+			      Grid.Column="3">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<Button x:Name="BtnLoadFirstProduct"
-			        Grid.Column="0"
-			        Margin="0,8,8,8"
-			        FontSize="12"
-			        Content="Primero"
-			        Click="LoadFirstProduct" />
+				        Grid.Column="0"
+				        Margin="0,8,8,8"
+				        FontSize="12"
+				        Content="Primero"
+				        Click="LoadFirstProduct" />
 				<Button x:Name="BtnLoadLastProduct"
-			        Grid.Column="1"
-			        Margin="0,8,8,8"
-			        FontSize="12"
-			        Content="Ultimo"
-			        Click="LoadLastProduct" />
+				        Grid.Column="1"
+				        Margin="0,8,8,8"
+				        FontSize="12"
+				        Content="Ultimo"
+				        Click="LoadLastProduct" />
 			</Grid>
 		</Grid>
 	</Viewbox>
