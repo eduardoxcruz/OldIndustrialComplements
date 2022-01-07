@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -25,8 +26,32 @@ namespace Inventory.ui
 			InitializeComponent();
 			GetAllProductsToBuy(null, null);
 			StartNewProductToBuyLookupTimer();
+			SetComboBoxItemSource();
 		}
 
+		private void SetComboBoxItemSource()
+		{
+			List<string> providers = new List<string>()
+			{
+				"Utsource",
+				"AG Electronica",
+				"Mercado Libre",
+				"Digi-Key",
+				"Electronica 2000",
+				"Electronica Felcy",
+				"JAMS Electronica",
+				"Mouser",
+				"Ferelect",
+				"Steren",
+				"Dominion",
+				"ITC",
+				"Lumicolor",
+				"Coel"
+			};
+
+			CmbBoxProviders.ItemsSource = providers;
+		}
+		
 		private void GetAllProductsToBuy(object sender, RoutedEventArgs e)
 		{
 			InventoryDb = new InventoryDbContext();
