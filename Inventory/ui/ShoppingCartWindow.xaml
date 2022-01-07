@@ -1,0 +1,170 @@
+﻿<model:MyWindow x:Class="Inventory.ui.ShoppingCartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:model="clr-namespace:Inventory.model"
+		xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
+		mc:Ignorable="d"
+        Title="ProductsForBuyWindow"
+		Width="1015.5"
+		Height="528">
+	<Viewbox Stretch="Fill">
+		<Grid Width="1300"
+		      Height="690">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="3*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       HorizontalContentAlignment="Left"
+			       VerticalContentAlignment="Center"
+			       Margin="8,8,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="24"
+			       Content="Carrito de Compras" />
+			<Button x:Name="BtnUpdate"
+			        Grid.Row="0"
+			        Grid.Column="7"
+			        HorizontalAlignment="Right"
+			        Margin="0,8,8,8"
+			        FontSize="12"
+			        Content="Actualizar"/>
+			<Button x:Name="BtnDropElement"
+			        Grid.Row="1"
+			        Grid.Column="0"
+			        Margin="8,8,0,0"
+			        FontSize="12"
+			        Content="Drop"/>
+			<Button x:Name="BtnMarkAsPending"
+			        Grid.Row="1"
+			        Grid.Column="1"
+			        Margin="8,8,0,0"
+			        FontSize="12"
+			        Content="Pendiente" />
+			<Button x:Name="BtnMarkAsRequested"
+			        Grid.Row="1"
+			        Grid.Column="2"
+			        Margin="8,8,0,0"
+			        FontSize="12"
+			        Content="Solicitado"/>
+			<Button x:Name="BtnMarkAsPurchased"
+			        Grid.Row="1"
+			        Grid.Column="3"
+			        Margin="8,8,0,0"
+			        FontSize="12"
+			        Content="Comprado" />
+			<Grid Grid.Row="1"
+			      Grid.Column="5"
+			      Grid.ColumnSpan="3"
+				  HorizontalAlignment="Right"
+				  Margin="0,0,8,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Label Grid.Column="0"
+			       HorizontalContentAlignment="Center"
+			       VerticalContentAlignment="Center"
+			       Margin="0,0,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="12"
+			       Content="Filtrar por:" />
+				<CheckBox x:Name="ChkBoxFilterByPending"
+				          Grid.Column="1"
+				          Margin="8,0,0,0"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          FontSize="12"
+				          Content="Pendiente"/>
+				<CheckBox x:Name="ChkBoxFilterByRequested"
+				          Grid.Column="2"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Solicitado" />
+				<CheckBox x:Name="ChkBoxFilterByPurchased"
+				          Grid.Column="3"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Comprado"/>
+			</Grid>
+			<DataGrid x:Name="DataGridRequests"
+			          Grid.Row="2"
+			          Grid.Column="0"
+			          Grid.ColumnSpan="8"
+			          Margin="8,8,8,0"
+			          AutoGenerateColumns="False"
+			          SelectionUnit="FullRow"
+			          SelectionMode="Extended"
+			          CanUserAddRows="False"
+			          CanUserDeleteRows="False"
+			          IsReadOnly="True"
+			          FontSize="12"
+			          AlternatingRowBackground="LightBlue"
+			          GridLinesVisibility="None">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Id"
+					                    Width="SizeToCells"
+					                    Binding="{Binding Id}" />
+					<DataGridTextColumn Header="Fecha"
+					                    Width="SizeToCells"
+					                    Binding="{Binding 
+											Path=Date, 
+											Converter={x:Static Member=model:StringFormatConverter.Instance}, 
+											ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
+											ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
+					                    }" />
+					<DataGridTextColumn Header="Proveedor"
+					                    Width="SizeToCells"
+					                    Binding="{Binding Path=Provider}"/>
+					<DataGridTextColumn Header="Empleado"
+					                    Width="SizeToCells"
+					                    Binding="{Binding Path=Employee.FullName}" />
+					<DataGridTextColumn Header="Descripcion"
+					                    MaxWidth="400"
+					                    Binding="{Binding Product.FullDescription}" />
+					<DataGridTextColumn Header="Existencia"
+					                    Width="SizeToHeader"
+					                    Binding="{Binding Product.CurrentAmount}" />
+					<DataGridTextColumn Header="Solicitado"
+					                    Width="SizeToHeader"
+					                    Binding="{Binding RequestedAmount}" />
+					<DataGridTextColumn Header="Estado"
+					                    Width="SizeToCells"
+					                    Binding="{Binding Status}" />
+				</DataGrid.Columns>
+			</DataGrid>
+			<Button x:Name="BtnExit"
+			        Grid.Row="3"
+			        Grid.Column="0"
+			        Margin="8,8,0,8"
+			        FontSize="14"
+			        Content="Salir"
+			        Click="CloseWindow" />
+		</Grid>
+	</Viewbox>
+</model:MyWindow>
