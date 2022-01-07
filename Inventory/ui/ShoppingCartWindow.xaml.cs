@@ -108,7 +108,17 @@ namespace Inventory.ui
 
 		private void ChangeSelectedRowStatusAsPending(object sender, RoutedEventArgs e)
 		{
-			ChangeStatusForAllSelectedRows("PENDIENTE");
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				{
+					selectedItem.Provider = null;
+					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+				}
+
+				InventoryDb.SaveChanges();
+				ChangeStatusForAllSelectedRows("PENDIENTE");
+			});
 		}
 
 		private void ChangeSelectedRowStatusAsRequested(object sender, RoutedEventArgs e)
