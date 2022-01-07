@@ -138,7 +138,8 @@
 			          IsReadOnly="True"
 			          FontSize="12"
 			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="None"
+			          MouseDoubleClick="SelectProductFromDatagrid">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"

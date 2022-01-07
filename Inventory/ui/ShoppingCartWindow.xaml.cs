@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Threading;
 using Inventory.data;
 using Inventory.model;
@@ -67,6 +68,17 @@ namespace Inventory.ui
 				ShoppingCartCollection.Add(nextRequest);
 				DataGridShoppingCart.Items.Refresh();
 			}
+		}
+		
+		private void SelectProductFromDatagrid(object sender, MouseButtonEventArgs e)
+		{
+			if (DataGridShoppingCart.ItemsSource == null || DataGridShoppingCart.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			ProductRequest selectedProduct = (ProductRequest)DataGridShoppingCart.SelectedItems[0];
+			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 	}
 }
