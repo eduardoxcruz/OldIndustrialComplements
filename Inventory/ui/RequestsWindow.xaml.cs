@@ -224,13 +224,16 @@ namespace Inventory.ui
 			ProductRequestsView.View.Refresh();
 		}
 
-		private void RemoveElement(object sender, RoutedEventArgs e)
+		private void RemoveElements(object sender, RoutedEventArgs e)
 		{
 			if (DataGridRequests.ItemsSource == null || DataGridRequests.SelectedItems.Count <= 0) return;
 
-			InventoryDb.Remove((ProductRequest)DataGridRequests.SelectedItems[0]);
-			InventoryDb.SaveChanges();
-			RefreshProductRequestsView(null, null);
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				InventoryDb.ProductRequests.RemoveRange(DataGridRequests.SelectedItems.Cast<ProductRequest>().ToList());
+				InventoryDb.SaveChanges();
+				RefreshProductRequestsView(null, null);
+			});
 		}
 	}
 }

@@ -65,7 +65,7 @@
 			        Margin="8,8,0,0"
 			        FontSize="12"
 			        Content="Drop"
-			        Click="RemoveElement" />
+			        Click="RemoveElements" />
 			<Button x:Name="BtnMarkAsDelivered"
 			        Grid.Row="1"
 			        Grid.Column="1"
