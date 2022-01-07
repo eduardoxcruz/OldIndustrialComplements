@@ -64,9 +64,40 @@ namespace Inventory.ui
 			ShoppingCartView = new CollectionViewSource() {Source = ShoppingCartCollection};
 			ShoppingCartView.SortDescriptions.Clear();
 			ShoppingCartView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
+			ShoppingCartView.Filter += FiltersForShoppingCartView;
 			DataGridShoppingCart.ItemsSource = ShoppingCartView.View;
 		}
 
+		private void FiltersForShoppingCartView(object sender, FilterEventArgs filterEventArgs)
+		{
+			if (filterEventArgs.Item is not ProductForBuy productForBuy) return;
+			
+			if (AllCheckBoxesAreNotChecked())
+			{
+				filterEventArgs.Accepted = true;
+				return;
+			}
+			
+			switch (productForBuy.Status)
+			{
+				case "PENDIENTE" when ChkBoxFilterByPending.IsChecked == true:
+				case "COMPRADO" when ChkBoxFilterByPurchased.IsChecked == true:
+				case "SOLICITADO" when ChkBoxFilterByRequested.IsChecked == true:
+					filterEventArgs.Accepted = true;
+					break;
+				default:
+					filterEventArgs.Accepted = false;
+					break;
+			}
+		}
+		
+		private bool AllCheckBoxesAreNotChecked()
+		{
+			return ChkBoxFilterByPending.IsChecked == false &&
+			       ChkBoxFilterByPurchased.IsChecked == false &&
+			       ChkBoxFilterByRequested.IsChecked == false;
+		}
+		
 		private void StartNewProductToBuyLookupTimer()
 		{
 			NewProductToBuyLookupTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
