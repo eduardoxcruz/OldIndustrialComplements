@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
@@ -21,6 +23,7 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			GetAllProductsToBuy(null, null);
+			StartNewProductToBuyLookupTimer();
 		}
 
 		private void GetAllProductsToBuy(object sender, RoutedEventArgs e)
@@ -36,6 +39,34 @@ namespace Inventory.ui
 			ShoppingCartView.SortDescriptions.Clear();
 			ShoppingCartView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 			DataGridShoppingCart.ItemsSource = ShoppingCartView.View;
+		}
+
+		private void StartNewProductToBuyLookupTimer()
+		{
+			NewProductToBuyLookupTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
+			NewProductToBuyLookupTimer.Tick += AddNewProductToBuyToShoppingCartCollection;
+			NewProductToBuyLookupTimer.Dispatcher.Thread.IsBackground = true;
+			NewProductToBuyLookupTimer.Start();
+		}
+
+		private void AddNewProductToBuyToShoppingCartCollection(object sender, EventArgs e)
+		{
+			ProductForBuy nextRequest = InventoryDb
+				.ProductsForBuy
+				.Include(productRequest => productRequest.Employee)
+				.Include(productRequest => productRequest.Product)
+				.SingleOrDefault(request => request.Id == ShoppingCartCollection.Last().Id + 1);
+
+			if (nextRequest == null)
+			{
+				return;
+			}
+
+			if (ShoppingCartCollection.Last().Id < nextRequest.Id)
+			{
+				ShoppingCartCollection.Add(nextRequest);
+				DataGridShoppingCart.Items.Refresh();
+			}
 		}
 	}
 }
