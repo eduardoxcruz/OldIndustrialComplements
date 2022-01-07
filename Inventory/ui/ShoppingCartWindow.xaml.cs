@@ -80,5 +80,25 @@ namespace Inventory.ui
 			ProductRequest selectedProduct = (ProductRequest)DataGridShoppingCart.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
+
+		private void ChangeStatusForAllSelectedRows(string status)
+		{
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				{
+					selectedItem.Status = status;
+					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+				}
+
+				InventoryDb.SaveChanges();
+			});
+			RefreshShoppingCartView(null, null);
+		}
+		
+		private void RefreshShoppingCartView(object sender, RoutedEventArgs e)
+		{
+			ShoppingCartView.View.Refresh();
+		}
 	}
 }
