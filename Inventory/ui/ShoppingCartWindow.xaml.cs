@@ -123,7 +123,24 @@ namespace Inventory.ui
 
 		private void ChangeSelectedRowStatusAsRequested(object sender, RoutedEventArgs e)
 		{
-			ChangeStatusForAllSelectedRows("SOLICITADO");
+			if (string.IsNullOrEmpty(CmbBoxProviders.Text))
+			{
+				MessageBox.Show("Seleccione el proveedor al que le solicito el producto.", "Error", MessageBoxButton.OK,
+					MessageBoxImage.Error);
+				return;
+			}
+			
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				{
+					selectedItem.Provider = CmbBoxProviders.Text;
+					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
+				}
+				
+				InventoryDb.SaveChanges();
+				ChangeStatusForAllSelectedRows("SOLICITADO");
+			});
 		}
 		
 		private void ChangeSelectedRowStatusAsPurchased(object sender, RoutedEventArgs e)
