@@ -77,7 +77,7 @@ namespace Inventory.ui
 				return;
 			}
 
-			ProductRequest selectedProduct = (ProductRequest)DataGridShoppingCart.SelectedItems[0];
+			ProductForBuy selectedProduct = (ProductForBuy)DataGridShoppingCart.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 
