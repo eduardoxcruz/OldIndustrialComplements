@@ -9,6 +9,18 @@
         Title="ProductsForBuyWindow"
 		Width="1015.5"
 		Height="528">
+	<model:MyWindow.Resources>
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="HorizontalContentAlignment"
+			        Value="Center" />
+			<Setter Property="FontWeight"
+			        Value="Bold" />
+		</Style>
+		<Style TargetType="DataGridCell">
+			<Setter Property="TextBlock.TextAlignment"
+			        Value="Center" />
+		</Style>
+	</model:MyWindow.Resources>
 	<Viewbox Stretch="Fill">
 		<Grid Width="1300"
 		      Height="690">
