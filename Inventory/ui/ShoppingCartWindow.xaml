@@ -55,7 +55,8 @@
 			        HorizontalAlignment="Right"
 			        Margin="0,8,8,8"
 			        FontSize="12"
-			        Content="Actualizar"/>
+			        Content="Actualizar"
+			        Click="GetAllProductsToBuy"/>
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
