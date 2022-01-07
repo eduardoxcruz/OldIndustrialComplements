@@ -163,6 +163,18 @@ namespace Inventory.ui
 			RefreshShoppingCartView(null, null);
 		}
 
+		private void RemoveElements(object sender, RoutedEventArgs e)
+		{
+			if (DataGridShoppingCart.ItemsSource == null || DataGridShoppingCart.SelectedItems.Count <= 0) return;
+			
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				InventoryDb.ProductsForBuy.RemoveRange(DataGridShoppingCart.SelectedItems.Cast<ProductForBuy>().ToList());
+				InventoryDb.SaveChanges();
+				RefreshShoppingCartView(null, null);
+			});
+		}
+		
 		private void RefreshShoppingCartView(object sender, RoutedEventArgs e)
 		{
 			ShoppingCartView.View.Refresh();

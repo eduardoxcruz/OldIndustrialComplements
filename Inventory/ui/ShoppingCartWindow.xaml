@@ -63,7 +63,8 @@
 			        Grid.Column="0"
 			        Margin="8,8,0,0"
 			        FontSize="12"
-			        Content="Drop" />
+			        Content="Drop"
+			        Click="RemoveElements" />
 			<Button x:Name="BtnMarkAsPending"
 			        Grid.Row="1"
 			        Grid.Column="1"
