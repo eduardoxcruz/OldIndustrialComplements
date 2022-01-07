@@ -11,8 +11,9 @@ namespace Inventory.ui
 		public static readonly ShoppingCartWindow Instance = new();
 		private DispatcherTimer NewProductToBuyLookupTimer { get; set; }
 		private InventoryDbContext InventoryDb { get; set; }
-		private ObservableCollection<ProductForBuy> ProductsToBuyCollection { get; set; }
-		private CollectionViewSource ProductsToBuyView { get; set; }
+		private ObservableCollection<ProductForBuy> ShoppingCartCollection { get; set; }
+		private CollectionViewSource ShoppingCartView { get; set; }
+		
 		public ShoppingCartWindow()
 		{
 			InitializeComponent();
