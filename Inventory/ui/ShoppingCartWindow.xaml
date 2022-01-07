@@ -112,7 +112,7 @@
 				          FontSize="12"
 				          Content="Comprado"/>
 			</Grid>
-			<DataGrid x:Name="DataGridRequests"
+			<DataGrid x:Name="DataGridShoppingCart"
 			          Grid.Row="2"
 			          Grid.Column="0"
 			          Grid.ColumnSpan="8"
