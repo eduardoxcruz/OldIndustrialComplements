@@ -66,6 +66,11 @@ namespace Inventory.ui
 		{
 			RequestsWindow.Instance.BringWindowToFront();
 		}
+		
+		private void OpenShoppingCartWindow(object sender, RoutedEventArgs e)
+		{
+			ShoppingCartWindow.Instance.BringWindowToFront();
+		}
 
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
