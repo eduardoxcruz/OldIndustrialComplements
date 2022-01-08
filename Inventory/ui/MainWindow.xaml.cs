@@ -76,18 +76,10 @@ namespace Inventory.ui
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
 			string message = $"Cambios en la version: {AppVersion}\n\n" +
-			                 "General:\n" +
-			                 "*Arreglado bug en donde los threads secundarios quedan corriendo aun despues de cerrar la app.\n\n" +
-			                 "Ventana de Solicitudes de Producto: \n" +
-			                 "* Se agrego el filtro para ocultar las solicitudes de tipo 'No Surtir'\n\n" +
-			                 "Ventana de Tareas: \n" +
-			                 "* Se agrego el bloqueo de ejecucion de tareas para productos que no usan inventario.\n\n" +
-			                 "Ventana de Buscar Producto: \n" +
-			                 "* Se cambio el filtro de busqueda rapida para funcionar con 3 o mas caracteres en lugar de 4.\n" +
-			                 "* Se agrego la columna 'Usa Inventario' para ambas tablas de productos.\n" +
-			                 "* Se agrego un texto en la parte inferior que mostrara el costo total por todos los " +
-			                 "productos agregados a la tabla inferior.\n" +
-			                 "* Agregado boton 'Actualizar' para la tabla de todos los productos.";
+			                 "General: \n" +
+			                 "* Agregada la ventana Carrito de Compras\n\n" +
+			                 "Ventana de Tareas:\n" +
+			                 "* Ya se puede ejecutar la tarea 'Comprar mas producto'.";
 			MessageBox.Show(message, "Registro de cambios.");
 		}
 	}
