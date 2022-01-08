@@ -147,6 +147,7 @@ namespace Inventory.ui
 					ExecuteProductAmountChange("AJUSTE DE CANTIDAD");
 					break;
 				case "COMPRAR MAS PRODUCTO":
+					ExecuteProductToBuyRequest();
 					break;
 				case "SOLICITAR PARA VENTA":
 					ExecuteProductRequestForWarehouse("SOLICITAR PARA VENTA");
@@ -394,6 +395,58 @@ namespace Inventory.ui
 			});
 		}
 
+		private void ExecuteProductToBuyRequest()
+		{
+			if (!IsProductToBuyRequestValid()) return;
+			
+			SaveProductToBuyRequestInDatabase();
+		}
+
+		private void SaveProductToBuyRequestInDatabase()
+		{
+			InventoryDbContext.ExecuteDatabaseRequest(() =>
+			{
+				using InventoryDbContext inventoryDb = new();
+				ProductToBuy newProductToBuy = new();
+				ProductToBuy lastProductToBuy = inventoryDb.ShoppingCart
+					.OrderByDescending(productToBuy => productToBuy.Id)
+					.FirstOrDefault();
+
+				newProductToBuy.Id = lastProductToBuy == null ? 1 : lastProductToBuy.Id + 1;
+				newProductToBuy.Date = Now;
+				newProductToBuy.Status = "PENDIENTE";
+				newProductToBuy.RequestedAmount = int.Parse(TxtBoxInputQuantity.Text);
+				newProductToBuy.ProductId = Product.Id;
+				newProductToBuy.EmployeeId = Employee.Id;
+
+				inventoryDb.ShoppingCart.Add(newProductToBuy);
+				inventoryDb.SaveChanges();
+				
+				MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+				ClearControls();
+			});
+		}
+
+		private bool IsProductToBuyRequestValid()
+		{
+			if (Product.IsUsingInventory is null or false)
+			{
+				MessageBox.Show("No se puede ejecutar esta tarea, el producto no usa inventario.",
+					"Producto invalido",
+					MessageBoxButton.OK,
+					MessageBoxImage.Warning);
+
+				return false;
+			}
+
+			if (string.IsNullOrEmpty(TxtBoxInputQuantity.Text) || QuantityIsZero())
+			{
+				return false;
+			}
+
+			return true;
+		}
+		
 		private void ExecuteProductRequestForWarehouse(string type)
 		{
 			if (!IsProductRequestForWarehouseValid()) return;
