@@ -11,7 +11,7 @@ namespace Inventory.data
 
 	public class InventoryDbContext : DbContext
 	{
-		public virtual DbSet<ProductForBuy> ProductsForBuy { get; set; }
+		public virtual DbSet<ProductToBuy> ShoppingCart { get; set; }
 		public virtual DbSet<RecordOfProductMovement> RecordsOfProductMovements { get; set; }
 		public virtual DbSet<Product> Products { get; set; }
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
@@ -49,7 +49,7 @@ namespace Inventory.data
 		{
 			modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
-			new ProductForBuyEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductForBuy>());
+			new ProductToBuyEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductToBuy>());
 			new RecordOfProductMovementEntityTypeConfiguration().Configure(
 				modelBuilder.Entity<RecordOfProductMovement>());
 			new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
@@ -62,14 +62,14 @@ namespace Inventory.data
 		private static ModelBuilder ConfigureRelationships(ModelBuilder modelBuilder)
 		{
 			modelBuilder
-				.Entity<ProductForBuy>()
+				.Entity<ProductToBuy>()
 				.HasOne(productForBuy => productForBuy.Product)
 				.WithMany(product => product.ProductForBuys)
 				.HasForeignKey(productForBuy => productForBuy.ProductId)
 				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder
-				.Entity<ProductForBuy>()
+				.Entity<ProductToBuy>()
 				.HasOne(productForBuy => productForBuy.Employee)
 				.WithMany(employee => employee.ProductForBuys)
 				.HasForeignKey(productForBuy => productForBuy.EmployeeId)
@@ -134,12 +134,12 @@ namespace Inventory.data
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder
-				.Entity<ProductForBuy>()
+				.Entity<ProductToBuy>()
 				.HasIndex(productForBuy => productForBuy.ProductId)
 				.IsUnique(false);
 
 			modelBuilder
-				.Entity<ProductForBuy>()
+				.Entity<ProductToBuy>()
 				.HasIndex(productForBuy => productForBuy.EmployeeId)
 				.IsUnique(false);
 

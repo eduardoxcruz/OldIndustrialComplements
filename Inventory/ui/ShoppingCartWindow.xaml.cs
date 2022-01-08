@@ -18,7 +18,7 @@ namespace Inventory.ui
 		public static readonly ShoppingCartWindow Instance = new();
 		private DispatcherTimer NewProductToBuyLookupTimer { get; set; }
 		private InventoryDbContext InventoryDb { get; set; }
-		private ObservableCollection<ProductForBuy> ShoppingCartCollection { get; set; }
+		private ObservableCollection<ProductToBuy> ShoppingCartCollection { get; set; }
 		private CollectionViewSource ShoppingCartView { get; set; }
 
 		public ShoppingCartWindow()
@@ -56,11 +56,11 @@ namespace Inventory.ui
 		{
 			InventoryDb = new InventoryDbContext();
 
-			InventoryDb.ProductsForBuy
+			InventoryDb.ShoppingCart
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.Load();
-			ShoppingCartCollection = InventoryDb.ProductsForBuy.Local.ToObservableCollection();
+			ShoppingCartCollection = InventoryDb.ShoppingCart.Local.ToObservableCollection();
 			ShoppingCartView = new CollectionViewSource() {Source = ShoppingCartCollection};
 			ShoppingCartView.SortDescriptions.Clear();
 			ShoppingCartView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
@@ -70,7 +70,7 @@ namespace Inventory.ui
 
 		private void FiltersForShoppingCartView(object sender, FilterEventArgs filterEventArgs)
 		{
-			if (filterEventArgs.Item is not ProductForBuy productForBuy) return;
+			if (filterEventArgs.Item is not ProductToBuy productToBuy) return;
 			
 			if (AllCheckBoxesAreNotChecked())
 			{
@@ -78,7 +78,7 @@ namespace Inventory.ui
 				return;
 			}
 			
-			switch (productForBuy.Status)
+			switch (productToBuy.Status)
 			{
 				case "PENDIENTE" when ChkBoxFilterByPending.IsChecked == true:
 				case "COMPRADO" when ChkBoxFilterByPurchased.IsChecked == true:
@@ -108,8 +108,8 @@ namespace Inventory.ui
 
 		private void AddNewProductToBuyToShoppingCartCollection(object sender, EventArgs e)
 		{
-			ProductForBuy nextRequest = InventoryDb
-				.ProductsForBuy
+			ProductToBuy nextRequest = InventoryDb
+				.ShoppingCart
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
 				.SingleOrDefault(request => request.Id == ShoppingCartCollection.Last().Id + 1);
@@ -133,7 +133,7 @@ namespace Inventory.ui
 				return;
 			}
 
-			ProductForBuy selectedProduct = (ProductForBuy)DataGridShoppingCart.SelectedItems[0];
+			ProductToBuy selectedProduct = (ProductToBuy)DataGridShoppingCart.SelectedItems[0];
 			ProductWindow.ShowProductDetailsInstance.BringWindowToFront(selectedProduct.Product);
 		}
 
@@ -141,7 +141,7 @@ namespace Inventory.ui
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
-				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				foreach (ProductToBuy selectedItem in DataGridShoppingCart.SelectedItems)
 				{
 					selectedItem.Provider = null;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
@@ -163,7 +163,7 @@ namespace Inventory.ui
 
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
-				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				foreach (ProductToBuy selectedItem in DataGridShoppingCart.SelectedItems)
 				{
 					selectedItem.Provider = CmbBoxProviders.Text;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
@@ -183,7 +183,7 @@ namespace Inventory.ui
 		{
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
-				foreach (ProductForBuy selectedItem in DataGridShoppingCart.SelectedItems)
+				foreach (ProductToBuy selectedItem in DataGridShoppingCart.SelectedItems)
 				{
 					selectedItem.Status = status;
 					InventoryDb.Entry(selectedItem).State = EntityState.Modified;
@@ -200,7 +200,7 @@ namespace Inventory.ui
 			
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
-				InventoryDb.ProductsForBuy.RemoveRange(DataGridShoppingCart.SelectedItems.Cast<ProductForBuy>().ToList());
+				InventoryDb.ShoppingCart.RemoveRange(DataGridShoppingCart.SelectedItems.Cast<ProductToBuy>().ToList());
 				InventoryDb.SaveChanges();
 				RefreshShoppingCartView(null, null);
 			});

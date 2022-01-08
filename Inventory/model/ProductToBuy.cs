@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class ProductForBuy
+	public class ProductToBuy
 	{
 #pragma warning disable 8632
 		public int? Id { get; set; }
@@ -20,7 +20,7 @@ namespace Inventory.model
 		public int? ProductId { get; set; }
 #pragma warning restore 8632
 
-		public ProductForBuy()
+		public ProductToBuy()
 		{
 			this.Id = 0;
 			this.Provider = "";
@@ -31,9 +31,9 @@ namespace Inventory.model
 		}
 	}
 
-	public class ProductForBuyEntityTypeConfiguration : IEntityTypeConfiguration<ProductForBuy>
+	public class ProductToBuyEntityTypeConfiguration : IEntityTypeConfiguration<ProductToBuy>
 	{
-		public void Configure(EntityTypeBuilder<ProductForBuy> builder)
+		public void Configure(EntityTypeBuilder<ProductToBuy> builder)
 		{
 			builder.HasKey(productForBuy => productForBuy.Id);
 
