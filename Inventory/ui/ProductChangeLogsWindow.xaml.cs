@@ -1,11 +1,6 @@
-﻿using System.Windows;
-
-namespace Inventory.ui
+﻿namespace Inventory.ui
 {
-	/// <summary>
-	/// Lógica de interacción para ProductChangeLogsWindow.xaml
-	/// </summary>
-	public partial class ProductChangeLogsWindow : Window
+	public partial class ProductChangeLogsWindow
 	{
 		public ProductChangeLogsWindow()
 		{
