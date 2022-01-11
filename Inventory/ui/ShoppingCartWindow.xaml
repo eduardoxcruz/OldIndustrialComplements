@@ -6,7 +6,7 @@
                 xmlns:model="clr-namespace:Inventory.model"
                 xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
                 mc:Ignorable="d"
-                Title="ProductsForBuyWindow"
+                Title="Carrito de Compras"
                 Width="1015.5"
                 Height="528">
 	<model:MyWindow.Resources>
