@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class RecordOfProductMovement
+	public class ProductChangeLog
 	{
 #pragma warning disable 8632
 		public int? Id { get; set; }
@@ -24,7 +24,7 @@ namespace Inventory.model
 		public int? ProductId { get; set; }
 #pragma warning restore 8632
 
-		public RecordOfProductMovement()
+		public ProductChangeLog()
 		{
 			this.Id = 0;
 			this.Date = DateTime.Now;
@@ -39,9 +39,9 @@ namespace Inventory.model
 		}
 	}
 
-	public class RecordOfProductMovementEntityTypeConfiguration : IEntityTypeConfiguration<RecordOfProductMovement>
+	public class ProductChangeLogEntityTypeConfiguration : IEntityTypeConfiguration<ProductChangeLog>
 	{
-		public void Configure(EntityTypeBuilder<RecordOfProductMovement> builder)
+		public void Configure(EntityTypeBuilder<ProductChangeLog> builder)
 		{
 			builder.HasKey(recordOfProductMovement => recordOfProductMovement.Id);
 

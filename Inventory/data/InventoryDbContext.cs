@@ -12,7 +12,7 @@ namespace Inventory.data
 	public class InventoryDbContext : DbContext
 	{
 		public virtual DbSet<ProductToBuy> ShoppingCart { get; set; }
-		public virtual DbSet<RecordOfProductMovement> RecordsOfProductMovements { get; set; }
+		public virtual DbSet<ProductChangeLog> ProductChangeLogs { get; set; }
 		public virtual DbSet<Product> Products { get; set; }
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
@@ -50,8 +50,8 @@ namespace Inventory.data
 			modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
 			new ProductToBuyEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductToBuy>());
-			new RecordOfProductMovementEntityTypeConfiguration().Configure(
-				modelBuilder.Entity<RecordOfProductMovement>());
+			new ProductChangeLogEntityTypeConfiguration().Configure(
+				modelBuilder.Entity<ProductChangeLog>());
 			new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
 			new ProductRequestEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductRequest>());
 			new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
@@ -90,16 +90,16 @@ namespace Inventory.data
 				.OnDelete(DeleteBehavior.SetNull);
 
 			modelBuilder
-				.Entity<RecordOfProductMovement>()
+				.Entity<ProductChangeLog>()
 				.HasOne(recordOfProductMovement => recordOfProductMovement.Product)
-				.WithMany(product => product.RecordOfProductMovements)
+				.WithMany(product => product.ProductChangeLogs)
 				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.ProductId)
 				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder
-				.Entity<RecordOfProductMovement>()
+				.Entity<ProductChangeLog>()
 				.HasOne(recordOfProductMovement => recordOfProductMovement.Employee)
-				.WithMany(employee => employee.RecordOfProductMovements)
+				.WithMany(employee => employee.ProductChangeLogs)
 				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.EmployeeId)
 				.OnDelete(DeleteBehavior.SetNull);
 
@@ -125,12 +125,12 @@ namespace Inventory.data
 
 			modelBuilder
 				.Entity<Product>()
-				.Navigation(product => product.RecordOfProductMovements)
+				.Navigation(product => product.ProductChangeLogs)
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder
 				.Entity<Employee>()
-				.Navigation(employee => employee.RecordOfProductMovements)
+				.Navigation(employee => employee.ProductChangeLogs)
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder
@@ -154,12 +154,12 @@ namespace Inventory.data
 				.IsUnique(false);
 
 			modelBuilder
-				.Entity<RecordOfProductMovement>()
+				.Entity<ProductChangeLog>()
 				.HasIndex(recordOfProductMovement => recordOfProductMovement.ProductId)
 				.IsUnique(false);
 
 			modelBuilder
-				.Entity<RecordOfProductMovement>()
+				.Entity<ProductChangeLog>()
 				.HasIndex(recordOfProductMovement => recordOfProductMovement.EmployeeId)
 				.IsUnique(false);
 

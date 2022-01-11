@@ -69,7 +69,7 @@ namespace Inventory.model
 #pragma warning restore 8632
 		public List<ProductToBuy> ProductForBuys { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
-		public List<RecordOfProductMovement> RecordOfProductMovements { get; set; }
+		public List<ProductChangeLog> ProductChangeLogs { get; set; }
 
 		public Employee()
 		{

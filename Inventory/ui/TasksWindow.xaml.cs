@@ -182,7 +182,7 @@ namespace Inventory.ui
 				Product.BuyPrice = decimal.Parse(TxtBoxInputPrice.Text);
 				inventoryDb.Entry(Product).State = EntityState.Modified;
 				inventoryDb.SaveChanges();
-				SaveProductBuyPriceChangeRecord();
+				SaveProductBuyPriceChangeLog();
 				ClearControls();
 			});
 		}
@@ -196,15 +196,15 @@ namespace Inventory.ui
 			return false;
 		}
 
-		private void SaveProductBuyPriceChangeRecord()
+		private void SaveProductBuyPriceChangeLog()
 		{
 			using InventoryDbContext inventoryDb = new();
-			RecordOfProductMovement lastRecord = inventoryDb.RecordsOfProductMovements
+			ProductChangeLog lastLog = inventoryDb.ProductChangeLogs
 				.OrderByDescending(record => record.Id)
 				.FirstOrDefault();
-			RecordOfProductMovement newRecord = new()
+			ProductChangeLog newLog = new()
 			{
-				Id = lastRecord == null ? 1 : lastRecord.Id + 1,
+				Id = lastLog == null ? 1 : lastLog.Id + 1,
 				Date = Now,
 				Type = "PRECIO",
 				PurchasePrice = decimal.Parse(TxtBoxInputPrice.Text),
@@ -212,7 +212,7 @@ namespace Inventory.ui
 				EmployeeId = Employee.Id
 			};
 
-			inventoryDb.RecordsOfProductMovements.Add(newRecord);
+			inventoryDb.ProductChangeLogs.Add(newLog);
 			inventoryDb.SaveChanges();
 		}
 
@@ -222,30 +222,30 @@ namespace Inventory.ui
 
 			try
 			{
-				RecordOfProductMovement recordOfProductMovement = new();
+				ProductChangeLog productChangeLog = new();
 				int totalPieces = 0;
 
 				switch (typeOfChange)
 				{
 					case "ENTRADA DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
-						recordOfProductMovement = AddPurchasePriceAndProvider(recordOfProductMovement, totalPieces);
+						productChangeLog = AddPurchasePriceAndProvider(productChangeLog, totalPieces);
 						break;
 					case "SALIDA DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) - int.Parse(TxtBoxInputQuantity.Text);
-						recordOfProductMovement.Type = "SALIDA";
+						productChangeLog.Type = "SALIDA";
 						break;
 					case "DEVOLUCION DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
-						recordOfProductMovement.Type = "DEVOLUCION";
+						productChangeLog.Type = "DEVOLUCION";
 						break;
 					case "AJUSTE DE CANTIDAD":
 						totalPieces = int.Parse(TxtBoxInputQuantity.Text);
-						recordOfProductMovement.Type = "AJUSTE";
+						productChangeLog.Type = "AJUSTE";
 						break;
 				}
 
-				ConfigureRecordForProductAmountChange(recordOfProductMovement, totalPieces);
+				ConfigureProductAmountChangeLog(productChangeLog, totalPieces);
 			}
 			catch (Exception exception)
 			{
@@ -308,14 +308,14 @@ namespace Inventory.ui
 			return true;
 		}
 
-		private RecordOfProductMovement AddPurchasePriceAndProvider(RecordOfProductMovement recordOfProductMovement,
+		private ProductChangeLog AddPurchasePriceAndProvider(ProductChangeLog productChangeLog,
 			int totalPieces)
 		{
-			recordOfProductMovement.Type = "ENTRADA";
-			recordOfProductMovement.PurchasePrice = GetNewBuyPrice(totalPieces);
-			recordOfProductMovement.Provider = CmbBoxProvider.Text;
+			productChangeLog.Type = "ENTRADA";
+			productChangeLog.PurchasePrice = GetNewBuyPrice(totalPieces);
+			productChangeLog.Provider = CmbBoxProvider.Text;
 
-			return recordOfProductMovement;
+			return productChangeLog;
 		}
 
 		private decimal GetNewBuyPrice(int totalPieces)
@@ -335,16 +335,16 @@ namespace Inventory.ui
 			       totalPieces;
 		}
 
-		private void ConfigureRecordForProductAmountChange(RecordOfProductMovement recordOfProductMovement,
+		private void ConfigureProductAmountChangeLog(ProductChangeLog productChangeLog,
 			int totalPieces)
 		{
-			RecordOfProductMovement lastRecord = null;
+			ProductChangeLog lastRecord = null;
 
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
 			{
 				using InventoryDbContext inventoryDb = new();
 
-				lastRecord = inventoryDb.RecordsOfProductMovements
+				lastRecord = inventoryDb.ProductChangeLogs
 					.OrderByDescending(record => record.Id)
 					.FirstOrDefault();
 			});
@@ -352,24 +352,24 @@ namespace Inventory.ui
 
 			string message = "¿Desea confirmar el siguiente movimiento?:\n\n";
 
-			if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m)
-				message = message + "Nuevo precio de compra: " + recordOfProductMovement.PurchasePrice + "\n";
+			if ((productChangeLog.PurchasePrice ?? 0.0m) != 0.0m)
+				message = message + "Nuevo precio de compra: " + productChangeLog.PurchasePrice + "\n";
 
-			recordOfProductMovement.Id = lastRecord == null ? 1 : lastRecord.Id + 1;
-			recordOfProductMovement.Date = Now;
-			recordOfProductMovement.Amount = int.Parse(TxtBoxInputQuantity.Text);
-			recordOfProductMovement.PreviousAmount = Product.CurrentAmount;
-			recordOfProductMovement.EmployeeId = Employee.Id;
-			recordOfProductMovement.ProductId = Product.Id;
-			recordOfProductMovement.NewAmount = totalPieces;
+			productChangeLog.Id = lastRecord == null ? 1 : lastRecord.Id + 1;
+			productChangeLog.Date = Now;
+			productChangeLog.Amount = int.Parse(TxtBoxInputQuantity.Text);
+			productChangeLog.PreviousAmount = Product.CurrentAmount;
+			productChangeLog.EmployeeId = Employee.Id;
+			productChangeLog.ProductId = Product.Id;
+			productChangeLog.NewAmount = totalPieces;
 
 			message = message + "Cantidad de pzs anterior: " + Product.CurrentAmount + "\n" +
 			          "Cantidad de pzs nueva: " + totalPieces;
 
-			SaveProductAmountChangeInDatabase(recordOfProductMovement, message);
+			SaveProductChangeLogInDatabase(productChangeLog, message);
 		}
 
-		private void SaveProductAmountChangeInDatabase(RecordOfProductMovement recordOfProductMovement,
+		private void SaveProductChangeLogInDatabase(ProductChangeLog productChangeLog,
 			string confirmationMessage)
 		{
 			if (MessageBox.Show(confirmationMessage, "Confirmacion", MessageBoxButton.OKCancel,
@@ -382,12 +382,12 @@ namespace Inventory.ui
 			{
 				using InventoryDbContext inventoryDb = new();
 
-				if ((recordOfProductMovement.PurchasePrice ?? 0.0m) != 0.0m)
-					Product.BuyPrice = recordOfProductMovement.PurchasePrice;
+				if ((productChangeLog.PurchasePrice ?? 0.0m) != 0.0m)
+					Product.BuyPrice = productChangeLog.PurchasePrice;
 
-				Product.CurrentAmount = recordOfProductMovement.NewAmount;
+				Product.CurrentAmount = productChangeLog.NewAmount;
 				inventoryDb.Entry(Product).State = EntityState.Modified;
-				inventoryDb.RecordsOfProductMovements.Add(recordOfProductMovement);
+				inventoryDb.ProductChangeLogs.Add(productChangeLog);
 				inventoryDb.SaveChanges();
 
 				MessageBox.Show("Hecho", "Exito", MessageBoxButton.OK, MessageBoxImage.Asterisk);
