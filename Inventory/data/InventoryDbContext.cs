@@ -64,14 +64,14 @@ namespace Inventory.data
 			modelBuilder
 				.Entity<ProductToBuy>()
 				.HasOne(productForBuy => productForBuy.Product)
-				.WithMany(product => product.ProductForBuys)
+				.WithMany(product => product.ShoppingCart)
 				.HasForeignKey(productForBuy => productForBuy.ProductId)
 				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder
 				.Entity<ProductToBuy>()
 				.HasOne(productForBuy => productForBuy.Employee)
-				.WithMany(employee => employee.ProductForBuys)
+				.WithMany(employee => employee.ShoppingCart)
 				.HasForeignKey(productForBuy => productForBuy.EmployeeId)
 				.OnDelete(DeleteBehavior.SetNull);
 
@@ -105,12 +105,12 @@ namespace Inventory.data
 
 			modelBuilder
 				.Entity<Product>()
-				.Navigation(product => product.ProductForBuys)
+				.Navigation(product => product.ShoppingCart)
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder
 				.Entity<Employee>()
-				.Navigation(employee => employee.ProductForBuys)
+				.Navigation(employee => employee.ShoppingCart)
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder

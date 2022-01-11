@@ -455,7 +455,7 @@ namespace Inventory.model
 			}
 		}
 
-		public List<ProductToBuy> ProductForBuys { get; set; }
+		public List<ProductToBuy> ShoppingCart { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
 		public List<ProductChangeLog> ProductChangeLogs { get; set; }
 
