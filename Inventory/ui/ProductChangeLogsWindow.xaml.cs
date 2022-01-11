@@ -20,10 +20,28 @@ namespace Inventory.ui
 		private ProductChangeLogsWindow()
 		{
 			InitializeComponent();
-			GetAllProductsChangeLogs(null, null);
+			GetAllProductChangeLogs(null, null);
 		}
 
-		private void GetAllProductsChangeLogs(object sender, RoutedEventArgs e)
+		public new void BringWindowToFront()
+		{
+			if (this.Visibility == Visibility.Collapsed)
+			{
+				this.Show();
+			}
+
+			if (this.WindowState == WindowState.Minimized || this.Visibility == Visibility.Hidden)
+			{
+				this.Visibility = Visibility.Visible;
+				this.WindowState = WindowState.Normal;
+			}
+
+			this.Activate();
+			
+			GetAllProductChangeLogs(null, null);
+		}
+		
+		private void GetAllProductChangeLogs(object sender, RoutedEventArgs e)
 		{
 			InventoryDb = new InventoryDbContext();
 

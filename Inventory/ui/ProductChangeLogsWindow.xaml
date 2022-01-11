@@ -51,7 +51,7 @@
 			        Margin="0,8,8,8"
 			        FontSize="12"
 			        Content="Actualizar"
-			        Click="GetAllProductsChangeLogs" />
+			        Click="GetAllProductChangeLogs" />
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
