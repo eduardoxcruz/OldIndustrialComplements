@@ -167,19 +167,19 @@
 										MaxWidth="150"
 					                    MinWidth="100"
 					                    Binding="{Binding Path=Employee.FullName}" />
+					<DataGridTextColumn Header="Producto"
+					                    Width="SizeToCells"
+										MaxWidth="90"
+					                    MinWidth="70"
+					                    Binding="{Binding Product.Id}" />
 					<DataGridTextColumn Header="Descripcion"
 										Width="SizeToCells"
 										MaxWidth="450"
 					                    MinWidth="400"
 					                    Binding="{Binding Product.FullDescription}" />
-					<DataGridTextColumn Header="Cantidad"
-					                    Width="SizeToHeader"
-										MaxWidth="60"
-					                    MinWidth="40"
-					                    Binding="{Binding Amount}" />
 					<DataGridTextColumn Header="Cantidad Previa"
 					                    Width="SizeToHeader"
-										MaxWidth="100"
+					                    MaxWidth="100"
 					                    MinWidth="40"
 					                    Binding="{Binding PreviousAmount}" />
 					<DataGridTextColumn Header="Cantidad Nueva"
@@ -187,6 +187,11 @@
 										MaxWidth="100"
 					                    MinWidth="40"
 					                    Binding="{Binding NewAmount}" />
+					<DataGridTextColumn Header="Existencia"
+					                    Width="SizeToHeader"
+										MaxWidth="90"
+					                    MinWidth="70"
+					                    Binding="{Binding Product.CurrentAmount}" />
 					<DataGridTextColumn Header="Precio de Compra"
 					                    Width="SizeToHeader"
 										MaxWidth="110"
@@ -197,6 +202,11 @@
 										MaxWidth="100"
 					                    MinWidth="70"
 					                    Binding="{Binding Provider}" />
+					<DataGridTextColumn Header="Cantidad"
+					                    Width="SizeToHeader"
+					                    MaxWidth="60"
+					                    MinWidth="40"
+					                    Binding="{Binding Amount}" />
 				</DataGrid.Columns>
 			</DataGrid>
 			<Button x:Name="BtnExit"
