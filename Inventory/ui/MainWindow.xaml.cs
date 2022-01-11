@@ -77,7 +77,8 @@ namespace Inventory.ui
 		{
 			string message = $"Cambios en la version: {AppVersion}\n\n" +
 			                 "General: \n" +
-			                 "* Agregada la ventana Carrito de Compras\n\n" +
+			                 "* Agregada la ventana Carrito de Compras\n" +
+			                 "* Agregada ventana de Bitacora de Productos\n\n" +
 			                 "Ventana de Tareas:\n" +
 			                 "* Ya se puede ejecutar la tarea 'Comprar mas producto'.";
 			MessageBox.Show(message, "Registro de cambios.");
