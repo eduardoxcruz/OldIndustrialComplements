@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Threading;
 using Inventory.data;
 using Inventory.model;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +13,6 @@ namespace Inventory.ui
 	public partial class ProductChangeLogsWindow
 	{
 		public static readonly ProductChangeLogsWindow Instance = new();
-		private DispatcherTimer NewProductChangeLogLookupTimer { get; set; }
 		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<ProductChangeLog> ProductChangeLogCollection { get; set; }
 		private CollectionViewSource ProductChangeLogView { get; set; }
@@ -24,7 +21,6 @@ namespace Inventory.ui
 		{
 			InitializeComponent();
 			GetAllProductsChangeLogs(null, null);
-			StartNewProductToBuyLookupTimer();
 		}
 
 		private void GetAllProductsChangeLogs(object sender, RoutedEventArgs e)
@@ -75,35 +71,6 @@ namespace Inventory.ui
 			       ChkBoxFilterByProductEgress.IsChecked == false &&
 			       ChkBoxFilterByProductPriceFit.IsChecked == false &&
 			       ChkBoxFilterByProductDevolution.IsChecked == false;
-		}
-		
-		private void StartNewProductToBuyLookupTimer()
-		{
-			NewProductChangeLogLookupTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 3)};
-			NewProductChangeLogLookupTimer.Tick += AddNewProductChangeLogToCollection;
-			NewProductChangeLogLookupTimer.Dispatcher.Thread.IsBackground = true;
-			NewProductChangeLogLookupTimer.Start();
-		}
-
-		private void AddNewProductChangeLogToCollection(object sender, EventArgs e)
-		{
-			ProductChangeLog nextLog = InventoryDb
-				.ProductChangeLogs
-				.Include(productRequest => productRequest.Employee)
-				.Include(productRequest => productRequest.Product)
-				.SingleOrDefault(request => request.Id == ProductChangeLogCollection.Last().Id + 1);
-
-			if (nextLog == null)
-			{
-				return;
-			}
-
-			if (ProductChangeLogCollection.Last().Id < nextLog.Id)
-			{
-				ProductChangeLogCollection.Add(nextLog);
-				//DataGridProductChangeLogs.Items.Refresh();
-				RefreshProductChangeLogView(null, null);
-			}
 		}
 
 		private void SelectProductFromDatagrid(object sender, MouseButtonEventArgs e)
