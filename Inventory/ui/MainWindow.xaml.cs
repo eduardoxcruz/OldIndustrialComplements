@@ -82,5 +82,10 @@ namespace Inventory.ui
 			                 "* Ya se puede ejecutar la tarea 'Comprar mas producto'.";
 			MessageBox.Show(message, "Registro de cambios.");
 		}
+
+		private void OpenProductChangeLogsWindow(object sender, RoutedEventArgs e)
+		{
+			ProductChangeLogsWindow.Instance.BringWindowToFront();
+		}
 	}
 }

@@ -29,6 +29,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Label x:Name="LblAppVersion"
 			       Grid.Row="0"
@@ -85,16 +86,22 @@
 			        Grid.Row="9"
 			        Margin="8,0,0,8"
 			        FontSize="14"
+			        Click="OpenProductChangeLogsWindow"
+			        Content="Bitacora de Productos" />
+			<Button Grid.Column="0"
+			        Grid.Row="10"
+			        Margin="8,0,0,8"
+			        FontSize="14"
 			        Click="OpenTasksWindow"
 			        Content="Tareas" />
 			<Button Grid.Column="0"
-			        Grid.Row="10"
+			        Grid.Row="11"
 			        Margin="8,0,0,8"
 			        FontSize="14"
 			        Click="OpenConnectionsWindow"
 			        Content="Probar Conexion a la BD" />
 			<Button Grid.Column="0"
-			        Grid.Row="11"
+			        Grid.Row="12"
 			        Margin="8,0,0,8"
 			        FontSize="14"
 			        Click="OpenSettingsWindow"
