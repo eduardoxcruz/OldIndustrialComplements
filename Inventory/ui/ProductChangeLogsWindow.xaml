@@ -4,9 +4,208 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:Inventory.model"
+        xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
         mc:Ignorable="d"
-        Title="ProductChangeLogsWindow"
-		Width="800"
-		Height="450">
-    <Grid />
+        Title="Bitacora de Productos"
+		Width="1015.5"
+		Height="528">
+	<model:MyWindow.Resources>
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="HorizontalContentAlignment"
+			        Value="Center" />
+			<Setter Property="FontWeight"
+			        Value="Bold" />
+		</Style>
+		<Style TargetType="DataGridCell">
+			<Setter Property="TextBlock.TextAlignment"
+			        Value="Center" />
+		</Style>
+	</model:MyWindow.Resources>
+	<Viewbox Stretch="Fill">
+		<Grid Width="1300"
+		      Height="690">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="8*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0"
+			       Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       HorizontalContentAlignment="Left"
+			       VerticalContentAlignment="Center"
+			       Margin="8,8,0,0"
+			       Padding="0,0,0,0"
+			       FontSize="24"
+			       Content="Bitacora de Productos" />
+			<Button x:Name="BtnUpdate"
+			        Grid.Row="0"
+			        Grid.Column="4"
+			        HorizontalAlignment="Right"
+			        Margin="0,8,8,8"
+			        FontSize="12"
+			        Content="Actualizar"
+			        Click="GetAllProductsChangeLogs" />
+			<Button x:Name="BtnDropElement"
+			        Grid.Row="1"
+			        Grid.Column="0"
+			        Margin="8,8,0,0"
+			        FontSize="12"
+			        Content="Drop"
+			        Click="RemoveElements" />
+			<Grid Grid.Row="1"
+			      Grid.Column="1"
+			      Grid.ColumnSpan="2"
+			      HorizontalAlignment="Right"
+			      Margin="0,0,8,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Label Grid.Column="0"
+				       HorizontalContentAlignment="Center"
+				       VerticalContentAlignment="Center"
+				       Margin="0,0,0,0"
+				       Padding="0,0,0,0"
+				       FontSize="12"
+				       Content="Filtrar por:" />
+				<CheckBox x:Name="ChkBoxFilterByProductEntry"
+				          Grid.Column="1"
+				          Margin="8,0,0,0"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          FontSize="12"
+				          Content="Entrada"
+						  Checked="RefreshProductChangeLogView"
+						  Unchecked="RefreshProductChangeLogView" />
+				<CheckBox x:Name="ChkBoxFilterByProductEgress"
+				          Grid.Column="2"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Salida"
+						  Checked="RefreshProductChangeLogView"
+						  Unchecked="RefreshProductChangeLogView" />
+				<CheckBox x:Name="ChkBoxFilterByProductDevolution"
+				          Grid.Column="3"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Devolucion"
+						  Checked="RefreshProductChangeLogView"
+						  Unchecked="RefreshProductChangeLogView" />
+				<CheckBox x:Name="ChkBoxFilterByProductAmountFit"
+				          Grid.Column="4"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Ajuste de cantidad"
+						  Checked="RefreshProductChangeLogView"
+						  Unchecked="RefreshProductChangeLogView" />
+				<CheckBox x:Name="ChkBoxFilterByProductPriceFit"
+				          Grid.Column="5"
+				          HorizontalContentAlignment="Left"
+				          VerticalContentAlignment="Center"
+				          Margin="8,0,0,0"
+				          FontSize="12"
+				          Content="Ajuste de precio"
+						  Checked="RefreshProductChangeLogView"
+						  Unchecked="RefreshProductChangeLogView" />
+			</Grid>
+			<DataGrid x:Name="DataGridProductChangeLogs"
+			          Grid.Row="2"
+			          Grid.Column="0"
+			          Grid.ColumnSpan="9"
+			          Margin="8,8,8,0"
+			          AutoGenerateColumns="False"
+			          SelectionUnit="FullRow"
+			          SelectionMode="Extended"
+			          CanUserAddRows="False"
+			          CanUserDeleteRows="False"
+			          IsReadOnly="True"
+			          FontSize="12"
+			          AlternatingRowBackground="LightBlue"
+			          GridLinesVisibility="None"
+			          MouseDoubleClick="SelectProductFromDatagrid">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Id"
+					                    Width="SizeToCells"
+					                    Binding="{Binding Id}" />
+					<DataGridTextColumn Header="Fecha"
+					                    Width="SizeToCells"
+										MaxWidth="150"
+					                    MinWidth="90"
+					                    Binding="{Binding 
+											Path=Date, 
+											Converter={x:Static Member=model:StringFormatConverter.Instance}, 
+											ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
+											ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
+					                    }" />
+					<DataGridTextColumn Header="Tipo"
+					                    Width="SizeToCells"
+										MaxWidth="90"
+					                    MinWidth="80"
+					                    Binding="{Binding Path=Type}" />
+					<DataGridTextColumn Header="Empleado"
+					                    Width="SizeToCells"
+										MaxWidth="150"
+					                    MinWidth="100"
+					                    Binding="{Binding Path=Employee.FullName}" />
+					<DataGridTextColumn Header="Descripcion"
+										Width="SizeToCells"
+										MaxWidth="450"
+					                    MinWidth="400"
+					                    Binding="{Binding Product.FullDescription}" />
+					<DataGridTextColumn Header="Cantidad"
+					                    Width="SizeToHeader"
+										MaxWidth="60"
+					                    MinWidth="40"
+					                    Binding="{Binding Amount}" />
+					<DataGridTextColumn Header="Cantidad Previa"
+					                    Width="SizeToHeader"
+										MaxWidth="100"
+					                    MinWidth="40"
+					                    Binding="{Binding PreviousAmount}" />
+					<DataGridTextColumn Header="Cantidad Nueva"
+					                    Width="SizeToHeader"
+										MaxWidth="100"
+					                    MinWidth="40"
+					                    Binding="{Binding NewAmount}" />
+					<DataGridTextColumn Header="Precio de Compra"
+					                    Width="SizeToHeader"
+										MaxWidth="110"
+					                    MinWidth="40"
+					                    Binding="{Binding PurchasePrice}" />
+					<DataGridTextColumn Header="Proveedor"
+					                    Width="SizeToHeader"
+										MaxWidth="100"
+					                    MinWidth="70"
+					                    Binding="{Binding Provider}" />
+				</DataGrid.Columns>
+			</DataGrid>
+			<Button x:Name="BtnExit"
+			        Grid.Row="3"
+			        Grid.Column="0"
+			        Margin="8,8,0,8"
+			        FontSize="14"
+			        Content="Salir"
+			        Click="CloseWindow" />
+		</Grid>
+	</Viewbox>
 </model:MyWindow>
