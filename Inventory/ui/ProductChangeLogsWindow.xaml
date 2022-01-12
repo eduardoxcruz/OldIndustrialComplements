@@ -109,7 +109,7 @@
 				          Content="Devolucion"
 						  Checked="RefreshProductChangeLogView"
 						  Unchecked="RefreshProductChangeLogView" />
-				<CheckBox x:Name="ChkBoxFilterByProductAmountFit"
+				<CheckBox x:Name="ChkBoxFilterByProductAmountAdjustment"
 				          Grid.Column="4"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
@@ -118,7 +118,7 @@
 				          Content="Ajuste de cantidad"
 						  Checked="RefreshProductChangeLogView"
 						  Unchecked="RefreshProductChangeLogView" />
-				<CheckBox x:Name="ChkBoxFilterByProductPriceFit"
+				<CheckBox x:Name="ChkBoxFilterByProductPriceAdjustment"
 				          Grid.Column="5"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"

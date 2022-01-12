@@ -71,8 +71,8 @@ namespace Inventory.ui
 			{
 				case "ENTRADA" when ChkBoxFilterByProductEntry.IsChecked == true:
 				case "DEVOLUCION" when ChkBoxFilterByProductDevolution.IsChecked == true:
-				case "AJUSTE" when ChkBoxFilterByProductAmountFit.IsChecked == true:
-				case "PRECIO" when ChkBoxFilterByProductPriceFit.IsChecked == true:
+				case "AJUSTE" when ChkBoxFilterByProductAmountAdjustment.IsChecked == true:
+				case "PRECIO" when ChkBoxFilterByProductPriceAdjustment.IsChecked == true:
 				case "SALIDA" when ChkBoxFilterByProductEgress.IsChecked == true:
 					filterEventArgs.Accepted = true;
 					break;
@@ -85,9 +85,9 @@ namespace Inventory.ui
 		private bool AllCheckBoxesAreNotChecked()
 		{
 			return ChkBoxFilterByProductEntry.IsChecked == false &&
-			       ChkBoxFilterByProductAmountFit.IsChecked == false &&
+			       ChkBoxFilterByProductAmountAdjustment.IsChecked == false &&
 			       ChkBoxFilterByProductEgress.IsChecked == false &&
-			       ChkBoxFilterByProductPriceFit.IsChecked == false &&
+			       ChkBoxFilterByProductPriceAdjustment.IsChecked == false &&
 			       ChkBoxFilterByProductDevolution.IsChecked == false;
 		}
 
