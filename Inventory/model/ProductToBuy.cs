@@ -1,18 +1,99 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class ProductToBuy
+	public class ProductToBuy : INotifyPropertyChanged
 	{
 #pragma warning disable 8632
-		public int? Id { get; set; }
-		public string? Provider { get; set; }
-		public DateTime? Date { get; set; }
-		public string? Status { get; set; }
-		public int? RequestedAmount { get; set; }
-		public string? EmployeeName { get; set; }
+		public event PropertyChangedEventHandler? PropertyChanged;
+
+		private int? _id;
+		private string? _provider;
+		private DateTime? _date;
+		private string? _status;
+		private int? _requestedAmount;
+		private string? _employeeName;
+
+		public int? Id
+		{
+			get
+			{
+				return _id;
+			}
+			set
+			{
+				_id = value;
+				OnPropertyChanged(nameof(Id));
+			}
+		}
+
+		public string? Provider
+		{
+			get
+			{
+				return _provider;
+			}
+			set
+			{
+				_provider = value;
+				OnPropertyChanged(nameof(Provider));
+			}
+		}
+
+		public DateTime? Date
+		{
+			get
+			{
+				return _date;
+			}
+			set
+			{
+				_date = value;
+				OnPropertyChanged(nameof(Date));
+			}
+		}
+
+		public string? Status
+		{
+			get
+			{
+				return _status;
+			}
+			set
+			{
+				_status = value;
+				OnPropertyChanged(nameof(Status));
+			}
+		}
+
+		public int? RequestedAmount
+		{
+			get
+			{
+				return _requestedAmount;
+			}
+			set
+			{
+				_requestedAmount = value;
+				OnPropertyChanged(nameof(RequestedAmount));
+			}
+		}
+
+		public string? EmployeeName
+		{
+			get
+			{
+				return _employeeName;
+			}
+			set
+			{
+				_employeeName = value;
+				OnPropertyChanged(nameof(EmployeeName));
+			}
+		}
 
 		public Employee Employee { get; set; }
 		public int? EmployeeId { get; set; }
@@ -28,6 +109,11 @@ namespace Inventory.model
 			this.Status = "";
 			this.RequestedAmount = 0;
 			this.EmployeeName = "";
+		}
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 
