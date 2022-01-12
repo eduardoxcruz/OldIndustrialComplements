@@ -1,22 +1,155 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
-	public class ProductChangeLog
+	public class ProductChangeLog : INotifyPropertyChanged
 	{
 #pragma warning disable 8632
-		public int? Id { get; set; }
-		public DateTime? Date { get; set; }
-		public string? Type { get; set; }
-		public int? Amount { get; set; }
-		public int? PreviousAmount { get; set; }
-		public int? NewAmount { get; set; }
-		public decimal? PurchasePrice { get; set; }
-		public string? Provider { get; set; }
-		public string? ProductFullDescription { get; set; }
-		public string? EmployeeName { get; set; }
+		public event PropertyChangedEventHandler? PropertyChanged;
+		
+		public int? _id;
+		public DateTime? _date;
+		public string? _type;
+		public int? _amount;
+		public int? _previousAmount;
+		public int? _newAmount;
+		public decimal? _purchasePrice;
+		public string? _provider;
+		public string? _productFullDescription;
+		public string? _employeeName;
+
+		public int? Id
+		{
+			get
+			{
+				return _id;
+			}
+			set
+			{
+				_id = value;
+				OnPropertyChanged(nameof(Id));
+			}
+		}
+
+		public DateTime? Date
+		{
+			get
+			{
+				return _date;
+			}
+			set
+			{
+				_date = value;
+				OnPropertyChanged(nameof(Date));
+			}
+		}
+
+		public string? Type
+		{
+			get
+			{
+				return _type;
+			}
+			set
+			{
+				_type = value;
+				OnPropertyChanged(nameof(Type));
+			}
+		}
+
+		public int? Amount
+		{
+			get
+			{
+				return _amount;
+			}
+			set
+			{
+				_amount = value;
+				OnPropertyChanged(nameof(Amount));
+			}
+		}
+
+		public int? PreviousAmount
+		{
+			get
+			{
+				return _previousAmount;
+			}
+			set
+			{
+				_previousAmount = value;
+				OnPropertyChanged(nameof(PreviousAmount));
+			}
+		}
+
+		public int? NewAmount
+		{
+			get
+			{
+				return _newAmount;
+			}
+			set
+			{
+				_newAmount = value;
+				OnPropertyChanged(nameof(NewAmount));
+			}
+		}
+
+		public decimal? PurchasePrice
+		{
+			get
+			{
+				return _purchasePrice;
+			}
+			set
+			{
+				_purchasePrice = value;
+				OnPropertyChanged(nameof(PurchasePrice));
+			}
+		}
+
+		public string? Provider
+		{
+			get
+			{
+				return _provider;
+			}
+			set
+			{
+				_provider = value;
+				OnPropertyChanged(nameof(Provider));
+			}
+		}
+
+		public string? ProductFullDescription
+		{
+			get
+			{
+				return _productFullDescription;
+			}
+			set
+			{
+				_productFullDescription = value;
+				OnPropertyChanged(nameof(ProductFullDescription));
+			}
+		}
+
+		public string? EmployeeName
+		{
+			get
+			{
+				return _employeeName;
+			}
+			set
+			{
+				_employeeName = value;
+				OnPropertyChanged(nameof(EmployeeName));
+			}
+		}
 
 		public Employee Employee { get; set; }
 		public int? EmployeeId { get; set; }
@@ -36,6 +169,11 @@ namespace Inventory.model
 			this.Provider = "";
 			this.ProductFullDescription = "";
 			this.EmployeeName = "";
+		}
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 
