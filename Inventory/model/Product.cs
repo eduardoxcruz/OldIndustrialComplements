@@ -458,6 +458,7 @@ namespace Inventory.model
 		public List<ProductToBuy> ShoppingCart { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
 		public List<ProductChangeLog> ProductChangeLogs { get; set; }
+		public List<ProductChangeCount> ProductChangeCounts { get; set; }
 
 		public Product()
 		{
