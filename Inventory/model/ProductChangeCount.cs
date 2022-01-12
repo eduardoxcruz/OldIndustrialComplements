@@ -12,7 +12,7 @@ namespace Inventory.model
 		private int _egresses;
 		private int _amountAdjustments;
 		private int _priceAdjustments;
-		
+
 		public int Id
 		{
 			get
@@ -22,13 +22,18 @@ namespace Inventory.model
 			set
 			{
 				_id = value;
+				OnPropertyChanged(nameof(Id));
 			}
 		}
-		
+
 		public int Entrys
 		{
 			get { return _entrys; }
-			set { _entrys = value; }
+			set
+			{
+				_entrys = value;
+				OnPropertyChanged(nameof(Entrys));
+			}
 		}
 
 		public int Devolutions
@@ -37,27 +42,40 @@ namespace Inventory.model
 			set
 			{
 				_devolutions = value;
+				OnPropertyChanged(nameof(Devolutions));
 			}
 		}
-		
+
 		public int Egresses
 		{
-			get { return _egresses; } 
-			set { _egresses = value; }
+			get { return _egresses; }
+			set
+			{
+				_egresses = value;
+				OnPropertyChanged(nameof(Egresses));
+			}
 		}
-		
+
 		public int AmountAdjustments
 		{
 			get { return _amountAdjustments; }
-			set { _amountAdjustments = value; }
+			set
+			{
+				_amountAdjustments = value;
+				OnPropertyChanged(nameof(AmountAdjustments));
+			}
 		}
-		
+
 		public int PriceAdjustments
 		{
 			get { return _priceAdjustments; }
-			set { _priceAdjustments = value; }
+			set
+			{
+				_priceAdjustments = value;
+				OnPropertyChanged(nameof(PriceAdjustments));
+			}
 		}
-		
+
 		public Product Product { get; set; }
 		public int? ProductId { get; set; }
 
@@ -70,7 +88,7 @@ namespace Inventory.model
 			AmountAdjustments = 0;
 			PriceAdjustments = 0;
 		}
-		
+
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
