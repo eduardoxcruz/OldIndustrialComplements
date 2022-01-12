@@ -16,6 +16,7 @@ namespace Inventory.data
 		public virtual DbSet<Product> Products { get; set; }
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
+		public virtual DbSet<ProductChangeCount> ProductChangeCounts { get; set; }
 
 		private static string ServerIp =
 			string.IsNullOrEmpty(Properties.Settings.Default.DatabaseIp)
@@ -55,6 +56,7 @@ namespace Inventory.data
 			new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
 			new ProductRequestEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductRequest>());
 			new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
+			new ProductChangeCountEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductChangeCount>());
 
 			modelBuilder = ConfigureRelationships(modelBuilder);
 		}
@@ -104,6 +106,13 @@ namespace Inventory.data
 				.OnDelete(DeleteBehavior.SetNull);
 
 			modelBuilder
+				.Entity<ProductChangeCount>()
+				.HasOne(productChangeCount => productChangeCount.Product)
+				.WithMany(product => product.ProductChangeCounts)
+				.HasForeignKey(productChangeCount => productChangeCount.ProductId)
+				.OnDelete(DeleteBehavior.SetNull);
+
+			modelBuilder
 				.Entity<Product>()
 				.Navigation(product => product.ShoppingCart)
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
@@ -134,6 +143,11 @@ namespace Inventory.data
 				.UsePropertyAccessMode(PropertyAccessMode.Property);
 
 			modelBuilder
+				.Entity<Product>()
+				.Navigation(product => product.ProductChangeCounts)
+				.UsePropertyAccessMode(PropertyAccessMode.Property);
+
+			modelBuilder
 				.Entity<ProductToBuy>()
 				.HasIndex(productForBuy => productForBuy.ProductId)
 				.IsUnique(false);
@@ -161,6 +175,11 @@ namespace Inventory.data
 			modelBuilder
 				.Entity<ProductChangeLog>()
 				.HasIndex(recordOfProductMovement => recordOfProductMovement.EmployeeId)
+				.IsUnique(false);
+
+			modelBuilder
+				.Entity<ProductChangeCount>()
+				.HasIndex(productChangeLog => productChangeLog.ProductId)
 				.IsUnique(false);
 
 			return modelBuilder;
