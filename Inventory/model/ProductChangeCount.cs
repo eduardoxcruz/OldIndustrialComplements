@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.model
 {
@@ -92,6 +94,22 @@ namespace Inventory.model
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+
+	public class ProductChangeCountEntityTypeConfiguration : IEntityTypeConfiguration<ProductChangeCount>
+	{
+		public void Configure(EntityTypeBuilder<ProductChangeCount> builder)
+		{
+			builder.HasKey(productChangeCount => productChangeCount.Id);
+			builder
+				.Property(productChangeCount => productChangeCount.Id)
+				.ValueGeneratedOnAdd();
+			builder.Property(productChangeCount => productChangeCount.Entrys);
+			builder.Property(productChangeCount => productChangeCount.Devolutions);
+			builder.Property(productChangeCount => productChangeCount.Egresses);
+			builder.Property(productChangeCount => productChangeCount.AmountAdjustments);
+			builder.Property(productChangeCount => productChangeCount.PriceAdjustments);
 		}
 	}
 }
