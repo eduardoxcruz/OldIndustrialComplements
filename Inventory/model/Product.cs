@@ -546,6 +546,11 @@ namespace Inventory.model
 			this.PercentageOfDiscount = 0.0M;
 			this.SalePriceWithDiscount = 0.0M;
 			this.ProfitWithDiscount = 0.0M;
+			this.Entrys = 0;
+			this.Egresses = 0;
+			this.Devolutions = 0;
+			this.AmountAdjustments = 0;
+			this.PriceAdjustments = 0;
 			this.Memo = "";
 		}
 
