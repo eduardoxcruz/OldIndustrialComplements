@@ -33,6 +33,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="*" />
+				<RowDefinition Height="2*" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Label Grid.Row="0"
@@ -202,15 +203,67 @@
 										MaxWidth="100"
 					                    MinWidth="70"
 					                    Binding="{Binding Provider}" />
-					<DataGridTextColumn Header="Cantidad"
+				</DataGrid.Columns>
+			</DataGrid>
+			<DataGrid x:Name="DataGridProducts"
+			          Grid.Row="3"
+			          Grid.Column="0"
+			          Grid.ColumnSpan="3"
+			          Margin="8,8,8,0"
+			          AutoGenerateColumns="False"
+			          SelectionUnit="FullRow"
+			          SelectionMode="Extended"
+			          CanUserAddRows="False"
+			          CanUserDeleteRows="False"
+			          IsReadOnly="True"
+			          FontSize="12"
+			          AlternatingRowBackground="LightBlue"
+			          GridLinesVisibility="None">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Producto"
 					                    Width="SizeToHeader"
-					                    MaxWidth="60"
 					                    MinWidth="40"
-					                    Binding="{Binding Amount}" />
+					                    MaxWidth="70"
+					                    Binding="{Binding Id}" />
+					<DataGridTextColumn Header="Descripcion"
+					                    Width="SizeToCells"
+					                    MaxWidth="500"
+					                    MinWidth="400"
+					                    Binding="{Binding FullDescription}" />
+					<DataGridTextColumn Header="Existencia"
+					                    Width="SizeToHeader"
+					                    MaxWidth="80"
+					                    MinWidth="60"
+					                    Binding="{Binding CurrentAmount}" />
+					<DataGridTextColumn Header="Salidas"
+					                    Width="SizeToHeader"
+					                    MaxWidth="80"
+					                    MinWidth="60"
+					                    Binding="{Binding Egresses}" />
+					<DataGridTextColumn Header="Entradas"
+					                    Width="SizeToHeader"
+					                    MaxWidth="80"
+					                    MinWidth="60"
+					                    Binding="{Binding Entrys}" />
+					<DataGridTextColumn Header="Devoluciones"
+					                    Width="SizeToHeader"
+					                    MaxWidth="100"
+					                    MinWidth="80"
+					                    Binding="{Binding Devolutions}" />
+					<DataGridTextColumn Header="Ajustes de Cantidad"
+					                    Width="SizeToHeader"
+					                    MaxWidth="130"
+					                    MinWidth="100"
+					                    Binding="{Binding AmountAdjustments}" />
+					<DataGridTextColumn Header="Ajustes de Precio"
+					                    Width="SizeToHeader"
+					                    MaxWidth="130"
+					                    MinWidth="100"
+					                    Binding="{Binding PriceAdjustments}" />
 				</DataGrid.Columns>
 			</DataGrid>
 			<Button x:Name="BtnExit"
-			        Grid.Row="3"
+			        Grid.Row="4"
 			        Grid.Column="0"
 			        Margin="8,8,0,8"
 			        FontSize="14"

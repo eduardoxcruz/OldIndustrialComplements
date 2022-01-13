@@ -16,6 +16,8 @@ namespace Inventory.ui
 		private InventoryDbContext InventoryDb { get; set; }
 		private ObservableCollection<ProductChangeLog> ProductChangeLogCollection { get; set; }
 		private CollectionViewSource ProductChangeLogView { get; set; }
+		private ObservableCollection<Product> Products { get; set; }
+		private CollectionViewSource ProductsView { get; set; }
 
 		private ProductChangeLogsWindow()
 		{
@@ -37,8 +39,21 @@ namespace Inventory.ui
 			}
 
 			this.Activate();
-			
+
+			GetAllProducts();
 			GetAllProductChangeLogs(null, null);
+		}
+		
+		private void GetAllProducts()
+		{
+			InventoryDb = new InventoryDbContext();
+
+			InventoryDb.Products.Load();
+			Products = InventoryDb.Products.Local.ToObservableCollection();
+			ProductsView = new CollectionViewSource() {Source = Products};
+			ProductsView.SortDescriptions.Clear();
+			ProductsView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Ascending));
+			DataGridProducts.ItemsSource = ProductsView.View;
 		}
 		
 		private void GetAllProductChangeLogs(object sender, RoutedEventArgs e)
