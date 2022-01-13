@@ -180,6 +180,7 @@ namespace Inventory.ui
 			{
 				using InventoryDbContext inventoryDb = new();
 				Product.BuyPrice = decimal.Parse(TxtBoxInputPrice.Text);
+				Product.PriceAdjustments += 1;
 				inventoryDb.Entry(Product).State = EntityState.Modified;
 				inventoryDb.SaveChanges();
 				SaveProductBuyPriceChangeLog();
@@ -230,18 +231,23 @@ namespace Inventory.ui
 					case "ENTRADA DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
 						productChangeLog = AddPurchasePriceAndProvider(productChangeLog, totalPieces);
+						Product.Entrys += int.Parse(TxtBoxInputQuantity.Text);
 						break;
 					case "SALIDA DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) - int.Parse(TxtBoxInputQuantity.Text);
 						productChangeLog.Type = "SALIDA";
+						Product.Egresses += int.Parse(TxtBoxInputQuantity.Text);
 						break;
 					case "DEVOLUCION DE PRODUCTO":
 						totalPieces = (Product.CurrentAmount ?? default(int)) + int.Parse(TxtBoxInputQuantity.Text);
 						productChangeLog.Type = "DEVOLUCION";
+						Product.Devolutions += int.Parse(TxtBoxInputQuantity.Text);
+						Product.Egresses -= int.Parse(TxtBoxInputQuantity.Text);
 						break;
 					case "AJUSTE DE CANTIDAD":
 						totalPieces = int.Parse(TxtBoxInputQuantity.Text);
 						productChangeLog.Type = "AJUSTE";
+						Product.AmountAdjustments += 1;
 						break;
 				}
 
