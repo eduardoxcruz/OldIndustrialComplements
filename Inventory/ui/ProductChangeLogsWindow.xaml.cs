@@ -22,7 +22,7 @@ namespace Inventory.ui
 		private ProductChangeLogsWindow()
 		{
 			InitializeComponent();
-			GetAllProductChangeLogs(null, null);
+			LoadProductsAndLogsFromDb(null, null);
 		}
 
 		public new void BringWindowToFront()
@@ -39,11 +39,15 @@ namespace Inventory.ui
 			}
 
 			this.Activate();
-
-			GetAllProducts();
-			GetAllProductChangeLogs(null, null);
+			LoadProductsAndLogsFromDb(null, null);
 		}
 		
+		private void LoadProductsAndLogsFromDb(object sender, RoutedEventArgs e)
+		{
+			GetAllProducts();
+			GetAllProductChangeLogs();
+		}
+
 		private void GetAllProducts()
 		{
 			InventoryDb = new InventoryDbContext();
@@ -56,7 +60,7 @@ namespace Inventory.ui
 			DataGridProducts.ItemsSource = ProductsView.View;
 		}
 		
-		private void GetAllProductChangeLogs(object sender, RoutedEventArgs e)
+		private void GetAllProductChangeLogs()
 		{
 			InventoryDb = new InventoryDbContext();
 

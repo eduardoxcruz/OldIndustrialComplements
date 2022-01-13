@@ -52,7 +52,7 @@
 			        Margin="0,8,8,8"
 			        FontSize="12"
 			        Content="Actualizar"
-			        Click="GetAllProductChangeLogs" />
+			        Click="LoadProductsAndLogsFromDb" />
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
