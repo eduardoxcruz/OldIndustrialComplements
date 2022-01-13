@@ -15,6 +15,7 @@
 	<ItemGroup>
 		<None Remove="resources\images\defaultProductImage.jpg" />
 		<None Remove="resources\images\icon.ico" />
+		<None Remove="resources\images\loginbackground.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,6 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
 			<PrivateAssets>all</PrivateAssets>
@@ -45,6 +47,9 @@
 
 	<ItemGroup>
 		<Resource Include="resources\images\defaultProductImage.jpg" />
+		<Resource Include="resources\images\loginbackground.jpg">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Content Include="resources\images\ico.ico">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
