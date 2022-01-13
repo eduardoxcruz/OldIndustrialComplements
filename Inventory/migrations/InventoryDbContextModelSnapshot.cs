@@ -190,94 +190,6 @@ namespace Inventory.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Inventory.model.ProductChangeCount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AmountAdjustments")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Devolutions")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Egresses")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Entrys")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PriceAdjustments")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductChangeCounts");
-                });
-
-            modelBuilder.Entity("Inventory.model.ProductChangeLog", b =>
-                {
-                    b.Property<int?>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployeeName")
-                        .HasMaxLength(35)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(35)");
-
-                    b.Property<int?>("NewAmount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PreviousAmount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductFullDescription")
-                        .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Provider")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<decimal?>("PurchasePrice")
-                        .HasPrecision(6, 2)
-                        .HasColumnType("decimal(6,2)");
-
-                    b.Property<string>("Type")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductChangeLogs");
-                });
-
             modelBuilder.Entity("Inventory.model.ProductRequest", b =>
                 {
                     b.Property<int?>("Id")
@@ -360,31 +272,60 @@ namespace Inventory.Migrations
                     b.ToTable("ShoppingCart");
                 });
 
-            modelBuilder.Entity("Inventory.model.ProductChangeCount", b =>
+            modelBuilder.Entity("Inventory.model.RecordOfProductMovement", b =>
                 {
-                    b.HasOne("Inventory.model.Product", "Product")
-                        .WithMany("ProductChangeCounts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                    b.Property<int?>("Id")
+                        .HasColumnType("int");
 
-                    b.Navigation("Product");
-                });
+                    b.Property<int?>("Amount")
+                        .HasColumnType("int");
 
-            modelBuilder.Entity("Inventory.model.ProductChangeLog", b =>
-                {
-                    b.HasOne("Inventory.model.Employee", "Employee")
-                        .WithMany("ProductChangeLogs")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.HasOne("Inventory.model.Product", "Product")
-                        .WithMany("ProductChangeLogs")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
 
-                    b.Navigation("Employee");
+                    b.Property<string>("EmployeeName")
+                        .HasMaxLength(35)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(35)");
 
-                    b.Navigation("Product");
+                    b.Property<int?>("NewAmount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PreviousAmount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductFullDescription")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Provider")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<decimal?>("PurchasePrice")
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductChangeLogs");
                 });
 
             modelBuilder.Entity("Inventory.model.ProductRequest", b =>
@@ -407,12 +348,29 @@ namespace Inventory.Migrations
             modelBuilder.Entity("Inventory.model.ProductToBuy", b =>
                 {
                     b.HasOne("Inventory.model.Employee", "Employee")
-                        .WithMany("ShoppingCart")
+                        .WithMany("ProductForBuys")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Inventory.model.Product", "Product")
-                        .WithMany("ShoppingCart")
+                        .WithMany("ProductForBuys")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Inventory.model.RecordOfProductMovement", b =>
+                {
+                    b.HasOne("Inventory.model.Employee", "Employee")
+                        .WithMany("RecordOfProductMovements")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Inventory.model.Product", "Product")
+                        .WithMany("RecordOfProductMovements")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -423,22 +381,20 @@ namespace Inventory.Migrations
 
             modelBuilder.Entity("Inventory.model.Employee", b =>
                 {
-                    b.Navigation("ProductChangeLogs");
+                    b.Navigation("ProductForBuys");
 
                     b.Navigation("ProductRequests");
 
-                    b.Navigation("ShoppingCart");
+                    b.Navigation("RecordOfProductMovements");
                 });
 
             modelBuilder.Entity("Inventory.model.Product", b =>
                 {
-                    b.Navigation("ProductChangeCounts");
-
-                    b.Navigation("ProductChangeLogs");
+                    b.Navigation("ProductForBuys");
 
                     b.Navigation("ProductRequests");
 
-                    b.Navigation("ShoppingCart");
+                    b.Navigation("RecordOfProductMovements");
                 });
 #pragma warning restore 612, 618
         }
