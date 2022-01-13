@@ -45,6 +45,11 @@ namespace Inventory.model
 		private decimal? _profitWithDiscount;
 		private string? _fullDescription;
 		private string? _memo;
+		private int _entrys;
+		private int _devolutions;
+		private int _egresses;
+		private int _amountAdjustments;
+		private int _priceAdjustments;
 
 		public int Id
 		{
@@ -452,6 +457,56 @@ namespace Inventory.model
 			{
 				_memo = value;
 				OnPropertyChanged(nameof(Memo));
+			}
+		}
+		
+		public int Entrys
+		{
+			get { return _entrys; }
+			set
+			{
+				_entrys = value;
+				OnPropertyChanged(nameof(Entrys));
+			}
+		}
+
+		public int Devolutions
+		{
+			get { return _devolutions; }
+			set
+			{
+				_devolutions = value;
+				OnPropertyChanged(nameof(Devolutions));
+			}
+		}
+
+		public int Egresses
+		{
+			get { return _egresses; }
+			set
+			{
+				_egresses = value;
+				OnPropertyChanged(nameof(Egresses));
+			}
+		}
+
+		public int AmountAdjustments
+		{
+			get { return _amountAdjustments; }
+			set
+			{
+				_amountAdjustments = value;
+				OnPropertyChanged(nameof(AmountAdjustments));
+			}
+		}
+
+		public int PriceAdjustments
+		{
+			get { return _priceAdjustments; }
+			set
+			{
+				_priceAdjustments = value;
+				OnPropertyChanged(nameof(PriceAdjustments));
 			}
 		}
 
