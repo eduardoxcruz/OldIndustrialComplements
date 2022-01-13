@@ -319,6 +319,12 @@ namespace Inventory.ui
 			LblResultCount.Content = "Recuento: " + DataGridProducts.Items.Count;
 		}
 
+		private void DataGridKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+				SelectProductFromDataGrid(sender, null);
+		}
+		
 		private void SelectProductFromDataGrid(object sender, MouseButtonEventArgs e)
 		{
 			if (DataGridProducts.ItemsSource == null || DataGridProducts.SelectedItems.Count <= 0)
@@ -353,8 +359,9 @@ namespace Inventory.ui
 			LblFinalCost.Content = $"Costo total: ${FinalCost}";
 		}
 
-		private void DataGridKeyPressed(object sender, KeyEventArgs e)
+		private void DataGridKeyUp(object sender, KeyEventArgs e)
 		{
+			e.Handled = true;
 			if (e.Key == Key.Down || e.Key == Key.Up)
 				LoadProductImage(sender);
 		}

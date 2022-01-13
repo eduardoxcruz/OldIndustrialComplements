@@ -20,7 +20,8 @@
 			<Setter Property="TextBlock.TextAlignment"
 			        Value="Center" />
 			<EventSetter Event="PreviewMouseLeftButtonDown" Handler="MouseLeftButtonClick" />
-			<EventSetter Event="KeyUp" Handler="DataGridKeyPressed" />
+			<EventSetter Event="KeyUp" Handler="DataGridKeyUp" />
+			<EventSetter Event="KeyDown" Handler="DataGridKeyDown"/>
 			<EventSetter Event="MouseDoubleClick" Handler="SelectProductFromDataGrid" />
 		</Style>
 		<Style TargetType="TextBox">
