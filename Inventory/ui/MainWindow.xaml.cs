@@ -76,13 +76,9 @@ namespace Inventory.ui
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
 			string message = $"Cambios en la version: {AppVersion}\n\n" +
-			                 "General: \n" +
-			                 "* Agregada la ventana Carrito de Compras.\n" +
-			                 "* Agregada ventana de Bitacora de Productos.\n\n" +
-			                 "Ventana de Tareas:\n" +
-			                 "* Ya se puede ejecutar la tarea 'Comprar mas producto'.\n\n" +
 			                 "Ventana de Bitacora:\n" +
-			                 "* Corregido bug que duplicaba los registros de la tabla.";
+			                 "* Agregada tabla que muestra el conteo total de Entradas, Salidas, Devoluciones, " +
+			                 "Ajustes de Cantidad y Ajustes de Precio en base al los registros de la bitacora.";
 			MessageBox.Show(message, "Registro de cambios.");
 		}
 
