@@ -23,6 +23,9 @@
 			<EventSetter Event="KeyUp" Handler="DataGridKeyPressed" />
 			<EventSetter Event="MouseDoubleClick" Handler="SelectProductFromDataGrid" />
 		</Style>
+		<Style TargetType="TextBox">
+			<EventSetter Event="MouseDoubleClick" Handler="ClearTextboxContent"/>
+		</Style>
 	</model:MyWindow.Resources>
 	<Viewbox Stretch="Fill">
 		<Grid Width="1300"

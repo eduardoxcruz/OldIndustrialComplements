@@ -429,5 +429,10 @@ namespace Inventory.ui
 
 			return null;
 		}
+
+		private void ClearTextboxContent(object sender, MouseButtonEventArgs e)
+		{
+			(sender as TextBox).Text = "";
+		}
 	}
 }
