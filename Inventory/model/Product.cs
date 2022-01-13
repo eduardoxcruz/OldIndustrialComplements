@@ -647,6 +647,16 @@ namespace Inventory.model
 			builder.Property(product => product.MaxAmount);
 
 			builder.Property(product => product.MinAmount);
+			
+			builder.Property(product => product.Entrys);
+			
+			builder.Property(product => product.Devolutions);
+			
+			builder.Property(product => product.Egresses);
+			
+			builder.Property(product => product.AmountAdjustments);
+			
+			builder.Property(product => product.PriceAdjustments);
 
 			builder
 				.Property(product => product.BuyPrice)
