@@ -687,7 +687,7 @@
 					              Grid.Row="3"
 					              Margin="0,0,8,0"
 					              FontSize="4"
-					              Interval="125"
+					              Interval="50"
 					              Content="Up"
 					              Click="AddProfit" />
 					<RepeatButton x:Name="BtnRemoveProfit"
@@ -696,7 +696,7 @@
 					              Margin="0,0,8,0"
 					              FontSize="4"
 					              Content="Down"
-					              Interval="125"
+					              Interval="50"
 					              Click="RemoveProfit" />
 					<TextBox x:Name="TxtBoxPercentageOfDiscount"
 					         Grid.Column="2"
@@ -720,7 +720,7 @@
 					              Grid.Row="3"
 					              Margin="0,0,0,0"
 					              FontSize="4"
-					              Interval="125"
+					              Interval="50"
 					              Content="Up"
 					              Click="AddDiscount" />
 					<RepeatButton x:Name="BtnRemoveDiscount"
@@ -728,7 +728,7 @@
 					              Grid.Row="4"
 					              Margin="0,0,0,0"
 					              FontSize="4"
-					              Interval="125"
+					              Interval="50"
 					              Content="Down"
 					              Click="RemoveDiscount" />
 					<Label Grid.Column="0"
