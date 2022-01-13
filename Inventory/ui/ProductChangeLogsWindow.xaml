@@ -132,7 +132,7 @@
 			<DataGrid x:Name="DataGridProductChangeLogs"
 			          Grid.Row="2"
 			          Grid.Column="0"
-			          Grid.ColumnSpan="9"
+			          Grid.ColumnSpan="3"
 			          Margin="8,8,8,0"
 			          AutoGenerateColumns="False"
 			          SelectionUnit="FullRow"
@@ -158,11 +158,6 @@
 											ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
 											ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
 					                    }" />
-					<DataGridTextColumn Header="Tipo"
-					                    Width="SizeToCells"
-										MaxWidth="90"
-					                    MinWidth="80"
-					                    Binding="{Binding Path=Type}" />
 					<DataGridTextColumn Header="Empleado"
 					                    Width="SizeToCells"
 										MaxWidth="150"
@@ -178,21 +173,26 @@
 										MaxWidth="450"
 					                    MinWidth="400"
 					                    Binding="{Binding Product.FullDescription}" />
+					<DataGridTextColumn Header="Cantidad"
+					                    Width="SizeToHeader"
+					                    MaxWidth="60"
+					                    MinWidth="40"
+					                    Binding="{Binding Amount}" />
 					<DataGridTextColumn Header="Cantidad Previa"
 					                    Width="SizeToHeader"
 					                    MaxWidth="100"
 					                    MinWidth="40"
 					                    Binding="{Binding PreviousAmount}" />
+					<DataGridTextColumn Header="Tipo"
+					                    Width="SizeToCells"
+										MaxWidth="90"
+					                    MinWidth="80"
+					                    Binding="{Binding Path=Type}" />
 					<DataGridTextColumn Header="Cantidad Nueva"
 					                    Width="SizeToHeader"
 										MaxWidth="100"
 					                    MinWidth="40"
 					                    Binding="{Binding NewAmount}" />
-					<DataGridTextColumn Header="Existencia"
-					                    Width="SizeToHeader"
-										MaxWidth="90"
-					                    MinWidth="70"
-					                    Binding="{Binding Product.CurrentAmount}" />
 					<DataGridTextColumn Header="Precio de Compra"
 					                    Width="SizeToHeader"
 										MaxWidth="110"
