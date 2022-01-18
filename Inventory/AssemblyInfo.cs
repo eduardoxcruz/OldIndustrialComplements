@@ -10,5 +10,5 @@ using System.Windows;
 	// app, or any theme specific resource dictionaries)
 )]
 
-[assembly: AssemblyVersion("5.1.0.0")]
-[assembly: AssemblyFileVersion("5.1.0.0")]
+[assembly: AssemblyVersion("5.2.0.0")]
+[assembly: AssemblyFileVersion("5.2.0.0")]
