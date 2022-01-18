@@ -329,11 +329,6 @@
 					                        MaxWidth="100"
 					                        IsThreeState="False"
 					                        Binding="{Binding IsUsingInventory}" />
-					<DataGridTextColumn Header="Existencia"
-					                    Width="SizeToHeader"
-					                    MaxWidth="80"
-					                    MinWidth="40"
-					                    Binding="{Binding CurrentAmount}" />
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
 					                    MaxWidth="170"
@@ -344,6 +339,16 @@
 					                    MaxWidth="120"
 					                    MinWidth="80"
 					                    Binding="{Binding Location}" />
+					<DataGridTextColumn Header="Existencia"
+					                    Width="SizeToHeader"
+					                    MaxWidth="80"
+					                    MinWidth="40"
+					                    Binding="{Binding CurrentAmount}" />
+					<DataGridTextColumn Header="Salidas"
+					                    Width="SizeToHeader"
+					                    MaxWidth="80"
+					                    MinWidth="60"
+					                    Binding="{Binding Egresses}" />
 				</DataGrid.Columns>
 				<DataGrid.ContextMenu>
 					<ContextMenu>
