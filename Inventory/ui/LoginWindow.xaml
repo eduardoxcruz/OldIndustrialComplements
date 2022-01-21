@@ -11,9 +11,6 @@
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
-	<Window.Background>
-		<ImageBrush ImageSource="/resources/images/loginbackground.jpg"/>
-	</Window.Background>
 	<Viewbox>
 		<Grid Width="239"
 		      Height="200">
