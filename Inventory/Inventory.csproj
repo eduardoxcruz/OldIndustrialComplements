@@ -13,9 +13,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="resources\images\CAR06A.jpg" />
 		<None Remove="resources\images\defaultProductImage.jpg" />
 		<None Remove="resources\images\icon.ico" />
-		<None Remove="resources\images\loginbackground.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -46,10 +46,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="resources\images\defaultProductImage.jpg" />
-		<Resource Include="resources\images\loginbackground.jpg">
+		<Resource Include="resources\images\CAR06A.jpg">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
+		<Resource Include="resources\images\defaultProductImage.jpg" />
 		<Content Include="resources\images\ico.ico">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
