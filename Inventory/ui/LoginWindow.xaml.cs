@@ -28,10 +28,9 @@ namespace Inventory.ui
 
 		private void LoadUsersFromDatabaseToComboBox()
 		{
-			while (!new InventoryDbContext().Database.CanConnect())
+			if (!new InventoryDbContext().Database.CanConnect())
 			{
 				MessageBox.Show("No hay conexion al servidor.", "Error");
-				Thread.Sleep(5000);
 			}
 
 			InventoryDbContext.ExecuteDatabaseRequest(() =>
