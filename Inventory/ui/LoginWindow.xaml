@@ -97,14 +97,22 @@
 					  FontFamily="Arial Rounded MT Bold" />
 			<Button Grid.Column="0"
 			        Grid.Row="5"
-			        Margin="4,15"
+			        Margin="4,8"
 			        Content="Iniciar Sesión"
-			        Click="TryToLogin" Foreground="White" Background="#FF151414" BorderBrush="#FF151414" FontFamily="Arial" />
+			        Click="TryToLogin" 
+					Foreground="White"  
+					FontFamily="Roboto"
+					VerticalAlignment="Top"
+					Height="26"/>
 			<Button Grid.Column="1"
 			        Grid.Row="5"
-			        Margin="4,15"
+			        Margin="4,8"
 			        Content="Salir"
-			        Click="Exit" Background="#FF151414" Foreground="White" BorderBrush="#FF151414" FontFamily="Arial" />
+			        Click="Exit" 
+					Foreground="White" 
+					FontFamily="Roboto"
+					VerticalAlignment="Top"
+					Height="26"/>
 		</Grid>
 	</Viewbox>
 </Window>
