@@ -122,7 +122,8 @@
 				          FontSize="14"
 				          Content="Surtido"
 				          Checked="RefreshProductRequestsView"
-				          Unchecked="RefreshProductRequestsView" />
+				          Unchecked="RefreshProductRequestsView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByNotDelivered"
 				          Grid.Column="2"
 				          HorizontalContentAlignment="Left"
@@ -131,7 +132,8 @@
 				          FontSize="14"
 				          Content="No surtido"
 				          Checked="RefreshProductRequestsView"
-				          Unchecked="RefreshProductRequestsView" />
+				          Unchecked="RefreshProductRequestsView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByReturned"
 				          Grid.Column="3"
 				          HorizontalContentAlignment="Left"
@@ -140,7 +142,8 @@
 				          FontSize="14"
 				          Content="Devuelto"
 				          Checked="RefreshProductRequestsView"
-				          Unchecked="RefreshProductRequestsView" />
+				          Unchecked="RefreshProductRequestsView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxHideNoSupply"
 				          Grid.Column="4"
 				          HorizontalContentAlignment="Left"
@@ -149,7 +152,8 @@
 				          FontSize="14"
 				          Content="Ocultar ''No Surtir''"
 				          Checked="RefreshProductRequestsView"
-				          Unchecked="RefreshProductRequestsView" />
+				          Unchecked="RefreshProductRequestsView"
+				          Foreground="White" />
 			</Grid>
 			<DataGrid x:Name="DataGridRequests"
 			          Grid.Row="2"
