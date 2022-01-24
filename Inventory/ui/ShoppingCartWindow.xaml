@@ -131,7 +131,8 @@
 				          FontSize="14"
 				          Content="Pendiente"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByRequested"
 				          Grid.Column="2"
 				          HorizontalContentAlignment="Left"
@@ -140,7 +141,8 @@
 				          FontSize="14"
 				          Content="Solicitado"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByPurchased"
 				          Grid.Column="3"
 				          HorizontalContentAlignment="Left"
@@ -149,7 +151,8 @@
 				          FontSize="14"
 				          Content="Comprado"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+						  Foreground="White" />
 			</Grid>
 			<DataGrid x:Name="DataGridShoppingCart"
 			          Grid.Row="2"
