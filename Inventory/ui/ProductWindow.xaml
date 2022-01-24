@@ -158,9 +158,11 @@
 						 Foreground="White" />
 				<Button x:Name="BtnVerifySearch"
 				        Grid.Column="4"
-				        Grid.Row="1"
-				        HorizontalAlignment="Left"
-				        Margin="0,0,0,0"
+				        Grid.Row="0"
+						Grid.RowSpan="2"
+				        HorizontalAlignment="Right"
+				        Margin="0,8,8,0"
+						Padding="12,0,12,0"
 				        FontSize="12"
 				        Content="Buscar"
 				        Click="VerifySearch" />
@@ -171,7 +173,7 @@
 			          Margin="8,8,8,0"
 			          Padding="8"
 			          BorderBrush="Black"
-			          BorderThickness="2"
+			          BorderThickness="1"
 			          FontSize="12"
 			          Header="Datos del producto">
 				<Grid x:Name="GridProductDetails">
@@ -318,7 +320,9 @@
 						<TextBox x:Name="TxtBoxShortDescription" FontSize="12"
 						         HorizontalContentAlignment="Center"
 						         TextWrapping="Wrap"
-						         Style="{StaticResource TextBoxInError}">
+						         Style="{StaticResource TextBoxInError}"
+						         Background="{x:Null}"
+						         Foreground="White">
 							<TextBox.Text>
 								<Binding Path="ShortDescription" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 									<Binding.ValidationRules>
@@ -380,7 +384,7 @@
 			          Margin="8,8,4,0"
 			          Padding="8"
 			          BorderBrush="Black"
-			          BorderThickness="2"
+			          BorderThickness="1"
 			          FontSize="12"
 			          Header="Inventario">
 				<Grid x:Name="GridInventory">
@@ -488,7 +492,8 @@
 					        Margin="0,0,0,0"
 							Padding="8,0,8,0"
 					        FontSize="12"
-					        HorizontalAlignment="Right"
+							Height="20"
+					        HorizontalAlignment="Center"
 					        Content="Tareas"
 					        Click="OpenTasksWindow" />
 				</Grid>
@@ -499,7 +504,7 @@
 			          Margin="4,8,8,0"
 			          Padding="8"
 			          BorderBrush="Black"
-			          BorderThickness="2"
+			          BorderThickness="1"
 			          FontSize="12"
 			          Header="Ubicacion">
 				<Grid x:Name="GridLocation">
@@ -638,7 +643,7 @@
 			          Margin="8,8,8,0"
 			          Padding="8"
 			          BorderBrush="Black"
-			          BorderThickness="2"
+			          BorderThickness="1"
 			          FontSize="12"
 			          Header="Detalles de Precio y Fabricante">
 				<Grid x:Name="GridPriceDetails">
@@ -740,6 +745,7 @@
 					         Grid.RowSpan="2"
 					         Margin="0,0,0,0"
 					         FontSize="12"
+							 Height="20"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
 					         Style="{StaticResource TextBoxInError}"
@@ -757,6 +763,9 @@
 					              Grid.Column="1"
 					              Grid.Row="3"
 					              Margin="0,0,8,0"
+								  Padding="4,0,4,0"
+								  Height="11"
+								  Width="18"
 					              FontSize="4"
 					              Interval="50"
 					              Click="AddProfit" />
@@ -771,8 +780,10 @@
 					              Grid.Column="1"
 					              Grid.Row="4"
 					              Margin="0,0,8,0"
+								  Padding="4,0,4,0"
+								  Height="11"
+								  Width="18"
 					              FontSize="4"
-					              Content="Down"
 					              Interval="50"
 					              Click="RemoveProfit" />
 					<materialDesign:PackIcon Kind="ArrowDown"
@@ -788,6 +799,7 @@
 					         Grid.RowSpan="2"
 					         Margin="0,0,0,0"
 					         FontSize="12"
+							 Height="20"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
 					         Style="{StaticResource TextBoxInError}"
@@ -805,9 +817,11 @@
 					              Grid.Column="3"
 					              Grid.Row="3"
 					              Margin="0,0,0,0"
+								  Padding="4,0,4,0"
 					              FontSize="4"
+								  Height="11"
+								  Width="18"
 					              Interval="50"
-					              Content="Up"
 					              Click="AddDiscount" />
 					<materialDesign:PackIcon Kind="ArrowUp"
 											 Grid.Row="3"
@@ -820,7 +834,10 @@
 					              Grid.Column="3"
 					              Grid.Row="4"
 					              Margin="0,0,0,0"
+								  Padding="4,0,4,0"
 					              FontSize="4"
+								  Height="11"
+								  Width="18"
 					              Interval="50"
 					              Click="RemoveDiscount" />
 					<materialDesign:PackIcon Kind="ArrowDown"
@@ -1017,7 +1034,7 @@
 			          Margin="8,8,8,0"
 			          Padding="8"
 			          BorderBrush="Black"
-			          BorderThickness="2"
+			          BorderThickness="1"
 			          FontSize="12"
 			          Header="Extras">
 				<Grid>
