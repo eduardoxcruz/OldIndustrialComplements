@@ -320,8 +320,19 @@
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
 			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
@@ -412,8 +423,19 @@
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
 			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
