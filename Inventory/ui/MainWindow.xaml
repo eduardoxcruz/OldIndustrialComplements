@@ -53,7 +53,7 @@
 						  Margin="0,6,110,0"/>
 			<Button Grid.Column="1"
 			        Grid.Row="1"
-			        Margin="0,8,8,0"
+			        Margin="0,4,8,0"
 			        FontSize="14"
 			        HorizontalAlignment="Right"
 			        Click="OpenChangelog"
@@ -73,7 +73,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="3"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenSearchProductWindow"
 					HorizontalAlignment="Left"
@@ -90,7 +90,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="4"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenAddProductWindow"
 					HorizontalAlignment="Left"
@@ -107,7 +107,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="5"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenProductDetailsWindow"
 					HorizontalAlignment="Left"
@@ -124,7 +124,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="6"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenModifyProductWindow"
 					HorizontalAlignment="Left"
@@ -141,7 +141,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="7"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenRequestsWindow"
 					HorizontalAlignment="Left"
@@ -158,7 +158,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="8"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenShoppingCartWindow"
 					HorizontalAlignment="Left"
@@ -175,7 +175,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="9"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenProductChangeLogsWindow"
 					HorizontalAlignment="Left"
@@ -192,7 +192,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="10"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenTasksWindow"
 					HorizontalAlignment="Left"
@@ -209,7 +209,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="11"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenConnectionsWindow"
 					HorizontalAlignment="Left"
@@ -226,7 +226,7 @@
 						  Margin="8,0,0,0"/>
 			<Button Grid.Column="0"
 			        Grid.Row="12"
-			        Margin="8,0,0,8"
+			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenSettingsWindow"
 			        Content="Ajustes" />
