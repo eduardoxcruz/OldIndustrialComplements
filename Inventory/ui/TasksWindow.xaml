@@ -10,13 +10,13 @@
                 mc:Ignorable="d"
                 Title="Tareas"
                 Width="600"
-                Height="350"
+                Height="390"
                 ResizeMode="CanMinimize"
                 WindowStartupLocation="CenterScreen" 
 				Background="#FF252525">
 	<Viewbox>
 		<Grid Width="670"
-		      Height="350">
+		      Height="416">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
