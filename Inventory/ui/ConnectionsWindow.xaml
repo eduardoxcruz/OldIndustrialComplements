@@ -46,7 +46,8 @@
 			       Grid.Row="1"
 			       Margin="8,0,0,0"
 			       FontSize="14"
-			       Content="Estado:" />
+			       Content="Estado:"
+				   VerticalAlignment="Top"/>
 			<Label x:Name="LblConnectionResult"
 			       Grid.Column="1"
 			       Grid.Row="1"
@@ -58,13 +59,15 @@
 			        Margin="16,8,168,16"
 			        FontSize="14"
 			        Click="TestConnection"
-			        Content="Probar" />
+			        Content="Probar"
+					VerticalAlignment="Top"/>
 			<Button Grid.Column="1"
 			        Grid.Row="2"
 			        FontSize="14"
 			        Margin="80,8,16,16"
 			        Click="CloseWindow"
-			        Content="Salir" />
+			        Content="Salir"
+					VerticalAlignment="Top"/>
 		</Grid>
 	</Viewbox>
 </model:MyWindow>
