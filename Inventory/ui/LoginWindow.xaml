@@ -3,7 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		TextElement.FontWeight="Regular"
+		TextElement.FontSize="14"
+		TextOptions.TextFormattingMode="Ideal"
+		TextOptions.TextRenderingMode="Auto"
+		Background="#FF252525"
+		FontFamily="Roboto"
         mc:Ignorable="d"
         Title="Inicio de sesión"
         Width="262"
@@ -26,13 +32,13 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
-			<fa:IconImage Icon="UserCircle"
+			<materialDesign:PackIcon Kind="UserCircle"
 						  Foreground="WhiteSmoke" 
 						  Width="24" 
 						  Height="24"
 						  Grid.Column="0" 
 						  HorizontalAlignment="Center" 
-						  Margin="50,0,0,0"/>
+						  Margin="20,4,0,0"/>
 			<Label Grid.Column="0"
 			       Grid.Row="0"
 			       Margin="4"
@@ -44,15 +50,11 @@
 			          Grid.Row="1"
 			          Margin="4"
 			          FontSize="12"
-			          HorizontalContentAlignment="Center" BorderBrush="White" FontFamily="Arial" Foreground="#FF292727" >
-				<ComboBox.Background>
-					<LinearGradientBrush EndPoint="0,1">
-						<GradientStop Color="#FFF0F0F0"/>
-						<GradientStop Color="White" Offset="1"/>
-					</LinearGradientBrush>
-				</ComboBox.Background>
-			</ComboBox>
-			<fa:IconImage Icon="Key"
+			          HorizontalContentAlignment="Center" 
+					  BorderBrush="White" 
+					  FontFamily="Roboto" 
+					  Foreground="White"/>
+			<materialDesign:PackIcon Kind="key"
 						  Foreground="WhiteSmoke" 
 						  Width="24" 
 						  Height="24"
