@@ -229,7 +229,12 @@
 			        Margin="35,0,0,8"
 			        FontSize="14"
 			        Click="OpenSettingsWindow"
-			        Content="Ajustes" />
+					HorizontalAlignment="Left"
+			        Content="Ajustes"
+			        FontFamily="Century Gothic"
+					Background="{x:Null}"
+					Foreground="White"
+					BorderBrush="{x:Null}" />
 		</Grid>
 	</Viewbox>
 </Window>
