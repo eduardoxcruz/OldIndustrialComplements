@@ -65,7 +65,8 @@
 						  Grid.Column="0" 
 						  Grid.Row="2" 
 						  HorizontalAlignment="Right" 
-						  Margin="102,0,0,0"/>
+						  Margin="0,4,14,0" 
+						  FlowDirection="RightToLeft"/>
 			<Label Grid.Column="0"
 			       Grid.Row="2"
 			       Margin="4"
@@ -81,14 +82,19 @@
 			             Margin="4"
 			             FontSize="12"
 			             HorizontalContentAlignment="Center"
-			             KeyDown="EnterKeyPressed" BorderBrush="White" FontFamily="Arial" Foreground="#FF292727" />
+			             KeyDown="EnterKeyPressed" 
+						 BorderBrush="White" 
+						 FontFamily="Roboto" 
+						 Foreground="White" Cursor="IBeam" />
 			<CheckBox x:Name="ChkBoxRememberData"
 			          Grid.Column="0"
 			          Grid.Row="4"
 			          Margin="4,10,2,2"
 			          FontSize="11"
 					  VerticalContentAlignment="Center"
-			          Content="Guardar Sesión" Foreground="White" FontFamily="Arial Rounded MT Bold" />
+			          Content="Guardar Sesión" 
+					  Foreground="White" 
+					  FontFamily="Arial Rounded MT Bold" />
 			<Button Grid.Column="0"
 			        Grid.Row="5"
 			        Margin="4,15"
