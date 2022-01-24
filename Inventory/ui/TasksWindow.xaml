@@ -289,21 +289,23 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Descripcion completa" />
-			<Label x:Name="LblFullDescription"
-			       Grid.Row="8"
-			       Grid.Column="0"
-			       Grid.ColumnSpan="7"
-			       VerticalContentAlignment="Center"
-			       HorizontalContentAlignment="Center"
-			       Margin="8,0,0,0"
-			       Padding="0,0,0,0"
-			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="FullDescription" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Content="Descripción completa" 
+				   Foreground="White" />
+
+			<FlowDocumentScrollViewer x:Name="LblFullDescription"
+									  Grid.Column="0"
+					                  Grid.ColumnSpan="7"
+					                  Grid.Row="8"
+					                  Margin="8,0,8,0">
+				<FlowDocument>
+					<Paragraph FontFamily="Segoe UI"
+							   FontSize="14"
+							   TextAlignment="Center"
+							   Foreground="#FFF10C0C">
+						<Run Text="{Binding FullDescription, Mode=OneWay}" />
+					</Paragraph>
+				</FlowDocument>
+			</FlowDocumentScrollViewer>
 			<Label Grid.Row="9"
 			       Grid.Column="0"
 				   Grid.ColumnSpan="2"
