@@ -5,15 +5,18 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:model="clr-namespace:Inventory.model"
                 xmlns:properties="clr-namespace:Inventory.Properties"
+				xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+				FontFamily="{StaticResource MaterialDesignFont}"
                 mc:Ignorable="d"
                 Title="Tareas"
                 Width="600"
-                Height="350"
+                Height="390"
                 ResizeMode="CanMinimize"
-                WindowStartupLocation="CenterScreen">
+                WindowStartupLocation="CenterScreen" 
+				Background="#FF252525">
 	<Viewbox>
 		<Grid Width="670"
-		      Height="350">
+		      Height="416">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -32,7 +35,7 @@
 				<RowDefinition Height="*" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
+				<RowDefinition Height="1.3*" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="*" />
@@ -43,7 +46,8 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="24"
-			       Content="Tareas" />
+			       Content="Tareas"
+				   Foreground="White" />
 			<Grid Grid.Row="0"
 			      Grid.Column="6">
 				<Grid.ColumnDefinitions>
@@ -56,7 +60,8 @@
 				       HorizontalContentAlignment="Right"
 				       VerticalContentAlignment="Center"
 				       FontSize="16"
-				       Content="ID:" />
+				       Content="ID:"
+				       Foreground="White" />
 				<Label x:Name="LblId"
 				       Grid.Column="1"
 				       Margin="8,0,0,0"
@@ -64,11 +69,8 @@
 				       HorizontalContentAlignment="Left"
 				       VerticalContentAlignment="Center"
 				       FontSize="16"
-				       Foreground="#FFF10C0C">
-					<Label.Content>
-						<Binding Path="Id" Mode="OneWay" />
-					</Label.Content>
-				</Label>
+				       Foreground="#FFF10C0C"
+				       Content="{Binding Id, Mode=OneWay}"/>
 			</Grid>
 			<Label Grid.Row="1"
 			       Grid.Column="0"
@@ -78,23 +80,26 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Buscar por" />
+			       Content="Buscar por"
+				   Foreground="White" />
 			<Label Grid.Row="1"
 			       Grid.Column="2"
 			       VerticalContentAlignment="Center"
 			       HorizontalContentAlignment="Center"
-			       Margin="8,0,0,0"
+			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="ID" />
+			       Content="ID"
+				   Foreground="White"/>
 			<Label Grid.Row="1"
 			       Grid.Column="3"
 			       VerticalContentAlignment="Center"
 			       HorizontalContentAlignment="Center"
-			       Margin="8,0,0,0"
+			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Codigo Debug" />
+			       Content="Codigo Debug"
+				   Foreground="White"/>
 			<ComboBox x:Name="CmbBoxIdOrDebugCode"
 			          Grid.Row="2"
 			          Grid.Column="0"
@@ -103,7 +108,8 @@
 			          FontSize="14"
 			          HorizontalContentAlignment="Center"
 			          IsEditable="False"
-			          IsReadOnly="True">
+			          IsReadOnly="True" 
+					  Foreground="White">
 				<ComboBoxItem Content="ID"
 				              IsSelected="True" />
 				<ComboBoxItem Content="DEBUG" />
@@ -115,12 +121,14 @@
 			         FontSize="14"
 			         HorizontalContentAlignment="Center"
 			         PreviewTextInput="AllowOnlyIntegers"
-			         KeyDown="EnterKeyPressed" />
+			         KeyDown="EnterKeyPressed"
+			         Foreground="White" />
 			<TextBox Grid.Row="2"
 			         Grid.Column="3"
 			         Margin="8,0,0,0"
 			         FontSize="14"
-			         HorizontalContentAlignment="Center" />
+			         HorizontalContentAlignment="Center"
+			         Foreground="White" />
 			<Button x:Name="BtnSearch"
 			        Grid.Row="2"
 			        Grid.Column="4"
@@ -135,30 +143,34 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Fecha y Hora" />
+			       Content="Fecha y Hora"
+			       Foreground="White" />
 			<Label Grid.Row="3"
 			       Grid.Column="2"
 			       VerticalContentAlignment="Center"
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Empleado" />
+			       Content="Empleado"
+			       Foreground="White" />
 			<Label Grid.Row="3"
 			       Grid.Column="4"
 			       VerticalContentAlignment="Center"
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Precio Compra" />
+			       Content="Precio Compra"
+			       Foreground="White" />
 			<Label Grid.Row="3"
 			       Grid.Column="5"
 			       Grid.ColumnSpan="2"
 			       VerticalContentAlignment="Center"
 			       HorizontalContentAlignment="Center"
-			       Margin="8,0,0,0"
+			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Cantidad actual" />
+			       Content="Cantidad actual"
+			       Foreground="White" />
 			<Label x:Name="LblDateTime"
 			       Grid.Row="4"
 			       Grid.Column="0"
@@ -178,11 +190,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Source="{x:Static properties:Settings.Default}" Path="User.FullName" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding User.FullName, Source={x:Static properties:Settings.Default}}"/>
 			<Label x:Name="LblBuyPrice"
 			       Grid.Row="4"
 			       Grid.Column="4"
@@ -191,11 +200,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="BuyPrice" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding BuyPrice, Mode=OneWay}"/>
 			<Label x:Name="LblCurrentAmount"
 			       Grid.Row="4"
 			       Grid.Column="5"
@@ -205,39 +211,40 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="CurrentAmount" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding CurrentAmount, Mode=OneWay}"/>
 			<Label Grid.Row="5"
 			       Grid.Column="0"
 			       VerticalContentAlignment="Center"
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Tipo" />
+			       Content="Tipo"
+			       Foreground="White" />
 			<Label Grid.Row="5"
 			       Grid.Column="2"
 			       VerticalContentAlignment="Center"
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Cantidad" />
+			       Content="Cantidad"
+			       Foreground="White" />
 			<Label Grid.Row="5"
 			       Grid.Column="3"
 			       VerticalContentAlignment="Center"
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Precio" />
+			       Content="Precio"
+			       Foreground="White" />
 			<Label Grid.Row="5"
 			       Grid.Column="4"
 			       VerticalContentAlignment="Center"
 			       Margin="0,0,8,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Proveedor" />
+			       Content="Proveedor"
+			       Foreground="White" />
 			<ComboBox x:Name="CmbBoxTask"
 			          Grid.Row="6"
 			          Grid.Column="0"
@@ -247,21 +254,24 @@
 			          HorizontalContentAlignment="Center"
 			          IsEditable="False"
 			          IsReadOnly="True"
-			          SelectionChanged="ConfigureControlsForTask" />
+			          SelectionChanged="ConfigureControlsForTask"
+			          Foreground="White" />
 			<TextBox x:Name="TxtBoxInputQuantity"
 			         Grid.Row="6"
 			         Grid.Column="2"
 			         Margin="0,0,8,0"
 			         FontSize="14"
 			         HorizontalContentAlignment="Center"
-			         PreviewTextInput="AllowOnlyIntegers" />
+			         PreviewTextInput="AllowOnlyIntegers"
+			         Foreground="White" />
 			<TextBox x:Name="TxtBoxInputPrice"
 			         Grid.Row="6"
 			         Grid.Column="3"
 			         Margin="0,0,8,0"
 			         FontSize="14"
 			         HorizontalContentAlignment="Center"
-			         PreviewTextInput="AllowOnlyDecimals" />
+			         PreviewTextInput="AllowOnlyDecimals"
+			         Foreground="White" />
 			<ComboBox x:Name="CmbBoxProvider"
 			          Grid.Row="6"
 			          Grid.Column="4"
@@ -270,7 +280,8 @@
 			          FontSize="14"
 			          HorizontalContentAlignment="Center"
 			          IsEditable="True"
-			          IsReadOnly="False" />
+			          IsReadOnly="False"
+			          Foreground="White" />
 			<Label Grid.Row="7"
 			       Grid.Column="0"
 			       Grid.ColumnSpan="2"
@@ -278,35 +289,43 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Descripcion completa" />
-			<Label x:Name="LblFullDescription"
-			       Grid.Row="8"
-			       Grid.Column="0"
-			       Grid.ColumnSpan="7"
-			       VerticalContentAlignment="Center"
-			       HorizontalContentAlignment="Center"
-			       Margin="8,0,0,0"
-			       Padding="0,0,0,0"
-			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="FullDescription" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Content="Descripción completa" 
+				   Foreground="White" />
+
+			<FlowDocumentScrollViewer x:Name="LblFullDescription"
+									  Grid.Column="0"
+					                  Grid.ColumnSpan="7"
+					                  Grid.Row="8"
+					                  Margin="8,0,8,0">
+				<FlowDocument>
+					<Paragraph FontFamily="Segoe UI"
+							   FontSize="14"
+							   TextAlignment="Center"
+							   Foreground="#FFF10C0C">
+						<Run Text="{Binding FullDescription, Mode=OneWay}" />
+					</Paragraph>
+				</FlowDocument>
+			</FlowDocumentScrollViewer>
 			<Label Grid.Row="9"
 			       Grid.Column="0"
+				   Grid.ColumnSpan="2"
 			       VerticalContentAlignment="Center"
+				   HorizontalContentAlignment="Center"
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Contenedor" />
+			       Content="Contenedor" 
+				   Foreground="#FFFDFDFD" />
 			<Label Grid.Row="9"
 			       Grid.Column="2"
+				   Grid.ColumnSpan="2"
 			       VerticalContentAlignment="Center"
+				   HorizontalContentAlignment="Center"
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Ubicacion" />
+			       Content="Ubicación" 
+				   Foreground="#FFFDFDFD" />
 			<Label Grid.Row="9"
 			       Grid.Column="4"
 			       VerticalContentAlignment="Center"
@@ -314,7 +333,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Sucursal" />
+			       Content="Sucursal"
+			       Foreground="#FFFDFDFD" />
 			<Label Grid.Row="9"
 			       Grid.Column="5"
 			       VerticalContentAlignment="Center"
@@ -322,7 +342,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Estante" />
+			       Content="Estante"
+			       Foreground="#FFFDFDFD" />
 			<Label Grid.Row="9"
 			       Grid.Column="6"
 			       VerticalContentAlignment="Center"
@@ -330,7 +351,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Content="Repisa" />
+			       Content="Repisa"
+			       Foreground="#FFFDFDFD" />
 			<Label x:Name="LblContainer"
 			       Grid.Row="10"
 			       Grid.Column="0"
@@ -340,11 +362,8 @@
 			       Margin="8,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="Container" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding Container, Mode=OneWay}"/>
 			<Label x:Name="LblLocation"
 			       Grid.Row="10"
 			       Grid.Column="2"
@@ -354,11 +373,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="Location" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding Location, Mode=OneWay}"/>
 			<Label x:Name="LblBranchOffice"
 			       Grid.Row="10"
 			       Grid.Column="4"
@@ -367,11 +383,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="BranchOffice" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding BranchOffice, Mode=OneWay}"/>
 			<Label x:Name="LblRack"
 			       Grid.Row="10"
 			       Grid.Column="5"
@@ -380,11 +393,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="Rack" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding Rack, Mode=OneWay}"/>
 			<Label x:Name="LblShelf"
 			       Grid.Row="10"
 			       Grid.Column="6"
@@ -393,11 +403,8 @@
 			       Margin="0,0,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="14"
-			       Foreground="#FFF10C0C">
-				<Label.Content>
-					<Binding Path="Shelf" Mode="OneWay" />
-				</Label.Content>
-			</Label>
+			       Foreground="#FFF10C0C"
+			       Content="{Binding Shelf, Mode=OneWay}"/>
 			<Grid Grid.Row="11"
 			      Grid.Column="0"
 			      Grid.ColumnSpan="2">
@@ -407,16 +414,20 @@
 				</Grid.ColumnDefinitions>
 				<Button x:Name="BtnExecuteTask"
 				        Grid.Column="0"
-				        Margin="8,8,0,0"
+				        Margin="8,2,0,0"
 				        FontSize="14"
 				        Content="Ejecutar"
-				        Click="ExecuteTask" />
+				        Click="ExecuteTask"
+						VerticalAlignment="Top"
+						Height="26"/>
 				<Button x:Name="BtnExit"
 				        Grid.Column="1"
-				        Margin="8,8,0,0"
+				        Margin="8,2,0,0"
 				        FontSize="14"
 				        Content="Salir"
-				        Click="CloseWindow" />
+				        Click="CloseWindow"
+						VerticalAlignment="Top"
+						Height="26"/>
 			</Grid>
 		</Grid>
 	</Viewbox>

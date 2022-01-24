@@ -76,9 +76,8 @@ namespace Inventory.ui
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
 			string message = $"Cambios en la version: {AppVersion}\n\n" +
-			                 "Ventana de Bitacora:\n" +
-			                 "* Agregada tabla que muestra el conteo total de Entradas, Salidas, Devoluciones, " +
-			                 "Ajustes de Cantidad y Ajustes de Precio en base al los registros de la bitacora.";
+			                 "General:\n" +
+			                 "* Agregado Material Design a toda la aplicación.";
 			MessageBox.Show(message, "Registro de cambios.");
 		}
 

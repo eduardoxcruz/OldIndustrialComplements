@@ -5,6 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:Inventory.model"
         xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		FontFamily="Roboto"
+		TextElement.FontWeight="Regular"
+		TextElement.FontSize="14"
+		TextOptions.TextFormattingMode="Ideal"
+		TextOptions.TextRenderingMode="Auto"
+		Background="#FF252525"
         mc:Ignorable="d"
         Title="Bitacora de Productos"
 		Width="1015.5"
@@ -50,14 +57,12 @@
 			        Grid.Column="4"
 			        HorizontalAlignment="Right"
 			        Margin="0,8,8,8"
-			        FontSize="12"
 			        Content="Actualizar"
 			        Click="LoadProductsAndLogsFromDb" />
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
 			        Margin="8,8,0,0"
-			        FontSize="12"
 			        Content="Drop"
 			        Click="RemoveElements" />
 			<Grid Grid.Row="1"
@@ -81,53 +86,52 @@
 				       VerticalContentAlignment="Center"
 				       Margin="0,0,0,0"
 				       Padding="0,0,0,0"
-				       FontSize="12"
 				       Content="Filtrar por:" />
 				<CheckBox x:Name="ChkBoxFilterByProductEntry"
 				          Grid.Column="1"
 				          Margin="8,0,0,0"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
-				          FontSize="12"
 				          Content="Entrada"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductEgress"
 				          Grid.Column="2"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
 				          Content="Salida"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductDevolution"
 				          Grid.Column="3"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
 				          Content="Devolucion"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductAmountAdjustment"
 				          Grid.Column="4"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
 				          Content="Ajuste de cantidad"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductPriceAdjustment"
 				          Grid.Column="5"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
 				          Content="Ajuste de precio"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 			</Grid>
 			<DataGrid x:Name="DataGridProductChangeLogs"
 			          Grid.Row="2"
@@ -140,10 +144,20 @@
 			          CanUserAddRows="False"
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
-			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None"
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B"
 			          MouseDoubleClick="SelectProductFromDatagrid">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
@@ -216,9 +230,19 @@
 			          CanUserAddRows="False"
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
-			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Producto"
 					                    Width="SizeToHeader"
@@ -266,7 +290,6 @@
 			        Grid.Row="4"
 			        Grid.Column="0"
 			        Margin="8,8,0,8"
-			        FontSize="14"
 			        Content="Salir"
 			        Click="CloseWindow" />
 		</Grid>

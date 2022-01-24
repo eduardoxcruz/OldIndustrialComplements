@@ -4,6 +4,13 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:model="clr-namespace:Inventory.model"
+				xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+				TextElement.FontWeight="Regular"
+				TextElement.FontSize="14"
+				TextOptions.TextFormattingMode="Ideal"
+				TextOptions.TextRenderingMode="Auto"
+				Background="#FF252525"
+				FontFamily="Roboto"
                 mc:Ignorable="d"
                 Title="Buscar Productos"
                 Width="1300"
@@ -26,6 +33,34 @@
 		</Style>
 		<Style TargetType="TextBox">
 			<EventSetter Event="MouseDoubleClick" Handler="ClearTextboxContent"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Background" Value="{x:Null}"/>
+			<Setter Property="CaretBrush" Value="#FF673AB7"/>
+			<Setter Property="SelectionBrush" Value="#FFB39DDB"/>
+			<Setter Property="SelectionTextBrush" Value="#FFFFFFFF"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TextBox}">
+						<Border x:Name="border"
+							BorderBrush="#89FFFFFF"
+							BorderThickness="0,0,0,1">
+							<ScrollViewer x:Name="PART_ContentHost"
+										  Focusable="false"
+										  HorizontalScrollBarVisibility="Hidden"
+										  VerticalScrollBarVisibility="Hidden"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="BorderBrush" TargetName="border" Value="#FF673AB7"/>
+							</Trigger>
+							<Trigger Property="IsFocused" Value="true">
+								<Setter Property="BorderBrush" TargetName="border" Value="#FF673AB7"/>
+								<Setter Property="BorderThickness" TargetName="border" Value="0,0,0,2"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
 		</Style>
 	</model:MyWindow.Resources>
 	<Viewbox Stretch="Fill">
@@ -89,13 +124,13 @@
 			         Grid.ColumnSpan="5"
 			         Margin="8,0,0,0"
 			         FontSize="12"
-			         TextChanged="SearchAfterThreeCharacteres" />
+			         TextChanged="SearchAfterThreeCharacteres"/>
 			<TextBox x:Name="TxtBoxDebugCode"
 			         Grid.Row="2"
 			         Grid.Column="5"
 			         Margin="8,0,0,0"
 			         FontSize="12"
-			         KeyDown="EnterKeyPressed" />
+			         KeyDown="EnterKeyPressed"/>
 			<Label Grid.Row="3"
 			       Grid.Column="0"
 			       Margin="8,0,0,0"
@@ -285,8 +320,19 @@
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
 			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
@@ -377,8 +423,19 @@
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
 			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None">
+			          GridLinesVisibility="Horizontal"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"

@@ -5,6 +5,13 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:model="clr-namespace:Inventory.model"
                 xmlns:glob="clr-namespace:System.Globalization;assembly=System.Runtime"
+				xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+				TextElement.FontWeight="Regular"
+				TextElement.FontSize="14"
+				TextOptions.TextFormattingMode="Ideal"
+				TextOptions.TextRenderingMode="Auto"
+				Background="#FF252525"
+				FontFamily="Roboto"
                 mc:Ignorable="d"
                 Title="Carrito de Compras"
                 Width="1015.5"
@@ -55,35 +62,35 @@
 			        Grid.Column="8"
 			        HorizontalAlignment="Right"
 			        Margin="0,8,8,8"
-			        FontSize="12"
+			        FontSize="14"
 			        Content="Actualizar"
 			        Click="GetAllProductsToBuy" />
 			<Button x:Name="BtnDropElement"
 			        Grid.Row="1"
 			        Grid.Column="0"
 			        Margin="8,8,0,0"
-			        FontSize="12"
+			        FontSize="14"
 			        Content="Drop"
 			        Click="RemoveElements" />
 			<Button x:Name="BtnMarkAsPending"
 			        Grid.Row="1"
 			        Grid.Column="1"
 			        Margin="8,8,0,0"
-			        FontSize="12"
+			        FontSize="14"
 			        Content="Pendiente"
 			        Click="ChangeSelectedRowStatusAsPending" />
 			<Button x:Name="BtnMarkAsRequested"
 			        Grid.Row="1"
 			        Grid.Column="2"
 			        Margin="8,8,0,0"
-			        FontSize="12"
+			        FontSize="14"
 			        Content="Solicitado"
 			        Click="ChangeSelectedRowStatusAsRequested" />
 			<ComboBox x:Name="CmbBoxProviders"
 			          Grid.Row="1"
 			          Grid.Column="3"
 			          Margin="8,8,0,0"
-			          FontSize="12"
+			          FontSize="14"
 			          HorizontalContentAlignment="Center"
 			          IsEditable="True"
 			          IsReadOnly="False" />
@@ -91,7 +98,7 @@
 			        Grid.Row="1"
 			        Grid.Column="4"
 			        Margin="8,8,0,0"
-			        FontSize="12"
+			        FontSize="14"
 			        Content="Comprado"
 			        Click="ChangeSelectedRowStatusAsPurchased" />
 			<Grid Grid.Row="1"
@@ -114,35 +121,38 @@
 				       VerticalContentAlignment="Center"
 				       Margin="0,0,0,0"
 				       Padding="0,0,0,0"
-				       FontSize="12"
+				       FontSize="14"
 				       Content="Filtrar por:" />
 				<CheckBox x:Name="ChkBoxFilterByPending"
 				          Grid.Column="1"
 				          Margin="8,0,0,0"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
-				          FontSize="12"
+				          FontSize="14"
 				          Content="Pendiente"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByRequested"
 				          Grid.Column="2"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
+				          FontSize="14"
 				          Content="Solicitado"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByPurchased"
 				          Grid.Column="3"
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          FontSize="12"
+				          FontSize="14"
 				          Content="Comprado"
 						  Checked="RefreshShoppingCartView"
-						  Unchecked="RefreshShoppingCartView" />
+						  Unchecked="RefreshShoppingCartView"
+						  Foreground="White" />
 			</Grid>
 			<DataGrid x:Name="DataGridShoppingCart"
 			          Grid.Row="2"
@@ -155,10 +165,21 @@
 			          CanUserAddRows="False"
 			          CanUserDeleteRows="False"
 			          IsReadOnly="True"
-			          FontSize="12"
-			          AlternatingRowBackground="LightBlue"
-			          GridLinesVisibility="None"
-			          MouseDoubleClick="SelectProductFromDatagrid">
+			          FontSize="13.5"
+			          GridLinesVisibility="Horizontal"
+			          MouseDoubleClick="SelectProductFromDatagrid"
+					  Foreground="White"
+					  Background="#FF252525"
+					  BorderBrush="#FF6B6B6B">
+				<DataGrid.Resources>
+					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Background" Value="#FF252525" />
+					</Style>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+									 Color="White"/>
+					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+									 Color="Black"/>
+				</DataGrid.Resources>
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id"
 					                    Width="SizeToCells"
@@ -166,10 +187,10 @@
 					<DataGridTextColumn Header="Fecha"
 					                    Width="SizeToCells"
 					                    Binding="{Binding 
-											Path=Date, 
-											Converter={x:Static Member=model:StringFormatConverter.Instance}, 
-											ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
-											ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
+										Path=Date, 
+										Converter={x:Static Member=model:StringFormatConverter.Instance}, 
+										ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}, 
+										ConverterParameter='\{0:dd / MMM / yyyy hh:mm:ss\}'
 					                    }" />
 					<DataGridTextColumn Header="Proveedor"
 					                    Width="SizeToHeader"

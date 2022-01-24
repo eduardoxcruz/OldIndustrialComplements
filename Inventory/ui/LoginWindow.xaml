@@ -3,7 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		TextElement.FontWeight="Regular"
+		TextElement.FontSize="14"
+		TextOptions.TextFormattingMode="Ideal"
+		TextOptions.TextRenderingMode="Auto"
+		Background="#FF252525"
+		FontFamily="Roboto"
         mc:Ignorable="d"
         Title="Inicio de sesión"
         Width="262"
@@ -11,9 +17,6 @@
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
-	<Window.Background>
-		<ImageBrush ImageSource="/resources/images/loginbackground.jpg"/>
-	</Window.Background>
 	<Viewbox>
 		<Grid Width="239"
 		      Height="200">
@@ -29,45 +32,49 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
-			<fa:IconImage Icon="UserCircle"
+			<materialDesign:PackIcon Kind="UserCircle"
 						  Foreground="WhiteSmoke" 
 						  Width="24" 
 						  Height="24"
 						  Grid.Column="0" 
 						  HorizontalAlignment="Center" 
-						  Margin="50,0,0,0"/>
+						  Margin="20,4,0,0"/>
 			<Label Grid.Column="0"
 			       Grid.Row="0"
 			       Margin="4"
 			       FontSize="14"
-			       Content="Usuario" FontFamily="Arial Black" Foreground="#FFD4D4D4" />
+				   HorizontalAlignment="Left"
+			       Content="Usuario" 
+				   FontFamily="Roboto Black" 
+				   Foreground="#FFD4D4D4" />
+
 			<ComboBox x:Name="CmbBoxEmployees"
 			          Grid.Column="0"
 			          Grid.ColumnSpan="2"
 			          Grid.Row="1"
 			          Margin="4"
 			          FontSize="12"
-			          HorizontalContentAlignment="Center" BorderBrush="White" FontFamily="Arial" Foreground="#FF292727" >
-				<ComboBox.Background>
-					<LinearGradientBrush EndPoint="0,1">
-						<GradientStop Color="#FFF0F0F0"/>
-						<GradientStop Color="White" Offset="1"/>
-					</LinearGradientBrush>
-				</ComboBox.Background>
-			</ComboBox>
-			<fa:IconImage Icon="Key"
+			          HorizontalContentAlignment="Center" 
+					  BorderBrush="White" 
+					  FontFamily="Roboto" 
+					  Foreground="White"/>
+			<materialDesign:PackIcon Kind="key"
 						  Foreground="WhiteSmoke" 
 						  Width="24" 
 						  Height="24"
 						  Grid.Column="0" 
 						  Grid.Row="2" 
 						  HorizontalAlignment="Right" 
-						  Margin="102,0,0,0"/>
+						  Margin="0,4,14,0" 
+						  FlowDirection="RightToLeft"/>
 			<Label Grid.Column="0"
 			       Grid.Row="2"
 			       Margin="4"
 			       FontSize="14"
-			       Content="Contraseña" FontFamily="Arial Black" Foreground="#FFD4D4D4" />
+				   HorizontalAlignment="Left"
+			       Content="Contraseña" 
+				   FontFamily="Roboto Black" 
+				   Foreground="#FFD4D4D4" />
 			<PasswordBox x:Name="TxtBoxPassword"
 			             Grid.Column="0"
 			             Grid.ColumnSpan="2"
@@ -75,24 +82,37 @@
 			             Margin="4"
 			             FontSize="12"
 			             HorizontalContentAlignment="Center"
-			             KeyDown="EnterKeyPressed" BorderBrush="White" FontFamily="Arial" Foreground="#FF292727" />
+			             KeyDown="EnterKeyPressed" 
+						 BorderBrush="White" 
+						 FontFamily="Roboto" 
+						 Foreground="White" Cursor="IBeam" />
 			<CheckBox x:Name="ChkBoxRememberData"
 			          Grid.Column="0"
 			          Grid.Row="4"
 			          Margin="4,10,2,2"
 			          FontSize="11"
 					  VerticalContentAlignment="Center"
-			          Content="Guardar Sesión" Foreground="White" FontFamily="Arial Rounded MT Bold" />
+			          Content="Guardar Sesión" 
+					  Foreground="White" 
+					  FontFamily="Arial Rounded MT Bold" />
 			<Button Grid.Column="0"
 			        Grid.Row="5"
-			        Margin="4,15"
+			        Margin="4,8"
 			        Content="Iniciar Sesión"
-			        Click="TryToLogin" Foreground="White" Background="#FF151414" BorderBrush="#FF151414" FontFamily="Arial" />
+			        Click="TryToLogin" 
+					Foreground="White"  
+					FontFamily="Roboto"
+					VerticalAlignment="Top"
+					Height="26"/>
 			<Button Grid.Column="1"
 			        Grid.Row="5"
-			        Margin="4,15"
+			        Margin="4,8"
 			        Content="Salir"
-			        Click="Exit" Background="#FF151414" Foreground="White" BorderBrush="#FF151414" FontFamily="Arial" />
+			        Click="Exit" 
+					Foreground="White" 
+					FontFamily="Roboto"
+					VerticalAlignment="Top"
+					Height="26"/>
 		</Grid>
 	</Viewbox>
 </Window>
