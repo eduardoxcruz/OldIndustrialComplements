@@ -9,6 +9,9 @@
         Height="627"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen">
+	<Window.Background>
+		<ImageBrush ImageSource="/resources/images/CAR06A.jpg"/>
+	</Window.Background>
 	<Viewbox>
 		<Grid Width="800"
 		      Height="600">
