@@ -134,7 +134,8 @@
 				          FontSize="12"
 				          HorizontalContentAlignment="Center"
 				          IsEditable="False"
-				          IsReadOnly="True">
+				          IsReadOnly="True"
+				          Foreground="White">
 					<ComboBoxItem Content="Id"
 					              IsSelected="True" />
 					<ComboBoxItem Content="Debug" />
@@ -146,13 +147,15 @@
 				         PreviewTextInput="AllowOnlyIntegers"
 				         KeyDown="TxtBoxIdCodeEnterKeyPressed"
 				         FontSize="12"
-				         HorizontalContentAlignment="Center" />
+				         HorizontalContentAlignment="Center"
+						 Foreground="White" />
 				<TextBox x:Name="TxtBoxDebugCode"
 				         Grid.Column="3"
 				         Grid.Row="1"
 				         Margin="8,0,8,0"
 				         FontSize="12"
-				         HorizontalContentAlignment="Center" />
+				         HorizontalContentAlignment="Center"
+						 Foreground="White" />
 				<Button x:Name="BtnVerifySearch"
 				        Grid.Column="4"
 				        Grid.Row="1"
@@ -240,7 +243,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="False"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="Status" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -254,7 +258,9 @@
 					         Margin="0,0,8,0"
 					         FontSize="12"
 					         HorizontalContentAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+							 Foreground="White"
+							 Background="{x:Null}">
 						<TextBox.Text>
 							<Binding Path="Enrollment" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -270,7 +276,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="MountingTechnology" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -285,7 +292,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="EncapsulationType" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -333,7 +341,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="Category" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -353,7 +362,8 @@
 					                          Grid.ColumnSpan="5"
 					                          Grid.Row="7"
 					                          Margin="0,0,0,0"
-					                          Height="30">
+					                          Height="30"
+					                          Foreground="White">
 						<FlowDocument>
 							<Paragraph FontFamily="Arial"
 							           FontSize="12"
@@ -394,7 +404,8 @@
 					          Content="Producto usa Inventario"
 					          FontSize="12"
 					          Checked="EnableInventory"
-					          Unchecked="DisableInventory">
+					          Unchecked="DisableInventory"
+					          Foreground="#FFCECECE">
 						<CheckBox.IsChecked>
 							<Binding Path="IsUsingInventory" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
 						</CheckBox.IsChecked>
@@ -424,7 +435,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyIntegers"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="CurrentAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -440,7 +453,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyIntegers"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="MaxAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -456,7 +471,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyIntegers"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="MinAmount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -510,7 +527,9 @@
 					         Margin="0,0,0,0"
 					         FontSize="12"
 					         TextAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="Container" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -551,7 +570,9 @@
 					         Margin="0,0,0,0"
 					         FontSize="12"
 					         TextAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="Location" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -565,7 +586,9 @@
 					         Margin="8,0,0,0"
 					         FontSize="12"
 					         TextAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="BranchOffice" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -579,7 +602,9 @@
 					         Margin="8,0,0,0"
 					         FontSize="12"
 					         TextAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="Rack" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -594,7 +619,9 @@
 					         Margin="8,0,0,0"
 					         FontSize="12"
 					         TextAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="Shelf" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -659,7 +686,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="BuyPrice" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
 								<Binding.ValidationRules>
@@ -677,7 +706,8 @@
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
-						             Content="Automatico" />
+						             Content="Automatico"
+						             Foreground="White" />
 						<RadioButton x:Name="RadioBtnIsManualProfit"
 						             Margin="8,0,0,0"
 						             VerticalContentAlignment="Center"
@@ -685,7 +715,8 @@
 						             FontSize="12"
 						             Content="Manual"
 						             Checked="EnableManualProfit"
-						             Unchecked="EnableAutomaticProfit">
+						             Unchecked="EnableAutomaticProfit"
+						             Foreground="White">
 							<RadioButton.IsChecked>
 								<Binding Path="IsManualProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
 							</RadioButton.IsChecked>
@@ -711,7 +742,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="PercentageOfProfit" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
 								<Binding.ValidationRules>
@@ -744,7 +777,9 @@
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+					         Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="PercentageOfDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" Delay="500">
 								<Binding.ValidationRules>
@@ -865,7 +900,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="TypeOfStock" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -882,7 +918,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="UnitType" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -911,7 +948,8 @@
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
-					          IsReadOnly="False">
+					          IsReadOnly="False"
+					          Foreground="White">
 						<ComboBox.Text>
 							<Binding Path="Manufacturer" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -927,7 +965,9 @@
 					         Margin="0,0,0,0"
 					         FontSize="12"
 					         HorizontalContentAlignment="Center"
-					         Style="{StaticResource TextBoxInError}">
+					         Style="{StaticResource TextBoxInError}"
+							 Background="{x:Null}"
+					         Foreground="White">
 						<TextBox.Text>
 							<Binding Path="PartNumber" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
 								<Binding.ValidationRules>
@@ -972,7 +1012,8 @@
 					         Margin="0,0,0,0"
 					         FontSize="12"
 					         HorizontalContentAlignment="Center"
-					         TextWrapping="Wrap">
+					         TextWrapping="Wrap"
+					         Foreground="White">
 						<Binding Path="Memo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
 					</TextBox>
 				</Grid>
