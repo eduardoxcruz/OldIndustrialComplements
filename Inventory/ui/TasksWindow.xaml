@@ -5,7 +5,6 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:model="clr-namespace:Inventory.model"
                 xmlns:properties="clr-namespace:Inventory.Properties"
-                x:Class="Inventory.ui.TasksWindow"
 				xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 				FontFamily="{StaticResource MaterialDesignFont}"
                 mc:Ignorable="d"
@@ -13,7 +12,8 @@
                 Width="600"
                 Height="350"
                 ResizeMode="CanMinimize"
-                WindowStartupLocation="CenterScreen">
+                WindowStartupLocation="CenterScreen" 
+				Background="#FF252525">
 	<Viewbox>
 		<Grid Width="670"
 		      Height="350">
