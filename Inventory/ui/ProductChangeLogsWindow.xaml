@@ -94,7 +94,8 @@
 				          VerticalContentAlignment="Center"
 				          Content="Entrada"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductEgress"
 				          Grid.Column="2"
 				          HorizontalContentAlignment="Left"
@@ -102,7 +103,8 @@
 				          Margin="8,0,0,0"
 				          Content="Salida"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductDevolution"
 				          Grid.Column="3"
 				          HorizontalContentAlignment="Left"
@@ -110,7 +112,8 @@
 				          Margin="8,0,0,0"
 				          Content="Devolucion"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductAmountAdjustment"
 				          Grid.Column="4"
 				          HorizontalContentAlignment="Left"
@@ -118,7 +121,8 @@
 				          Margin="8,0,0,0"
 				          Content="Ajuste de cantidad"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 				<CheckBox x:Name="ChkBoxFilterByProductPriceAdjustment"
 				          Grid.Column="5"
 				          HorizontalContentAlignment="Left"
@@ -126,7 +130,8 @@
 				          Margin="8,0,0,0"
 				          Content="Ajuste de precio"
 						  Checked="RefreshProductChangeLogView"
-						  Unchecked="RefreshProductChangeLogView" />
+						  Unchecked="RefreshProductChangeLogView"
+				          Foreground="White" />
 			</Grid>
 			<DataGrid x:Name="DataGridProductChangeLogs"
 			          Grid.Row="2"
