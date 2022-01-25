@@ -102,7 +102,7 @@
 				       Margin="0,8,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Buscar por Id o Por Codigo Debug" />
+				       Content="Buscar Por Id o Código Debug" />
 				<Label Grid.Column="2"
 				       Grid.Row="0"
 				       Margin="0,8,0,0"
@@ -115,7 +115,7 @@
 				       Margin="0,8,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Codigo Debug"
+				       Content="Código Debug"
 				       HorizontalContentAlignment="Center" />
 				<Button x:Name="BtnRefreshProduct"
 				        Grid.Column="5"
@@ -211,7 +211,7 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Matricula*" />
+					       Content="Matrícula*" />
 					<Label Grid.Column="3"
 					       Grid.Row="0"
 					       Margin="0,0,0,0"
@@ -223,7 +223,7 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Encaps. o Tipo de Conexion*" />
+					       Content="Encaps. o Tipo de Conexión*" />
 					<Label Grid.Column="0"
 					       Grid.Row="1"
 					       Margin="0,0,0,0"
@@ -310,7 +310,7 @@
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Descripcion Corta*" />
+					       Content="Descripción Corta*" />
 					<ScrollViewer Grid.Column="0"
 					              Grid.ColumnSpan="5"
 					              Grid.Row="3"
@@ -338,7 +338,7 @@
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Categoria*" />
+					       Content="Categoría*" />
 					<ComboBox Grid.Column="0"
 					          Grid.ColumnSpan="5"
 					          Grid.Row="5"
@@ -362,7 +362,7 @@
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Descripcion Completa" />
+					       Content="Descripción Completa" />
 					<FlowDocumentScrollViewer Grid.Column="0"
 					                          Grid.ColumnSpan="5"
 					                          Grid.Row="7"
@@ -426,13 +426,13 @@
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Maximo" />
+					       Content="Máximo" />
 					<Label Grid.Column="2"
 					       Grid.Row="1"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Minimo" />
+					       Content="Mínimo" />
 					<TextBox x:Name="TxtBoxCurrentAmount"
 					         Grid.Column="0"
 					         Grid.Row="2"
@@ -507,7 +507,7 @@
 			          BorderBrush="Black"
 			          BorderThickness="1"
 			          FontSize="12"
-			          Header="Ubicacion">
+			          Header="Ubicación">
 				<Grid x:Name="GridLocation">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="3*" />
@@ -549,7 +549,7 @@
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Ubicacion" />
+					       Content="Ubicación" />
 					<Label Grid.Column="1"
 					       Grid.Row="2"
 					       Margin="0,8,0,0"
@@ -712,7 +712,7 @@
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
-						             Content="Automatico"
+						             Content="Automático"
 						             Foreground="White" />
 						<RadioButton x:Name="RadioBtnIsManualProfit"
 						             Margin="8,2,0,0"
