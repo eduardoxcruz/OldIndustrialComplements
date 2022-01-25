@@ -13,7 +13,7 @@
 		TextOptions.TextRenderingMode="Auto"
 		Background="#FF252525"
         mc:Ignorable="d"
-        Title="Bitacora de Productos"
+        Title="Bitácora de Productos"
 		Width="1015.5"
 		Height="528">
 	<model:MyWindow.Resources>
