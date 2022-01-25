@@ -196,7 +196,7 @@
 					<DataGridTextColumn Header="Empleado"
 					                    Width="SizeToCells"
 					                    Binding="{Binding Path=Employee.FullName}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 					                    MaxWidth="400"
 					                    Binding="{Binding Product.FullDescription}" />
 					<DataGridTextColumn Header="Existencia"
@@ -208,7 +208,7 @@
 					<DataGridTextColumn Header="Contenedor"
 					                    Width="SizeToCells"
 					                    Binding="{Binding Product.Container}" />
-					<DataGridTextColumn Header="Ubicacion"
+					<DataGridTextColumn Header="Ubicación"
 					                    Width="SizeToHeader"
 					                    Binding="{Binding Product.Location}" />
 					<DataGridTextColumn Header="Estante"
