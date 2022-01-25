@@ -14,7 +14,7 @@
                 mc:Ignorable="d"
                 Title="ProductWindow"
                 Width="650"
-                Height="780"
+                Height="850"
                 WindowStartupLocation="CenterScreen">
 	<model:MyWindow.Resources>
 		<Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
@@ -57,7 +57,7 @@
 	</model:MyWindow.Resources>
 	<Viewbox>
 		<Grid Width="650"
-		      Height="764">
+		      Height="834">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
