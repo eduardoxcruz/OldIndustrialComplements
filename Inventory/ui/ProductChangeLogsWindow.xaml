@@ -51,7 +51,7 @@
 			       Margin="8,8,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="24"
-			       Content="Bitacora de Productos" />
+			       Content="Bitácora de Productos" />
 			<Button x:Name="BtnUpdate"
 			        Grid.Row="0"
 			        Grid.Column="4"
@@ -110,7 +110,7 @@
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          Content="Devolucion"
+				          Content="Devolución"
 						  Checked="RefreshProductChangeLogView"
 						  Unchecked="RefreshProductChangeLogView"
 				          Foreground="White" />
@@ -182,7 +182,7 @@
 										MaxWidth="90"
 					                    MinWidth="70"
 					                    Binding="{Binding Product.Id}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 										Width="SizeToCells"
 										MaxWidth="450"
 					                    MinWidth="400"
@@ -249,7 +249,7 @@
 					                    MinWidth="40"
 					                    MaxWidth="70"
 					                    Binding="{Binding Id}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 					                    Width="SizeToCells"
 					                    MaxWidth="500"
 					                    MinWidth="400"
