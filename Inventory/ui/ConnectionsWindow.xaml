@@ -8,7 +8,7 @@
 				Background="#FF252525"
 				FontFamily="{StaticResource MaterialDesignFont}"
                 mc:Ignorable="d"
-                Title="Conexiónes Locales"
+                Title="Conexiones Locales"
                 Width="300"
                 Height="160"
                 ResizeMode="CanMinimize"
@@ -31,7 +31,7 @@
 			       Grid.Row="0"
 			       Margin="8,0,0,0"
 			       FontSize="16"
-			       Content="Probar conexion a la BD"
+			       Content="Probar conexión a la BD"
 				   VerticalAlignment="Top"
 				   HorizontalAlignment="Left"/>
 			<materialDesign:PackIcon Kind="Database"
