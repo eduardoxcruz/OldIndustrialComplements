@@ -307,7 +307,7 @@
 					<Label Grid.Column="0"
 					       Grid.ColumnSpan="5"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Descripcion Corta*" />
@@ -333,8 +333,9 @@
 						</TextBox>
 					</ScrollViewer>
 					<Label Grid.Column="0"
+						   Grid.ColumnSpan="5"
 					       Grid.Row="4"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Categoria*" />
@@ -358,7 +359,7 @@
 					<Label Grid.Column="0"
 					       Grid.ColumnSpan="5"
 					       Grid.Row="6"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Descripcion Completa" />
@@ -416,19 +417,19 @@
 					</CheckBox>
 					<Label Grid.Column="0"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Existencia" />
 					<Label Grid.Column="1"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Maximo" />
 					<Label Grid.Column="2"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Minimo" />
@@ -545,27 +546,27 @@
 					</TextBox>
 					<Label Grid.Column="0"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Ubicacion" />
 					<Label Grid.Column="1"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="S" />
 					<Label Grid.Column="2"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="E" />
 					<Label Grid.Column="3"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
@@ -707,14 +708,14 @@
 					            Grid.Row="1"
 					            Orientation="Horizontal">
 						<RadioButton x:Name="RadioBtnIsAutomaticProfit"
-						             Margin="0,0,0,0"
+						             Margin="0,2,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
 						             Content="Automatico"
 						             Foreground="White" />
 						<RadioButton x:Name="RadioBtnIsManualProfit"
-						             Margin="8,0,0,0"
+						             Margin="8,2,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
@@ -729,13 +730,13 @@
 					</StackPanel>
 					<Label Grid.Column="0"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="% de Ganancia" />
 					<Label Grid.Column="2"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="% de Descuento" />
@@ -849,13 +850,13 @@
 											 Margin="3,0,0,0"/>
 					<Label Grid.Column="0"
 					       Grid.Row="5"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Precio de Venta" />
 					<Label Grid.Column="2"
 					       Grid.Row="5"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Precio con Descuento " />
@@ -887,13 +888,13 @@
 					</Label>
 					<Label Grid.Column="0"
 					       Grid.Row="7"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Utilidad" />
 					<Label Grid.Column="2"
 					       Grid.Row="7"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Utilidad con Descuento" />
@@ -925,13 +926,13 @@
 					</Label>
 					<Label Grid.Column="0"
 					       Grid.Row="9"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Tipo de Producto*" />
 					<Label Grid.Column="2"
 					       Grid.Row="9"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Unidad*" />
@@ -973,13 +974,13 @@
 					</ComboBox>
 					<Label Grid.Column="0"
 					       Grid.Row="11"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Fabricante" />
 					<Label Grid.Column="2"
 					       Grid.Row="11"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="No. de Parte" />
