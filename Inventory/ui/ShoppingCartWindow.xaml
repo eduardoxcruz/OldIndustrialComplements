@@ -198,7 +198,7 @@
 					<DataGridTextColumn Header="Empleado"
 					                    Width="SizeToCells"
 					                    Binding="{Binding Path=Employee.FullName}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 					                    Binding="{Binding Product.FullDescription}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
