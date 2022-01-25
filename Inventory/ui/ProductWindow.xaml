@@ -368,7 +368,8 @@
 					                          Grid.Row="7"
 					                          Margin="0,0,0,0"
 					                          Height="30"
-					                          Foreground="White">
+					                          Foreground="White"
+											  SelectionBrush="#FFB39DDB">
 						<FlowDocument>
 							<Paragraph FontFamily="Arial"
 							           FontSize="12"
