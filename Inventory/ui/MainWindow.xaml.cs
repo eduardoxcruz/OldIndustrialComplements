@@ -20,7 +20,7 @@ namespace Inventory.ui
 		private void LoadAppVersion()
 		{
 			AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-			LblAppVersion.Content = $"Version {AppVersion}";
+			LblAppVersion.Content = $"Versión {AppVersion}";
 		}
 
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace Inventory.ui
 
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
-			string message = $"Cambios en la version: {AppVersion}\n\n" +
+			string message = $"Cambios en la versión: {AppVersion}\n\n" +
 			                 "General:\n" +
 			                 "* Agregado Material Design a toda la aplicación.";
 			MessageBox.Show(message, "Registro de cambios.");
