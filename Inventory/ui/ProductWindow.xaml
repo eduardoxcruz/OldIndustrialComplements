@@ -363,7 +363,8 @@
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Descripción Completa" />
-					<FlowDocumentScrollViewer Grid.Column="0"
+					<FlowDocumentScrollViewer x:Name="FlowDocumentScrollViewer"
+											  Grid.Column="0"
 					                          Grid.ColumnSpan="5"
 					                          Grid.Row="7"
 					                          Margin="0,0,0,0"
