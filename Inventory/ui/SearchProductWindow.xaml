@@ -357,12 +357,12 @@
 					                    MinWidth="400"
 					                    Binding="{Binding ShortDescription}" />
 					<DataGridTextColumn Header="Tec. de Montaje"
-					                    Width="SizeToCells"
+					                    Width="SizeToHeader"
 					                    MaxWidth="100"
 					                    MinWidth="40"
 					                    Binding="{Binding MountingTechnology}" />
 					<DataGridTextColumn Header="Encapsulado"
-					                    Width="SizeToCells"
+					                    Width="SizeToHeader"
 					                    MaxWidth="100"
 					                    MinWidth="50"
 					                    Binding="{Binding EncapsulationType}" />
