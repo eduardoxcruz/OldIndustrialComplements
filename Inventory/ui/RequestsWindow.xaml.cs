@@ -59,22 +59,10 @@ namespace Inventory.ui
 
 		private void AddNewProductRequestToCollection(object sender, EventArgs e)
 		{
-			ProductRequest nextRequest = InventoryDb
-				.ProductRequests
+			InventoryDb.ProductRequests
 				.Include(productRequest => productRequest.Employee)
 				.Include(productRequest => productRequest.Product)
-				.SingleOrDefault(request => request.Id == ProductRequestsCollection.Last().Id + 1);
-
-			if (nextRequest == null)
-			{
-				return;
-			}
-
-			if (ProductRequestsCollection.Last().Id < nextRequest.Id)
-			{
-				ProductRequestsCollection.Add(nextRequest);
-				DataGridRequests.Items.Refresh();
-			}
+				.Load();
 		}
 
 		private void StartNewProductRequestNotificatorTimer()
@@ -232,7 +220,6 @@ namespace Inventory.ui
 			{
 				InventoryDb.ProductRequests.RemoveRange(DataGridRequests.SelectedItems.Cast<ProductRequest>().ToList());
 				InventoryDb.SaveChanges();
-				RefreshProductRequestsView(null, null);
 			});
 		}
 	}
