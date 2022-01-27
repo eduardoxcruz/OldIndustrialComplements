@@ -13,7 +13,7 @@
 		TextOptions.TextRenderingMode="Auto"
 		Background="#FF252525"
         mc:Ignorable="d"
-        Title="Bitacora de Productos"
+        Title="Bitácora de Productos"
 		Width="1015.5"
 		Height="528">
 	<model:MyWindow.Resources>
@@ -51,7 +51,7 @@
 			       Margin="8,8,0,0"
 			       Padding="0,0,0,0"
 			       FontSize="24"
-			       Content="Bitacora de Productos" />
+			       Content="Bitácora de Productos" />
 			<Button x:Name="BtnUpdate"
 			        Grid.Row="0"
 			        Grid.Column="4"
@@ -110,7 +110,7 @@
 				          HorizontalContentAlignment="Left"
 				          VerticalContentAlignment="Center"
 				          Margin="8,0,0,0"
-				          Content="Devolucion"
+				          Content="Devolución"
 						  Checked="RefreshProductChangeLogView"
 						  Unchecked="RefreshProductChangeLogView"
 				          Foreground="White" />
@@ -152,6 +152,7 @@
 				<DataGrid.Resources>
 					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="Background" Value="#FF252525" />
+						<Setter Property="Margin"  Value="4,0,4,0" />
 					</Style>
 					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
 									 Color="White"/>
@@ -182,7 +183,7 @@
 										MaxWidth="90"
 					                    MinWidth="70"
 					                    Binding="{Binding Product.Id}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 										Width="SizeToCells"
 										MaxWidth="450"
 					                    MinWidth="400"
@@ -237,6 +238,7 @@
 				<DataGrid.Resources>
 					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="Background" Value="#FF252525" />
+						<Setter Property="Margin"  Value="4,0,4,0" />
 					</Style>
 					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
 									 Color="White"/>
@@ -249,7 +251,7 @@
 					                    MinWidth="40"
 					                    MaxWidth="70"
 					                    Binding="{Binding Id}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 					                    Width="SizeToCells"
 					                    MaxWidth="500"
 					                    MinWidth="400"

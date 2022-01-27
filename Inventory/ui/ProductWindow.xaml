@@ -14,7 +14,7 @@
                 mc:Ignorable="d"
                 Title="ProductWindow"
                 Width="650"
-                Height="780"
+                Height="850"
                 WindowStartupLocation="CenterScreen">
 	<model:MyWindow.Resources>
 		<Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
@@ -57,7 +57,7 @@
 	</model:MyWindow.Resources>
 	<Viewbox>
 		<Grid Width="650"
-		      Height="764">
+		      Height="834">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -102,7 +102,7 @@
 				       Margin="0,8,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Buscar por Id o Por Codigo Debug" />
+				       Content="Buscar Por Id o Código Debug" />
 				<Label Grid.Column="2"
 				       Grid.Row="0"
 				       Margin="0,8,0,0"
@@ -115,7 +115,7 @@
 				       Margin="0,8,0,0"
 				       Padding="0,0,0,0"
 				       FontSize="12"
-				       Content="Codigo Debug"
+				       Content="Código Debug"
 				       HorizontalContentAlignment="Center" />
 				<Button x:Name="BtnRefreshProduct"
 				        Grid.Column="5"
@@ -211,7 +211,7 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Matricula*" />
+					       Content="Matrícula*" />
 					<Label Grid.Column="3"
 					       Grid.Row="0"
 					       Margin="0,0,0,0"
@@ -223,7 +223,7 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Encaps. o Tipo de Conexion*" />
+					       Content="Encaps. o Tipo de Conexión*" />
 					<Label Grid.Column="0"
 					       Grid.Row="1"
 					       Margin="0,0,0,0"
@@ -307,10 +307,10 @@
 					<Label Grid.Column="0"
 					       Grid.ColumnSpan="5"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Descripcion Corta*" />
+					       Content="Descripción Corta*" />
 					<ScrollViewer Grid.Column="0"
 					              Grid.ColumnSpan="5"
 					              Grid.Row="3"
@@ -333,11 +333,12 @@
 						</TextBox>
 					</ScrollViewer>
 					<Label Grid.Column="0"
+						   Grid.ColumnSpan="5"
 					       Grid.Row="4"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Categoria*" />
+					       Content="Categoría*" />
 					<ComboBox Grid.Column="0"
 					          Grid.ColumnSpan="5"
 					          Grid.Row="5"
@@ -358,16 +359,18 @@
 					<Label Grid.Column="0"
 					       Grid.ColumnSpan="5"
 					       Grid.Row="6"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Descripcion Completa" />
-					<FlowDocumentScrollViewer Grid.Column="0"
+					       Content="Descripción Completa" />
+					<FlowDocumentScrollViewer x:Name="FlowDocumentScrollViewer"
+											  Grid.Column="0"
 					                          Grid.ColumnSpan="5"
 					                          Grid.Row="7"
 					                          Margin="0,0,0,0"
 					                          Height="30"
-					                          Foreground="White">
+					                          Foreground="White"
+											  SelectionBrush="#FFB39DDB">
 						<FlowDocument>
 							<Paragraph FontFamily="Arial"
 							           FontSize="12"
@@ -416,22 +419,22 @@
 					</CheckBox>
 					<Label Grid.Column="0"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Existencia" />
 					<Label Grid.Column="1"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Maximo" />
+					       Content="Máximo" />
 					<Label Grid.Column="2"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Minimo" />
+					       Content="Mínimo" />
 					<TextBox x:Name="TxtBoxCurrentAmount"
 					         Grid.Column="0"
 					         Grid.Row="2"
@@ -506,7 +509,7 @@
 			          BorderBrush="Black"
 			          BorderThickness="1"
 			          FontSize="12"
-			          Header="Ubicacion">
+			          Header="Ubicación">
 				<Grid x:Name="GridLocation">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="3*" />
@@ -545,27 +548,27 @@
 					</TextBox>
 					<Label Grid.Column="0"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
-					       Content="Ubicacion" />
+					       Content="Ubicación" />
 					<Label Grid.Column="1"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="S" />
 					<Label Grid.Column="2"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="E" />
 					<Label Grid.Column="3"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
@@ -707,14 +710,14 @@
 					            Grid.Row="1"
 					            Orientation="Horizontal">
 						<RadioButton x:Name="RadioBtnIsAutomaticProfit"
-						             Margin="0,0,0,0"
+						             Margin="0,2,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
-						             Content="Automatico"
+						             Content="Automático"
 						             Foreground="White" />
 						<RadioButton x:Name="RadioBtnIsManualProfit"
-						             Margin="8,0,0,0"
+						             Margin="8,2,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
@@ -729,13 +732,13 @@
 					</StackPanel>
 					<Label Grid.Column="0"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="% de Ganancia" />
 					<Label Grid.Column="2"
 					       Grid.Row="2"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="% de Descuento" />
@@ -768,14 +771,8 @@
 								  Width="18"
 					              FontSize="4"
 					              Interval="50"
-					              Click="AddProfit" />
-					<materialDesign:PackIcon Kind="ArrowUp"
-											 Grid.Row="3"
-											 Grid.Column="1"
-											 Foreground="White"
-											 Height="11"
-											 Width="11"
-											 Margin="3,0,0,0"/>
+					              Click="AddProfit"
+								  Content="Up"/>
 					<RepeatButton x:Name="BtnRemoveProfit"
 					              Grid.Column="1"
 					              Grid.Row="4"
@@ -785,14 +782,8 @@
 								  Width="18"
 					              FontSize="4"
 					              Interval="50"
-					              Click="RemoveProfit" />
-					<materialDesign:PackIcon Kind="ArrowDown"
-											 Grid.Row="4"
-											 Grid.Column="1"
-											 Foreground="White"
-											 Height="11"
-											 Width="11"
-											 Margin="3,0,0,0"/>
+					              Click="RemoveProfit"
+								  Content="Dowm"/>
 					<TextBox x:Name="TxtBoxPercentageOfDiscount"
 					         Grid.Column="2"
 					         Grid.Row="3"
@@ -822,14 +813,8 @@
 								  Height="11"
 								  Width="18"
 					              Interval="50"
-					              Click="AddDiscount" />
-					<materialDesign:PackIcon Kind="ArrowUp"
-											 Grid.Row="3"
-											 Grid.Column="3"
-											 Foreground="White"
-											 Height="11"
-											 Width="11"
-											 Margin="3,0,0,0"/>
+					              Click="AddDiscount"
+								  Content="Up"/>
 					<RepeatButton x:Name="BtnRemoveDiscount"
 					              Grid.Column="3"
 					              Grid.Row="4"
@@ -839,23 +824,17 @@
 								  Height="11"
 								  Width="18"
 					              Interval="50"
-					              Click="RemoveDiscount" />
-					<materialDesign:PackIcon Kind="ArrowDown"
-											 Grid.Row="4"
-											 Grid.Column="3"
-											 Foreground="White"
-											 Height="11"
-											 Width="11"
-											 Margin="3,0,0,0"/>
+					              Click="RemoveDiscount"
+								  Content="Down"/>
 					<Label Grid.Column="0"
 					       Grid.Row="5"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Precio de Venta" />
 					<Label Grid.Column="2"
 					       Grid.Row="5"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Precio con Descuento " />
@@ -887,13 +866,13 @@
 					</Label>
 					<Label Grid.Column="0"
 					       Grid.Row="7"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Utilidad" />
 					<Label Grid.Column="2"
 					       Grid.Row="7"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Utilidad con Descuento" />
@@ -925,13 +904,13 @@
 					</Label>
 					<Label Grid.Column="0"
 					       Grid.Row="9"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Tipo de Producto*" />
 					<Label Grid.Column="2"
 					       Grid.Row="9"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Unidad*" />
@@ -973,13 +952,13 @@
 					</ComboBox>
 					<Label Grid.Column="0"
 					       Grid.Row="11"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="Fabricante" />
 					<Label Grid.Column="2"
 					       Grid.Row="11"
-					       Margin="0,0,0,0"
+					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
 					       Content="No. de Parte" />
@@ -1024,8 +1003,8 @@
 					       Grid.RowSpan="13"
 					       Grid.Column="4"
 					       Grid.ColumnSpan="2"
-					       Width="180"
-					       Height="180" />
+					       Width="245"
+					       Height="245" />
 				</Grid>
 			</GroupBox>
 			<GroupBox Grid.Column="0"

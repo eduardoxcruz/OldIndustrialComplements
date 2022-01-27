@@ -179,7 +179,7 @@
 			        FontSize="14"
 			        Click="OpenProductChangeLogsWindow"
 					HorizontalAlignment="Left"
-			        Content="Bitacora de Productos" FontFamily="Century Gothic"
+			        Content="Bitácora de Productos" FontFamily="Century Gothic"
 					Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" />
 			<materialDesign:PackIcon Kind="Subtasks"
 						  Foreground="WhiteSmoke" 
@@ -213,7 +213,7 @@
 			        FontSize="14"
 			        Click="OpenConnectionsWindow"
 					HorizontalAlignment="Left"
-			        Content="Probar Conexion a la BD" FontFamily="Century Gothic"
+			        Content="Probar Conexión a la BD" FontFamily="Century Gothic"
 					Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" />
 			<materialDesign:PackIcon Kind="Cog"
 						  Foreground="WhiteSmoke" 

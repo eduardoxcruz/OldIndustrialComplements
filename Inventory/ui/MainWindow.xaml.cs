@@ -20,7 +20,7 @@ namespace Inventory.ui
 		private void LoadAppVersion()
 		{
 			AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-			LblAppVersion.Content = $"Version {AppVersion}";
+			LblAppVersion.Content = $"Versión {AppVersion}";
 		}
 
 		private void OpenTasksWindow(object sender, RoutedEventArgs e)
@@ -75,9 +75,20 @@ namespace Inventory.ui
 
 		private void OpenChangelog(object sender, RoutedEventArgs e)
 		{
-			string message = $"Cambios en la version: {AppVersion}\n\n" +
-			                 "General:\n" +
-			                 "* Agregado Material Design a toda la aplicación.";
+			string message = $"Cambios en la versión: {AppVersion}\n\n" +
+							 "General:\n" +
+							 "* Corregida ortografía en todas las ventanas.\n\n" +
+							 "Ventana de Producto:\n" +
+							 "* Aumentado el alto de la ventana.\n" +
+							 "* Aumentado el espaciado entre controles.\n" +
+							 "* Aumentado el tamaño de la imagen del producto.\n" +
+							 "* Agregado color de fuente rojo a los controles faltantes al abrir los detalles del producto.\n" +
+							 "* Eliminados iconos de flecha que dificultaban ajustar los porcentajes de ganancia y descuento.\n\n" +
+							 "Ventana Buscar Producto:\n" +
+							 "* Aumentado el espaciado entre controles.\n" +
+							 "* Agregado espaciado lateral en las columnas de los DataGrids para evitar que el contenido se encime.\n\n" +
+							 "Ventana Carrito de Compra / Solicitudes / Bitácora de Producto:\n" +
+							 "* Agregado espaciado lateral en las columnas de los DataGrids para evitar que el contenido se encime.\n\n";
 			MessageBox.Show(message, "Registro de cambios.");
 		}
 

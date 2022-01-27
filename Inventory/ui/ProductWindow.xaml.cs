@@ -107,6 +107,12 @@ namespace Inventory.ui
 			TxtBlockProductTask.Content = "Detalles del Producto";
 			TxtBlockProductTask.Foreground = ForegroundColor;
 			BtnAddModifyAndSave.Content = "Modificar";
+			LblSalePriceWithoutDiscount.Foreground = ForegroundColor;
+			LblSalePriceWithDiscount.Foreground = ForegroundColor;
+			LblProfitWithoutDiscount.Foreground = Brushes.GreenYellow;
+			LblProfitWithDiscount.Foreground = Brushes.GreenYellow;
+			FlowDocumentScrollViewer.Foreground = ForegroundColor;
+			TxtBoxShortDescription.Foreground = ForegroundColor;
 
 			RadioBtnIsAutomaticProfit.IsEnabled = false;
 			RadioBtnIsManualProfit.IsEnabled = false;

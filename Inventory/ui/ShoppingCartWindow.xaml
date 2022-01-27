@@ -93,7 +93,8 @@
 			          FontSize="14"
 			          HorizontalContentAlignment="Center"
 			          IsEditable="True"
-			          IsReadOnly="False" />
+			          IsReadOnly="False"
+					  Foreground="White" />
 			<Button x:Name="BtnMarkAsPurchased"
 			        Grid.Row="1"
 			        Grid.Column="4"
@@ -174,6 +175,7 @@
 				<DataGrid.Resources>
 					<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="Background" Value="#FF252525" />
+						<Setter Property="Margin"  Value="4,0,4,0" />
 					</Style>
 					<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
 									 Color="White"/>
@@ -198,7 +200,7 @@
 					<DataGridTextColumn Header="Empleado"
 					                    Width="SizeToCells"
 					                    Binding="{Binding Path=Employee.FullName}" />
-					<DataGridTextColumn Header="Descripcion"
+					<DataGridTextColumn Header="Descripción"
 					                    Binding="{Binding Product.FullDescription}" />
 					<DataGridTextColumn Header="Existencia"
 					                    Width="SizeToHeader"
