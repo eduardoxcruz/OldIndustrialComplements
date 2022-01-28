@@ -13,8 +13,8 @@
 				FontFamily="Roboto"
                 mc:Ignorable="d"
                 Title="ProductWindow"
-                Width="650"
-                Height="850"
+                Width="950"
+                Height="800"
                 WindowStartupLocation="CenterScreen">
 	<model:MyWindow.Resources>
 		<Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
@@ -56,8 +56,8 @@
 		</Style>
 	</model:MyWindow.Resources>
 	<Viewbox>
-		<Grid Width="650"
-		      Height="834">
+		<Grid Width="949"
+		      Height="784">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -95,7 +95,7 @@
 				       VerticalContentAlignment="Center"
 				       Margin="8,8,8,0"
 				       Padding="0,0,0,0"
-				       FontSize="14" />
+				       FontSize="16" />
 				<Label Grid.Column="1"
 				       Grid.Row="0"
 				       HorizontalContentAlignment="Center"
@@ -199,34 +199,40 @@
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Id" />
 					<Label Grid.Column="1"
 					       Grid.Row="0"
-					       Margin="0,0,0,0"
+					       Margin="0,0,20,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Estado*" />
 					<Label Grid.Column="2"
 					       Grid.Row="0"
-					       Margin="0,0,0,0"
+					       Margin="0,0,8,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Matrícula*" />
 					<Label Grid.Column="3"
 					       Grid.Row="0"
-					       Margin="0,0,0,0"
+					       Margin="0,0,28,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Tec. Montaje*" />
 					<Label Grid.Column="4"
 					       Grid.Row="0"
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Encaps. o Tipo de Conexión*" />
-					<Label Grid.Column="0"
+					<Label x:Name="TxtId"
+						   Grid.Column="0"
 					       Grid.Row="1"
-					       Margin="0,0,0,0"
+					       Margin="0,4,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12">
@@ -257,7 +263,7 @@
 					</ComboBox>
 					<TextBox Grid.Column="2"
 					         Grid.Row="1"
-					         Margin="0,0,8,0"
+					         Margin="0,4,8,0"
 					         FontSize="12"
 					         HorizontalContentAlignment="Center"
 					         Style="{StaticResource TextBoxInError}"
@@ -419,21 +425,24 @@
 					</CheckBox>
 					<Label Grid.Column="0"
 					       Grid.Row="1"
-					       Margin="0,8,0,0"
+					       Margin="0,8,8,0"
 					       Padding="0,0,0,0"
+						   HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="Existencia" />
 					<Label Grid.Column="1"
 					       Grid.Row="1"
-					       Margin="0,8,0,0"
+					       Margin="0,8,8,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Máximo" />
 					<Label Grid.Column="2"
 					       Grid.Row="1"
-					       Margin="0,8,0,0"
+					       Margin="0,8,8,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Mínimo" />
 					<TextBox x:Name="TxtBoxCurrentAmount"
 					         Grid.Column="0"
@@ -554,21 +563,21 @@
 					       Content="Ubicación" />
 					<Label Grid.Column="1"
 					       Grid.Row="2"
-					       Margin="0,8,0,0"
+					       Margin="8,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="S" />
 					<Label Grid.Column="2"
 					       Grid.Row="2"
-					       Margin="0,8,0,0"
+					       Margin="8,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
 					       Content="E" />
 					<Label Grid.Column="3"
 					       Grid.Row="2"
-					       Margin="0,8,0,0"
+					       Margin="8,8,0,0"
 					       Padding="0,0,0,0"
 					       HorizontalContentAlignment="Center"
 					       FontSize="12"
@@ -641,7 +650,7 @@
 				</Grid>
 			</GroupBox>
 			<GroupBox Grid.Column="0"
-			          Grid.ColumnSpan="4"
+			          Grid.ColumnSpan="3"
 			          Grid.Row="3"
 			          Margin="8,8,8,0"
 			          Padding="8"
@@ -676,21 +685,23 @@
 					<Label Grid.Column="0"
 					       Grid.Row="0"
 					       Grid.ColumnSpan="2"
-					       Margin="0,0,0,0"
+					       Margin="0,0,8,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Precio Compra" />
-					<Label Grid.Column="2"
-					       Grid.Row="0"
-					       Margin="0,0,0,0"
+					<Label Grid.Column="0"
+					       Grid.Row="2"
+					       Margin="0,8,2,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Ajuste de Ganancia" />
 					<TextBox x:Name="TxtBoxBuyPrice"
 					         Grid.Column="0"
 					         Grid.ColumnSpan="2"
 					         Grid.Row="1"
-					         Margin="0,0,8,0"
+					         Margin="0,4,8,0"
 					         FontSize="12"
 					         TextAlignment="Center"
 					         PreviewTextInput="AllowOnlyDecimals"
@@ -705,19 +716,20 @@
 							</Binding>
 						</TextBox.Text>
 					</TextBox>
-					<StackPanel Grid.Column="2"
-					            Grid.ColumnSpan="2"
-					            Grid.Row="1"
+					<StackPanel Grid.Column="0"
+					            Grid.ColumnSpan="1"
+					            Grid.Row="3"
+								Margin="0,4,0,0"
 					            Orientation="Horizontal">
 						<RadioButton x:Name="RadioBtnIsAutomaticProfit"
-						             Margin="0,2,0,0"
+						             Margin="0,0,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
 						             Content="Automático"
 						             Foreground="White" />
 						<RadioButton x:Name="RadioBtnIsManualProfit"
-						             Margin="8,2,0,0"
+						             Margin="8,0,0,0"
 						             VerticalContentAlignment="Center"
 						             HorizontalContentAlignment="Center"
 						             FontSize="12"
@@ -731,22 +743,24 @@
 						</RadioButton>
 					</StackPanel>
 					<Label Grid.Column="0"
-					       Grid.Row="2"
-					       Margin="0,8,0,0"
+					       Grid.Row="4"
+					       Margin="0,8,4,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="% de Ganancia" />
-					<Label Grid.Column="2"
-					       Grid.Row="2"
-					       Margin="0,8,0,0"
+					<Label Grid.Column="0"
+					       Grid.Row="7"
+					       Margin="0,8,4,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="% de Descuento" />
 					<TextBox x:Name="TxtBoxPercentageOfProfit"
 					         Grid.Column="0"
-					         Grid.Row="3"
+					         Grid.Row="5"
 					         Grid.RowSpan="2"
-					         Margin="0,0,0,0"
+					         Margin="0,0,4,0"
 					         FontSize="12"
 							 Height="20"
 					         TextAlignment="Center"
@@ -764,7 +778,8 @@
 					</TextBox>
 					<RepeatButton x:Name="BtnAddProfit"
 					              Grid.Column="1"
-					              Grid.Row="3"
+					              Grid.Row="5"
+								  HorizontalAlignment="Left"
 					              Margin="0,0,8,0"
 								  Padding="4,0,4,0"
 								  Height="11"
@@ -775,7 +790,8 @@
 								  Content="Up"/>
 					<RepeatButton x:Name="BtnRemoveProfit"
 					              Grid.Column="1"
-					              Grid.Row="4"
+					              Grid.Row="6"
+								  HorizontalAlignment="Left"
 					              Margin="0,0,8,0"
 								  Padding="4,0,4,0"
 								  Height="11"
@@ -785,10 +801,10 @@
 					              Click="RemoveProfit"
 								  Content="Dowm"/>
 					<TextBox x:Name="TxtBoxPercentageOfDiscount"
-					         Grid.Column="2"
-					         Grid.Row="3"
+					         Grid.Column="0"
+					         Grid.Row="8"
 					         Grid.RowSpan="2"
-					         Margin="0,0,0,0"
+					         Margin="0,0,4,0"
 					         FontSize="12"
 							 Height="20"
 					         TextAlignment="Center"
@@ -805,8 +821,8 @@
 						</TextBox.Text>
 					</TextBox>
 					<RepeatButton x:Name="BtnAddDiscount"
-					              Grid.Column="3"
-					              Grid.Row="3"
+					              Grid.Column="1"
+					              Grid.Row="8"
 					              Margin="0,0,0,0"
 								  Padding="4,0,4,0"
 					              FontSize="4"
@@ -814,10 +830,12 @@
 								  Width="18"
 					              Interval="50"
 					              Click="AddDiscount"
-								  Content="Up"/>
+								  Content="Up"
+								  HorizontalAlignment="Left"/>
 					<RepeatButton x:Name="BtnRemoveDiscount"
-					              Grid.Column="3"
-					              Grid.Row="4"
+					              Grid.Column="1"
+					              Grid.Row="9"
+								  HorizontalAlignment="Left"
 					              Margin="0,0,0,0"
 								  Padding="4,0,4,0"
 					              FontSize="4"
@@ -826,21 +844,24 @@
 					              Interval="50"
 					              Click="RemoveDiscount"
 								  Content="Down"/>
-					<Label Grid.Column="0"
-					       Grid.Row="5"
+					<Label Grid.Column="2"
+					       Grid.Row="4"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Precio de Venta" />
 					<Label Grid.Column="2"
-					       Grid.Row="5"
+					       Grid.Row="7"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Precio con Descuento " />
 					<Label x:Name="LblSalePriceWithoutDiscount"
-					       Grid.Column="0"
-					       Grid.Row="6"
+					       Grid.Column="2"
+					       Grid.Row="5"
+						   Grid.RowSpan="2"
 					       MinHeight="15"
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
@@ -853,7 +874,8 @@
 					</Label>
 					<Label x:Name="LblSalePriceWithDiscount"
 					       Grid.Column="2"
-					       Grid.Row="6"
+					       Grid.Row="8"
+						   Grid.RowSpan="2"
 					       Height="15"
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
@@ -864,21 +886,24 @@
 							<Binding Path="SalePriceWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
 						</Label.Content>
 					</Label>
-					<Label Grid.Column="0"
-					       Grid.Row="7"
+					<Label Grid.Column="4"
+					       Grid.Row="4"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Utilidad" />
-					<Label Grid.Column="2"
+					<Label Grid.Column="4"
 					       Grid.Row="7"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="Utilidad con Descuento" />
 					<Label x:Name="LblProfitWithoutDiscount"
-					       Grid.Column="0"
-					       Grid.Row="8"
+					       Grid.Column="4"
+					       Grid.Row="5"
+						   Grid.RowSpan="2"
 					       MinHeight="15"
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
@@ -890,8 +915,9 @@
 						</Label.Content>
 					</Label>
 					<Label x:Name="LblProfitWithDiscount"
-					       Grid.Column="2"
+					       Grid.Column="4"
 					       Grid.Row="8"
+						   Grid.RowSpan="2"
 					       MinHeight="15"
 					       Margin="0,0,0,0"
 					       Padding="0,0,0,0"
@@ -902,22 +928,24 @@
 							<Binding Path="ProfitWithDiscount" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
 						</Label.Content>
 					</Label>
-					<Label Grid.Column="0"
-					       Grid.Row="9"
-					       Margin="0,8,0,0"
+					<Label Grid.Column="4"
+					       Grid.Row="0"
+					       Margin="0,0,20,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Tipo de Producto*" />
 					<Label Grid.Column="2"
-					       Grid.Row="9"
-					       Margin="0,8,0,0"
+					       Grid.Row="0"
+					       Margin="0,0,20,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Unidad*" />
 					<ComboBox x:Name="CmbBoxTypeOfStock"
-					          Grid.Column="0"
-					          Grid.ColumnSpan="2"
-					          Grid.Row="10"
+					          Grid.Column="4"
+					          Grid.ColumnSpan="1"
+					          Grid.Row="1"
 					          Margin="0,0,8,0"
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
@@ -934,9 +962,9 @@
 					</ComboBox>
 					<ComboBox x:Name="CmbBoxUnitType"
 					          Grid.Column="2"
-					          Grid.ColumnSpan="2"
-					          Grid.Row="10"
-					          Margin="0,0,0,0"
+					          Grid.ColumnSpan="1"
+					          Grid.Row="1"
+					          Margin="0,0,8,0"
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
@@ -950,23 +978,25 @@
 							</Binding>
 						</ComboBox.Text>
 					</ComboBox>
-					<Label Grid.Column="0"
-					       Grid.Row="11"
-					       Margin="0,8,0,0"
+					<Label Grid.Column="5"
+					       Grid.Row="0"
+					       Margin="0,0,16,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalContentAlignment="Center"
 					       Content="Fabricante" />
-					<Label Grid.Column="2"
-					       Grid.Row="11"
+					<Label Grid.Column="6"
+					       Grid.Row="2"
 					       Margin="0,8,0,0"
 					       Padding="0,0,0,0"
 					       FontSize="12"
+						   HorizontalAlignment="Center"
 					       Content="No. de Parte" />
 					<ComboBox x:Name="CmbBoxManufacturer"
-					          Grid.Column="0"
+					          Grid.Column="5"
 					          Grid.ColumnSpan="2"
-					          Grid.Row="12"
-					          Margin="0,0,8,0"
+					          Grid.Row="1"
+					          Margin="0,0,0,0"
 					          FontSize="12"
 					          HorizontalContentAlignment="Center"
 					          IsEditable="True"
@@ -981,10 +1011,10 @@
 						</ComboBox.Text>
 					</ComboBox>
 					<TextBox x:Name="TxtBoxPartNumber"
-					         Grid.Column="2"
+					         Grid.Column="5"
 					         Grid.ColumnSpan="2"
-					         Grid.Row="12"
-					         Margin="0,0,0,0"
+					         Grid.Row="3"
+					         Margin="0,4,0,0"
 					         FontSize="12"
 					         HorizontalContentAlignment="Center"
 					         Style="{StaticResource TextBoxInError}"
@@ -998,15 +1028,16 @@
 							</Binding>
 						</TextBox.Text>
 					</TextBox>
-					<Image x:Name="ProductImage"
-					       Grid.Row="0"
-					       Grid.RowSpan="13"
-					       Grid.Column="4"
-					       Grid.ColumnSpan="2"
-					       Width="245"
-					       Height="245" />
 				</Grid>
 			</GroupBox>
+			<Image x:Name="ProductImage"
+				   Margin="0,8,0,0"
+				   Grid.Row="3"
+				   Grid.RowSpan="1"
+				   Grid.Column="3"
+				   Grid.ColumnSpan="1"
+				   Width="220"
+				   Height="220" />
 			<GroupBox Grid.Column="0"
 			          Grid.ColumnSpan="4"
 			          Grid.Row="4"

@@ -105,7 +105,8 @@ namespace Inventory.ui
 			ForegroundColor = new SolidColorBrush(Colors.Crimson);
 
 			TxtBlockProductTask.Content = "Detalles del Producto";
-			TxtBlockProductTask.Foreground = ForegroundColor;
+			TxtBlockProductTask.Foreground = Brushes.White;
+			TxtId.Foreground = ForegroundColor;
 			BtnAddModifyAndSave.Content = "Modificar";
 			LblSalePriceWithoutDiscount.Foreground = ForegroundColor;
 			LblSalePriceWithDiscount.Foreground = ForegroundColor;
