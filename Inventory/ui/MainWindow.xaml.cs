@@ -78,6 +78,8 @@ namespace Inventory.ui
 			string message = $"Cambios en la versión: {AppVersion}\n\n" +
 							 "General:\n" +
 							 "* Corregida ortografía en todas las ventanas.\n\n" +
+							 "Ventana de Solicitudes:\n" +
+							 "* Corregido bug que duplica los registros y envia notificaciones sin parar.\n\n" +
 							 "Ventana de Producto:\n" +
 							 "* Aumentado el alto de la ventana.\n" +
 							 "* Aumentado el espaciado entre controles.\n" +
