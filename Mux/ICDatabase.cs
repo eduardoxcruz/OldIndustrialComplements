@@ -7,13 +7,14 @@ namespace Mux
 {
 	public class ICDatabase : DbContext
 	{
+		private readonly string _connectionString;
+		
 		public virtual DbSet<ProductToBuy> ShoppingCart { get; set; }
 		public virtual DbSet<ProductChangeLog> ProductChangeLogs { get; set; }
 		public virtual DbSet<Product> Products { get; set; }
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
-		private readonly string _connectionString;
-		
+
 		public ICDatabase(string connectionString)
 		{
 			_connectionString = connectionString;
