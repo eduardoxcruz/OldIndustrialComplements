@@ -34,6 +34,11 @@ namespace Mux.Model
 		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		public Category()
+		{
+			Id = 0;
+			Name = "";
+		}
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
