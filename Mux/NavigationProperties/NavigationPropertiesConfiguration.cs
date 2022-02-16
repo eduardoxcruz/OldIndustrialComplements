@@ -2,7 +2,7 @@
 
 namespace Mux.NavigationProperties
 {
-	public interface NavigationPropertiesConfiguration
+	internal interface NavigationPropertiesConfiguration
 	{
 		void Configure(ref ModelBuilder modelBuilder);
 	}
