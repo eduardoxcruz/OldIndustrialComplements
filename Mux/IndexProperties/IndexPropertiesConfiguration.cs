@@ -2,7 +2,7 @@
 
 namespace Mux.IndexProperties
 {
-	public interface IndexPropertiesConfiguration
+	internal interface IndexPropertiesConfiguration
 	{
 		void Configure(ref ModelBuilder modelBuilder);
 	}
