@@ -14,6 +14,7 @@ namespace Mux
 		public virtual DbSet<Product> Products { get; set; }
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
+		public virtual DbSet<Category> Categories { get; set; }
 
 		public ICDatabase(string connectionString)
 		{
