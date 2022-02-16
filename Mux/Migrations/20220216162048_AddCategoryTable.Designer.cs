@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mux;
 
 namespace Inventory.Migrations
 {
     [DbContext(typeof(ICDatabase))]
-    partial class InventoryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220216162048_AddCategoryTable")]
+    partial class AddCategoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,21 +360,6 @@ namespace Inventory.Migrations
                     b.ToTable("ShoppingCart");
                 });
 
-            modelBuilder.Entity("ProductCategories", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
-                });
-
             modelBuilder.Entity("Mux.Model.ProductChangeLog", b =>
                 {
                     b.HasOne("Mux.Model.Employee", "Employee")
@@ -422,21 +409,6 @@ namespace Inventory.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ProductCategories", b =>
-                {
-                    b.HasOne("Mux.Model.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK_ProductCategories_Categories_CategoryId")
-                        .IsRequired();
-
-                    b.HasOne("Mux.Model.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .HasConstraintName("FK_ProductCategories_Products_ProductId")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Mux.Model.Employee", b =>
