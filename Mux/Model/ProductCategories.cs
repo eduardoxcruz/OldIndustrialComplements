@@ -1,15 +1,7 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace Mux.Model
+﻿namespace Mux.Model
 {
-	public class ProductCategories : INotifyPropertyChanged
+	public class ProductCategories
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+		
 	}
 }
