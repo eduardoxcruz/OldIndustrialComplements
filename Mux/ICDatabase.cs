@@ -16,7 +16,7 @@ namespace Mux
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 
-		public ICDatabase(string connectionString)
+		public ICDatabase(string connectionString = "Server=192.168.0.254;Database=Testing;User Id=sa;Password=Tlacua015;")
 		{
 			_connectionString = connectionString;
 		}
