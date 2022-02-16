@@ -3,7 +3,7 @@ using Mux.Model;
 
 namespace Mux.NavigationProperties
 {
-	public class ProductNavigationProperties : NavigationPropertiesConfiguration
+	internal class ProductNavigationProperties : NavigationPropertiesConfiguration
 	{
 		public void Configure(ref ModelBuilder modelBuilder)
 		{
