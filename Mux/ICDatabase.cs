@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Mux.IndexProperties;
 using Mux.Model;
+using Mux.NavigationProperties;
 
 #nullable disable
 
@@ -129,44 +130,8 @@ namespace Mux
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureProductNavigationProperties(ref modelBuilder);
-			ConfigureEmployeeNavigationProperties(ref modelBuilder);
-		}
-
-		private static void ConfigureProductNavigationProperties(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ShoppingCart)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ProductRequests)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ProductChangeLogs)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-		}
-
-		private static void ConfigureEmployeeNavigationProperties(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ShoppingCart)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ProductRequests)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ProductChangeLogs)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
+			new ProductNavigationProperties().Configure(ref modelBuilder);
+			new EmployeeNavigationProperties().Configure(ref modelBuilder);
 		}
 
 		private static void StartIndexPropertiesConfiguration(ref ModelBuilder modelBuilder)
