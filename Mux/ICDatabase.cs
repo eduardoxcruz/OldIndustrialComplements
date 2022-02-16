@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Mux.IndexProperties;
 using Mux.Model;
 using Mux.NavigationProperties;
+using Mux.Relationships;
 
 #nullable disable
 
@@ -49,83 +49,10 @@ namespace Mux
 
 		private static void StartRelationshipsConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureShoppingCartRelationships(ref modelBuilder);
-			ConfigureProductRequestRelationships(ref modelBuilder);
-			ConfigureProductChangelogRelationships(ref modelBuilder);
-			ConfigureProductCategoriesRelationship(ref modelBuilder);
-		}
-
-		private static void ConfigureShoppingCartRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasOne(productForBuy => productForBuy.Product)
-				.WithMany(product => product.ShoppingCart)
-				.HasForeignKey(productForBuy => productForBuy.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasOne(productForBuy => productForBuy.Employee)
-				.WithMany(employee => employee.ShoppingCart)
-				.HasForeignKey(productForBuy => productForBuy.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductRequestRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasOne(productRequest => productRequest.Product)
-				.WithMany(product => product.ProductRequests)
-				.HasForeignKey(productRequest => productRequest.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasOne(productRequest => productRequest.Employee)
-				.WithMany(employee => employee.ProductRequests)
-				.HasForeignKey(productRequest => productRequest.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductChangelogRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasOne(recordOfProductMovement => recordOfProductMovement.Product)
-				.WithMany(product => product.ProductChangeLogs)
-				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasOne(recordOfProductMovement => recordOfProductMovement.Employee)
-				.WithMany(employee => employee.ProductChangeLogs)
-				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductCategoriesRelationship(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<Product>()
-				.HasMany(product => product.Categories)
-				.WithMany(category => category.Products)
-				.UsingEntity<Dictionary<string, object>>(
-					"ProductCategories",
-					entityTypeBuilder => entityTypeBuilder
-						.HasOne<Category>()
-						.WithMany()
-						.HasForeignKey("CategoryId")
-						.HasConstraintName("FK_ProductCategories_Categories_CategoryId")
-						.OnDelete(DeleteBehavior.ClientSetNull),
-					entityTypeBuilder => entityTypeBuilder
-						.HasOne<Product>()
-						.WithMany()
-						.HasForeignKey("ProductId")
-						.HasConstraintName("FK_ProductCategories_Products_ProductId")
-						.OnDelete(DeleteBehavior.ClientSetNull)
-				);
+			new ProductCategoriesRelationships().Configure(ref modelBuilder);
+			new ProductChangelogRelationships().Configure(ref modelBuilder);
+			new ProductRequestRelationships().Configure(ref modelBuilder);
+			new ShoppingCartRelationships().Configure(ref modelBuilder);
 		}
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
