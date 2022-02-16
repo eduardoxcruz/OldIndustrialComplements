@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Mux.Model
 {
@@ -90,37 +88,6 @@ namespace Mux.Model
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-
-	public class ProductToBuyEntityTypeConfiguration : IEntityTypeConfiguration<ProductToBuy>
-	{
-		public void Configure(EntityTypeBuilder<ProductToBuy> builder)
-		{
-			builder.HasKey(productForBuy => productForBuy.Id);
-
-			builder
-				.Property(productForBuy => productForBuy.Id)
-				.ValueGeneratedNever();
-
-			builder.Property(productForBuy => productForBuy.RequestedAmount);
-
-			builder.Property(productForBuy => productForBuy.Date);
-
-			builder
-				.Property(productForBuy => productForBuy.EmployeeName)
-				.HasMaxLength(35)
-				.IsUnicode(false);
-
-			builder
-				.Property(productForBuy => productForBuy.Provider)
-				.HasMaxLength(35)
-				.IsUnicode(false);
-
-			builder
-				.Property(productForBuy => productForBuy.Status)
-				.HasMaxLength(10)
-				.IsUnicode(false);
 		}
 	}
 }
