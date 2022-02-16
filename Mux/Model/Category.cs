@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -34,6 +35,7 @@ namespace Mux.Model
 				OnPropertyChanged(nameof(Name));
 			}
 		}
+		public List<Product> Products { get; set; }
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public Category()
