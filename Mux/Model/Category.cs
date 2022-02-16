@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Mux.Model
 {
-	public class Category : INotifyPropertyChanged
+	public class Category : INotifyPropertyChanged, IEntityTypeConfiguration<Category>
 	{
 		private int _id;
 		private string _name;
@@ -42,6 +44,20 @@ namespace Mux.Model
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public void Configure(EntityTypeBuilder<Category> builder)
+		{
+			builder.HasKey(category => category.Id);
+
+			builder
+				.Property(category => category.Id)
+				.ValueGeneratedOnAdd();
+
+			builder
+				.Property(category => category.Name)
+				.HasMaxLength(50)
+				.IsUnicode();
 		}
 	}
 }
