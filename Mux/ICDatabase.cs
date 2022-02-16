@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mux.EntityTypes;
 using Mux.IndexProperties;
 using Mux.Model;
 using Mux.NavigationProperties;
@@ -35,16 +36,19 @@ namespace Mux
 		{
 			modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
-			new ProductToBuyEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductToBuy>());
-			new ProductChangeLogEntityTypeConfiguration().Configure(
-				modelBuilder.Entity<ProductChangeLog>());
-			new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
-			new ProductRequestEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductRequest>());
-			new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
-
+			StartEntityTypesConfiguration(ref modelBuilder);
 			StartRelationshipsConfiguration(ref modelBuilder);
 			StartNavigationPropertiesConfiguration(ref modelBuilder);
 			StartIndexPropertiesConfiguration(ref modelBuilder);
+		}
+
+		private static void StartEntityTypesConfiguration(ref ModelBuilder modelBuilder)
+		{
+			new ProductToBuyEntityType().Configure(modelBuilder.Entity<ProductToBuy>());
+			new ProductChangelogEntityType().Configure(modelBuilder.Entity<ProductChangeLog>());
+			new ProductEntityType().Configure(modelBuilder.Entity<Product>());
+			new ProductRequestEntityType().Configure(modelBuilder.Entity<ProductRequest>());
+			new EmployeeEntityType().Configure(modelBuilder.Entity<Employee>());
 		}
 
 		private static void StartRelationshipsConfiguration(ref ModelBuilder modelBuilder)
