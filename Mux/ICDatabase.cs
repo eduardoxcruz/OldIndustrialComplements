@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Mux.Model;
 
 #nullable disable
@@ -49,6 +50,7 @@ namespace Mux
 			ConfigureShoppingCartRelationships(ref modelBuilder);
 			ConfigureProductRequestRelationships(ref modelBuilder);
 			ConfigureProductChangelogRelationships(ref modelBuilder);
+			ConfigureProductCategoriesRelationship(ref modelBuilder);
 		}
 
 		private static void ConfigureShoppingCartRelationships(ref ModelBuilder modelBuilder)
@@ -100,6 +102,28 @@ namespace Mux
 				.WithMany(employee => employee.ProductChangeLogs)
 				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.EmployeeId)
 				.OnDelete(DeleteBehavior.SetNull);
+		}
+
+		private static void ConfigureProductCategoriesRelationship(ref ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Product>()
+				.HasMany(product => product.Categories)
+				.WithMany(category => category.Products)
+				.UsingEntity<Dictionary<string, object>>(
+					"ProductCategories",
+					entityTypeBuilder => entityTypeBuilder
+						.HasOne<Category>()
+						.WithMany()
+						.HasForeignKey("CategoryId")
+						.HasConstraintName("FK_ProductCategories_Categories_CategoryId")
+						.OnDelete(DeleteBehavior.ClientSetNull),
+					entityTypeBuilder => entityTypeBuilder
+						.HasOne<Product>()
+						.WithMany()
+						.HasForeignKey("ProductId")
+						.HasConstraintName("FK_ProductCategories_Products_ProductId")
+						.OnDelete(DeleteBehavior.ClientSetNull)
+				);
 		}
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
