@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Mux.IndexProperties;
 using Mux.Model;
 
 #nullable disable
@@ -170,48 +171,9 @@ namespace Mux
 
 		private static void StartIndexPropertiesConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureProductToBuyIndexPropertie(ref modelBuilder);
-			ConfigureProductRequestIndexPropertie(ref modelBuilder);
-			ConfigureProductChangelogIndexPropertie(ref modelBuilder);
-		}
-
-		private static void ConfigureProductToBuyIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasIndex(productForBuy => productForBuy.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasIndex(productForBuy => productForBuy.EmployeeId)
-				.IsUnique(false);
-		}
-
-		private static void ConfigureProductRequestIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasIndex(productRequest => productRequest.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasIndex(productRequest => productRequest.EmployeeId)
-				.IsUnique(false);
-		}
-
-		private static void ConfigureProductChangelogIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasIndex(recordOfProductMovement => recordOfProductMovement.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasIndex(recordOfProductMovement => recordOfProductMovement.EmployeeId)
-				.IsUnique(false);
+			new ProductChangelogIndexProperties().Configure(ref modelBuilder);
+			new ProductRequestIndexProperties().Configure(ref modelBuilder);
+			new ProductToBuyIndexProperties().Configure(ref modelBuilder);
 		}
 	}
 }
