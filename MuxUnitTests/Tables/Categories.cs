@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Mux;
 using Mux.Model;
 using Xunit;
+using Xunit.Sdk;
 
 namespace MuxUnitTests.Tables
 {
@@ -20,14 +21,27 @@ namespace MuxUnitTests.Tables
             InsertNewCategoryIntoTable(categoryName);
             int newCount = database.Categories.Count();
             Assert.True(previousCount < newCount);
-        } 
-        
+        }
+
         void InsertNewCategoryIntoTable(string name)
         {
             using ICDatabase database = new ICDatabase();
             var newCategory = new Category() { Name = name };
             database.Categories.Add(newCategory);
             database.SaveChanges();
+        }
+        
+        private Product GetProduct(int id)
+        {
+            using ICDatabase database = new();
+            var product = database.Products.FirstOrDefault(category => category.Id == id);
+
+            if (product == null)
+            {
+                throw new NotNullException();
+            }
+
+            return product;
         }
 
         [Theory]
