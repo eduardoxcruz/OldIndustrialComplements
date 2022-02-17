@@ -7,7 +7,7 @@ namespace Mux.Model
 	{
 		private int _id;
 		private string _name;
-		private string _bodyWidht;
+		private string _bodyWidth;
 		private string _fullDescription;
 
 		public int Id
@@ -38,11 +38,11 @@ namespace Mux.Model
 		{
 			get
 			{
-				return _bodyWidht;
+				return _bodyWidth;
 			}
 			set
 			{
-				_bodyWidht = value;
+				_bodyWidth = value;
 				OnPropertyChanged(nameof(BodyWidth));
 			}
 		}
