@@ -34,7 +34,7 @@ namespace MuxUnitTests.Tables
         [InlineData(1)]
         [InlineData(2)]
         [InlineData(3)]
-        public void InsertNewCategoryWithDuplicateIdResultException(int id)
+        public void InsertExplicitIdentityShouldThrowException(int id)
         {
             string expectedExceptionMessage =
                 "No se puede insertar un valor explícito en la columna de identidad de la tabla 'Categories' cuando IDENTITY_INSERT es OFF.";
