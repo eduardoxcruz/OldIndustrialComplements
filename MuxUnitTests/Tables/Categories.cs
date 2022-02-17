@@ -15,12 +15,12 @@ namespace MuxUnitTests.Tables
         {
             ICDatabase database = new();
             int previousCount = database.Categories.Count();
-            InsertNewCategoryIntoTableOnlyWithName(categoryName);
+            InsertNewCategoryIntoTable(categoryName);
             int newCount = database.Categories.Count();
             Assert.True(previousCount < newCount);
         } 
         
-        void InsertNewCategoryIntoTableOnlyWithName(string name)
+        void InsertNewCategoryIntoTable(string name)
         {
             using ICDatabase database = new ICDatabase();
             var newCategory = new Category() { Name = name };
