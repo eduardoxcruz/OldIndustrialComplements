@@ -93,7 +93,7 @@ namespace Mux.EntityTypes
 				.IsUnicode(false);
 
 			builder
-				.Property(product => product.EncapsulationType)
+				.Property(product => product.OldEncapsulationType)
 				.HasMaxLength(20)
 				.IsUnicode(false);
 
