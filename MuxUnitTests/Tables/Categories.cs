@@ -27,5 +27,13 @@ namespace MuxUnitTests.Tables
             database.Categories.Add(newCategory);
             database.SaveChanges();
         }
+
+        void InsertNewCategoryIntoTable(int id, string name)
+        {
+            using ICDatabase database = new ICDatabase();
+            var newCategory = new Category() { Id = id, Name = name };
+            database.Categories.Add(newCategory);
+            database.SaveChanges();
+        }
     }
 }
