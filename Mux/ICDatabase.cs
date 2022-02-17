@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Mux.EntityTypes;
+using Mux.IndexProperties;
 using Mux.Model;
+using Mux.NavigationProperties;
+using Mux.Relationships;
 
 #nullable disable
 
@@ -17,7 +20,12 @@ namespace Mux
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 
-		public ICDatabase(string connectionString = "Server=192.168.0.254;Database=Testing;User Id=sa;Password=Tlacua015;")
+		public ICDatabase()
+		{
+			_connectionString = "Server=192.168.0.254;Database=Testing;User Id=sa;Password=Tlacua015;";
+		}
+		
+		public ICDatabase(string connectionString)
 		{
 			_connectionString = connectionString;
 		}
@@ -33,185 +41,41 @@ namespace Mux
 		{
 			modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
-			new ProductToBuyEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductToBuy>());
-			new ProductChangeLogEntityTypeConfiguration().Configure(
-				modelBuilder.Entity<ProductChangeLog>());
-			new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
-			new ProductRequestEntityTypeConfiguration().Configure(modelBuilder.Entity<ProductRequest>());
-			new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
-
+			StartEntityTypesConfiguration(ref modelBuilder);
 			StartRelationshipsConfiguration(ref modelBuilder);
 			StartNavigationPropertiesConfiguration(ref modelBuilder);
 			StartIndexPropertiesConfiguration(ref modelBuilder);
 		}
 
+		private static void StartEntityTypesConfiguration(ref ModelBuilder modelBuilder)
+		{
+			new ProductToBuyEntityType().Configure(modelBuilder.Entity<ProductToBuy>());
+			new ProductChangelogEntityType().Configure(modelBuilder.Entity<ProductChangeLog>());
+			new ProductEntityType().Configure(modelBuilder.Entity<Product>());
+			new ProductRequestEntityType().Configure(modelBuilder.Entity<ProductRequest>());
+			new EmployeeEntityType().Configure(modelBuilder.Entity<Employee>());
+			new CategoryEntityType().Configure(modelBuilder.Entity<Category>());
+		}
+
 		private static void StartRelationshipsConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureShoppingCartRelationships(ref modelBuilder);
-			ConfigureProductRequestRelationships(ref modelBuilder);
-			ConfigureProductChangelogRelationships(ref modelBuilder);
-			ConfigureProductCategoriesRelationship(ref modelBuilder);
-		}
-
-		private static void ConfigureShoppingCartRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasOne(productForBuy => productForBuy.Product)
-				.WithMany(product => product.ShoppingCart)
-				.HasForeignKey(productForBuy => productForBuy.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasOne(productForBuy => productForBuy.Employee)
-				.WithMany(employee => employee.ShoppingCart)
-				.HasForeignKey(productForBuy => productForBuy.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductRequestRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasOne(productRequest => productRequest.Product)
-				.WithMany(product => product.ProductRequests)
-				.HasForeignKey(productRequest => productRequest.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasOne(productRequest => productRequest.Employee)
-				.WithMany(employee => employee.ProductRequests)
-				.HasForeignKey(productRequest => productRequest.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductChangelogRelationships(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasOne(recordOfProductMovement => recordOfProductMovement.Product)
-				.WithMany(product => product.ProductChangeLogs)
-				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.ProductId)
-				.OnDelete(DeleteBehavior.Cascade);
-
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasOne(recordOfProductMovement => recordOfProductMovement.Employee)
-				.WithMany(employee => employee.ProductChangeLogs)
-				.HasForeignKey(recordOfProductMovement => recordOfProductMovement.EmployeeId)
-				.OnDelete(DeleteBehavior.SetNull);
-		}
-
-		private static void ConfigureProductCategoriesRelationship(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<Product>()
-				.HasMany(product => product.Categories)
-				.WithMany(category => category.Products)
-				.UsingEntity<Dictionary<string, object>>(
-					"ProductCategories",
-					entityTypeBuilder => entityTypeBuilder
-						.HasOne<Category>()
-						.WithMany()
-						.HasForeignKey("CategoryId")
-						.HasConstraintName("FK_ProductCategories_Categories_CategoryId")
-						.OnDelete(DeleteBehavior.ClientSetNull),
-					entityTypeBuilder => entityTypeBuilder
-						.HasOne<Product>()
-						.WithMany()
-						.HasForeignKey("ProductId")
-						.HasConstraintName("FK_ProductCategories_Products_ProductId")
-						.OnDelete(DeleteBehavior.ClientSetNull)
-				);
+			new ProductCategoriesRelationships().Configure(ref modelBuilder);
+			new ProductChangelogRelationships().Configure(ref modelBuilder);
+			new ProductRequestRelationships().Configure(ref modelBuilder);
+			new ShoppingCartRelationships().Configure(ref modelBuilder);
 		}
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureProductNavigationProperties(ref modelBuilder);
-			ConfigureEmployeeNavigationProperties(ref modelBuilder);
-		}
-
-		private static void ConfigureProductNavigationProperties(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ShoppingCart)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ProductRequests)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Product>()
-				.Navigation(product => product.ProductChangeLogs)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-		}
-
-		private static void ConfigureEmployeeNavigationProperties(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ShoppingCart)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ProductRequests)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
-			
-			modelBuilder
-				.Entity<Employee>()
-				.Navigation(employee => employee.ProductChangeLogs)
-				.UsePropertyAccessMode(PropertyAccessMode.Property);
+			new ProductNavigationProperties().Configure(ref modelBuilder);
+			new EmployeeNavigationProperties().Configure(ref modelBuilder);
 		}
 
 		private static void StartIndexPropertiesConfiguration(ref ModelBuilder modelBuilder)
 		{
-			ConfigureProductToBuyIndexPropertie(ref modelBuilder);
-			ConfigureProductRequestIndexPropertie(ref modelBuilder);
-			ConfigureProductChangelogIndexPropertie(ref modelBuilder);
-		}
-
-		private static void ConfigureProductToBuyIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasIndex(productForBuy => productForBuy.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductToBuy>()
-				.HasIndex(productForBuy => productForBuy.EmployeeId)
-				.IsUnique(false);
-		}
-
-		private static void ConfigureProductRequestIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasIndex(productRequest => productRequest.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductRequest>()
-				.HasIndex(productRequest => productRequest.EmployeeId)
-				.IsUnique(false);
-		}
-
-		private static void ConfigureProductChangelogIndexPropertie(ref ModelBuilder modelBuilder)
-		{
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasIndex(recordOfProductMovement => recordOfProductMovement.ProductId)
-				.IsUnique(false);
-
-			modelBuilder
-				.Entity<ProductChangeLog>()
-				.HasIndex(recordOfProductMovement => recordOfProductMovement.EmployeeId)
-				.IsUnique(false);
+			new ProductChangelogIndexProperties().Configure(ref modelBuilder);
+			new ProductRequestIndexProperties().Configure(ref modelBuilder);
+			new ProductToBuyIndexProperties().Configure(ref modelBuilder);
 		}
 	}
 }
