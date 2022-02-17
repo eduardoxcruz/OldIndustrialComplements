@@ -31,6 +31,36 @@ namespace MuxUnitTests.Tables
             database.SaveChanges();
         }
 
+        [Theory]
+        [InlineData(1,4)]
+        [InlineData(1,5)]
+        [InlineData(1,6)]
+        public void AddProductRelationshipShouldOk(int categoryId, int productId)
+        {
+            using ICDatabase database = new();
+            int previousProductsCount = GetProductsInCategoryCount(categoryId);
+            InsertNewProductToCategoryProductsList(categoryId, productId);
+            int newProductsCount = GetProductsInCategoryCount(categoryId);
+            Assert.True(previousProductsCount < newProductsCount);
+        }
+        
+        private int GetProductsInCategoryCount(int categoryId)
+        {
+            var categoryLoad = GetCategory(categoryId);
+            return categoryLoad!.Products.Count;
+        }
+
+        private void InsertNewProductToCategoryProductsList(int categoryId, int productId)
+        {
+            using var database = new ICDatabase();
+            var category = GetCategory(categoryId);
+            var product = GetProduct(productId);
+            category.Products.Add(product);
+            database.Entry(product).State = EntityState.Modified;
+            database.Entry(category).State = EntityState.Modified;
+            database.SaveChanges();
+        }
+        
         private Category GetCategory(int id)
         {
             using ICDatabase database = new();
