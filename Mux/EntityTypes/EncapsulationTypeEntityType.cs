@@ -4,7 +4,7 @@ using Mux.Model;
 
 namespace Mux.EntityTypes
 {
-	public class EncapsulationTypeEntityType : IEntityTypeConfiguration<EncapsulationType>
+	internal class EncapsulationTypeEntityType : IEntityTypeConfiguration<EncapsulationType>
 	{
 		public void Configure(EntityTypeBuilder<EncapsulationType> builder)
 		{
