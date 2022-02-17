@@ -30,7 +30,22 @@ namespace MuxUnitTests.Tables
             database.Categories.Add(newCategory);
             database.SaveChanges();
         }
-        
+
+        private Category GetCategory(int id)
+        {
+            using ICDatabase database = new();
+            var category = database.Categories
+                .Include(category => category.Products)
+                .FirstOrDefault(category => category.Id == id);
+
+            if (category == null)
+            {
+                throw new NotNullException();
+            }
+
+            return category;
+        }
+
         private Product GetProduct(int id)
         {
             using ICDatabase database = new();
