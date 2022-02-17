@@ -59,6 +59,14 @@ namespace Mux.Model
 			}
 		}
 
+		public EncapsulationType()
+		{
+			Id = 0;
+			Name = "";
+			BodyWidth = "";
+			FullDescription = "";
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
