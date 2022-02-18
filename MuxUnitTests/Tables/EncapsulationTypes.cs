@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Mux;
 using Mux.Model;
@@ -38,6 +39,19 @@ namespace MuxUnitTests.Tables
             Assert.True(newCount < previousCount);
         }
         
+        [Theory]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
+        public void InsertExplicitIdentityShouldFail(int id)
+        {
+            string expectedExceptionMessage =
+                "No se puede insertar un valor explícito en la columna de identidad de la tabla 'EncapsulationTypes' cuando IDENTITY_INSERT es OFF.";
+            Action action = () => InsertNewEncapsulationType(id, $"Name {id}", $"Body {id}");
+            DbUpdateException originalException = Assert.Throws<DbUpdateException>(action);
+            Assert.Equal(expectedExceptionMessage, originalException.InnerException!.Message);
+        }
+        
         private int GetDataCountFromTable()
         {
             using ICDatabase database = new();
@@ -51,6 +65,13 @@ namespace MuxUnitTests.Tables
                 .Include(e => e.Products)
                 .FirstOrDefault(e => e.Id == id);
         }
-
+        
+        private void InsertNewEncapsulationType(int id, string name, string body)
+        {
+            using ICDatabase database = new();
+            var encapsulationType = new EncapsulationType() {Id = id, Name = name, BodyWidth = body};
+            database.EncapsulationTypes.Add(encapsulationType);
+            database.SaveChanges();
+        }
     }
 }
