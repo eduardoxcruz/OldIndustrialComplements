@@ -79,6 +79,7 @@ namespace Mux
 			new ProductChangelogIndexProperties().Configure(ref modelBuilder);
 			new ProductRequestIndexProperties().Configure(ref modelBuilder);
 			new ProductToBuyIndexProperties().Configure(ref modelBuilder);
+			new ProductIndexProperties().Configure(ref modelBuilder);
 		}
 	}
 }
