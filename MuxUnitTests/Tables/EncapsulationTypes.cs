@@ -71,6 +71,21 @@ namespace MuxUnitTests.Tables
             Assert.True(previousCount < newCount);
         }
         
+        [Theory]
+        [InlineData(4, 5)]
+        [InlineData(5, 5)]
+        [InlineData(6, 5)]
+        public void UpdateEncapsulationTypeOfExistingProductShouldOk(int productId, int etId)
+        {
+            var database = new ICDatabase();
+            var product = GetProduct(productId);
+            product.EncapsulationTypeId = etId;
+            database.Entry(product).State = EntityState.Modified;
+            database.SaveChanges();
+            var updatedITId = GetProduct(productId).EncapsulationTypeId;
+            Assert.True(etId == updatedITId);
+        }
+        
         private int GetDataCountFromTable()
         {
             using ICDatabase database = new();
