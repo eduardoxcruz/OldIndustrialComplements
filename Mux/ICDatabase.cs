@@ -55,6 +55,7 @@ namespace Mux
 			new ProductRequestEntityType().Configure(modelBuilder.Entity<ProductRequest>());
 			new EmployeeEntityType().Configure(modelBuilder.Entity<Employee>());
 			new CategoryEntityType().Configure(modelBuilder.Entity<Category>());
+			new EncapsulationTypeEntityType().Configure(modelBuilder.Entity<EncapsulationType>());
 		}
 
 		private static void StartRelationshipsConfiguration(ref ModelBuilder modelBuilder)
