@@ -19,6 +19,7 @@ namespace Mux
 		public virtual DbSet<ProductRequest> ProductRequests { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
+		public virtual DbSet<EncapsulationType> EncapsulationTypes { get; set; }
 
 		public ICDatabase()
 		{
@@ -55,6 +56,7 @@ namespace Mux
 			new ProductRequestEntityType().Configure(modelBuilder.Entity<ProductRequest>());
 			new EmployeeEntityType().Configure(modelBuilder.Entity<Employee>());
 			new CategoryEntityType().Configure(modelBuilder.Entity<Category>());
+			new EncapsulationTypeEntityType().Configure(modelBuilder.Entity<EncapsulationType>());
 		}
 
 		private static void StartRelationshipsConfiguration(ref ModelBuilder modelBuilder)
@@ -63,12 +65,14 @@ namespace Mux
 			new ProductChangelogRelationships().Configure(ref modelBuilder);
 			new ProductRequestRelationships().Configure(ref modelBuilder);
 			new ShoppingCartRelationships().Configure(ref modelBuilder);
+			new ProductRelationships().Configure(ref modelBuilder);
 		}
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
 		{
 			new ProductNavigationProperties().Configure(ref modelBuilder);
 			new EmployeeNavigationProperties().Configure(ref modelBuilder);
+			new EncapsulationTypeNavigationProperties().Configure(ref modelBuilder);
 		}
 
 		private static void StartIndexPropertiesConfiguration(ref ModelBuilder modelBuilder)
@@ -76,6 +80,7 @@ namespace Mux
 			new ProductChangelogIndexProperties().Configure(ref modelBuilder);
 			new ProductRequestIndexProperties().Configure(ref modelBuilder);
 			new ProductToBuyIndexProperties().Configure(ref modelBuilder);
+			new ProductIndexProperties().Configure(ref modelBuilder);
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace Mux.Model
 		private string? _status;
 		private string? _enrollment;
 		private string? _mountingTechnology;
-		private string? _encapsulationType;
+		private string? _oldEncapsulationType;
 		private string? _shortDescription;
 		private string? _category;
 		private bool? _isUsingInventory;
@@ -91,13 +91,13 @@ namespace Mux.Model
 				OnPropertyChanged(nameof(MountingTechnology));
 			}
 		}
-		public string? EncapsulationType
+		public string? OldEncapsulationType
 		{
-			get => _encapsulationType;
+			get => _oldEncapsulationType;
 			set
 			{
-				_encapsulationType = value;
-				OnPropertyChanged(nameof(EncapsulationType));
+				_oldEncapsulationType = value;
+				OnPropertyChanged(nameof(OldEncapsulationType));
 			}
 		}
 		public string? ShortDescription
@@ -377,6 +377,10 @@ namespace Mux.Model
 			}
 		}
 #pragma warning restore 8632
+		
+		public int EncapsulationTypeId { get; set; }
+		public EncapsulationType EncapsulationType { get; set; }
+		
 		public List<ProductToBuy> ShoppingCart { get; set; }
 		public List<ProductRequest> ProductRequests { get; set; }
 		public List<ProductChangeLog> ProductChangeLogs { get; set; }
@@ -389,7 +393,7 @@ namespace Mux.Model
 			Status = "";
 			Enrollment = "";
 			MountingTechnology = "";
-			EncapsulationType = "";
+			OldEncapsulationType = "";
 			Category = "";
 			ShortDescription = "";
 			FullDescription = "";
