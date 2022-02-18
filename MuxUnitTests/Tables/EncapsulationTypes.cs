@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Mux;
 using Mux.Model;
 using Xunit;
@@ -22,10 +23,34 @@ namespace MuxUnitTests.Tables
             Assert.True(previousCount < newCount);
         }
         
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        public void DeleteEncapsulationTypeIdShouldOk(int id)
+        {
+            using ICDatabase database = new();
+            var encapsulation = GetEncapsulationType(id);
+            int previousCount = GetDataCountFromTable();
+            database.EncapsulationTypes.Remove(encapsulation);
+            database.SaveChanges();
+            int newCount = GetDataCountFromTable();
+            Assert.True(newCount < previousCount);
+        }
+        
         private int GetDataCountFromTable()
         {
             using ICDatabase database = new();
             return database.EncapsulationTypes.Count();
         }
+        
+        private EncapsulationType GetEncapsulationType(int id)
+        {
+            using ICDatabase database = new();
+            return database.EncapsulationTypes
+                .Include(e => e.Products)
+                .FirstOrDefault(e => e.Id == id);
+        }
+
     }
 }
