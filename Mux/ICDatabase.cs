@@ -64,6 +64,7 @@ namespace Mux
 			new ProductChangelogRelationships().Configure(ref modelBuilder);
 			new ProductRequestRelationships().Configure(ref modelBuilder);
 			new ShoppingCartRelationships().Configure(ref modelBuilder);
+			new ProductRelationships().Configure(ref modelBuilder);
 		}
 
 		private static void StartNavigationPropertiesConfiguration(ref ModelBuilder modelBuilder)
