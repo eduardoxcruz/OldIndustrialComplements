@@ -71,6 +71,7 @@ namespace Mux
 		{
 			new ProductNavigationProperties().Configure(ref modelBuilder);
 			new EmployeeNavigationProperties().Configure(ref modelBuilder);
+			new EncapsulationTypeNavigationProperties().Configure(ref modelBuilder);
 		}
 
 		private static void StartIndexPropertiesConfiguration(ref ModelBuilder modelBuilder)
