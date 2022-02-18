@@ -9,8 +9,8 @@ namespace Mux.Relationships
 		{
 			modelBuilder.Entity<Product>()
 				.HasOne(product => product.EncapsulationType)
-				.WithMany(e => e.Products)
-				.HasForeignKey(p => p.EncapsulationTypeId)
+				.WithMany(encapsulationType => encapsulationType.Products)
+				.HasForeignKey(product => product.EncapsulationTypeId)
 				.OnDelete(DeleteBehavior.ClientCascade);
 		}
 	}
