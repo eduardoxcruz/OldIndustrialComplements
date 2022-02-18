@@ -3,7 +3,7 @@ using Mux.Model;
 
 namespace Mux.IndexProperties
 {
-	public class ProductIndexProperties : IndexPropertiesConfiguration
+	internal class ProductIndexProperties : IndexPropertiesConfiguration
 	{
 		public void Configure(ref ModelBuilder modelBuilder)
 		{
