@@ -64,33 +64,6 @@ namespace Inventory.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Mux.Model.EncapsulationType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BodyWidth")
-                        .HasMaxLength(30)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("FullDescription")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("[Name] + ', ' + [BodyWidth]", true);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(30)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EncapsulationType");
-                });
-
             modelBuilder.Entity("Mux.Model.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -132,8 +105,11 @@ namespace Inventory.Migrations
                     b.Property<int>("Egresses")
                         .HasColumnType("int");
 
-                    b.Property<int>("EncapsulationTypeId")
-                        .HasColumnType("int");
+                    b.Property<string>("EncapsulationType")
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("OldEncapsulationType");
 
                     b.Property<string>("Enrollment")
                         .HasMaxLength(60)
@@ -179,11 +155,6 @@ namespace Inventory.Migrations
                         .HasMaxLength(16)
                         .IsUnicode(false)
                         .HasColumnType("varchar(16)");
-
-                    b.Property<string>("OldEncapsulationType")
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("PartNumber")
                         .HasMaxLength(30)
@@ -248,8 +219,6 @@ namespace Inventory.Migrations
                         .HasColumnType("varchar(10)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EncapsulationTypeId");
 
                     b.ToTable("Products");
                 });
@@ -407,17 +376,6 @@ namespace Inventory.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("Mux.Model.Product", b =>
-                {
-                    b.HasOne("Mux.Model.EncapsulationType", "EncapsulationType")
-                        .WithMany("Products")
-                        .HasForeignKey("EncapsulationTypeId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("EncapsulationType");
-                });
-
             modelBuilder.Entity("Mux.Model.ProductChangeLog", b =>
                 {
                     b.HasOne("Mux.Model.Employee", "Employee")
@@ -491,11 +449,6 @@ namespace Inventory.Migrations
                     b.Navigation("ProductRequests");
 
                     b.Navigation("ShoppingCart");
-                });
-
-            modelBuilder.Entity("Mux.Model.EncapsulationType", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Mux.Model.Product", b =>
