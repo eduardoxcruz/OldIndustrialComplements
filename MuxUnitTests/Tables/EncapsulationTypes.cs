@@ -52,6 +52,25 @@ namespace MuxUnitTests.Tables
             Assert.Equal(expectedExceptionMessage, originalException.InnerException!.Message);
         }
         
+        [Theory]
+        [InlineData(4, 1)]
+        [InlineData(4, 2)]
+        [InlineData(4, 3)]
+        public void InsertProductIntoProductsListShouldOk(int etId, int productId)
+        {
+            var database = new ICDatabase();
+            var encapsulationType = GetEncapsulationType(etId);
+            var product = GetProduct(productId);
+            var previousCount = encapsulationType.Products.Count();
+            encapsulationType.Products.Add(product);
+            database.Entry(encapsulationType).State = EntityState.Modified;
+            database.Entry(product).State = EntityState.Modified;
+            database.SaveChanges();
+            var newCount = GetEncapsulationType(etId).Products.Count();
+            
+            Assert.True(previousCount < newCount);
+        }
+        
         private int GetDataCountFromTable()
         {
             using ICDatabase database = new();
@@ -72,6 +91,12 @@ namespace MuxUnitTests.Tables
             var encapsulationType = new EncapsulationType() {Id = id, Name = name, BodyWidth = body};
             database.EncapsulationTypes.Add(encapsulationType);
             database.SaveChanges();
+        }
+        
+        private Product GetProduct(int id)
+        {
+            using ICDatabase database = new();
+            return database.Products.FirstOrDefault(p => p.Id == id);
         }
     }
 }
