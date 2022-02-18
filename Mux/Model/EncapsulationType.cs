@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Mux.Model
@@ -58,6 +59,8 @@ namespace Mux.Model
 				OnPropertyChanged(nameof(FullDescription));
 			}
 		}
+		
+		public List<Product> Products { get; set; }
 
 		public EncapsulationType()
 		{
